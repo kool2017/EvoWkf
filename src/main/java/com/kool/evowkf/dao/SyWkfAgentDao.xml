@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfAgentDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfAgentBean">
+		<id column="SWA_USER_ID" property="swaUserId" />
+		<result column="SWA_LOGIN_NAME" property="swaLoginName" />
+		<result column="SWA_AGENT_USER_ID" property="swaAgentUserId" />
+		<result column="SWA_AGENT_LOGIN_NAME" property="swaAgentLoginName" />
+		<result column="SWA_AGENT_STATUS" property="swaAgentStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWA_USER_ID, 			
+			SWA_LOGIN_NAME, 			
+			SWA_AGENT_USER_ID, 			
+			SWA_AGENT_LOGIN_NAME, 			
+			SWA_AGENT_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWA_USER_ID
+	</sql>
+</mapper>  

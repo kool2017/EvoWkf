@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfRecordDetailDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordDetailBean">
+		<id column="SRD_DETAIL_ID" property="srdDetailId" />
+		<result column="SRD_RECORD_ID" property="srdRecordId" />
+		<result column="SRD_SCHEDULE_ID" property="srdScheduleId" />
+		<result column="SRD_DETAIL_SEQ" property="srdDetailSeq" />
+		<result column="SRD_DETAIL_TIME" property="srdDetailTime" />
+		<result column="SRD_NODE_ID" property="srdNodeId" />
+		<result column="SRD_NODE_NAME" property="srdNodeName" />
+		<result column="SRD_USER_ID" property="srdUserId" />
+		<result column="SRD_LOGIN_NAME" property="srdLoginName" />
+		<result column="SRD_EVENT_TYPE" property="srdEventType" />
+		<result column="SRD_EVENT_RULE" property="srdEventRule" />
+		<result column="SRD_EVENT_FLAG" property="srdEventFlag" />
+		<result column="SRD_EVENT_DSP" property="srdEventDsp" />
+		<result column="SRD_BUSINESS_FIELD1" property="srdBusinessField1" />
+		<result column="SRD_BUSINESS_FIELD2" property="srdBusinessField2" />
+		<result column="SRD_BUSINESS_FIELD3" property="srdBusinessField3" />
+		<result column="SRD_BUSINESS_FIELD4" property="srdBusinessField4" />
+		<result column="SRD_BUSINESS_FIELD5" property="srdBusinessField5" />
+		<result column="SRD_BUSINESS_FIELD6" property="srdBusinessField6" />
+		<result column="SRD_BUSINESS_FIELD7" property="srdBusinessField7" />
+		<result column="SRD_BUSINESS_FIELD8" property="srdBusinessField8" />
+		<result column="SRD_BUSINESS_FIELD9" property="srdBusinessField9" />
+		<result column="SRD_BUSINESS_FIELD10" property="srdBusinessField10" />
+		<result column="SRD_RECORD_STATUS" property="srdRecordStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRD_DETAIL_ID, 			
+			SRD_RECORD_ID, 			
+			SRD_SCHEDULE_ID, 			
+			SRD_DETAIL_SEQ, 			
+			SRD_DETAIL_TIME, 			
+			SRD_NODE_ID, 			
+			SRD_NODE_NAME, 			
+			SRD_USER_ID, 			
+			SRD_LOGIN_NAME, 			
+			SRD_EVENT_TYPE, 			
+			SRD_EVENT_RULE, 			
+			SRD_EVENT_FLAG, 			
+			SRD_EVENT_DSP, 			
+			SRD_BUSINESS_FIELD1, 			
+			SRD_BUSINESS_FIELD2, 			
+			SRD_BUSINESS_FIELD3, 			
+			SRD_BUSINESS_FIELD4, 			
+			SRD_BUSINESS_FIELD5, 			
+			SRD_BUSINESS_FIELD6, 			
+			SRD_BUSINESS_FIELD7, 			
+			SRD_BUSINESS_FIELD8, 			
+			SRD_BUSINESS_FIELD9, 			
+			SRD_BUSINESS_FIELD10, 			
+			SRD_RECORD_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRD_DETAIL_ID
+	</sql>
+</mapper>  

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfEntityBusinessDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfEntityBusinessBean">
+		<id column="SEB_WKF_CODE" property="sebWkfCode" />
+		<id column="SEB_BUSINESS_TYPE" property="sebBusinessType" />
+		<result column="SEB_IS_SINGLE" property="sebIsSingle" />
+		<result column="SEB_MATCH_STRATEGY" property="sebMatchStrategy" />
+		<result column="SEB_MATCH_CLAZZ" property="sebMatchClazz" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SEB_WKF_CODE, 			
+			SEB_BUSINESS_TYPE, 			
+			SEB_IS_SINGLE, 			
+			SEB_MATCH_STRATEGY, 			
+			SEB_MATCH_CLAZZ			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SEB_WKF_CODE, SEB_BUSINESS_TYPE
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfEntityBusinessBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_ENTITY_BUSINESS WHERE 1=1 
+		<if test="sebWkfCode != null and sebWkfCode != ''">
+			AND SEB_WKF_CODE = #{sebWkfCode}
+		</if>
+		<if test="sebBusinessType != null and sebBusinessType != ''">
+			AND SEB_BUSINESS_TYPE = #{sebBusinessType}
+		</if>
+		<if test="sebIsSingle != null and sebIsSingle != ''">
+			AND SEB_IS_SINGLE = #{sebIsSingle}
+		</if>
+		<if test="sebMatchStrategy != null and sebMatchStrategy != ''">
+			AND SEB_MATCH_STRATEGY = #{sebMatchStrategy}
+		</if>
+		<if test="sebMatchClazz != null and sebMatchClazz != ''">
+			AND SEB_MATCH_CLAZZ = #{sebMatchClazz}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfEntityBusinessBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_ENTITY_BUSINESS
+		WHERE 
+		SEB_WKF_CODE = #{sebWkfCode} AND 
+		SEB_BUSINESS_TYPE = #{sebBusinessType}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfEntityBusinessBean">
+		DELETE FROM SY_WKF_ENTITY_BUSINESS
+		WHERE
+		SEB_WKF_CODE = #{sebWkfCode} AND 
+		SEB_BUSINESS_TYPE = #{sebBusinessType}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfEntityBusinessBean">
+		DELETE FROM SY_WKF_ENTITY_BUSINESS
+		WHERE 1=1 
+		<if test="sebWkfCode != null and sebWkfCode != ''">
+			AND SEB_WKF_CODE = #{sebWkfCode}
+		</if>
+		<if test="sebBusinessType != null and sebBusinessType != ''">
+			AND SEB_BUSINESS_TYPE = #{sebBusinessType}
+		</if>
+		<if test="sebIsSingle != null and sebIsSingle != ''">
+			AND SEB_IS_SINGLE = #{sebIsSingle}
+		</if>
+		<if test="sebMatchStrategy != null and sebMatchStrategy != ''">
+			AND SEB_MATCH_STRATEGY = #{sebMatchStrategy}
+		</if>
+		<if test="sebMatchClazz != null and sebMatchClazz != ''">
+			AND SEB_MATCH_CLAZZ = #{sebMatchClazz}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfEntityBusinessBean">
+		INSERT INTO SY_WKF_ENTITY_BUSINESS
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sebWkfCode != null">
+				SEB_WKF_CODE,
+			</if>		
+			<if test="sebBusinessType != null">
+				SEB_BUSINESS_TYPE,
+			</if>		
+			<if test="sebIsSingle != null">
+				SEB_IS_SINGLE,
+			</if>		
+			<if test="sebMatchStrategy != null">
+				SEB_MATCH_STRATEGY,
+			</if>		
+			<if test="sebMatchClazz != null">
+				SEB_MATCH_CLAZZ,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sebWkfCode != null">
+				#{sebWkfCode},
+			</if>	
+			<if test="sebBusinessType != null">
+				#{sebBusinessType},
+			</if>	
+			<if test="sebIsSingle != null">
+				#{sebIsSingle},
+			</if>	
+			<if test="sebMatchStrategy != null">
+				#{sebMatchStrategy},
+			</if>	
+			<if test="sebMatchClazz != null">
+				#{sebMatchClazz},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_ENTITY_BUSINESS
+		<set>
+			<if test="value.isInitSebWkfCode">
+				<choose>
+					<when test="value.sebWkfCode != null">
+						SEB_WKF_CODE = #{value.sebWkfCode},
+					</when>
+					<otherwise>
+						SEB_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSebBusinessType">
+				<choose>
+					<when test="value.sebBusinessType != null">
+						SEB_BUSINESS_TYPE = #{value.sebBusinessType},
+					</when>
+					<otherwise>
+						SEB_BUSINESS_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSebIsSingle">
+				<choose>
+					<when test="value.sebIsSingle != null">
+						SEB_IS_SINGLE = #{value.sebIsSingle},
+					</when>
+					<otherwise>
+						SEB_IS_SINGLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSebMatchStrategy">
+				<choose>
+					<when test="value.sebMatchStrategy != null">
+						SEB_MATCH_STRATEGY = #{value.sebMatchStrategy},
+					</when>
+					<otherwise>
+						SEB_MATCH_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSebMatchClazz">
+				<choose>
+					<when test="value.sebMatchClazz != null">
+						SEB_MATCH_CLAZZ = #{value.sebMatchClazz},
+					</when>
+					<otherwise>
+						SEB_MATCH_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sebWkfCode != null and condition.sebWkfCode != ''">
+			AND SEB_WKF_CODE =	#{condition.sebWkfCode} 
+		</if>
+		<if test="condition.sebBusinessType != null and condition.sebBusinessType != ''">
+			AND SEB_BUSINESS_TYPE =	#{condition.sebBusinessType} 
+		</if>
+		<if test="condition.sebIsSingle != null and condition.sebIsSingle != ''">
+			AND SEB_IS_SINGLE =	#{condition.sebIsSingle} 
+		</if>
+		<if test="condition.sebMatchStrategy != null and condition.sebMatchStrategy != ''">
+			AND SEB_MATCH_STRATEGY =	#{condition.sebMatchStrategy} 
+		</if>
+		<if test="condition.sebMatchClazz != null and condition.sebMatchClazz != ''">
+			AND SEB_MATCH_CLAZZ =	#{condition.sebMatchClazz} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfEntityBusinessBean">
+		UPDATE SY_WKF_ENTITY_BUSINESS
+		<set>
+			<if test="isInitSebWkfCode">
+				<choose>
+					<when test="sebWkfCode != null">
+						SEB_WKF_CODE = #{sebWkfCode},
+					</when>
+					<otherwise>
+						SEB_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSebBusinessType">
+				<choose>
+					<when test="sebBusinessType != null">
+						SEB_BUSINESS_TYPE = #{sebBusinessType},
+					</when>
+					<otherwise>
+						SEB_BUSINESS_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSebIsSingle">
+				<choose>
+					<when test="sebIsSingle != null">
+						SEB_IS_SINGLE = #{sebIsSingle},
+					</when>
+					<otherwise>
+						SEB_IS_SINGLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSebMatchStrategy">
+				<choose>
+					<when test="sebMatchStrategy != null">
+						SEB_MATCH_STRATEGY = #{sebMatchStrategy},
+					</when>
+					<otherwise>
+						SEB_MATCH_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSebMatchClazz">
+				<choose>
+					<when test="sebMatchClazz != null">
+						SEB_MATCH_CLAZZ = #{sebMatchClazz},
+					</when>
+					<otherwise>
+						SEB_MATCH_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SEB_WKF_CODE = #{sebWkfCode} AND 
+		SEB_BUSINESS_TYPE = #{sebBusinessType}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_ENTITY_BUSINESS WHERE 1=1
+		<if test="syWkfEntityBusiness!=null">
+			<if test="syWkfEntityBusiness.sebWkfCode != null and syWkfEntityBusiness.sebWkfCode != ''">
+				AND SEB_WKF_CODE = #{syWkfEntityBusiness.sebWkfCode}
+			</if>
+			<if test="syWkfEntityBusiness.sebBusinessType != null and syWkfEntityBusiness.sebBusinessType != ''">
+				AND SEB_BUSINESS_TYPE = #{syWkfEntityBusiness.sebBusinessType}
+			</if>
+			<if test="syWkfEntityBusiness.sebIsSingle != null and syWkfEntityBusiness.sebIsSingle != ''">
+				AND SEB_IS_SINGLE = #{syWkfEntityBusiness.sebIsSingle}
+			</if>
+			<if test="syWkfEntityBusiness.sebMatchStrategy != null and syWkfEntityBusiness.sebMatchStrategy != ''">
+				AND SEB_MATCH_STRATEGY = #{syWkfEntityBusiness.sebMatchStrategy}
+			</if>
+			<if test="syWkfEntityBusiness.sebMatchClazz != null and syWkfEntityBusiness.sebMatchClazz != ''">
+				AND SEB_MATCH_CLAZZ = #{syWkfEntityBusiness.sebMatchClazz}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfEntityBusinessBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_ENTITY_BUSINESS
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sebWkfCode != null and sebWkfCode != ''">
+				AND SEB_WKF_CODE = #{sebWkfCode}
+			</if>
+			<if test="sebBusinessType != null and sebBusinessType != ''">
+				AND SEB_BUSINESS_TYPE = #{sebBusinessType}
+			</if>
+			<if test="sebIsSingle != null and sebIsSingle != ''">
+				AND SEB_IS_SINGLE = #{sebIsSingle}
+			</if>
+			<if test="sebMatchStrategy != null and sebMatchStrategy != ''">
+				AND SEB_MATCH_STRATEGY = #{sebMatchStrategy}
+			</if>
+			<if test="sebMatchClazz != null and sebMatchClazz != ''">
+				AND SEB_MATCH_CLAZZ = #{sebMatchClazz}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_ENTITY_BUSINESS(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sebWkfCode},		
+			#{item.sebBusinessType},		
+			#{item.sebIsSingle},		
+			#{item.sebMatchStrategy},		
+			#{item.sebMatchClazz},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

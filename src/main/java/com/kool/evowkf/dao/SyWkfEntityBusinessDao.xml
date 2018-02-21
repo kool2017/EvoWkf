@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfEntityBusinessDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfEntityBusinessBean">
+		<id column="SEB_WKF_CODE" property="sebWkfCode" />
+		<id column="SEB_BUSINESS_TYPE" property="sebBusinessType" />
+		<result column="SEB_IS_SINGLE" property="sebIsSingle" />
+		<result column="SEB_MATCH_STRATEGY" property="sebMatchStrategy" />
+		<result column="SEB_MATCH_CLAZZ" property="sebMatchClazz" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SEB_WKF_CODE, 			
+			SEB_BUSINESS_TYPE, 			
+			SEB_IS_SINGLE, 			
+			SEB_MATCH_STRATEGY, 			
+			SEB_MATCH_CLAZZ			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SEB_WKF_CODE, SEB_BUSINESS_TYPE
+	</sql>
+</mapper>  

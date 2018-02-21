@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyUserTradeDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserTradeBean">
+		<id column="SUT_TRADE_ID" property="sutTradeId" />
+		<result column="SUT_TRADE_TYPE" property="sutTradeType" />
+		<result column="SUT_TRADE_TIME" property="sutTradeTime" />
+		<result column="SUT_OPR_USER_ID" property="sutOprUserId" />
+		<result column="SUT_OPR_LOGIN_NAME" property="sutOprLoginName" />
+		<result column="SUT_LOGIN_NAME" property="sutLoginName" />
+		<result column="SUT_PHONE" property="sutPhone" />
+		<result column="SUT_MAIL" property="sutMail" />
+		<result column="SUT_FACE" property="sutFace" />
+		<result column="SUT_RECORD_ID" property="sutRecordId" />
+		<result column="SUT_TRADE_STATUS" property="sutTradeStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUT_TRADE_ID, 			
+			SUT_TRADE_TYPE, 			
+			SUT_TRADE_TIME, 			
+			SUT_OPR_USER_ID, 			
+			SUT_OPR_LOGIN_NAME, 			
+			SUT_LOGIN_NAME, 			
+			SUT_PHONE, 			
+			SUT_MAIL, 			
+			SUT_FACE, 			
+			SUT_RECORD_ID, 			
+			SUT_TRADE_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUT_TRADE_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyUserTradeBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_TRADE WHERE 1=1 
+		<if test="sutTradeId != null and sutTradeId != ''">
+			AND SUT_TRADE_ID = #{sutTradeId}
+		</if>
+		<if test="sutTradeType != null and sutTradeType != ''">
+			AND SUT_TRADE_TYPE = #{sutTradeType}
+		</if>
+		
+		<if test="sutOprUserId != null and sutOprUserId != ''">
+			AND SUT_OPR_USER_ID = #{sutOprUserId}
+		</if>
+		<if test="sutOprLoginName != null and sutOprLoginName != ''">
+			AND SUT_OPR_LOGIN_NAME = #{sutOprLoginName}
+		</if>
+		<if test="sutLoginName != null and sutLoginName != ''">
+			AND SUT_LOGIN_NAME = #{sutLoginName}
+		</if>
+		<if test="sutPhone != null and sutPhone != ''">
+			AND SUT_PHONE = #{sutPhone}
+		</if>
+		<if test="sutMail != null and sutMail != ''">
+			AND SUT_MAIL = #{sutMail}
+		</if>
+		<if test="sutFace != null and sutFace != ''">
+			AND SUT_FACE = #{sutFace}
+		</if>
+		<if test="sutRecordId != null and sutRecordId != ''">
+			AND SUT_RECORD_ID = #{sutRecordId}
+		</if>
+		<if test="sutTradeStatus != null and sutTradeStatus != ''">
+			AND SUT_TRADE_STATUS = #{sutTradeStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyUserTradeBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_TRADE
+		WHERE 
+		SUT_TRADE_ID = #{sutTradeId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyUserTradeBean">
+		DELETE FROM SY_USER_TRADE
+		WHERE
+		SUT_TRADE_ID = #{sutTradeId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyUserTradeBean">
+		DELETE FROM SY_USER_TRADE
+		WHERE 1=1 
+		<if test="sutTradeId != null and sutTradeId != ''">
+			AND SUT_TRADE_ID = #{sutTradeId}
+		</if>
+		<if test="sutTradeType != null and sutTradeType != ''">
+			AND SUT_TRADE_TYPE = #{sutTradeType}
+		</if>
+		
+		<if test="sutOprUserId != null and sutOprUserId != ''">
+			AND SUT_OPR_USER_ID = #{sutOprUserId}
+		</if>
+		<if test="sutOprLoginName != null and sutOprLoginName != ''">
+			AND SUT_OPR_LOGIN_NAME = #{sutOprLoginName}
+		</if>
+		<if test="sutLoginName != null and sutLoginName != ''">
+			AND SUT_LOGIN_NAME = #{sutLoginName}
+		</if>
+		<if test="sutPhone != null and sutPhone != ''">
+			AND SUT_PHONE = #{sutPhone}
+		</if>
+		<if test="sutMail != null and sutMail != ''">
+			AND SUT_MAIL = #{sutMail}
+		</if>
+		<if test="sutFace != null and sutFace != ''">
+			AND SUT_FACE = #{sutFace}
+		</if>
+		<if test="sutRecordId != null and sutRecordId != ''">
+			AND SUT_RECORD_ID = #{sutRecordId}
+		</if>
+		<if test="sutTradeStatus != null and sutTradeStatus != ''">
+			AND SUT_TRADE_STATUS = #{sutTradeStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyUserTradeBean">
+		INSERT INTO SY_USER_TRADE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sutTradeId != null">
+				SUT_TRADE_ID,
+			</if>		
+			<if test="sutTradeType != null">
+				SUT_TRADE_TYPE,
+			</if>		
+			<if test="sutTradeTime != null">
+				SUT_TRADE_TIME,
+			</if>		
+			<if test="sutOprUserId != null">
+				SUT_OPR_USER_ID,
+			</if>		
+			<if test="sutOprLoginName != null">
+				SUT_OPR_LOGIN_NAME,
+			</if>		
+			<if test="sutLoginName != null">
+				SUT_LOGIN_NAME,
+			</if>		
+			<if test="sutPhone != null">
+				SUT_PHONE,
+			</if>		
+			<if test="sutMail != null">
+				SUT_MAIL,
+			</if>		
+			<if test="sutFace != null">
+				SUT_FACE,
+			</if>		
+			<if test="sutRecordId != null">
+				SUT_RECORD_ID,
+			</if>		
+			<if test="sutTradeStatus != null">
+				SUT_TRADE_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sutTradeId != null">
+				#{sutTradeId},
+			</if>	
+			<if test="sutTradeType != null">
+				#{sutTradeType},
+			</if>	
+			<if test="sutTradeTime != null">
+				#{sutTradeTime},
+			</if>	
+			<if test="sutOprUserId != null">
+				#{sutOprUserId},
+			</if>	
+			<if test="sutOprLoginName != null">
+				#{sutOprLoginName},
+			</if>	
+			<if test="sutLoginName != null">
+				#{sutLoginName},
+			</if>	
+			<if test="sutPhone != null">
+				#{sutPhone},
+			</if>	
+			<if test="sutMail != null">
+				#{sutMail},
+			</if>	
+			<if test="sutFace != null">
+				#{sutFace},
+			</if>	
+			<if test="sutRecordId != null">
+				#{sutRecordId},
+			</if>	
+			<if test="sutTradeStatus != null">
+				#{sutTradeStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_USER_TRADE
+		<set>
+			<if test="value.isInitSutTradeId">
+				<choose>
+					<when test="value.sutTradeId != null">
+						SUT_TRADE_ID = #{value.sutTradeId},
+					</when>
+					<otherwise>
+						SUT_TRADE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutTradeType">
+				<choose>
+					<when test="value.sutTradeType != null">
+						SUT_TRADE_TYPE = #{value.sutTradeType},
+					</when>
+					<otherwise>
+						SUT_TRADE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutTradeTime">
+				<choose>
+					<when test="value.sutTradeTime != null">
+						SUT_TRADE_TIME = #{value.sutTradeTime},
+					</when>
+					<otherwise>
+						SUT_TRADE_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutOprUserId">
+				<choose>
+					<when test="value.sutOprUserId != null">
+						SUT_OPR_USER_ID = #{value.sutOprUserId},
+					</when>
+					<otherwise>
+						SUT_OPR_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutOprLoginName">
+				<choose>
+					<when test="value.sutOprLoginName != null">
+						SUT_OPR_LOGIN_NAME = #{value.sutOprLoginName},
+					</when>
+					<otherwise>
+						SUT_OPR_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutLoginName">
+				<choose>
+					<when test="value.sutLoginName != null">
+						SUT_LOGIN_NAME = #{value.sutLoginName},
+					</when>
+					<otherwise>
+						SUT_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutPhone">
+				<choose>
+					<when test="value.sutPhone != null">
+						SUT_PHONE = #{value.sutPhone},
+					</when>
+					<otherwise>
+						SUT_PHONE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutMail">
+				<choose>
+					<when test="value.sutMail != null">
+						SUT_MAIL = #{value.sutMail},
+					</when>
+					<otherwise>
+						SUT_MAIL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutFace">
+				<choose>
+					<when test="value.sutFace != null">
+						SUT_FACE = #{value.sutFace},
+					</when>
+					<otherwise>
+						SUT_FACE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutRecordId">
+				<choose>
+					<when test="value.sutRecordId != null">
+						SUT_RECORD_ID = #{value.sutRecordId},
+					</when>
+					<otherwise>
+						SUT_RECORD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutTradeStatus">
+				<choose>
+					<when test="value.sutTradeStatus != null">
+						SUT_TRADE_STATUS = #{value.sutTradeStatus},
+					</when>
+					<otherwise>
+						SUT_TRADE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sutTradeId != null and condition.sutTradeId != ''">
+			AND SUT_TRADE_ID =	#{condition.sutTradeId} 
+		</if>
+		<if test="condition.sutTradeType != null and condition.sutTradeType != ''">
+			AND SUT_TRADE_TYPE =	#{condition.sutTradeType} 
+		</if>
+		
+		<if test="condition.sutOprUserId != null and condition.sutOprUserId != ''">
+			AND SUT_OPR_USER_ID =	#{condition.sutOprUserId} 
+		</if>
+		<if test="condition.sutOprLoginName != null and condition.sutOprLoginName != ''">
+			AND SUT_OPR_LOGIN_NAME =	#{condition.sutOprLoginName} 
+		</if>
+		<if test="condition.sutLoginName != null and condition.sutLoginName != ''">
+			AND SUT_LOGIN_NAME =	#{condition.sutLoginName} 
+		</if>
+		<if test="condition.sutPhone != null and condition.sutPhone != ''">
+			AND SUT_PHONE =	#{condition.sutPhone} 
+		</if>
+		<if test="condition.sutMail != null and condition.sutMail != ''">
+			AND SUT_MAIL =	#{condition.sutMail} 
+		</if>
+		<if test="condition.sutFace != null and condition.sutFace != ''">
+			AND SUT_FACE =	#{condition.sutFace} 
+		</if>
+		<if test="condition.sutRecordId != null and condition.sutRecordId != ''">
+			AND SUT_RECORD_ID =	#{condition.sutRecordId} 
+		</if>
+		<if test="condition.sutTradeStatus != null and condition.sutTradeStatus != ''">
+			AND SUT_TRADE_STATUS =	#{condition.sutTradeStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyUserTradeBean">
+		UPDATE SY_USER_TRADE
+		<set>
+			<if test="isInitSutTradeId">
+				<choose>
+					<when test="sutTradeId != null">
+						SUT_TRADE_ID = #{sutTradeId},
+					</when>
+					<otherwise>
+						SUT_TRADE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutTradeType">
+				<choose>
+					<when test="sutTradeType != null">
+						SUT_TRADE_TYPE = #{sutTradeType},
+					</when>
+					<otherwise>
+						SUT_TRADE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutTradeTime">
+				<choose>
+					<when test="sutTradeTime != null">
+						SUT_TRADE_TIME = #{sutTradeTime},
+					</when>
+					<otherwise>
+						SUT_TRADE_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutOprUserId">
+				<choose>
+					<when test="sutOprUserId != null">
+						SUT_OPR_USER_ID = #{sutOprUserId},
+					</when>
+					<otherwise>
+						SUT_OPR_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutOprLoginName">
+				<choose>
+					<when test="sutOprLoginName != null">
+						SUT_OPR_LOGIN_NAME = #{sutOprLoginName},
+					</when>
+					<otherwise>
+						SUT_OPR_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutLoginName">
+				<choose>
+					<when test="sutLoginName != null">
+						SUT_LOGIN_NAME = #{sutLoginName},
+					</when>
+					<otherwise>
+						SUT_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutPhone">
+				<choose>
+					<when test="sutPhone != null">
+						SUT_PHONE = #{sutPhone},
+					</when>
+					<otherwise>
+						SUT_PHONE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutMail">
+				<choose>
+					<when test="sutMail != null">
+						SUT_MAIL = #{sutMail},
+					</when>
+					<otherwise>
+						SUT_MAIL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutFace">
+				<choose>
+					<when test="sutFace != null">
+						SUT_FACE = #{sutFace},
+					</when>
+					<otherwise>
+						SUT_FACE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutRecordId">
+				<choose>
+					<when test="sutRecordId != null">
+						SUT_RECORD_ID = #{sutRecordId},
+					</when>
+					<otherwise>
+						SUT_RECORD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutTradeStatus">
+				<choose>
+					<when test="sutTradeStatus != null">
+						SUT_TRADE_STATUS = #{sutTradeStatus},
+					</when>
+					<otherwise>
+						SUT_TRADE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SUT_TRADE_ID = #{sutTradeId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_USER_TRADE WHERE 1=1
+		<if test="syUserTrade!=null">
+			<if test="syUserTrade.sutTradeId != null and syUserTrade.sutTradeId != ''">
+				AND SUT_TRADE_ID = #{syUserTrade.sutTradeId}
+			</if>
+			<if test="syUserTrade.sutTradeType != null and syUserTrade.sutTradeType != ''">
+				AND SUT_TRADE_TYPE = #{syUserTrade.sutTradeType}
+			</if>
+			
+			<if test="syUserTrade.sutOprUserId != null and syUserTrade.sutOprUserId != ''">
+				AND SUT_OPR_USER_ID = #{syUserTrade.sutOprUserId}
+			</if>
+			<if test="syUserTrade.sutOprLoginName != null and syUserTrade.sutOprLoginName != ''">
+				AND SUT_OPR_LOGIN_NAME = #{syUserTrade.sutOprLoginName}
+			</if>
+			<if test="syUserTrade.sutLoginName != null and syUserTrade.sutLoginName != ''">
+				AND SUT_LOGIN_NAME = #{syUserTrade.sutLoginName}
+			</if>
+			<if test="syUserTrade.sutPhone != null and syUserTrade.sutPhone != ''">
+				AND SUT_PHONE = #{syUserTrade.sutPhone}
+			</if>
+			<if test="syUserTrade.sutMail != null and syUserTrade.sutMail != ''">
+				AND SUT_MAIL = #{syUserTrade.sutMail}
+			</if>
+			<if test="syUserTrade.sutFace != null and syUserTrade.sutFace != ''">
+				AND SUT_FACE = #{syUserTrade.sutFace}
+			</if>
+			<if test="syUserTrade.sutRecordId != null and syUserTrade.sutRecordId != ''">
+				AND SUT_RECORD_ID = #{syUserTrade.sutRecordId}
+			</if>
+			<if test="syUserTrade.sutTradeStatus != null and syUserTrade.sutTradeStatus != ''">
+				AND SUT_TRADE_STATUS = #{syUserTrade.sutTradeStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyUserTradeBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_USER_TRADE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sutTradeId != null and sutTradeId != ''">
+				AND SUT_TRADE_ID = #{sutTradeId}
+			</if>
+			<if test="sutTradeType != null and sutTradeType != ''">
+				AND SUT_TRADE_TYPE = #{sutTradeType}
+			</if>
+			
+			<if test="sutOprUserId != null and sutOprUserId != ''">
+				AND SUT_OPR_USER_ID = #{sutOprUserId}
+			</if>
+			<if test="sutOprLoginName != null and sutOprLoginName != ''">
+				AND SUT_OPR_LOGIN_NAME = #{sutOprLoginName}
+			</if>
+			<if test="sutLoginName != null and sutLoginName != ''">
+				AND SUT_LOGIN_NAME = #{sutLoginName}
+			</if>
+			<if test="sutPhone != null and sutPhone != ''">
+				AND SUT_PHONE = #{sutPhone}
+			</if>
+			<if test="sutMail != null and sutMail != ''">
+				AND SUT_MAIL = #{sutMail}
+			</if>
+			<if test="sutFace != null and sutFace != ''">
+				AND SUT_FACE = #{sutFace}
+			</if>
+			<if test="sutRecordId != null and sutRecordId != ''">
+				AND SUT_RECORD_ID = #{sutRecordId}
+			</if>
+			<if test="sutTradeStatus != null and sutTradeStatus != ''">
+				AND SUT_TRADE_STATUS = #{sutTradeStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_USER_TRADE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sutTradeId},		
+			#{item.sutTradeType},		
+			#{item.sutTradeTime},		
+			#{item.sutOprUserId},		
+			#{item.sutOprLoginName},		
+			#{item.sutLoginName},		
+			#{item.sutPhone},		
+			#{item.sutMail},		
+			#{item.sutFace},		
+			#{item.sutRecordId},		
+			#{item.sutTradeStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

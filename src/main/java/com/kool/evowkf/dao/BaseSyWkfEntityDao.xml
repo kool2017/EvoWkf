@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfEntityDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfEntityBean">
+		<id column="SWE_ENTITY_ID" property="sweEntityId" />
+		<result column="SWE_ENTITY_NAME" property="sweEntityName" />
+		<result column="SWE_WKF_CODE" property="sweWkfCode" />
+		<result column="SWE_BUSINESS_TYPE" property="sweBusinessType" />
+		<result column="SWE_MATCH_VALUE" property="sweMatchValue" />
+		<result column="SWE_NODE_HEAD" property="sweNodeHead" />
+		<result column="SWE_NODE_HEAD_NAME" property="sweNodeHeadName" />
+		<result column="SWE_ENTITY_STATUS" property="sweEntityStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWE_ENTITY_ID, 			
+			SWE_ENTITY_NAME, 			
+			SWE_WKF_CODE, 			
+			SWE_BUSINESS_TYPE, 			
+			SWE_MATCH_VALUE, 			
+			SWE_NODE_HEAD, 			
+			SWE_NODE_HEAD_NAME, 			
+			SWE_ENTITY_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWE_ENTITY_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfEntityBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_ENTITY WHERE 1=1 
+		<if test="sweEntityId != null and sweEntityId != ''">
+			AND SWE_ENTITY_ID = #{sweEntityId}
+		</if>
+		<if test="sweEntityName != null and sweEntityName != ''">
+			AND SWE_ENTITY_NAME = #{sweEntityName}
+		</if>
+		<if test="sweWkfCode != null and sweWkfCode != ''">
+			AND SWE_WKF_CODE = #{sweWkfCode}
+		</if>
+		<if test="sweBusinessType != null and sweBusinessType != ''">
+			AND SWE_BUSINESS_TYPE = #{sweBusinessType}
+		</if>
+		<if test="sweMatchValue != null and sweMatchValue != ''">
+			AND SWE_MATCH_VALUE = #{sweMatchValue}
+		</if>
+		<if test="sweNodeHead != null and sweNodeHead != ''">
+			AND SWE_NODE_HEAD = #{sweNodeHead}
+		</if>
+		<if test="sweNodeHeadName != null and sweNodeHeadName != ''">
+			AND SWE_NODE_HEAD_NAME = #{sweNodeHeadName}
+		</if>
+		<if test="sweEntityStatus != null and sweEntityStatus != ''">
+			AND SWE_ENTITY_STATUS = #{sweEntityStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfEntityBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_ENTITY
+		WHERE 
+		SWE_ENTITY_ID = #{sweEntityId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
+		DELETE FROM SY_WKF_ENTITY
+		WHERE
+		SWE_ENTITY_ID = #{sweEntityId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
+		DELETE FROM SY_WKF_ENTITY
+		WHERE 1=1 
+		<if test="sweEntityId != null and sweEntityId != ''">
+			AND SWE_ENTITY_ID = #{sweEntityId}
+		</if>
+		<if test="sweEntityName != null and sweEntityName != ''">
+			AND SWE_ENTITY_NAME = #{sweEntityName}
+		</if>
+		<if test="sweWkfCode != null and sweWkfCode != ''">
+			AND SWE_WKF_CODE = #{sweWkfCode}
+		</if>
+		<if test="sweBusinessType != null and sweBusinessType != ''">
+			AND SWE_BUSINESS_TYPE = #{sweBusinessType}
+		</if>
+		<if test="sweMatchValue != null and sweMatchValue != ''">
+			AND SWE_MATCH_VALUE = #{sweMatchValue}
+		</if>
+		<if test="sweNodeHead != null and sweNodeHead != ''">
+			AND SWE_NODE_HEAD = #{sweNodeHead}
+		</if>
+		<if test="sweNodeHeadName != null and sweNodeHeadName != ''">
+			AND SWE_NODE_HEAD_NAME = #{sweNodeHeadName}
+		</if>
+		<if test="sweEntityStatus != null and sweEntityStatus != ''">
+			AND SWE_ENTITY_STATUS = #{sweEntityStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
+		INSERT INTO SY_WKF_ENTITY
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sweEntityId != null">
+				SWE_ENTITY_ID,
+			</if>		
+			<if test="sweEntityName != null">
+				SWE_ENTITY_NAME,
+			</if>		
+			<if test="sweWkfCode != null">
+				SWE_WKF_CODE,
+			</if>		
+			<if test="sweBusinessType != null">
+				SWE_BUSINESS_TYPE,
+			</if>		
+			<if test="sweMatchValue != null">
+				SWE_MATCH_VALUE,
+			</if>		
+			<if test="sweNodeHead != null">
+				SWE_NODE_HEAD,
+			</if>		
+			<if test="sweNodeHeadName != null">
+				SWE_NODE_HEAD_NAME,
+			</if>		
+			<if test="sweEntityStatus != null">
+				SWE_ENTITY_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sweEntityId != null">
+				#{sweEntityId},
+			</if>	
+			<if test="sweEntityName != null">
+				#{sweEntityName},
+			</if>	
+			<if test="sweWkfCode != null">
+				#{sweWkfCode},
+			</if>	
+			<if test="sweBusinessType != null">
+				#{sweBusinessType},
+			</if>	
+			<if test="sweMatchValue != null">
+				#{sweMatchValue},
+			</if>	
+			<if test="sweNodeHead != null">
+				#{sweNodeHead},
+			</if>	
+			<if test="sweNodeHeadName != null">
+				#{sweNodeHeadName},
+			</if>	
+			<if test="sweEntityStatus != null">
+				#{sweEntityStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_ENTITY
+		<set>
+			<if test="value.isInitSweEntityId">
+				<choose>
+					<when test="value.sweEntityId != null">
+						SWE_ENTITY_ID = #{value.sweEntityId},
+					</when>
+					<otherwise>
+						SWE_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSweEntityName">
+				<choose>
+					<when test="value.sweEntityName != null">
+						SWE_ENTITY_NAME = #{value.sweEntityName},
+					</when>
+					<otherwise>
+						SWE_ENTITY_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSweWkfCode">
+				<choose>
+					<when test="value.sweWkfCode != null">
+						SWE_WKF_CODE = #{value.sweWkfCode},
+					</when>
+					<otherwise>
+						SWE_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSweBusinessType">
+				<choose>
+					<when test="value.sweBusinessType != null">
+						SWE_BUSINESS_TYPE = #{value.sweBusinessType},
+					</when>
+					<otherwise>
+						SWE_BUSINESS_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSweMatchValue">
+				<choose>
+					<when test="value.sweMatchValue != null">
+						SWE_MATCH_VALUE = #{value.sweMatchValue},
+					</when>
+					<otherwise>
+						SWE_MATCH_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSweNodeHead">
+				<choose>
+					<when test="value.sweNodeHead != null">
+						SWE_NODE_HEAD = #{value.sweNodeHead},
+					</when>
+					<otherwise>
+						SWE_NODE_HEAD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSweNodeHeadName">
+				<choose>
+					<when test="value.sweNodeHeadName != null">
+						SWE_NODE_HEAD_NAME = #{value.sweNodeHeadName},
+					</when>
+					<otherwise>
+						SWE_NODE_HEAD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSweEntityStatus">
+				<choose>
+					<when test="value.sweEntityStatus != null">
+						SWE_ENTITY_STATUS = #{value.sweEntityStatus},
+					</when>
+					<otherwise>
+						SWE_ENTITY_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sweEntityId != null and condition.sweEntityId != ''">
+			AND SWE_ENTITY_ID =	#{condition.sweEntityId} 
+		</if>
+		<if test="condition.sweEntityName != null and condition.sweEntityName != ''">
+			AND SWE_ENTITY_NAME =	#{condition.sweEntityName} 
+		</if>
+		<if test="condition.sweWkfCode != null and condition.sweWkfCode != ''">
+			AND SWE_WKF_CODE =	#{condition.sweWkfCode} 
+		</if>
+		<if test="condition.sweBusinessType != null and condition.sweBusinessType != ''">
+			AND SWE_BUSINESS_TYPE =	#{condition.sweBusinessType} 
+		</if>
+		<if test="condition.sweMatchValue != null and condition.sweMatchValue != ''">
+			AND SWE_MATCH_VALUE =	#{condition.sweMatchValue} 
+		</if>
+		<if test="condition.sweNodeHead != null and condition.sweNodeHead != ''">
+			AND SWE_NODE_HEAD =	#{condition.sweNodeHead} 
+		</if>
+		<if test="condition.sweNodeHeadName != null and condition.sweNodeHeadName != ''">
+			AND SWE_NODE_HEAD_NAME =	#{condition.sweNodeHeadName} 
+		</if>
+		<if test="condition.sweEntityStatus != null and condition.sweEntityStatus != ''">
+			AND SWE_ENTITY_STATUS =	#{condition.sweEntityStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
+		UPDATE SY_WKF_ENTITY
+		<set>
+			<if test="isInitSweEntityId">
+				<choose>
+					<when test="sweEntityId != null">
+						SWE_ENTITY_ID = #{sweEntityId},
+					</when>
+					<otherwise>
+						SWE_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSweEntityName">
+				<choose>
+					<when test="sweEntityName != null">
+						SWE_ENTITY_NAME = #{sweEntityName},
+					</when>
+					<otherwise>
+						SWE_ENTITY_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSweWkfCode">
+				<choose>
+					<when test="sweWkfCode != null">
+						SWE_WKF_CODE = #{sweWkfCode},
+					</when>
+					<otherwise>
+						SWE_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSweBusinessType">
+				<choose>
+					<when test="sweBusinessType != null">
+						SWE_BUSINESS_TYPE = #{sweBusinessType},
+					</when>
+					<otherwise>
+						SWE_BUSINESS_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSweMatchValue">
+				<choose>
+					<when test="sweMatchValue != null">
+						SWE_MATCH_VALUE = #{sweMatchValue},
+					</when>
+					<otherwise>
+						SWE_MATCH_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSweNodeHead">
+				<choose>
+					<when test="sweNodeHead != null">
+						SWE_NODE_HEAD = #{sweNodeHead},
+					</when>
+					<otherwise>
+						SWE_NODE_HEAD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSweNodeHeadName">
+				<choose>
+					<when test="sweNodeHeadName != null">
+						SWE_NODE_HEAD_NAME = #{sweNodeHeadName},
+					</when>
+					<otherwise>
+						SWE_NODE_HEAD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSweEntityStatus">
+				<choose>
+					<when test="sweEntityStatus != null">
+						SWE_ENTITY_STATUS = #{sweEntityStatus},
+					</when>
+					<otherwise>
+						SWE_ENTITY_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SWE_ENTITY_ID = #{sweEntityId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_ENTITY WHERE 1=1
+		<if test="syWkfEntity!=null">
+			<if test="syWkfEntity.sweEntityId != null and syWkfEntity.sweEntityId != ''">
+				AND SWE_ENTITY_ID = #{syWkfEntity.sweEntityId}
+			</if>
+			<if test="syWkfEntity.sweEntityName != null and syWkfEntity.sweEntityName != ''">
+				AND SWE_ENTITY_NAME = #{syWkfEntity.sweEntityName}
+			</if>
+			<if test="syWkfEntity.sweWkfCode != null and syWkfEntity.sweWkfCode != ''">
+				AND SWE_WKF_CODE = #{syWkfEntity.sweWkfCode}
+			</if>
+			<if test="syWkfEntity.sweBusinessType != null and syWkfEntity.sweBusinessType != ''">
+				AND SWE_BUSINESS_TYPE = #{syWkfEntity.sweBusinessType}
+			</if>
+			<if test="syWkfEntity.sweMatchValue != null and syWkfEntity.sweMatchValue != ''">
+				AND SWE_MATCH_VALUE = #{syWkfEntity.sweMatchValue}
+			</if>
+			<if test="syWkfEntity.sweNodeHead != null and syWkfEntity.sweNodeHead != ''">
+				AND SWE_NODE_HEAD = #{syWkfEntity.sweNodeHead}
+			</if>
+			<if test="syWkfEntity.sweNodeHeadName != null and syWkfEntity.sweNodeHeadName != ''">
+				AND SWE_NODE_HEAD_NAME = #{syWkfEntity.sweNodeHeadName}
+			</if>
+			<if test="syWkfEntity.sweEntityStatus != null and syWkfEntity.sweEntityStatus != ''">
+				AND SWE_ENTITY_STATUS = #{syWkfEntity.sweEntityStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfEntityBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_ENTITY
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sweEntityId != null and sweEntityId != ''">
+				AND SWE_ENTITY_ID = #{sweEntityId}
+			</if>
+			<if test="sweEntityName != null and sweEntityName != ''">
+				AND SWE_ENTITY_NAME = #{sweEntityName}
+			</if>
+			<if test="sweWkfCode != null and sweWkfCode != ''">
+				AND SWE_WKF_CODE = #{sweWkfCode}
+			</if>
+			<if test="sweBusinessType != null and sweBusinessType != ''">
+				AND SWE_BUSINESS_TYPE = #{sweBusinessType}
+			</if>
+			<if test="sweMatchValue != null and sweMatchValue != ''">
+				AND SWE_MATCH_VALUE = #{sweMatchValue}
+			</if>
+			<if test="sweNodeHead != null and sweNodeHead != ''">
+				AND SWE_NODE_HEAD = #{sweNodeHead}
+			</if>
+			<if test="sweNodeHeadName != null and sweNodeHeadName != ''">
+				AND SWE_NODE_HEAD_NAME = #{sweNodeHeadName}
+			</if>
+			<if test="sweEntityStatus != null and sweEntityStatus != ''">
+				AND SWE_ENTITY_STATUS = #{sweEntityStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_ENTITY(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sweEntityId},		
+			#{item.sweEntityName},		
+			#{item.sweWkfCode},		
+			#{item.sweBusinessType},		
+			#{item.sweMatchValue},		
+			#{item.sweNodeHead},		
+			#{item.sweNodeHeadName},		
+			#{item.sweEntityStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

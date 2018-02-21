@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyUserInfoDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserInfoBean">
+		<id column="SUI_ID" property="suiId" />
+		<result column="SUI_LOGIN_NAME" property="suiLoginName" />
+		<result column="SUI_PHONE" property="suiPhone" />
+		<result column="SUI_MAIL" property="suiMail" />
+		<result column="SUI_PWD" property="suiPwd" />
+		<result column="SUI_SALT" property="suiSalt" />
+		<result column="SUI_NEW_SALT" property="suiNewSalt" />
+		<result column="SUI_HASH_TIMES" property="suiHashTimes" />
+		<result column="SUI_FACE" property="suiFace" />
+		<result column="SUI_STATUS" property="suiStatus" />
+		<result column="SUI_ERROR_TIMES" property="suiErrorTimes" />
+		<result column="SUI_REGISTER_TIME" property="suiRegisterTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUI_ID, 			
+			SUI_LOGIN_NAME, 			
+			SUI_PHONE, 			
+			SUI_MAIL, 			
+			SUI_PWD, 			
+			SUI_SALT, 			
+			SUI_NEW_SALT, 			
+			SUI_HASH_TIMES, 			
+			SUI_FACE, 			
+			SUI_STATUS, 			
+			SUI_ERROR_TIMES, 			
+			SUI_REGISTER_TIME			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUI_ID
+	</sql>
+</mapper>  

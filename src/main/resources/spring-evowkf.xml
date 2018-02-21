@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<!-- 在XML配置文件中加入外部属性文件，当然也可以指定外部文件的编码 -->
+	<bean id="propertyConfigurer" class="com.kool.core.util.PropertyUtils">
+		<property name="locations">
+			<list>
+				<value>classpath:evowkf.properties</value> <!-- 指定外部文件的编码 -->
+			</list>
+		</property>
+	</bean>
+	<import resource="classpath:spring-mvc.xml" />
+	<import resource="classpath:spring-jdbc.xml" />
+
+</beans>

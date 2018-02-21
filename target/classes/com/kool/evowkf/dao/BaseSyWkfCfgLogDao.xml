@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfCfgLogDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfCfgLogBean">
+		<id column="SCL_LOG_ID" property="sclLogId" />
+		<result column="SCL_LOG_TIME" property="sclLogTime" />
+		<result column="SCL_USER_ID" property="sclUserId" />
+		<result column="SCL_LOGIN_NAME" property="sclLoginName" />
+		<result column="SCL_TABLE" property="sclTable" />
+		<result column="SCL_OPR_TYPE" property="sclOprType" />
+		<result column="SCL_FIELD" property="sclField" />
+		<result column="SCL_OLD_VALUE" property="sclOldValue" />
+		<result column="SCL_NEW_VALUE" property="sclNewValue" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SCL_LOG_ID, 			
+			SCL_LOG_TIME, 			
+			SCL_USER_ID, 			
+			SCL_LOGIN_NAME, 			
+			SCL_TABLE, 			
+			SCL_OPR_TYPE, 			
+			SCL_FIELD, 			
+			SCL_OLD_VALUE, 			
+			SCL_NEW_VALUE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SCL_LOG_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_CFG_LOG WHERE 1=1 
+		<if test="sclLogId != null and sclLogId != ''">
+			AND SCL_LOG_ID = #{sclLogId}
+		</if>
+		
+		<if test="sclUserId != null and sclUserId != ''">
+			AND SCL_USER_ID = #{sclUserId}
+		</if>
+		<if test="sclLoginName != null and sclLoginName != ''">
+			AND SCL_LOGIN_NAME = #{sclLoginName}
+		</if>
+		<if test="sclTable != null and sclTable != ''">
+			AND SCL_TABLE = #{sclTable}
+		</if>
+		<if test="sclOprType != null and sclOprType != ''">
+			AND SCL_OPR_TYPE = #{sclOprType}
+		</if>
+		<if test="sclField != null and sclField != ''">
+			AND SCL_FIELD = #{sclField}
+		</if>
+		<if test="sclOldValue != null and sclOldValue != ''">
+			AND SCL_OLD_VALUE = #{sclOldValue}
+		</if>
+		<if test="sclNewValue != null and sclNewValue != ''">
+			AND SCL_NEW_VALUE = #{sclNewValue}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_CFG_LOG
+		WHERE 
+		SCL_LOG_ID = #{sclLogId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
+		DELETE FROM SY_WKF_CFG_LOG
+		WHERE
+		SCL_LOG_ID = #{sclLogId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
+		DELETE FROM SY_WKF_CFG_LOG
+		WHERE 1=1 
+		<if test="sclLogId != null and sclLogId != ''">
+			AND SCL_LOG_ID = #{sclLogId}
+		</if>
+		
+		<if test="sclUserId != null and sclUserId != ''">
+			AND SCL_USER_ID = #{sclUserId}
+		</if>
+		<if test="sclLoginName != null and sclLoginName != ''">
+			AND SCL_LOGIN_NAME = #{sclLoginName}
+		</if>
+		<if test="sclTable != null and sclTable != ''">
+			AND SCL_TABLE = #{sclTable}
+		</if>
+		<if test="sclOprType != null and sclOprType != ''">
+			AND SCL_OPR_TYPE = #{sclOprType}
+		</if>
+		<if test="sclField != null and sclField != ''">
+			AND SCL_FIELD = #{sclField}
+		</if>
+		<if test="sclOldValue != null and sclOldValue != ''">
+			AND SCL_OLD_VALUE = #{sclOldValue}
+		</if>
+		<if test="sclNewValue != null and sclNewValue != ''">
+			AND SCL_NEW_VALUE = #{sclNewValue}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
+		INSERT INTO SY_WKF_CFG_LOG
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sclLogId != null">
+				SCL_LOG_ID,
+			</if>		
+			<if test="sclLogTime != null">
+				SCL_LOG_TIME,
+			</if>		
+			<if test="sclUserId != null">
+				SCL_USER_ID,
+			</if>		
+			<if test="sclLoginName != null">
+				SCL_LOGIN_NAME,
+			</if>		
+			<if test="sclTable != null">
+				SCL_TABLE,
+			</if>		
+			<if test="sclOprType != null">
+				SCL_OPR_TYPE,
+			</if>		
+			<if test="sclField != null">
+				SCL_FIELD,
+			</if>		
+			<if test="sclOldValue != null">
+				SCL_OLD_VALUE,
+			</if>		
+			<if test="sclNewValue != null">
+				SCL_NEW_VALUE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sclLogId != null">
+				#{sclLogId},
+			</if>	
+			<if test="sclLogTime != null">
+				#{sclLogTime},
+			</if>	
+			<if test="sclUserId != null">
+				#{sclUserId},
+			</if>	
+			<if test="sclLoginName != null">
+				#{sclLoginName},
+			</if>	
+			<if test="sclTable != null">
+				#{sclTable},
+			</if>	
+			<if test="sclOprType != null">
+				#{sclOprType},
+			</if>	
+			<if test="sclField != null">
+				#{sclField},
+			</if>	
+			<if test="sclOldValue != null">
+				#{sclOldValue},
+			</if>	
+			<if test="sclNewValue != null">
+				#{sclNewValue},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_CFG_LOG
+		<set>
+			<if test="value.isInitSclLogId">
+				<choose>
+					<when test="value.sclLogId != null">
+						SCL_LOG_ID = #{value.sclLogId},
+					</when>
+					<otherwise>
+						SCL_LOG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclLogTime">
+				<choose>
+					<when test="value.sclLogTime != null">
+						SCL_LOG_TIME = #{value.sclLogTime},
+					</when>
+					<otherwise>
+						SCL_LOG_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclUserId">
+				<choose>
+					<when test="value.sclUserId != null">
+						SCL_USER_ID = #{value.sclUserId},
+					</when>
+					<otherwise>
+						SCL_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclLoginName">
+				<choose>
+					<when test="value.sclLoginName != null">
+						SCL_LOGIN_NAME = #{value.sclLoginName},
+					</when>
+					<otherwise>
+						SCL_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclTable">
+				<choose>
+					<when test="value.sclTable != null">
+						SCL_TABLE = #{value.sclTable},
+					</when>
+					<otherwise>
+						SCL_TABLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclOprType">
+				<choose>
+					<when test="value.sclOprType != null">
+						SCL_OPR_TYPE = #{value.sclOprType},
+					</when>
+					<otherwise>
+						SCL_OPR_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclField">
+				<choose>
+					<when test="value.sclField != null">
+						SCL_FIELD = #{value.sclField},
+					</when>
+					<otherwise>
+						SCL_FIELD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclOldValue">
+				<choose>
+					<when test="value.sclOldValue != null">
+						SCL_OLD_VALUE = #{value.sclOldValue},
+					</when>
+					<otherwise>
+						SCL_OLD_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSclNewValue">
+				<choose>
+					<when test="value.sclNewValue != null">
+						SCL_NEW_VALUE = #{value.sclNewValue},
+					</when>
+					<otherwise>
+						SCL_NEW_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sclLogId != null and condition.sclLogId != ''">
+			AND SCL_LOG_ID =	#{condition.sclLogId} 
+		</if>
+		
+		<if test="condition.sclUserId != null and condition.sclUserId != ''">
+			AND SCL_USER_ID =	#{condition.sclUserId} 
+		</if>
+		<if test="condition.sclLoginName != null and condition.sclLoginName != ''">
+			AND SCL_LOGIN_NAME =	#{condition.sclLoginName} 
+		</if>
+		<if test="condition.sclTable != null and condition.sclTable != ''">
+			AND SCL_TABLE =	#{condition.sclTable} 
+		</if>
+		<if test="condition.sclOprType != null and condition.sclOprType != ''">
+			AND SCL_OPR_TYPE =	#{condition.sclOprType} 
+		</if>
+		<if test="condition.sclField != null and condition.sclField != ''">
+			AND SCL_FIELD =	#{condition.sclField} 
+		</if>
+		<if test="condition.sclOldValue != null and condition.sclOldValue != ''">
+			AND SCL_OLD_VALUE =	#{condition.sclOldValue} 
+		</if>
+		<if test="condition.sclNewValue != null and condition.sclNewValue != ''">
+			AND SCL_NEW_VALUE =	#{condition.sclNewValue} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
+		UPDATE SY_WKF_CFG_LOG
+		<set>
+			<if test="isInitSclLogId">
+				<choose>
+					<when test="sclLogId != null">
+						SCL_LOG_ID = #{sclLogId},
+					</when>
+					<otherwise>
+						SCL_LOG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclLogTime">
+				<choose>
+					<when test="sclLogTime != null">
+						SCL_LOG_TIME = #{sclLogTime},
+					</when>
+					<otherwise>
+						SCL_LOG_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclUserId">
+				<choose>
+					<when test="sclUserId != null">
+						SCL_USER_ID = #{sclUserId},
+					</when>
+					<otherwise>
+						SCL_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclLoginName">
+				<choose>
+					<when test="sclLoginName != null">
+						SCL_LOGIN_NAME = #{sclLoginName},
+					</when>
+					<otherwise>
+						SCL_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclTable">
+				<choose>
+					<when test="sclTable != null">
+						SCL_TABLE = #{sclTable},
+					</when>
+					<otherwise>
+						SCL_TABLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclOprType">
+				<choose>
+					<when test="sclOprType != null">
+						SCL_OPR_TYPE = #{sclOprType},
+					</when>
+					<otherwise>
+						SCL_OPR_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclField">
+				<choose>
+					<when test="sclField != null">
+						SCL_FIELD = #{sclField},
+					</when>
+					<otherwise>
+						SCL_FIELD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclOldValue">
+				<choose>
+					<when test="sclOldValue != null">
+						SCL_OLD_VALUE = #{sclOldValue},
+					</when>
+					<otherwise>
+						SCL_OLD_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSclNewValue">
+				<choose>
+					<when test="sclNewValue != null">
+						SCL_NEW_VALUE = #{sclNewValue},
+					</when>
+					<otherwise>
+						SCL_NEW_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SCL_LOG_ID = #{sclLogId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_CFG_LOG WHERE 1=1
+		<if test="syWkfCfgLog!=null">
+			<if test="syWkfCfgLog.sclLogId != null and syWkfCfgLog.sclLogId != ''">
+				AND SCL_LOG_ID = #{syWkfCfgLog.sclLogId}
+			</if>
+			
+			<if test="syWkfCfgLog.sclUserId != null and syWkfCfgLog.sclUserId != ''">
+				AND SCL_USER_ID = #{syWkfCfgLog.sclUserId}
+			</if>
+			<if test="syWkfCfgLog.sclLoginName != null and syWkfCfgLog.sclLoginName != ''">
+				AND SCL_LOGIN_NAME = #{syWkfCfgLog.sclLoginName}
+			</if>
+			<if test="syWkfCfgLog.sclTable != null and syWkfCfgLog.sclTable != ''">
+				AND SCL_TABLE = #{syWkfCfgLog.sclTable}
+			</if>
+			<if test="syWkfCfgLog.sclOprType != null and syWkfCfgLog.sclOprType != ''">
+				AND SCL_OPR_TYPE = #{syWkfCfgLog.sclOprType}
+			</if>
+			<if test="syWkfCfgLog.sclField != null and syWkfCfgLog.sclField != ''">
+				AND SCL_FIELD = #{syWkfCfgLog.sclField}
+			</if>
+			<if test="syWkfCfgLog.sclOldValue != null and syWkfCfgLog.sclOldValue != ''">
+				AND SCL_OLD_VALUE = #{syWkfCfgLog.sclOldValue}
+			</if>
+			<if test="syWkfCfgLog.sclNewValue != null and syWkfCfgLog.sclNewValue != ''">
+				AND SCL_NEW_VALUE = #{syWkfCfgLog.sclNewValue}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_CFG_LOG
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sclLogId != null and sclLogId != ''">
+				AND SCL_LOG_ID = #{sclLogId}
+			</if>
+			
+			<if test="sclUserId != null and sclUserId != ''">
+				AND SCL_USER_ID = #{sclUserId}
+			</if>
+			<if test="sclLoginName != null and sclLoginName != ''">
+				AND SCL_LOGIN_NAME = #{sclLoginName}
+			</if>
+			<if test="sclTable != null and sclTable != ''">
+				AND SCL_TABLE = #{sclTable}
+			</if>
+			<if test="sclOprType != null and sclOprType != ''">
+				AND SCL_OPR_TYPE = #{sclOprType}
+			</if>
+			<if test="sclField != null and sclField != ''">
+				AND SCL_FIELD = #{sclField}
+			</if>
+			<if test="sclOldValue != null and sclOldValue != ''">
+				AND SCL_OLD_VALUE = #{sclOldValue}
+			</if>
+			<if test="sclNewValue != null and sclNewValue != ''">
+				AND SCL_NEW_VALUE = #{sclNewValue}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_CFG_LOG(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sclLogId},		
+			#{item.sclLogTime},		
+			#{item.sclUserId},		
+			#{item.sclLoginName},		
+			#{item.sclTable},		
+			#{item.sclOprType},		
+			#{item.sclField},		
+			#{item.sclOldValue},		
+			#{item.sclNewValue},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

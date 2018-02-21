@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfNodeDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeBean">
+		<id column="SWN_NODE_ID" property="swnNodeId" />
+		<result column="SWN_NODE_NAME" property="swnNodeName" />
+		<result column="SWN_ENTITY_ID" property="swnEntityId" />
+		<result column="SWN_WG_ID" property="swnWgId" />
+		<result column="SWN_EVENT_TYPE" property="swnEventType" />
+		<result column="SWN_EVENT_RULE" property="swnEventRule" />
+		<result column="SWN_EVENT_EXT" property="swnEventExt" />
+		<result column="SWN_RECORD_TYPE" property="swnRecordType" />
+		<result column="SWN_ROUTE_STRATEGY" property="swnRouteStrategy" />
+		<result column="SWN_ROUTE_STRATEGY_CLAZZ" property="swnRouteStrategyClazz" />
+		<result column="SWN_BACK_STRATEGY" property="swnBackStrategy" />
+		<result column="SWN_BACK_STRATEGY_CLAZZ" property="swnBackStrategyClazz" />
+		<result column="SWN_BRANCH_STRATEGY" property="swnBranchStrategy" />
+		<result column="SWN_BRANCH_STRATEGY_CLAZZ" property="swnBranchStrategyClazz" />
+		<result column="SWN_IS_AUTO" property="swnIsAuto" />
+		<result column="SWN_VIEW_URL" property="swnViewUrl" />
+		<result column="SWN_NODE_STATUS" property="swnNodeStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWN_NODE_ID, 			
+			SWN_NODE_NAME, 			
+			SWN_ENTITY_ID, 			
+			SWN_WG_ID, 			
+			SWN_EVENT_TYPE, 			
+			SWN_EVENT_RULE, 			
+			SWN_EVENT_EXT, 			
+			SWN_RECORD_TYPE, 			
+			SWN_ROUTE_STRATEGY, 			
+			SWN_ROUTE_STRATEGY_CLAZZ, 			
+			SWN_BACK_STRATEGY, 			
+			SWN_BACK_STRATEGY_CLAZZ, 			
+			SWN_BRANCH_STRATEGY, 			
+			SWN_BRANCH_STRATEGY_CLAZZ, 			
+			SWN_IS_AUTO, 			
+			SWN_VIEW_URL, 			
+			SWN_NODE_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWN_NODE_ID
+	</sql>
+</mapper>  

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfAgentDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfAgentBean">
+		<id column="SWA_USER_ID" property="swaUserId" />
+		<result column="SWA_LOGIN_NAME" property="swaLoginName" />
+		<result column="SWA_AGENT_USER_ID" property="swaAgentUserId" />
+		<result column="SWA_AGENT_LOGIN_NAME" property="swaAgentLoginName" />
+		<result column="SWA_AGENT_STATUS" property="swaAgentStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWA_USER_ID, 			
+			SWA_LOGIN_NAME, 			
+			SWA_AGENT_USER_ID, 			
+			SWA_AGENT_LOGIN_NAME, 			
+			SWA_AGENT_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWA_USER_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfAgentBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_AGENT WHERE 1=1 
+		<if test="swaUserId != null and swaUserId != ''">
+			AND SWA_USER_ID = #{swaUserId}
+		</if>
+		<if test="swaLoginName != null and swaLoginName != ''">
+			AND SWA_LOGIN_NAME = #{swaLoginName}
+		</if>
+		<if test="swaAgentUserId != null and swaAgentUserId != ''">
+			AND SWA_AGENT_USER_ID = #{swaAgentUserId}
+		</if>
+		<if test="swaAgentLoginName != null and swaAgentLoginName != ''">
+			AND SWA_AGENT_LOGIN_NAME = #{swaAgentLoginName}
+		</if>
+		<if test="swaAgentStatus != null and swaAgentStatus != ''">
+			AND SWA_AGENT_STATUS = #{swaAgentStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfAgentBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_AGENT
+		WHERE 
+		SWA_USER_ID = #{swaUserId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
+		DELETE FROM SY_WKF_AGENT
+		WHERE
+		SWA_USER_ID = #{swaUserId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
+		DELETE FROM SY_WKF_AGENT
+		WHERE 1=1 
+		<if test="swaUserId != null and swaUserId != ''">
+			AND SWA_USER_ID = #{swaUserId}
+		</if>
+		<if test="swaLoginName != null and swaLoginName != ''">
+			AND SWA_LOGIN_NAME = #{swaLoginName}
+		</if>
+		<if test="swaAgentUserId != null and swaAgentUserId != ''">
+			AND SWA_AGENT_USER_ID = #{swaAgentUserId}
+		</if>
+		<if test="swaAgentLoginName != null and swaAgentLoginName != ''">
+			AND SWA_AGENT_LOGIN_NAME = #{swaAgentLoginName}
+		</if>
+		<if test="swaAgentStatus != null and swaAgentStatus != ''">
+			AND SWA_AGENT_STATUS = #{swaAgentStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
+		INSERT INTO SY_WKF_AGENT
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="swaUserId != null">
+				SWA_USER_ID,
+			</if>		
+			<if test="swaLoginName != null">
+				SWA_LOGIN_NAME,
+			</if>		
+			<if test="swaAgentUserId != null">
+				SWA_AGENT_USER_ID,
+			</if>		
+			<if test="swaAgentLoginName != null">
+				SWA_AGENT_LOGIN_NAME,
+			</if>		
+			<if test="swaAgentStatus != null">
+				SWA_AGENT_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="swaUserId != null">
+				#{swaUserId},
+			</if>	
+			<if test="swaLoginName != null">
+				#{swaLoginName},
+			</if>	
+			<if test="swaAgentUserId != null">
+				#{swaAgentUserId},
+			</if>	
+			<if test="swaAgentLoginName != null">
+				#{swaAgentLoginName},
+			</if>	
+			<if test="swaAgentStatus != null">
+				#{swaAgentStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_AGENT
+		<set>
+			<if test="value.isInitSwaUserId">
+				<choose>
+					<when test="value.swaUserId != null">
+						SWA_USER_ID = #{value.swaUserId},
+					</when>
+					<otherwise>
+						SWA_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwaLoginName">
+				<choose>
+					<when test="value.swaLoginName != null">
+						SWA_LOGIN_NAME = #{value.swaLoginName},
+					</when>
+					<otherwise>
+						SWA_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwaAgentUserId">
+				<choose>
+					<when test="value.swaAgentUserId != null">
+						SWA_AGENT_USER_ID = #{value.swaAgentUserId},
+					</when>
+					<otherwise>
+						SWA_AGENT_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwaAgentLoginName">
+				<choose>
+					<when test="value.swaAgentLoginName != null">
+						SWA_AGENT_LOGIN_NAME = #{value.swaAgentLoginName},
+					</when>
+					<otherwise>
+						SWA_AGENT_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwaAgentStatus">
+				<choose>
+					<when test="value.swaAgentStatus != null">
+						SWA_AGENT_STATUS = #{value.swaAgentStatus},
+					</when>
+					<otherwise>
+						SWA_AGENT_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.swaUserId != null and condition.swaUserId != ''">
+			AND SWA_USER_ID =	#{condition.swaUserId} 
+		</if>
+		<if test="condition.swaLoginName != null and condition.swaLoginName != ''">
+			AND SWA_LOGIN_NAME =	#{condition.swaLoginName} 
+		</if>
+		<if test="condition.swaAgentUserId != null and condition.swaAgentUserId != ''">
+			AND SWA_AGENT_USER_ID =	#{condition.swaAgentUserId} 
+		</if>
+		<if test="condition.swaAgentLoginName != null and condition.swaAgentLoginName != ''">
+			AND SWA_AGENT_LOGIN_NAME =	#{condition.swaAgentLoginName} 
+		</if>
+		<if test="condition.swaAgentStatus != null and condition.swaAgentStatus != ''">
+			AND SWA_AGENT_STATUS =	#{condition.swaAgentStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
+		UPDATE SY_WKF_AGENT
+		<set>
+			<if test="isInitSwaUserId">
+				<choose>
+					<when test="swaUserId != null">
+						SWA_USER_ID = #{swaUserId},
+					</when>
+					<otherwise>
+						SWA_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwaLoginName">
+				<choose>
+					<when test="swaLoginName != null">
+						SWA_LOGIN_NAME = #{swaLoginName},
+					</when>
+					<otherwise>
+						SWA_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwaAgentUserId">
+				<choose>
+					<when test="swaAgentUserId != null">
+						SWA_AGENT_USER_ID = #{swaAgentUserId},
+					</when>
+					<otherwise>
+						SWA_AGENT_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwaAgentLoginName">
+				<choose>
+					<when test="swaAgentLoginName != null">
+						SWA_AGENT_LOGIN_NAME = #{swaAgentLoginName},
+					</when>
+					<otherwise>
+						SWA_AGENT_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwaAgentStatus">
+				<choose>
+					<when test="swaAgentStatus != null">
+						SWA_AGENT_STATUS = #{swaAgentStatus},
+					</when>
+					<otherwise>
+						SWA_AGENT_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SWA_USER_ID = #{swaUserId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_AGENT WHERE 1=1
+		<if test="syWkfAgent!=null">
+			<if test="syWkfAgent.swaUserId != null and syWkfAgent.swaUserId != ''">
+				AND SWA_USER_ID = #{syWkfAgent.swaUserId}
+			</if>
+			<if test="syWkfAgent.swaLoginName != null and syWkfAgent.swaLoginName != ''">
+				AND SWA_LOGIN_NAME = #{syWkfAgent.swaLoginName}
+			</if>
+			<if test="syWkfAgent.swaAgentUserId != null and syWkfAgent.swaAgentUserId != ''">
+				AND SWA_AGENT_USER_ID = #{syWkfAgent.swaAgentUserId}
+			</if>
+			<if test="syWkfAgent.swaAgentLoginName != null and syWkfAgent.swaAgentLoginName != ''">
+				AND SWA_AGENT_LOGIN_NAME = #{syWkfAgent.swaAgentLoginName}
+			</if>
+			<if test="syWkfAgent.swaAgentStatus != null and syWkfAgent.swaAgentStatus != ''">
+				AND SWA_AGENT_STATUS = #{syWkfAgent.swaAgentStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfAgentBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_AGENT
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="swaUserId != null and swaUserId != ''">
+				AND SWA_USER_ID = #{swaUserId}
+			</if>
+			<if test="swaLoginName != null and swaLoginName != ''">
+				AND SWA_LOGIN_NAME = #{swaLoginName}
+			</if>
+			<if test="swaAgentUserId != null and swaAgentUserId != ''">
+				AND SWA_AGENT_USER_ID = #{swaAgentUserId}
+			</if>
+			<if test="swaAgentLoginName != null and swaAgentLoginName != ''">
+				AND SWA_AGENT_LOGIN_NAME = #{swaAgentLoginName}
+			</if>
+			<if test="swaAgentStatus != null and swaAgentStatus != ''">
+				AND SWA_AGENT_STATUS = #{swaAgentStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_AGENT(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.swaUserId},		
+			#{item.swaLoginName},		
+			#{item.swaAgentUserId},		
+			#{item.swaAgentLoginName},		
+			#{item.swaAgentStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

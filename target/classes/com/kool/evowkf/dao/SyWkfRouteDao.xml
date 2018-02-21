@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfRouteDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRouteBean">
+		<id column="SWR_ROUTE_ID" property="swrRouteId" />
+		<result column="SWR_ENTITY_ID" property="swrEntityId" />
+		<result column="SWR_ROUTE_CODE" property="swrRouteCode" />
+		<result column="SWR_NODE_HEAD" property="swrNodeHead" />
+		<result column="SWR_NODE_HEAD_NAME" property="swrNodeHeadName" />
+		<result column="SWR_NODE_TAIL" property="swrNodeTail" />
+		<result column="SWR_NODE_TAIL_NAME" property="swrNodeTailName" />
+		<result column="SWR_ROUTE_STATUS" property="swrRouteStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWR_ROUTE_ID, 			
+			SWR_ENTITY_ID, 			
+			SWR_ROUTE_CODE, 			
+			SWR_NODE_HEAD, 			
+			SWR_NODE_HEAD_NAME, 			
+			SWR_NODE_TAIL, 			
+			SWR_NODE_TAIL_NAME, 			
+			SWR_ROUTE_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWR_ROUTE_ID
+	</sql>
+</mapper>  

@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfNodeDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeBean">
+		<id column="SWN_NODE_ID" property="swnNodeId" />
+		<result column="SWN_NODE_NAME" property="swnNodeName" />
+		<result column="SWN_ENTITY_ID" property="swnEntityId" />
+		<result column="SWN_WG_ID" property="swnWgId" />
+		<result column="SWN_EVENT_TYPE" property="swnEventType" />
+		<result column="SWN_EVENT_RULE" property="swnEventRule" />
+		<result column="SWN_EVENT_EXT" property="swnEventExt" />
+		<result column="SWN_RECORD_TYPE" property="swnRecordType" />
+		<result column="SWN_ROUTE_STRATEGY" property="swnRouteStrategy" />
+		<result column="SWN_ROUTE_STRATEGY_CLAZZ" property="swnRouteStrategyClazz" />
+		<result column="SWN_BACK_STRATEGY" property="swnBackStrategy" />
+		<result column="SWN_BACK_STRATEGY_CLAZZ" property="swnBackStrategyClazz" />
+		<result column="SWN_BRANCH_STRATEGY" property="swnBranchStrategy" />
+		<result column="SWN_BRANCH_STRATEGY_CLAZZ" property="swnBranchStrategyClazz" />
+		<result column="SWN_IS_AUTO" property="swnIsAuto" />
+		<result column="SWN_VIEW_URL" property="swnViewUrl" />
+		<result column="SWN_NODE_STATUS" property="swnNodeStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWN_NODE_ID, 			
+			SWN_NODE_NAME, 			
+			SWN_ENTITY_ID, 			
+			SWN_WG_ID, 			
+			SWN_EVENT_TYPE, 			
+			SWN_EVENT_RULE, 			
+			SWN_EVENT_EXT, 			
+			SWN_RECORD_TYPE, 			
+			SWN_ROUTE_STRATEGY, 			
+			SWN_ROUTE_STRATEGY_CLAZZ, 			
+			SWN_BACK_STRATEGY, 			
+			SWN_BACK_STRATEGY_CLAZZ, 			
+			SWN_BRANCH_STRATEGY, 			
+			SWN_BRANCH_STRATEGY_CLAZZ, 			
+			SWN_IS_AUTO, 			
+			SWN_VIEW_URL, 			
+			SWN_NODE_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWN_NODE_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfNodeBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_NODE WHERE 1=1 
+		<if test="swnNodeId != null and swnNodeId != ''">
+			AND SWN_NODE_ID = #{swnNodeId}
+		</if>
+		<if test="swnNodeName != null and swnNodeName != ''">
+			AND SWN_NODE_NAME = #{swnNodeName}
+		</if>
+		<if test="swnEntityId != null and swnEntityId != ''">
+			AND SWN_ENTITY_ID = #{swnEntityId}
+		</if>
+		<if test="swnWgId != null and swnWgId != ''">
+			AND SWN_WG_ID = #{swnWgId}
+		</if>
+		<if test="swnEventType != null and swnEventType != ''">
+			AND SWN_EVENT_TYPE = #{swnEventType}
+		</if>
+		<if test="swnEventRule != null and swnEventRule != ''">
+			AND SWN_EVENT_RULE = #{swnEventRule}
+		</if>
+		<if test="swnEventExt != null and swnEventExt != ''">
+			AND SWN_EVENT_EXT = #{swnEventExt}
+		</if>
+		<if test="swnRecordType != null and swnRecordType != ''">
+			AND SWN_RECORD_TYPE = #{swnRecordType}
+		</if>
+		<if test="swnRouteStrategy != null and swnRouteStrategy != ''">
+			AND SWN_ROUTE_STRATEGY = #{swnRouteStrategy}
+		</if>
+		<if test="swnRouteStrategyClazz != null and swnRouteStrategyClazz != ''">
+			AND SWN_ROUTE_STRATEGY_CLAZZ = #{swnRouteStrategyClazz}
+		</if>
+		<if test="swnBackStrategy != null and swnBackStrategy != ''">
+			AND SWN_BACK_STRATEGY = #{swnBackStrategy}
+		</if>
+		<if test="swnBackStrategyClazz != null and swnBackStrategyClazz != ''">
+			AND SWN_BACK_STRATEGY_CLAZZ = #{swnBackStrategyClazz}
+		</if>
+		<if test="swnBranchStrategy != null and swnBranchStrategy != ''">
+			AND SWN_BRANCH_STRATEGY = #{swnBranchStrategy}
+		</if>
+		<if test="swnBranchStrategyClazz != null and swnBranchStrategyClazz != ''">
+			AND SWN_BRANCH_STRATEGY_CLAZZ = #{swnBranchStrategyClazz}
+		</if>
+		<if test="swnIsAuto != null and swnIsAuto != ''">
+			AND SWN_IS_AUTO = #{swnIsAuto}
+		</if>
+		<if test="swnViewUrl != null and swnViewUrl != ''">
+			AND SWN_VIEW_URL = #{swnViewUrl}
+		</if>
+		<if test="swnNodeStatus != null and swnNodeStatus != ''">
+			AND SWN_NODE_STATUS = #{swnNodeStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfNodeBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_NODE
+		WHERE 
+		SWN_NODE_ID = #{swnNodeId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
+		DELETE FROM SY_WKF_NODE
+		WHERE
+		SWN_NODE_ID = #{swnNodeId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
+		DELETE FROM SY_WKF_NODE
+		WHERE 1=1 
+		<if test="swnNodeId != null and swnNodeId != ''">
+			AND SWN_NODE_ID = #{swnNodeId}
+		</if>
+		<if test="swnNodeName != null and swnNodeName != ''">
+			AND SWN_NODE_NAME = #{swnNodeName}
+		</if>
+		<if test="swnEntityId != null and swnEntityId != ''">
+			AND SWN_ENTITY_ID = #{swnEntityId}
+		</if>
+		<if test="swnWgId != null and swnWgId != ''">
+			AND SWN_WG_ID = #{swnWgId}
+		</if>
+		<if test="swnEventType != null and swnEventType != ''">
+			AND SWN_EVENT_TYPE = #{swnEventType}
+		</if>
+		<if test="swnEventRule != null and swnEventRule != ''">
+			AND SWN_EVENT_RULE = #{swnEventRule}
+		</if>
+		<if test="swnEventExt != null and swnEventExt != ''">
+			AND SWN_EVENT_EXT = #{swnEventExt}
+		</if>
+		<if test="swnRecordType != null and swnRecordType != ''">
+			AND SWN_RECORD_TYPE = #{swnRecordType}
+		</if>
+		<if test="swnRouteStrategy != null and swnRouteStrategy != ''">
+			AND SWN_ROUTE_STRATEGY = #{swnRouteStrategy}
+		</if>
+		<if test="swnRouteStrategyClazz != null and swnRouteStrategyClazz != ''">
+			AND SWN_ROUTE_STRATEGY_CLAZZ = #{swnRouteStrategyClazz}
+		</if>
+		<if test="swnBackStrategy != null and swnBackStrategy != ''">
+			AND SWN_BACK_STRATEGY = #{swnBackStrategy}
+		</if>
+		<if test="swnBackStrategyClazz != null and swnBackStrategyClazz != ''">
+			AND SWN_BACK_STRATEGY_CLAZZ = #{swnBackStrategyClazz}
+		</if>
+		<if test="swnBranchStrategy != null and swnBranchStrategy != ''">
+			AND SWN_BRANCH_STRATEGY = #{swnBranchStrategy}
+		</if>
+		<if test="swnBranchStrategyClazz != null and swnBranchStrategyClazz != ''">
+			AND SWN_BRANCH_STRATEGY_CLAZZ = #{swnBranchStrategyClazz}
+		</if>
+		<if test="swnIsAuto != null and swnIsAuto != ''">
+			AND SWN_IS_AUTO = #{swnIsAuto}
+		</if>
+		<if test="swnViewUrl != null and swnViewUrl != ''">
+			AND SWN_VIEW_URL = #{swnViewUrl}
+		</if>
+		<if test="swnNodeStatus != null and swnNodeStatus != ''">
+			AND SWN_NODE_STATUS = #{swnNodeStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
+		INSERT INTO SY_WKF_NODE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="swnNodeId != null">
+				SWN_NODE_ID,
+			</if>		
+			<if test="swnNodeName != null">
+				SWN_NODE_NAME,
+			</if>		
+			<if test="swnEntityId != null">
+				SWN_ENTITY_ID,
+			</if>		
+			<if test="swnWgId != null">
+				SWN_WG_ID,
+			</if>		
+			<if test="swnEventType != null">
+				SWN_EVENT_TYPE,
+			</if>		
+			<if test="swnEventRule != null">
+				SWN_EVENT_RULE,
+			</if>		
+			<if test="swnEventExt != null">
+				SWN_EVENT_EXT,
+			</if>		
+			<if test="swnRecordType != null">
+				SWN_RECORD_TYPE,
+			</if>		
+			<if test="swnRouteStrategy != null">
+				SWN_ROUTE_STRATEGY,
+			</if>		
+			<if test="swnRouteStrategyClazz != null">
+				SWN_ROUTE_STRATEGY_CLAZZ,
+			</if>		
+			<if test="swnBackStrategy != null">
+				SWN_BACK_STRATEGY,
+			</if>		
+			<if test="swnBackStrategyClazz != null">
+				SWN_BACK_STRATEGY_CLAZZ,
+			</if>		
+			<if test="swnBranchStrategy != null">
+				SWN_BRANCH_STRATEGY,
+			</if>		
+			<if test="swnBranchStrategyClazz != null">
+				SWN_BRANCH_STRATEGY_CLAZZ,
+			</if>		
+			<if test="swnIsAuto != null">
+				SWN_IS_AUTO,
+			</if>		
+			<if test="swnViewUrl != null">
+				SWN_VIEW_URL,
+			</if>		
+			<if test="swnNodeStatus != null">
+				SWN_NODE_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="swnNodeId != null">
+				#{swnNodeId},
+			</if>	
+			<if test="swnNodeName != null">
+				#{swnNodeName},
+			</if>	
+			<if test="swnEntityId != null">
+				#{swnEntityId},
+			</if>	
+			<if test="swnWgId != null">
+				#{swnWgId},
+			</if>	
+			<if test="swnEventType != null">
+				#{swnEventType},
+			</if>	
+			<if test="swnEventRule != null">
+				#{swnEventRule},
+			</if>	
+			<if test="swnEventExt != null">
+				#{swnEventExt},
+			</if>	
+			<if test="swnRecordType != null">
+				#{swnRecordType},
+			</if>	
+			<if test="swnRouteStrategy != null">
+				#{swnRouteStrategy},
+			</if>	
+			<if test="swnRouteStrategyClazz != null">
+				#{swnRouteStrategyClazz},
+			</if>	
+			<if test="swnBackStrategy != null">
+				#{swnBackStrategy},
+			</if>	
+			<if test="swnBackStrategyClazz != null">
+				#{swnBackStrategyClazz},
+			</if>	
+			<if test="swnBranchStrategy != null">
+				#{swnBranchStrategy},
+			</if>	
+			<if test="swnBranchStrategyClazz != null">
+				#{swnBranchStrategyClazz},
+			</if>	
+			<if test="swnIsAuto != null">
+				#{swnIsAuto},
+			</if>	
+			<if test="swnViewUrl != null">
+				#{swnViewUrl},
+			</if>	
+			<if test="swnNodeStatus != null">
+				#{swnNodeStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_NODE
+		<set>
+			<if test="value.isInitSwnNodeId">
+				<choose>
+					<when test="value.swnNodeId != null">
+						SWN_NODE_ID = #{value.swnNodeId},
+					</when>
+					<otherwise>
+						SWN_NODE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnNodeName">
+				<choose>
+					<when test="value.swnNodeName != null">
+						SWN_NODE_NAME = #{value.swnNodeName},
+					</when>
+					<otherwise>
+						SWN_NODE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnEntityId">
+				<choose>
+					<when test="value.swnEntityId != null">
+						SWN_ENTITY_ID = #{value.swnEntityId},
+					</when>
+					<otherwise>
+						SWN_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnWgId">
+				<choose>
+					<when test="value.swnWgId != null">
+						SWN_WG_ID = #{value.swnWgId},
+					</when>
+					<otherwise>
+						SWN_WG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnEventType">
+				<choose>
+					<when test="value.swnEventType != null">
+						SWN_EVENT_TYPE = #{value.swnEventType},
+					</when>
+					<otherwise>
+						SWN_EVENT_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnEventRule">
+				<choose>
+					<when test="value.swnEventRule != null">
+						SWN_EVENT_RULE = #{value.swnEventRule},
+					</when>
+					<otherwise>
+						SWN_EVENT_RULE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnEventExt">
+				<choose>
+					<when test="value.swnEventExt != null">
+						SWN_EVENT_EXT = #{value.swnEventExt},
+					</when>
+					<otherwise>
+						SWN_EVENT_EXT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnRecordType">
+				<choose>
+					<when test="value.swnRecordType != null">
+						SWN_RECORD_TYPE = #{value.swnRecordType},
+					</when>
+					<otherwise>
+						SWN_RECORD_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnRouteStrategy">
+				<choose>
+					<when test="value.swnRouteStrategy != null">
+						SWN_ROUTE_STRATEGY = #{value.swnRouteStrategy},
+					</when>
+					<otherwise>
+						SWN_ROUTE_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnRouteStrategyClazz">
+				<choose>
+					<when test="value.swnRouteStrategyClazz != null">
+						SWN_ROUTE_STRATEGY_CLAZZ = #{value.swnRouteStrategyClazz},
+					</when>
+					<otherwise>
+						SWN_ROUTE_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnBackStrategy">
+				<choose>
+					<when test="value.swnBackStrategy != null">
+						SWN_BACK_STRATEGY = #{value.swnBackStrategy},
+					</when>
+					<otherwise>
+						SWN_BACK_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnBackStrategyClazz">
+				<choose>
+					<when test="value.swnBackStrategyClazz != null">
+						SWN_BACK_STRATEGY_CLAZZ = #{value.swnBackStrategyClazz},
+					</when>
+					<otherwise>
+						SWN_BACK_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnBranchStrategy">
+				<choose>
+					<when test="value.swnBranchStrategy != null">
+						SWN_BRANCH_STRATEGY = #{value.swnBranchStrategy},
+					</when>
+					<otherwise>
+						SWN_BRANCH_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnBranchStrategyClazz">
+				<choose>
+					<when test="value.swnBranchStrategyClazz != null">
+						SWN_BRANCH_STRATEGY_CLAZZ = #{value.swnBranchStrategyClazz},
+					</when>
+					<otherwise>
+						SWN_BRANCH_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnIsAuto">
+				<choose>
+					<when test="value.swnIsAuto != null">
+						SWN_IS_AUTO = #{value.swnIsAuto},
+					</when>
+					<otherwise>
+						SWN_IS_AUTO = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnViewUrl">
+				<choose>
+					<when test="value.swnViewUrl != null">
+						SWN_VIEW_URL = #{value.swnViewUrl},
+					</when>
+					<otherwise>
+						SWN_VIEW_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwnNodeStatus">
+				<choose>
+					<when test="value.swnNodeStatus != null">
+						SWN_NODE_STATUS = #{value.swnNodeStatus},
+					</when>
+					<otherwise>
+						SWN_NODE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.swnNodeId != null and condition.swnNodeId != ''">
+			AND SWN_NODE_ID =	#{condition.swnNodeId} 
+		</if>
+		<if test="condition.swnNodeName != null and condition.swnNodeName != ''">
+			AND SWN_NODE_NAME =	#{condition.swnNodeName} 
+		</if>
+		<if test="condition.swnEntityId != null and condition.swnEntityId != ''">
+			AND SWN_ENTITY_ID =	#{condition.swnEntityId} 
+		</if>
+		<if test="condition.swnWgId != null and condition.swnWgId != ''">
+			AND SWN_WG_ID =	#{condition.swnWgId} 
+		</if>
+		<if test="condition.swnEventType != null and condition.swnEventType != ''">
+			AND SWN_EVENT_TYPE =	#{condition.swnEventType} 
+		</if>
+		<if test="condition.swnEventRule != null and condition.swnEventRule != ''">
+			AND SWN_EVENT_RULE =	#{condition.swnEventRule} 
+		</if>
+		<if test="condition.swnEventExt != null and condition.swnEventExt != ''">
+			AND SWN_EVENT_EXT =	#{condition.swnEventExt} 
+		</if>
+		<if test="condition.swnRecordType != null and condition.swnRecordType != ''">
+			AND SWN_RECORD_TYPE =	#{condition.swnRecordType} 
+		</if>
+		<if test="condition.swnRouteStrategy != null and condition.swnRouteStrategy != ''">
+			AND SWN_ROUTE_STRATEGY =	#{condition.swnRouteStrategy} 
+		</if>
+		<if test="condition.swnRouteStrategyClazz != null and condition.swnRouteStrategyClazz != ''">
+			AND SWN_ROUTE_STRATEGY_CLAZZ =	#{condition.swnRouteStrategyClazz} 
+		</if>
+		<if test="condition.swnBackStrategy != null and condition.swnBackStrategy != ''">
+			AND SWN_BACK_STRATEGY =	#{condition.swnBackStrategy} 
+		</if>
+		<if test="condition.swnBackStrategyClazz != null and condition.swnBackStrategyClazz != ''">
+			AND SWN_BACK_STRATEGY_CLAZZ =	#{condition.swnBackStrategyClazz} 
+		</if>
+		<if test="condition.swnBranchStrategy != null and condition.swnBranchStrategy != ''">
+			AND SWN_BRANCH_STRATEGY =	#{condition.swnBranchStrategy} 
+		</if>
+		<if test="condition.swnBranchStrategyClazz != null and condition.swnBranchStrategyClazz != ''">
+			AND SWN_BRANCH_STRATEGY_CLAZZ =	#{condition.swnBranchStrategyClazz} 
+		</if>
+		<if test="condition.swnIsAuto != null and condition.swnIsAuto != ''">
+			AND SWN_IS_AUTO =	#{condition.swnIsAuto} 
+		</if>
+		<if test="condition.swnViewUrl != null and condition.swnViewUrl != ''">
+			AND SWN_VIEW_URL =	#{condition.swnViewUrl} 
+		</if>
+		<if test="condition.swnNodeStatus != null and condition.swnNodeStatus != ''">
+			AND SWN_NODE_STATUS =	#{condition.swnNodeStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
+		UPDATE SY_WKF_NODE
+		<set>
+			<if test="isInitSwnNodeId">
+				<choose>
+					<when test="swnNodeId != null">
+						SWN_NODE_ID = #{swnNodeId},
+					</when>
+					<otherwise>
+						SWN_NODE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnNodeName">
+				<choose>
+					<when test="swnNodeName != null">
+						SWN_NODE_NAME = #{swnNodeName},
+					</when>
+					<otherwise>
+						SWN_NODE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnEntityId">
+				<choose>
+					<when test="swnEntityId != null">
+						SWN_ENTITY_ID = #{swnEntityId},
+					</when>
+					<otherwise>
+						SWN_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnWgId">
+				<choose>
+					<when test="swnWgId != null">
+						SWN_WG_ID = #{swnWgId},
+					</when>
+					<otherwise>
+						SWN_WG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnEventType">
+				<choose>
+					<when test="swnEventType != null">
+						SWN_EVENT_TYPE = #{swnEventType},
+					</when>
+					<otherwise>
+						SWN_EVENT_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnEventRule">
+				<choose>
+					<when test="swnEventRule != null">
+						SWN_EVENT_RULE = #{swnEventRule},
+					</when>
+					<otherwise>
+						SWN_EVENT_RULE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnEventExt">
+				<choose>
+					<when test="swnEventExt != null">
+						SWN_EVENT_EXT = #{swnEventExt},
+					</when>
+					<otherwise>
+						SWN_EVENT_EXT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnRecordType">
+				<choose>
+					<when test="swnRecordType != null">
+						SWN_RECORD_TYPE = #{swnRecordType},
+					</when>
+					<otherwise>
+						SWN_RECORD_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnRouteStrategy">
+				<choose>
+					<when test="swnRouteStrategy != null">
+						SWN_ROUTE_STRATEGY = #{swnRouteStrategy},
+					</when>
+					<otherwise>
+						SWN_ROUTE_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnRouteStrategyClazz">
+				<choose>
+					<when test="swnRouteStrategyClazz != null">
+						SWN_ROUTE_STRATEGY_CLAZZ = #{swnRouteStrategyClazz},
+					</when>
+					<otherwise>
+						SWN_ROUTE_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnBackStrategy">
+				<choose>
+					<when test="swnBackStrategy != null">
+						SWN_BACK_STRATEGY = #{swnBackStrategy},
+					</when>
+					<otherwise>
+						SWN_BACK_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnBackStrategyClazz">
+				<choose>
+					<when test="swnBackStrategyClazz != null">
+						SWN_BACK_STRATEGY_CLAZZ = #{swnBackStrategyClazz},
+					</when>
+					<otherwise>
+						SWN_BACK_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnBranchStrategy">
+				<choose>
+					<when test="swnBranchStrategy != null">
+						SWN_BRANCH_STRATEGY = #{swnBranchStrategy},
+					</when>
+					<otherwise>
+						SWN_BRANCH_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnBranchStrategyClazz">
+				<choose>
+					<when test="swnBranchStrategyClazz != null">
+						SWN_BRANCH_STRATEGY_CLAZZ = #{swnBranchStrategyClazz},
+					</when>
+					<otherwise>
+						SWN_BRANCH_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnIsAuto">
+				<choose>
+					<when test="swnIsAuto != null">
+						SWN_IS_AUTO = #{swnIsAuto},
+					</when>
+					<otherwise>
+						SWN_IS_AUTO = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnViewUrl">
+				<choose>
+					<when test="swnViewUrl != null">
+						SWN_VIEW_URL = #{swnViewUrl},
+					</when>
+					<otherwise>
+						SWN_VIEW_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwnNodeStatus">
+				<choose>
+					<when test="swnNodeStatus != null">
+						SWN_NODE_STATUS = #{swnNodeStatus},
+					</when>
+					<otherwise>
+						SWN_NODE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SWN_NODE_ID = #{swnNodeId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_NODE WHERE 1=1
+		<if test="syWkfNode!=null">
+			<if test="syWkfNode.swnNodeId != null and syWkfNode.swnNodeId != ''">
+				AND SWN_NODE_ID = #{syWkfNode.swnNodeId}
+			</if>
+			<if test="syWkfNode.swnNodeName != null and syWkfNode.swnNodeName != ''">
+				AND SWN_NODE_NAME = #{syWkfNode.swnNodeName}
+			</if>
+			<if test="syWkfNode.swnEntityId != null and syWkfNode.swnEntityId != ''">
+				AND SWN_ENTITY_ID = #{syWkfNode.swnEntityId}
+			</if>
+			<if test="syWkfNode.swnWgId != null and syWkfNode.swnWgId != ''">
+				AND SWN_WG_ID = #{syWkfNode.swnWgId}
+			</if>
+			<if test="syWkfNode.swnEventType != null and syWkfNode.swnEventType != ''">
+				AND SWN_EVENT_TYPE = #{syWkfNode.swnEventType}
+			</if>
+			<if test="syWkfNode.swnEventRule != null and syWkfNode.swnEventRule != ''">
+				AND SWN_EVENT_RULE = #{syWkfNode.swnEventRule}
+			</if>
+			<if test="syWkfNode.swnEventExt != null and syWkfNode.swnEventExt != ''">
+				AND SWN_EVENT_EXT = #{syWkfNode.swnEventExt}
+			</if>
+			<if test="syWkfNode.swnRecordType != null and syWkfNode.swnRecordType != ''">
+				AND SWN_RECORD_TYPE = #{syWkfNode.swnRecordType}
+			</if>
+			<if test="syWkfNode.swnRouteStrategy != null and syWkfNode.swnRouteStrategy != ''">
+				AND SWN_ROUTE_STRATEGY = #{syWkfNode.swnRouteStrategy}
+			</if>
+			<if test="syWkfNode.swnRouteStrategyClazz != null and syWkfNode.swnRouteStrategyClazz != ''">
+				AND SWN_ROUTE_STRATEGY_CLAZZ = #{syWkfNode.swnRouteStrategyClazz}
+			</if>
+			<if test="syWkfNode.swnBackStrategy != null and syWkfNode.swnBackStrategy != ''">
+				AND SWN_BACK_STRATEGY = #{syWkfNode.swnBackStrategy}
+			</if>
+			<if test="syWkfNode.swnBackStrategyClazz != null and syWkfNode.swnBackStrategyClazz != ''">
+				AND SWN_BACK_STRATEGY_CLAZZ = #{syWkfNode.swnBackStrategyClazz}
+			</if>
+			<if test="syWkfNode.swnBranchStrategy != null and syWkfNode.swnBranchStrategy != ''">
+				AND SWN_BRANCH_STRATEGY = #{syWkfNode.swnBranchStrategy}
+			</if>
+			<if test="syWkfNode.swnBranchStrategyClazz != null and syWkfNode.swnBranchStrategyClazz != ''">
+				AND SWN_BRANCH_STRATEGY_CLAZZ = #{syWkfNode.swnBranchStrategyClazz}
+			</if>
+			<if test="syWkfNode.swnIsAuto != null and syWkfNode.swnIsAuto != ''">
+				AND SWN_IS_AUTO = #{syWkfNode.swnIsAuto}
+			</if>
+			<if test="syWkfNode.swnViewUrl != null and syWkfNode.swnViewUrl != ''">
+				AND SWN_VIEW_URL = #{syWkfNode.swnViewUrl}
+			</if>
+			<if test="syWkfNode.swnNodeStatus != null and syWkfNode.swnNodeStatus != ''">
+				AND SWN_NODE_STATUS = #{syWkfNode.swnNodeStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfNodeBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_NODE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="swnNodeId != null and swnNodeId != ''">
+				AND SWN_NODE_ID = #{swnNodeId}
+			</if>
+			<if test="swnNodeName != null and swnNodeName != ''">
+				AND SWN_NODE_NAME = #{swnNodeName}
+			</if>
+			<if test="swnEntityId != null and swnEntityId != ''">
+				AND SWN_ENTITY_ID = #{swnEntityId}
+			</if>
+			<if test="swnWgId != null and swnWgId != ''">
+				AND SWN_WG_ID = #{swnWgId}
+			</if>
+			<if test="swnEventType != null and swnEventType != ''">
+				AND SWN_EVENT_TYPE = #{swnEventType}
+			</if>
+			<if test="swnEventRule != null and swnEventRule != ''">
+				AND SWN_EVENT_RULE = #{swnEventRule}
+			</if>
+			<if test="swnEventExt != null and swnEventExt != ''">
+				AND SWN_EVENT_EXT = #{swnEventExt}
+			</if>
+			<if test="swnRecordType != null and swnRecordType != ''">
+				AND SWN_RECORD_TYPE = #{swnRecordType}
+			</if>
+			<if test="swnRouteStrategy != null and swnRouteStrategy != ''">
+				AND SWN_ROUTE_STRATEGY = #{swnRouteStrategy}
+			</if>
+			<if test="swnRouteStrategyClazz != null and swnRouteStrategyClazz != ''">
+				AND SWN_ROUTE_STRATEGY_CLAZZ = #{swnRouteStrategyClazz}
+			</if>
+			<if test="swnBackStrategy != null and swnBackStrategy != ''">
+				AND SWN_BACK_STRATEGY = #{swnBackStrategy}
+			</if>
+			<if test="swnBackStrategyClazz != null and swnBackStrategyClazz != ''">
+				AND SWN_BACK_STRATEGY_CLAZZ = #{swnBackStrategyClazz}
+			</if>
+			<if test="swnBranchStrategy != null and swnBranchStrategy != ''">
+				AND SWN_BRANCH_STRATEGY = #{swnBranchStrategy}
+			</if>
+			<if test="swnBranchStrategyClazz != null and swnBranchStrategyClazz != ''">
+				AND SWN_BRANCH_STRATEGY_CLAZZ = #{swnBranchStrategyClazz}
+			</if>
+			<if test="swnIsAuto != null and swnIsAuto != ''">
+				AND SWN_IS_AUTO = #{swnIsAuto}
+			</if>
+			<if test="swnViewUrl != null and swnViewUrl != ''">
+				AND SWN_VIEW_URL = #{swnViewUrl}
+			</if>
+			<if test="swnNodeStatus != null and swnNodeStatus != ''">
+				AND SWN_NODE_STATUS = #{swnNodeStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_NODE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.swnNodeId},		
+			#{item.swnNodeName},		
+			#{item.swnEntityId},		
+			#{item.swnWgId},		
+			#{item.swnEventType},		
+			#{item.swnEventRule},		
+			#{item.swnEventExt},		
+			#{item.swnRecordType},		
+			#{item.swnRouteStrategy},		
+			#{item.swnRouteStrategyClazz},		
+			#{item.swnBackStrategy},		
+			#{item.swnBackStrategyClazz},		
+			#{item.swnBranchStrategy},		
+			#{item.swnBranchStrategyClazz},		
+			#{item.swnIsAuto},		
+			#{item.swnViewUrl},		
+			#{item.swnNodeStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

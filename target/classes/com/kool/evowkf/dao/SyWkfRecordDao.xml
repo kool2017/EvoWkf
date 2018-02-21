@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfRecordDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordBean">
+		<id column="SRC_RECORD_ID" property="srcRecordId" />
+		<result column="SRC_TIME_BEGIN" property="srcTimeBegin" />
+		<result column="SRC_TIME_END" property="srcTimeEnd" />
+		<result column="SRC_WKF_CODE" property="srcWkfCode" />
+		<result column="SRC_ENTITY_ID" property="srcEntityId" />
+		<result column="SRC_BUSINESS_ID" property="srcBusinessId" />
+		<result column="SRC_BUSINESS_TYPE" property="srcBusinessType" />
+		<result column="SRC_NODE_HEAD" property="srcNodeHead" />
+		<result column="SRC_NODE_HEAD_NAME" property="srcNodeHeadName" />
+		<result column="SRC_START_USER_ID" property="srcStartUserId" />
+		<result column="SRC_START_LOGIN_NAME" property="srcStartLoginName" />
+		<result column="SRC_END_USER_ID" property="srcEndUserId" />
+		<result column="SRC_END_LOGIN_NAME" property="srcEndLoginName" />
+		<result column="SRC_DESCRIPTION" property="srcDescription" />
+		<result column="SRC_RECORD_STATUS" property="srcRecordStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRC_RECORD_ID, 			
+			SRC_TIME_BEGIN, 			
+			SRC_TIME_END, 			
+			SRC_WKF_CODE, 			
+			SRC_ENTITY_ID, 			
+			SRC_BUSINESS_ID, 			
+			SRC_BUSINESS_TYPE, 			
+			SRC_NODE_HEAD, 			
+			SRC_NODE_HEAD_NAME, 			
+			SRC_START_USER_ID, 			
+			SRC_START_LOGIN_NAME, 			
+			SRC_END_USER_ID, 			
+			SRC_END_LOGIN_NAME, 			
+			SRC_DESCRIPTION, 			
+			SRC_RECORD_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRC_RECORD_ID
+	</sql>
+</mapper>  

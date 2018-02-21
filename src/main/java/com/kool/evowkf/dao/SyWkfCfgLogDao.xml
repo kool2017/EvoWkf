@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfCfgLogDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfCfgLogBean">
+		<id column="SCL_LOG_ID" property="sclLogId" />
+		<result column="SCL_LOG_TIME" property="sclLogTime" />
+		<result column="SCL_USER_ID" property="sclUserId" />
+		<result column="SCL_LOGIN_NAME" property="sclLoginName" />
+		<result column="SCL_TABLE" property="sclTable" />
+		<result column="SCL_OPR_TYPE" property="sclOprType" />
+		<result column="SCL_FIELD" property="sclField" />
+		<result column="SCL_OLD_VALUE" property="sclOldValue" />
+		<result column="SCL_NEW_VALUE" property="sclNewValue" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SCL_LOG_ID, 			
+			SCL_LOG_TIME, 			
+			SCL_USER_ID, 			
+			SCL_LOGIN_NAME, 			
+			SCL_TABLE, 			
+			SCL_OPR_TYPE, 			
+			SCL_FIELD, 			
+			SCL_OLD_VALUE, 			
+			SCL_NEW_VALUE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SCL_LOG_ID
+	</sql>
+</mapper>  

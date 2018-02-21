@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfWorkerDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfWorkerBean">
+		<id column="SWO_WG_ID" property="swoWgId" />
+		<id column="SWO_USER_ID" property="swoUserId" />
+		<result column="SWO_LOGIN_NAME" property="swoLoginName" />
+		<result column="SWO_USER_STATUS" property="swoUserStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWO_WG_ID, 			
+			SWO_USER_ID, 			
+			SWO_LOGIN_NAME, 			
+			SWO_USER_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWO_WG_ID, SWO_USER_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_WORKER WHERE 1=1 
+		<if test="swoWgId != null and swoWgId != ''">
+			AND SWO_WG_ID = #{swoWgId}
+		</if>
+		<if test="swoUserId != null and swoUserId != ''">
+			AND SWO_USER_ID = #{swoUserId}
+		</if>
+		<if test="swoLoginName != null and swoLoginName != ''">
+			AND SWO_LOGIN_NAME = #{swoLoginName}
+		</if>
+		<if test="swoUserStatus != null and swoUserStatus != ''">
+			AND SWO_USER_STATUS = #{swoUserStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_WORKER
+		WHERE 
+		SWO_WG_ID = #{swoWgId} AND 
+		SWO_USER_ID = #{swoUserId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
+		DELETE FROM SY_WKF_WORKER
+		WHERE
+		SWO_WG_ID = #{swoWgId} AND 
+		SWO_USER_ID = #{swoUserId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
+		DELETE FROM SY_WKF_WORKER
+		WHERE 1=1 
+		<if test="swoWgId != null and swoWgId != ''">
+			AND SWO_WG_ID = #{swoWgId}
+		</if>
+		<if test="swoUserId != null and swoUserId != ''">
+			AND SWO_USER_ID = #{swoUserId}
+		</if>
+		<if test="swoLoginName != null and swoLoginName != ''">
+			AND SWO_LOGIN_NAME = #{swoLoginName}
+		</if>
+		<if test="swoUserStatus != null and swoUserStatus != ''">
+			AND SWO_USER_STATUS = #{swoUserStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
+		INSERT INTO SY_WKF_WORKER
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="swoWgId != null">
+				SWO_WG_ID,
+			</if>		
+			<if test="swoUserId != null">
+				SWO_USER_ID,
+			</if>		
+			<if test="swoLoginName != null">
+				SWO_LOGIN_NAME,
+			</if>		
+			<if test="swoUserStatus != null">
+				SWO_USER_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="swoWgId != null">
+				#{swoWgId},
+			</if>	
+			<if test="swoUserId != null">
+				#{swoUserId},
+			</if>	
+			<if test="swoLoginName != null">
+				#{swoLoginName},
+			</if>	
+			<if test="swoUserStatus != null">
+				#{swoUserStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_WORKER
+		<set>
+			<if test="value.isInitSwoWgId">
+				<choose>
+					<when test="value.swoWgId != null">
+						SWO_WG_ID = #{value.swoWgId},
+					</when>
+					<otherwise>
+						SWO_WG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwoUserId">
+				<choose>
+					<when test="value.swoUserId != null">
+						SWO_USER_ID = #{value.swoUserId},
+					</when>
+					<otherwise>
+						SWO_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwoLoginName">
+				<choose>
+					<when test="value.swoLoginName != null">
+						SWO_LOGIN_NAME = #{value.swoLoginName},
+					</when>
+					<otherwise>
+						SWO_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwoUserStatus">
+				<choose>
+					<when test="value.swoUserStatus != null">
+						SWO_USER_STATUS = #{value.swoUserStatus},
+					</when>
+					<otherwise>
+						SWO_USER_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.swoWgId != null and condition.swoWgId != ''">
+			AND SWO_WG_ID =	#{condition.swoWgId} 
+		</if>
+		<if test="condition.swoUserId != null and condition.swoUserId != ''">
+			AND SWO_USER_ID =	#{condition.swoUserId} 
+		</if>
+		<if test="condition.swoLoginName != null and condition.swoLoginName != ''">
+			AND SWO_LOGIN_NAME =	#{condition.swoLoginName} 
+		</if>
+		<if test="condition.swoUserStatus != null and condition.swoUserStatus != ''">
+			AND SWO_USER_STATUS =	#{condition.swoUserStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
+		UPDATE SY_WKF_WORKER
+		<set>
+			<if test="isInitSwoWgId">
+				<choose>
+					<when test="swoWgId != null">
+						SWO_WG_ID = #{swoWgId},
+					</when>
+					<otherwise>
+						SWO_WG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwoUserId">
+				<choose>
+					<when test="swoUserId != null">
+						SWO_USER_ID = #{swoUserId},
+					</when>
+					<otherwise>
+						SWO_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwoLoginName">
+				<choose>
+					<when test="swoLoginName != null">
+						SWO_LOGIN_NAME = #{swoLoginName},
+					</when>
+					<otherwise>
+						SWO_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwoUserStatus">
+				<choose>
+					<when test="swoUserStatus != null">
+						SWO_USER_STATUS = #{swoUserStatus},
+					</when>
+					<otherwise>
+						SWO_USER_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SWO_WG_ID = #{swoWgId} AND 
+		SWO_USER_ID = #{swoUserId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_WORKER WHERE 1=1
+		<if test="syWkfWorker!=null">
+			<if test="syWkfWorker.swoWgId != null and syWkfWorker.swoWgId != ''">
+				AND SWO_WG_ID = #{syWkfWorker.swoWgId}
+			</if>
+			<if test="syWkfWorker.swoUserId != null and syWkfWorker.swoUserId != ''">
+				AND SWO_USER_ID = #{syWkfWorker.swoUserId}
+			</if>
+			<if test="syWkfWorker.swoLoginName != null and syWkfWorker.swoLoginName != ''">
+				AND SWO_LOGIN_NAME = #{syWkfWorker.swoLoginName}
+			</if>
+			<if test="syWkfWorker.swoUserStatus != null and syWkfWorker.swoUserStatus != ''">
+				AND SWO_USER_STATUS = #{syWkfWorker.swoUserStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_WORKER
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="swoWgId != null and swoWgId != ''">
+				AND SWO_WG_ID = #{swoWgId}
+			</if>
+			<if test="swoUserId != null and swoUserId != ''">
+				AND SWO_USER_ID = #{swoUserId}
+			</if>
+			<if test="swoLoginName != null and swoLoginName != ''">
+				AND SWO_LOGIN_NAME = #{swoLoginName}
+			</if>
+			<if test="swoUserStatus != null and swoUserStatus != ''">
+				AND SWO_USER_STATUS = #{swoUserStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_WORKER(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.swoWgId},		
+			#{item.swoUserId},		
+			#{item.swoLoginName},		
+			#{item.swoUserStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

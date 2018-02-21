@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfRecordDetailDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordDetailBean">
+		<id column="SRD_DETAIL_ID" property="srdDetailId" />
+		<result column="SRD_RECORD_ID" property="srdRecordId" />
+		<result column="SRD_SCHEDULE_ID" property="srdScheduleId" />
+		<result column="SRD_DETAIL_SEQ" property="srdDetailSeq" />
+		<result column="SRD_DETAIL_TIME" property="srdDetailTime" />
+		<result column="SRD_NODE_ID" property="srdNodeId" />
+		<result column="SRD_NODE_NAME" property="srdNodeName" />
+		<result column="SRD_USER_ID" property="srdUserId" />
+		<result column="SRD_LOGIN_NAME" property="srdLoginName" />
+		<result column="SRD_EVENT_TYPE" property="srdEventType" />
+		<result column="SRD_EVENT_RULE" property="srdEventRule" />
+		<result column="SRD_EVENT_FLAG" property="srdEventFlag" />
+		<result column="SRD_EVENT_DSP" property="srdEventDsp" />
+		<result column="SRD_BUSINESS_FIELD1" property="srdBusinessField1" />
+		<result column="SRD_BUSINESS_FIELD2" property="srdBusinessField2" />
+		<result column="SRD_BUSINESS_FIELD3" property="srdBusinessField3" />
+		<result column="SRD_BUSINESS_FIELD4" property="srdBusinessField4" />
+		<result column="SRD_BUSINESS_FIELD5" property="srdBusinessField5" />
+		<result column="SRD_BUSINESS_FIELD6" property="srdBusinessField6" />
+		<result column="SRD_BUSINESS_FIELD7" property="srdBusinessField7" />
+		<result column="SRD_BUSINESS_FIELD8" property="srdBusinessField8" />
+		<result column="SRD_BUSINESS_FIELD9" property="srdBusinessField9" />
+		<result column="SRD_BUSINESS_FIELD10" property="srdBusinessField10" />
+		<result column="SRD_RECORD_STATUS" property="srdRecordStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRD_DETAIL_ID, 			
+			SRD_RECORD_ID, 			
+			SRD_SCHEDULE_ID, 			
+			SRD_DETAIL_SEQ, 			
+			SRD_DETAIL_TIME, 			
+			SRD_NODE_ID, 			
+			SRD_NODE_NAME, 			
+			SRD_USER_ID, 			
+			SRD_LOGIN_NAME, 			
+			SRD_EVENT_TYPE, 			
+			SRD_EVENT_RULE, 			
+			SRD_EVENT_FLAG, 			
+			SRD_EVENT_DSP, 			
+			SRD_BUSINESS_FIELD1, 			
+			SRD_BUSINESS_FIELD2, 			
+			SRD_BUSINESS_FIELD3, 			
+			SRD_BUSINESS_FIELD4, 			
+			SRD_BUSINESS_FIELD5, 			
+			SRD_BUSINESS_FIELD6, 			
+			SRD_BUSINESS_FIELD7, 			
+			SRD_BUSINESS_FIELD8, 			
+			SRD_BUSINESS_FIELD9, 			
+			SRD_BUSINESS_FIELD10, 			
+			SRD_RECORD_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRD_DETAIL_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_RECORD_DETAIL WHERE 1=1 
+		<if test="srdDetailId != null and srdDetailId != ''">
+			AND SRD_DETAIL_ID = #{srdDetailId}
+		</if>
+		<if test="srdRecordId != null and srdRecordId != ''">
+			AND SRD_RECORD_ID = #{srdRecordId}
+		</if>
+		<if test="srdScheduleId != null and srdScheduleId != ''">
+			AND SRD_SCHEDULE_ID = #{srdScheduleId}
+		</if>
+		
+		
+		<if test="srdNodeId != null and srdNodeId != ''">
+			AND SRD_NODE_ID = #{srdNodeId}
+		</if>
+		<if test="srdNodeName != null and srdNodeName != ''">
+			AND SRD_NODE_NAME = #{srdNodeName}
+		</if>
+		<if test="srdUserId != null and srdUserId != ''">
+			AND SRD_USER_ID = #{srdUserId}
+		</if>
+		<if test="srdLoginName != null and srdLoginName != ''">
+			AND SRD_LOGIN_NAME = #{srdLoginName}
+		</if>
+		<if test="srdEventType != null and srdEventType != ''">
+			AND SRD_EVENT_TYPE = #{srdEventType}
+		</if>
+		<if test="srdEventRule != null and srdEventRule != ''">
+			AND SRD_EVENT_RULE = #{srdEventRule}
+		</if>
+		<if test="srdEventFlag != null and srdEventFlag != ''">
+			AND SRD_EVENT_FLAG = #{srdEventFlag}
+		</if>
+		<if test="srdEventDsp != null and srdEventDsp != ''">
+			AND SRD_EVENT_DSP = #{srdEventDsp}
+		</if>
+		<if test="srdBusinessField1 != null and srdBusinessField1 != ''">
+			AND SRD_BUSINESS_FIELD1 = #{srdBusinessField1}
+		</if>
+		<if test="srdBusinessField2 != null and srdBusinessField2 != ''">
+			AND SRD_BUSINESS_FIELD2 = #{srdBusinessField2}
+		</if>
+		<if test="srdBusinessField3 != null and srdBusinessField3 != ''">
+			AND SRD_BUSINESS_FIELD3 = #{srdBusinessField3}
+		</if>
+		<if test="srdBusinessField4 != null and srdBusinessField4 != ''">
+			AND SRD_BUSINESS_FIELD4 = #{srdBusinessField4}
+		</if>
+		<if test="srdBusinessField5 != null and srdBusinessField5 != ''">
+			AND SRD_BUSINESS_FIELD5 = #{srdBusinessField5}
+		</if>
+		<if test="srdBusinessField6 != null and srdBusinessField6 != ''">
+			AND SRD_BUSINESS_FIELD6 = #{srdBusinessField6}
+		</if>
+		<if test="srdBusinessField7 != null and srdBusinessField7 != ''">
+			AND SRD_BUSINESS_FIELD7 = #{srdBusinessField7}
+		</if>
+		
+		
+		
+		<if test="srdRecordStatus != null and srdRecordStatus != ''">
+			AND SRD_RECORD_STATUS = #{srdRecordStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_RECORD_DETAIL
+		WHERE 
+		SRD_DETAIL_ID = #{srdDetailId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
+		DELETE FROM SY_WKF_RECORD_DETAIL
+		WHERE
+		SRD_DETAIL_ID = #{srdDetailId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
+		DELETE FROM SY_WKF_RECORD_DETAIL
+		WHERE 1=1 
+		<if test="srdDetailId != null and srdDetailId != ''">
+			AND SRD_DETAIL_ID = #{srdDetailId}
+		</if>
+		<if test="srdRecordId != null and srdRecordId != ''">
+			AND SRD_RECORD_ID = #{srdRecordId}
+		</if>
+		<if test="srdScheduleId != null and srdScheduleId != ''">
+			AND SRD_SCHEDULE_ID = #{srdScheduleId}
+		</if>
+		
+		
+		<if test="srdNodeId != null and srdNodeId != ''">
+			AND SRD_NODE_ID = #{srdNodeId}
+		</if>
+		<if test="srdNodeName != null and srdNodeName != ''">
+			AND SRD_NODE_NAME = #{srdNodeName}
+		</if>
+		<if test="srdUserId != null and srdUserId != ''">
+			AND SRD_USER_ID = #{srdUserId}
+		</if>
+		<if test="srdLoginName != null and srdLoginName != ''">
+			AND SRD_LOGIN_NAME = #{srdLoginName}
+		</if>
+		<if test="srdEventType != null and srdEventType != ''">
+			AND SRD_EVENT_TYPE = #{srdEventType}
+		</if>
+		<if test="srdEventRule != null and srdEventRule != ''">
+			AND SRD_EVENT_RULE = #{srdEventRule}
+		</if>
+		<if test="srdEventFlag != null and srdEventFlag != ''">
+			AND SRD_EVENT_FLAG = #{srdEventFlag}
+		</if>
+		<if test="srdEventDsp != null and srdEventDsp != ''">
+			AND SRD_EVENT_DSP = #{srdEventDsp}
+		</if>
+		<if test="srdBusinessField1 != null and srdBusinessField1 != ''">
+			AND SRD_BUSINESS_FIELD1 = #{srdBusinessField1}
+		</if>
+		<if test="srdBusinessField2 != null and srdBusinessField2 != ''">
+			AND SRD_BUSINESS_FIELD2 = #{srdBusinessField2}
+		</if>
+		<if test="srdBusinessField3 != null and srdBusinessField3 != ''">
+			AND SRD_BUSINESS_FIELD3 = #{srdBusinessField3}
+		</if>
+		<if test="srdBusinessField4 != null and srdBusinessField4 != ''">
+			AND SRD_BUSINESS_FIELD4 = #{srdBusinessField4}
+		</if>
+		<if test="srdBusinessField5 != null and srdBusinessField5 != ''">
+			AND SRD_BUSINESS_FIELD5 = #{srdBusinessField5}
+		</if>
+		<if test="srdBusinessField6 != null and srdBusinessField6 != ''">
+			AND SRD_BUSINESS_FIELD6 = #{srdBusinessField6}
+		</if>
+		<if test="srdBusinessField7 != null and srdBusinessField7 != ''">
+			AND SRD_BUSINESS_FIELD7 = #{srdBusinessField7}
+		</if>
+		
+		
+		
+		<if test="srdRecordStatus != null and srdRecordStatus != ''">
+			AND SRD_RECORD_STATUS = #{srdRecordStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
+		INSERT INTO SY_WKF_RECORD_DETAIL
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="srdDetailId != null">
+				SRD_DETAIL_ID,
+			</if>		
+			<if test="srdRecordId != null">
+				SRD_RECORD_ID,
+			</if>		
+			<if test="srdScheduleId != null">
+				SRD_SCHEDULE_ID,
+			</if>		
+			<if test="srdDetailSeq != null">
+				SRD_DETAIL_SEQ,
+			</if>		
+			<if test="srdDetailTime != null">
+				SRD_DETAIL_TIME,
+			</if>		
+			<if test="srdNodeId != null">
+				SRD_NODE_ID,
+			</if>		
+			<if test="srdNodeName != null">
+				SRD_NODE_NAME,
+			</if>		
+			<if test="srdUserId != null">
+				SRD_USER_ID,
+			</if>		
+			<if test="srdLoginName != null">
+				SRD_LOGIN_NAME,
+			</if>		
+			<if test="srdEventType != null">
+				SRD_EVENT_TYPE,
+			</if>		
+			<if test="srdEventRule != null">
+				SRD_EVENT_RULE,
+			</if>		
+			<if test="srdEventFlag != null">
+				SRD_EVENT_FLAG,
+			</if>		
+			<if test="srdEventDsp != null">
+				SRD_EVENT_DSP,
+			</if>		
+			<if test="srdBusinessField1 != null">
+				SRD_BUSINESS_FIELD1,
+			</if>		
+			<if test="srdBusinessField2 != null">
+				SRD_BUSINESS_FIELD2,
+			</if>		
+			<if test="srdBusinessField3 != null">
+				SRD_BUSINESS_FIELD3,
+			</if>		
+			<if test="srdBusinessField4 != null">
+				SRD_BUSINESS_FIELD4,
+			</if>		
+			<if test="srdBusinessField5 != null">
+				SRD_BUSINESS_FIELD5,
+			</if>		
+			<if test="srdBusinessField6 != null">
+				SRD_BUSINESS_FIELD6,
+			</if>		
+			<if test="srdBusinessField7 != null">
+				SRD_BUSINESS_FIELD7,
+			</if>		
+			<if test="srdBusinessField8 != null">
+				SRD_BUSINESS_FIELD8,
+			</if>		
+			<if test="srdBusinessField9 != null">
+				SRD_BUSINESS_FIELD9,
+			</if>		
+			<if test="srdBusinessField10 != null">
+				SRD_BUSINESS_FIELD10,
+			</if>		
+			<if test="srdRecordStatus != null">
+				SRD_RECORD_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="srdDetailId != null">
+				#{srdDetailId},
+			</if>	
+			<if test="srdRecordId != null">
+				#{srdRecordId},
+			</if>	
+			<if test="srdScheduleId != null">
+				#{srdScheduleId},
+			</if>	
+			<if test="srdDetailSeq != null">
+				#{srdDetailSeq},
+			</if>	
+			<if test="srdDetailTime != null">
+				#{srdDetailTime},
+			</if>	
+			<if test="srdNodeId != null">
+				#{srdNodeId},
+			</if>	
+			<if test="srdNodeName != null">
+				#{srdNodeName},
+			</if>	
+			<if test="srdUserId != null">
+				#{srdUserId},
+			</if>	
+			<if test="srdLoginName != null">
+				#{srdLoginName},
+			</if>	
+			<if test="srdEventType != null">
+				#{srdEventType},
+			</if>	
+			<if test="srdEventRule != null">
+				#{srdEventRule},
+			</if>	
+			<if test="srdEventFlag != null">
+				#{srdEventFlag},
+			</if>	
+			<if test="srdEventDsp != null">
+				#{srdEventDsp},
+			</if>	
+			<if test="srdBusinessField1 != null">
+				#{srdBusinessField1},
+			</if>	
+			<if test="srdBusinessField2 != null">
+				#{srdBusinessField2},
+			</if>	
+			<if test="srdBusinessField3 != null">
+				#{srdBusinessField3},
+			</if>	
+			<if test="srdBusinessField4 != null">
+				#{srdBusinessField4},
+			</if>	
+			<if test="srdBusinessField5 != null">
+				#{srdBusinessField5},
+			</if>	
+			<if test="srdBusinessField6 != null">
+				#{srdBusinessField6},
+			</if>	
+			<if test="srdBusinessField7 != null">
+				#{srdBusinessField7},
+			</if>	
+			<if test="srdBusinessField8 != null">
+				#{srdBusinessField8},
+			</if>	
+			<if test="srdBusinessField9 != null">
+				#{srdBusinessField9},
+			</if>	
+			<if test="srdBusinessField10 != null">
+				#{srdBusinessField10},
+			</if>	
+			<if test="srdRecordStatus != null">
+				#{srdRecordStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_RECORD_DETAIL
+		<set>
+			<if test="value.isInitSrdDetailId">
+				<choose>
+					<when test="value.srdDetailId != null">
+						SRD_DETAIL_ID = #{value.srdDetailId},
+					</when>
+					<otherwise>
+						SRD_DETAIL_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdRecordId">
+				<choose>
+					<when test="value.srdRecordId != null">
+						SRD_RECORD_ID = #{value.srdRecordId},
+					</when>
+					<otherwise>
+						SRD_RECORD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdScheduleId">
+				<choose>
+					<when test="value.srdScheduleId != null">
+						SRD_SCHEDULE_ID = #{value.srdScheduleId},
+					</when>
+					<otherwise>
+						SRD_SCHEDULE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdDetailSeq">
+				<choose>
+					<when test="value.srdDetailSeq != null">
+						SRD_DETAIL_SEQ = #{value.srdDetailSeq},
+					</when>
+					<otherwise>
+						SRD_DETAIL_SEQ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdDetailTime">
+				<choose>
+					<when test="value.srdDetailTime != null">
+						SRD_DETAIL_TIME = #{value.srdDetailTime},
+					</when>
+					<otherwise>
+						SRD_DETAIL_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdNodeId">
+				<choose>
+					<when test="value.srdNodeId != null">
+						SRD_NODE_ID = #{value.srdNodeId},
+					</when>
+					<otherwise>
+						SRD_NODE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdNodeName">
+				<choose>
+					<when test="value.srdNodeName != null">
+						SRD_NODE_NAME = #{value.srdNodeName},
+					</when>
+					<otherwise>
+						SRD_NODE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdUserId">
+				<choose>
+					<when test="value.srdUserId != null">
+						SRD_USER_ID = #{value.srdUserId},
+					</when>
+					<otherwise>
+						SRD_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdLoginName">
+				<choose>
+					<when test="value.srdLoginName != null">
+						SRD_LOGIN_NAME = #{value.srdLoginName},
+					</when>
+					<otherwise>
+						SRD_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdEventType">
+				<choose>
+					<when test="value.srdEventType != null">
+						SRD_EVENT_TYPE = #{value.srdEventType},
+					</when>
+					<otherwise>
+						SRD_EVENT_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdEventRule">
+				<choose>
+					<when test="value.srdEventRule != null">
+						SRD_EVENT_RULE = #{value.srdEventRule},
+					</when>
+					<otherwise>
+						SRD_EVENT_RULE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdEventFlag">
+				<choose>
+					<when test="value.srdEventFlag != null">
+						SRD_EVENT_FLAG = #{value.srdEventFlag},
+					</when>
+					<otherwise>
+						SRD_EVENT_FLAG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdEventDsp">
+				<choose>
+					<when test="value.srdEventDsp != null">
+						SRD_EVENT_DSP = #{value.srdEventDsp},
+					</when>
+					<otherwise>
+						SRD_EVENT_DSP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField1">
+				<choose>
+					<when test="value.srdBusinessField1 != null">
+						SRD_BUSINESS_FIELD1 = #{value.srdBusinessField1},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD1 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField2">
+				<choose>
+					<when test="value.srdBusinessField2 != null">
+						SRD_BUSINESS_FIELD2 = #{value.srdBusinessField2},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD2 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField3">
+				<choose>
+					<when test="value.srdBusinessField3 != null">
+						SRD_BUSINESS_FIELD3 = #{value.srdBusinessField3},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD3 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField4">
+				<choose>
+					<when test="value.srdBusinessField4 != null">
+						SRD_BUSINESS_FIELD4 = #{value.srdBusinessField4},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD4 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField5">
+				<choose>
+					<when test="value.srdBusinessField5 != null">
+						SRD_BUSINESS_FIELD5 = #{value.srdBusinessField5},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD5 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField6">
+				<choose>
+					<when test="value.srdBusinessField6 != null">
+						SRD_BUSINESS_FIELD6 = #{value.srdBusinessField6},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD6 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField7">
+				<choose>
+					<when test="value.srdBusinessField7 != null">
+						SRD_BUSINESS_FIELD7 = #{value.srdBusinessField7},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD7 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField8">
+				<choose>
+					<when test="value.srdBusinessField8 != null">
+						SRD_BUSINESS_FIELD8 = #{value.srdBusinessField8},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD8 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField9">
+				<choose>
+					<when test="value.srdBusinessField9 != null">
+						SRD_BUSINESS_FIELD9 = #{value.srdBusinessField9},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD9 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdBusinessField10">
+				<choose>
+					<when test="value.srdBusinessField10 != null">
+						SRD_BUSINESS_FIELD10 = #{value.srdBusinessField10},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD10 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdRecordStatus">
+				<choose>
+					<when test="value.srdRecordStatus != null">
+						SRD_RECORD_STATUS = #{value.srdRecordStatus},
+					</when>
+					<otherwise>
+						SRD_RECORD_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.srdDetailId != null and condition.srdDetailId != ''">
+			AND SRD_DETAIL_ID =	#{condition.srdDetailId} 
+		</if>
+		<if test="condition.srdRecordId != null and condition.srdRecordId != ''">
+			AND SRD_RECORD_ID =	#{condition.srdRecordId} 
+		</if>
+		<if test="condition.srdScheduleId != null and condition.srdScheduleId != ''">
+			AND SRD_SCHEDULE_ID =	#{condition.srdScheduleId} 
+		</if>
+		
+		
+		<if test="condition.srdNodeId != null and condition.srdNodeId != ''">
+			AND SRD_NODE_ID =	#{condition.srdNodeId} 
+		</if>
+		<if test="condition.srdNodeName != null and condition.srdNodeName != ''">
+			AND SRD_NODE_NAME =	#{condition.srdNodeName} 
+		</if>
+		<if test="condition.srdUserId != null and condition.srdUserId != ''">
+			AND SRD_USER_ID =	#{condition.srdUserId} 
+		</if>
+		<if test="condition.srdLoginName != null and condition.srdLoginName != ''">
+			AND SRD_LOGIN_NAME =	#{condition.srdLoginName} 
+		</if>
+		<if test="condition.srdEventType != null and condition.srdEventType != ''">
+			AND SRD_EVENT_TYPE =	#{condition.srdEventType} 
+		</if>
+		<if test="condition.srdEventRule != null and condition.srdEventRule != ''">
+			AND SRD_EVENT_RULE =	#{condition.srdEventRule} 
+		</if>
+		<if test="condition.srdEventFlag != null and condition.srdEventFlag != ''">
+			AND SRD_EVENT_FLAG =	#{condition.srdEventFlag} 
+		</if>
+		<if test="condition.srdEventDsp != null and condition.srdEventDsp != ''">
+			AND SRD_EVENT_DSP =	#{condition.srdEventDsp} 
+		</if>
+		<if test="condition.srdBusinessField1 != null and condition.srdBusinessField1 != ''">
+			AND SRD_BUSINESS_FIELD1 =	#{condition.srdBusinessField1} 
+		</if>
+		<if test="condition.srdBusinessField2 != null and condition.srdBusinessField2 != ''">
+			AND SRD_BUSINESS_FIELD2 =	#{condition.srdBusinessField2} 
+		</if>
+		<if test="condition.srdBusinessField3 != null and condition.srdBusinessField3 != ''">
+			AND SRD_BUSINESS_FIELD3 =	#{condition.srdBusinessField3} 
+		</if>
+		<if test="condition.srdBusinessField4 != null and condition.srdBusinessField4 != ''">
+			AND SRD_BUSINESS_FIELD4 =	#{condition.srdBusinessField4} 
+		</if>
+		<if test="condition.srdBusinessField5 != null and condition.srdBusinessField5 != ''">
+			AND SRD_BUSINESS_FIELD5 =	#{condition.srdBusinessField5} 
+		</if>
+		<if test="condition.srdBusinessField6 != null and condition.srdBusinessField6 != ''">
+			AND SRD_BUSINESS_FIELD6 =	#{condition.srdBusinessField6} 
+		</if>
+		<if test="condition.srdBusinessField7 != null and condition.srdBusinessField7 != ''">
+			AND SRD_BUSINESS_FIELD7 =	#{condition.srdBusinessField7} 
+		</if>
+		
+		
+		
+		<if test="condition.srdRecordStatus != null and condition.srdRecordStatus != ''">
+			AND SRD_RECORD_STATUS =	#{condition.srdRecordStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
+		UPDATE SY_WKF_RECORD_DETAIL
+		<set>
+			<if test="isInitSrdDetailId">
+				<choose>
+					<when test="srdDetailId != null">
+						SRD_DETAIL_ID = #{srdDetailId},
+					</when>
+					<otherwise>
+						SRD_DETAIL_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdRecordId">
+				<choose>
+					<when test="srdRecordId != null">
+						SRD_RECORD_ID = #{srdRecordId},
+					</when>
+					<otherwise>
+						SRD_RECORD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdScheduleId">
+				<choose>
+					<when test="srdScheduleId != null">
+						SRD_SCHEDULE_ID = #{srdScheduleId},
+					</when>
+					<otherwise>
+						SRD_SCHEDULE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdDetailSeq">
+				<choose>
+					<when test="srdDetailSeq != null">
+						SRD_DETAIL_SEQ = #{srdDetailSeq},
+					</when>
+					<otherwise>
+						SRD_DETAIL_SEQ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdDetailTime">
+				<choose>
+					<when test="srdDetailTime != null">
+						SRD_DETAIL_TIME = #{srdDetailTime},
+					</when>
+					<otherwise>
+						SRD_DETAIL_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdNodeId">
+				<choose>
+					<when test="srdNodeId != null">
+						SRD_NODE_ID = #{srdNodeId},
+					</when>
+					<otherwise>
+						SRD_NODE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdNodeName">
+				<choose>
+					<when test="srdNodeName != null">
+						SRD_NODE_NAME = #{srdNodeName},
+					</when>
+					<otherwise>
+						SRD_NODE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdUserId">
+				<choose>
+					<when test="srdUserId != null">
+						SRD_USER_ID = #{srdUserId},
+					</when>
+					<otherwise>
+						SRD_USER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdLoginName">
+				<choose>
+					<when test="srdLoginName != null">
+						SRD_LOGIN_NAME = #{srdLoginName},
+					</when>
+					<otherwise>
+						SRD_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdEventType">
+				<choose>
+					<when test="srdEventType != null">
+						SRD_EVENT_TYPE = #{srdEventType},
+					</when>
+					<otherwise>
+						SRD_EVENT_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdEventRule">
+				<choose>
+					<when test="srdEventRule != null">
+						SRD_EVENT_RULE = #{srdEventRule},
+					</when>
+					<otherwise>
+						SRD_EVENT_RULE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdEventFlag">
+				<choose>
+					<when test="srdEventFlag != null">
+						SRD_EVENT_FLAG = #{srdEventFlag},
+					</when>
+					<otherwise>
+						SRD_EVENT_FLAG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdEventDsp">
+				<choose>
+					<when test="srdEventDsp != null">
+						SRD_EVENT_DSP = #{srdEventDsp},
+					</when>
+					<otherwise>
+						SRD_EVENT_DSP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField1">
+				<choose>
+					<when test="srdBusinessField1 != null">
+						SRD_BUSINESS_FIELD1 = #{srdBusinessField1},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD1 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField2">
+				<choose>
+					<when test="srdBusinessField2 != null">
+						SRD_BUSINESS_FIELD2 = #{srdBusinessField2},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD2 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField3">
+				<choose>
+					<when test="srdBusinessField3 != null">
+						SRD_BUSINESS_FIELD3 = #{srdBusinessField3},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD3 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField4">
+				<choose>
+					<when test="srdBusinessField4 != null">
+						SRD_BUSINESS_FIELD4 = #{srdBusinessField4},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD4 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField5">
+				<choose>
+					<when test="srdBusinessField5 != null">
+						SRD_BUSINESS_FIELD5 = #{srdBusinessField5},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD5 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField6">
+				<choose>
+					<when test="srdBusinessField6 != null">
+						SRD_BUSINESS_FIELD6 = #{srdBusinessField6},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD6 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField7">
+				<choose>
+					<when test="srdBusinessField7 != null">
+						SRD_BUSINESS_FIELD7 = #{srdBusinessField7},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD7 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField8">
+				<choose>
+					<when test="srdBusinessField8 != null">
+						SRD_BUSINESS_FIELD8 = #{srdBusinessField8},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD8 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField9">
+				<choose>
+					<when test="srdBusinessField9 != null">
+						SRD_BUSINESS_FIELD9 = #{srdBusinessField9},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD9 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdBusinessField10">
+				<choose>
+					<when test="srdBusinessField10 != null">
+						SRD_BUSINESS_FIELD10 = #{srdBusinessField10},
+					</when>
+					<otherwise>
+						SRD_BUSINESS_FIELD10 = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdRecordStatus">
+				<choose>
+					<when test="srdRecordStatus != null">
+						SRD_RECORD_STATUS = #{srdRecordStatus},
+					</when>
+					<otherwise>
+						SRD_RECORD_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SRD_DETAIL_ID = #{srdDetailId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_RECORD_DETAIL WHERE 1=1
+		<if test="syWkfRecordDetail!=null">
+			<if test="syWkfRecordDetail.srdDetailId != null and syWkfRecordDetail.srdDetailId != ''">
+				AND SRD_DETAIL_ID = #{syWkfRecordDetail.srdDetailId}
+			</if>
+			<if test="syWkfRecordDetail.srdRecordId != null and syWkfRecordDetail.srdRecordId != ''">
+				AND SRD_RECORD_ID = #{syWkfRecordDetail.srdRecordId}
+			</if>
+			<if test="syWkfRecordDetail.srdScheduleId != null and syWkfRecordDetail.srdScheduleId != ''">
+				AND SRD_SCHEDULE_ID = #{syWkfRecordDetail.srdScheduleId}
+			</if>
+			
+			
+			<if test="syWkfRecordDetail.srdNodeId != null and syWkfRecordDetail.srdNodeId != ''">
+				AND SRD_NODE_ID = #{syWkfRecordDetail.srdNodeId}
+			</if>
+			<if test="syWkfRecordDetail.srdNodeName != null and syWkfRecordDetail.srdNodeName != ''">
+				AND SRD_NODE_NAME = #{syWkfRecordDetail.srdNodeName}
+			</if>
+			<if test="syWkfRecordDetail.srdUserId != null and syWkfRecordDetail.srdUserId != ''">
+				AND SRD_USER_ID = #{syWkfRecordDetail.srdUserId}
+			</if>
+			<if test="syWkfRecordDetail.srdLoginName != null and syWkfRecordDetail.srdLoginName != ''">
+				AND SRD_LOGIN_NAME = #{syWkfRecordDetail.srdLoginName}
+			</if>
+			<if test="syWkfRecordDetail.srdEventType != null and syWkfRecordDetail.srdEventType != ''">
+				AND SRD_EVENT_TYPE = #{syWkfRecordDetail.srdEventType}
+			</if>
+			<if test="syWkfRecordDetail.srdEventRule != null and syWkfRecordDetail.srdEventRule != ''">
+				AND SRD_EVENT_RULE = #{syWkfRecordDetail.srdEventRule}
+			</if>
+			<if test="syWkfRecordDetail.srdEventFlag != null and syWkfRecordDetail.srdEventFlag != ''">
+				AND SRD_EVENT_FLAG = #{syWkfRecordDetail.srdEventFlag}
+			</if>
+			<if test="syWkfRecordDetail.srdEventDsp != null and syWkfRecordDetail.srdEventDsp != ''">
+				AND SRD_EVENT_DSP = #{syWkfRecordDetail.srdEventDsp}
+			</if>
+			<if test="syWkfRecordDetail.srdBusinessField1 != null and syWkfRecordDetail.srdBusinessField1 != ''">
+				AND SRD_BUSINESS_FIELD1 = #{syWkfRecordDetail.srdBusinessField1}
+			</if>
+			<if test="syWkfRecordDetail.srdBusinessField2 != null and syWkfRecordDetail.srdBusinessField2 != ''">
+				AND SRD_BUSINESS_FIELD2 = #{syWkfRecordDetail.srdBusinessField2}
+			</if>
+			<if test="syWkfRecordDetail.srdBusinessField3 != null and syWkfRecordDetail.srdBusinessField3 != ''">
+				AND SRD_BUSINESS_FIELD3 = #{syWkfRecordDetail.srdBusinessField3}
+			</if>
+			<if test="syWkfRecordDetail.srdBusinessField4 != null and syWkfRecordDetail.srdBusinessField4 != ''">
+				AND SRD_BUSINESS_FIELD4 = #{syWkfRecordDetail.srdBusinessField4}
+			</if>
+			<if test="syWkfRecordDetail.srdBusinessField5 != null and syWkfRecordDetail.srdBusinessField5 != ''">
+				AND SRD_BUSINESS_FIELD5 = #{syWkfRecordDetail.srdBusinessField5}
+			</if>
+			<if test="syWkfRecordDetail.srdBusinessField6 != null and syWkfRecordDetail.srdBusinessField6 != ''">
+				AND SRD_BUSINESS_FIELD6 = #{syWkfRecordDetail.srdBusinessField6}
+			</if>
+			<if test="syWkfRecordDetail.srdBusinessField7 != null and syWkfRecordDetail.srdBusinessField7 != ''">
+				AND SRD_BUSINESS_FIELD7 = #{syWkfRecordDetail.srdBusinessField7}
+			</if>
+			
+			
+			
+			<if test="syWkfRecordDetail.srdRecordStatus != null and syWkfRecordDetail.srdRecordStatus != ''">
+				AND SRD_RECORD_STATUS = #{syWkfRecordDetail.srdRecordStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_RECORD_DETAIL
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="srdDetailId != null and srdDetailId != ''">
+				AND SRD_DETAIL_ID = #{srdDetailId}
+			</if>
+			<if test="srdRecordId != null and srdRecordId != ''">
+				AND SRD_RECORD_ID = #{srdRecordId}
+			</if>
+			<if test="srdScheduleId != null and srdScheduleId != ''">
+				AND SRD_SCHEDULE_ID = #{srdScheduleId}
+			</if>
+			
+			
+			<if test="srdNodeId != null and srdNodeId != ''">
+				AND SRD_NODE_ID = #{srdNodeId}
+			</if>
+			<if test="srdNodeName != null and srdNodeName != ''">
+				AND SRD_NODE_NAME = #{srdNodeName}
+			</if>
+			<if test="srdUserId != null and srdUserId != ''">
+				AND SRD_USER_ID = #{srdUserId}
+			</if>
+			<if test="srdLoginName != null and srdLoginName != ''">
+				AND SRD_LOGIN_NAME = #{srdLoginName}
+			</if>
+			<if test="srdEventType != null and srdEventType != ''">
+				AND SRD_EVENT_TYPE = #{srdEventType}
+			</if>
+			<if test="srdEventRule != null and srdEventRule != ''">
+				AND SRD_EVENT_RULE = #{srdEventRule}
+			</if>
+			<if test="srdEventFlag != null and srdEventFlag != ''">
+				AND SRD_EVENT_FLAG = #{srdEventFlag}
+			</if>
+			<if test="srdEventDsp != null and srdEventDsp != ''">
+				AND SRD_EVENT_DSP = #{srdEventDsp}
+			</if>
+			<if test="srdBusinessField1 != null and srdBusinessField1 != ''">
+				AND SRD_BUSINESS_FIELD1 = #{srdBusinessField1}
+			</if>
+			<if test="srdBusinessField2 != null and srdBusinessField2 != ''">
+				AND SRD_BUSINESS_FIELD2 = #{srdBusinessField2}
+			</if>
+			<if test="srdBusinessField3 != null and srdBusinessField3 != ''">
+				AND SRD_BUSINESS_FIELD3 = #{srdBusinessField3}
+			</if>
+			<if test="srdBusinessField4 != null and srdBusinessField4 != ''">
+				AND SRD_BUSINESS_FIELD4 = #{srdBusinessField4}
+			</if>
+			<if test="srdBusinessField5 != null and srdBusinessField5 != ''">
+				AND SRD_BUSINESS_FIELD5 = #{srdBusinessField5}
+			</if>
+			<if test="srdBusinessField6 != null and srdBusinessField6 != ''">
+				AND SRD_BUSINESS_FIELD6 = #{srdBusinessField6}
+			</if>
+			<if test="srdBusinessField7 != null and srdBusinessField7 != ''">
+				AND SRD_BUSINESS_FIELD7 = #{srdBusinessField7}
+			</if>
+			
+			
+			
+			<if test="srdRecordStatus != null and srdRecordStatus != ''">
+				AND SRD_RECORD_STATUS = #{srdRecordStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_RECORD_DETAIL(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.srdDetailId},		
+			#{item.srdRecordId},		
+			#{item.srdScheduleId},		
+			#{item.srdDetailSeq},		
+			#{item.srdDetailTime},		
+			#{item.srdNodeId},		
+			#{item.srdNodeName},		
+			#{item.srdUserId},		
+			#{item.srdLoginName},		
+			#{item.srdEventType},		
+			#{item.srdEventRule},		
+			#{item.srdEventFlag},		
+			#{item.srdEventDsp},		
+			#{item.srdBusinessField1},		
+			#{item.srdBusinessField2},		
+			#{item.srdBusinessField3},		
+			#{item.srdBusinessField4},		
+			#{item.srdBusinessField5},		
+			#{item.srdBusinessField6},		
+			#{item.srdBusinessField7},		
+			#{item.srdBusinessField8},		
+			#{item.srdBusinessField9},		
+			#{item.srdBusinessField10},		
+			#{item.srdRecordStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

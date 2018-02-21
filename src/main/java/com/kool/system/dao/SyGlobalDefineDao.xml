@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyGlobalDefineDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyGlobalDefineBean">
+		<id column="SGD_FIELD" property="sgdField" />
+		<result column="SGD_BUS_TYPE" property="sgdBusType" />
+		<result column="SGD_VALUE" property="sgdValue" />
+		<result column="SGD_DSP" property="sgdDsp" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SGD_FIELD, 			
+			SGD_BUS_TYPE, 			
+			SGD_VALUE, 			
+			SGD_DSP			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SGD_FIELD
+	</sql>
+</mapper>  

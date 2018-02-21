@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfDefineDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfDefineBean">
+		<id column="SWD_WKF_CODE" property="swdWkfCode" />
+		<result column="SWD_WKF_NAME" property="swdWkfName" />
+		<result column="SWD_WKF_TYPE" property="swdWkfType" />
+		<result column="SWD_ROUTE_TYPE" property="swdRouteType" />
+		<result column="SWD_CHECK_FLAG" property="swdCheckFlag" />
+		<result column="SWD_WKF_STATUS" property="swdWkfStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWD_WKF_CODE, 			
+			SWD_WKF_NAME, 			
+			SWD_WKF_TYPE, 			
+			SWD_ROUTE_TYPE, 			
+			SWD_CHECK_FLAG, 			
+			SWD_WKF_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWD_WKF_CODE
+	</sql>
+</mapper>  

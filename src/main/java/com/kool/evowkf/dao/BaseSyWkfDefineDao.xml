@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfDefineDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfDefineBean">
+		<id column="SWD_WKF_CODE" property="swdWkfCode" />
+		<result column="SWD_WKF_NAME" property="swdWkfName" />
+		<result column="SWD_WKF_TYPE" property="swdWkfType" />
+		<result column="SWD_ROUTE_TYPE" property="swdRouteType" />
+		<result column="SWD_CHECK_FLAG" property="swdCheckFlag" />
+		<result column="SWD_WKF_STATUS" property="swdWkfStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWD_WKF_CODE, 			
+			SWD_WKF_NAME, 			
+			SWD_WKF_TYPE, 			
+			SWD_ROUTE_TYPE, 			
+			SWD_CHECK_FLAG, 			
+			SWD_WKF_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWD_WKF_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfDefineBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_DEFINE WHERE 1=1 
+		<if test="swdWkfCode != null and swdWkfCode != ''">
+			AND SWD_WKF_CODE = #{swdWkfCode}
+		</if>
+		<if test="swdWkfName != null and swdWkfName != ''">
+			AND SWD_WKF_NAME = #{swdWkfName}
+		</if>
+		<if test="swdWkfType != null and swdWkfType != ''">
+			AND SWD_WKF_TYPE = #{swdWkfType}
+		</if>
+		<if test="swdRouteType != null and swdRouteType != ''">
+			AND SWD_ROUTE_TYPE = #{swdRouteType}
+		</if>
+		<if test="swdCheckFlag != null and swdCheckFlag != ''">
+			AND SWD_CHECK_FLAG = #{swdCheckFlag}
+		</if>
+		<if test="swdWkfStatus != null and swdWkfStatus != ''">
+			AND SWD_WKF_STATUS = #{swdWkfStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfDefineBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_DEFINE
+		WHERE 
+		SWD_WKF_CODE = #{swdWkfCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfDefineBean">
+		DELETE FROM SY_WKF_DEFINE
+		WHERE
+		SWD_WKF_CODE = #{swdWkfCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfDefineBean">
+		DELETE FROM SY_WKF_DEFINE
+		WHERE 1=1 
+		<if test="swdWkfCode != null and swdWkfCode != ''">
+			AND SWD_WKF_CODE = #{swdWkfCode}
+		</if>
+		<if test="swdWkfName != null and swdWkfName != ''">
+			AND SWD_WKF_NAME = #{swdWkfName}
+		</if>
+		<if test="swdWkfType != null and swdWkfType != ''">
+			AND SWD_WKF_TYPE = #{swdWkfType}
+		</if>
+		<if test="swdRouteType != null and swdRouteType != ''">
+			AND SWD_ROUTE_TYPE = #{swdRouteType}
+		</if>
+		<if test="swdCheckFlag != null and swdCheckFlag != ''">
+			AND SWD_CHECK_FLAG = #{swdCheckFlag}
+		</if>
+		<if test="swdWkfStatus != null and swdWkfStatus != ''">
+			AND SWD_WKF_STATUS = #{swdWkfStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfDefineBean">
+		INSERT INTO SY_WKF_DEFINE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="swdWkfCode != null">
+				SWD_WKF_CODE,
+			</if>		
+			<if test="swdWkfName != null">
+				SWD_WKF_NAME,
+			</if>		
+			<if test="swdWkfType != null">
+				SWD_WKF_TYPE,
+			</if>		
+			<if test="swdRouteType != null">
+				SWD_ROUTE_TYPE,
+			</if>		
+			<if test="swdCheckFlag != null">
+				SWD_CHECK_FLAG,
+			</if>		
+			<if test="swdWkfStatus != null">
+				SWD_WKF_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="swdWkfCode != null">
+				#{swdWkfCode},
+			</if>	
+			<if test="swdWkfName != null">
+				#{swdWkfName},
+			</if>	
+			<if test="swdWkfType != null">
+				#{swdWkfType},
+			</if>	
+			<if test="swdRouteType != null">
+				#{swdRouteType},
+			</if>	
+			<if test="swdCheckFlag != null">
+				#{swdCheckFlag},
+			</if>	
+			<if test="swdWkfStatus != null">
+				#{swdWkfStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_DEFINE
+		<set>
+			<if test="value.isInitSwdWkfCode">
+				<choose>
+					<when test="value.swdWkfCode != null">
+						SWD_WKF_CODE = #{value.swdWkfCode},
+					</when>
+					<otherwise>
+						SWD_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwdWkfName">
+				<choose>
+					<when test="value.swdWkfName != null">
+						SWD_WKF_NAME = #{value.swdWkfName},
+					</when>
+					<otherwise>
+						SWD_WKF_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwdWkfType">
+				<choose>
+					<when test="value.swdWkfType != null">
+						SWD_WKF_TYPE = #{value.swdWkfType},
+					</when>
+					<otherwise>
+						SWD_WKF_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwdRouteType">
+				<choose>
+					<when test="value.swdRouteType != null">
+						SWD_ROUTE_TYPE = #{value.swdRouteType},
+					</when>
+					<otherwise>
+						SWD_ROUTE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwdCheckFlag">
+				<choose>
+					<when test="value.swdCheckFlag != null">
+						SWD_CHECK_FLAG = #{value.swdCheckFlag},
+					</when>
+					<otherwise>
+						SWD_CHECK_FLAG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwdWkfStatus">
+				<choose>
+					<when test="value.swdWkfStatus != null">
+						SWD_WKF_STATUS = #{value.swdWkfStatus},
+					</when>
+					<otherwise>
+						SWD_WKF_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.swdWkfCode != null and condition.swdWkfCode != ''">
+			AND SWD_WKF_CODE =	#{condition.swdWkfCode} 
+		</if>
+		<if test="condition.swdWkfName != null and condition.swdWkfName != ''">
+			AND SWD_WKF_NAME =	#{condition.swdWkfName} 
+		</if>
+		<if test="condition.swdWkfType != null and condition.swdWkfType != ''">
+			AND SWD_WKF_TYPE =	#{condition.swdWkfType} 
+		</if>
+		<if test="condition.swdRouteType != null and condition.swdRouteType != ''">
+			AND SWD_ROUTE_TYPE =	#{condition.swdRouteType} 
+		</if>
+		<if test="condition.swdCheckFlag != null and condition.swdCheckFlag != ''">
+			AND SWD_CHECK_FLAG =	#{condition.swdCheckFlag} 
+		</if>
+		<if test="condition.swdWkfStatus != null and condition.swdWkfStatus != ''">
+			AND SWD_WKF_STATUS =	#{condition.swdWkfStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfDefineBean">
+		UPDATE SY_WKF_DEFINE
+		<set>
+			<if test="isInitSwdWkfCode">
+				<choose>
+					<when test="swdWkfCode != null">
+						SWD_WKF_CODE = #{swdWkfCode},
+					</when>
+					<otherwise>
+						SWD_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwdWkfName">
+				<choose>
+					<when test="swdWkfName != null">
+						SWD_WKF_NAME = #{swdWkfName},
+					</when>
+					<otherwise>
+						SWD_WKF_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwdWkfType">
+				<choose>
+					<when test="swdWkfType != null">
+						SWD_WKF_TYPE = #{swdWkfType},
+					</when>
+					<otherwise>
+						SWD_WKF_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwdRouteType">
+				<choose>
+					<when test="swdRouteType != null">
+						SWD_ROUTE_TYPE = #{swdRouteType},
+					</when>
+					<otherwise>
+						SWD_ROUTE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwdCheckFlag">
+				<choose>
+					<when test="swdCheckFlag != null">
+						SWD_CHECK_FLAG = #{swdCheckFlag},
+					</when>
+					<otherwise>
+						SWD_CHECK_FLAG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwdWkfStatus">
+				<choose>
+					<when test="swdWkfStatus != null">
+						SWD_WKF_STATUS = #{swdWkfStatus},
+					</when>
+					<otherwise>
+						SWD_WKF_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SWD_WKF_CODE = #{swdWkfCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_DEFINE WHERE 1=1
+		<if test="syWkfDefine!=null">
+			<if test="syWkfDefine.swdWkfCode != null and syWkfDefine.swdWkfCode != ''">
+				AND SWD_WKF_CODE = #{syWkfDefine.swdWkfCode}
+			</if>
+			<if test="syWkfDefine.swdWkfName != null and syWkfDefine.swdWkfName != ''">
+				AND SWD_WKF_NAME = #{syWkfDefine.swdWkfName}
+			</if>
+			<if test="syWkfDefine.swdWkfType != null and syWkfDefine.swdWkfType != ''">
+				AND SWD_WKF_TYPE = #{syWkfDefine.swdWkfType}
+			</if>
+			<if test="syWkfDefine.swdRouteType != null and syWkfDefine.swdRouteType != ''">
+				AND SWD_ROUTE_TYPE = #{syWkfDefine.swdRouteType}
+			</if>
+			<if test="syWkfDefine.swdCheckFlag != null and syWkfDefine.swdCheckFlag != ''">
+				AND SWD_CHECK_FLAG = #{syWkfDefine.swdCheckFlag}
+			</if>
+			<if test="syWkfDefine.swdWkfStatus != null and syWkfDefine.swdWkfStatus != ''">
+				AND SWD_WKF_STATUS = #{syWkfDefine.swdWkfStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfDefineBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_DEFINE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="swdWkfCode != null and swdWkfCode != ''">
+				AND SWD_WKF_CODE = #{swdWkfCode}
+			</if>
+			<if test="swdWkfName != null and swdWkfName != ''">
+				AND SWD_WKF_NAME = #{swdWkfName}
+			</if>
+			<if test="swdWkfType != null and swdWkfType != ''">
+				AND SWD_WKF_TYPE = #{swdWkfType}
+			</if>
+			<if test="swdRouteType != null and swdRouteType != ''">
+				AND SWD_ROUTE_TYPE = #{swdRouteType}
+			</if>
+			<if test="swdCheckFlag != null and swdCheckFlag != ''">
+				AND SWD_CHECK_FLAG = #{swdCheckFlag}
+			</if>
+			<if test="swdWkfStatus != null and swdWkfStatus != ''">
+				AND SWD_WKF_STATUS = #{swdWkfStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_DEFINE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.swdWkfCode},		
+			#{item.swdWkfName},		
+			#{item.swdWkfType},		
+			#{item.swdRouteType},		
+			#{item.swdCheckFlag},		
+			#{item.swdWkfStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

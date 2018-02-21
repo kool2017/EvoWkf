@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfRouteDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRouteBean">
+		<id column="SWR_ROUTE_ID" property="swrRouteId" />
+		<result column="SWR_ENTITY_ID" property="swrEntityId" />
+		<result column="SWR_ROUTE_CODE" property="swrRouteCode" />
+		<result column="SWR_NODE_HEAD" property="swrNodeHead" />
+		<result column="SWR_NODE_HEAD_NAME" property="swrNodeHeadName" />
+		<result column="SWR_NODE_TAIL" property="swrNodeTail" />
+		<result column="SWR_NODE_TAIL_NAME" property="swrNodeTailName" />
+		<result column="SWR_ROUTE_STATUS" property="swrRouteStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWR_ROUTE_ID, 			
+			SWR_ENTITY_ID, 			
+			SWR_ROUTE_CODE, 			
+			SWR_NODE_HEAD, 			
+			SWR_NODE_HEAD_NAME, 			
+			SWR_NODE_TAIL, 			
+			SWR_NODE_TAIL_NAME, 			
+			SWR_ROUTE_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWR_ROUTE_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfRouteBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_ROUTE WHERE 1=1 
+		<if test="swrRouteId != null and swrRouteId != ''">
+			AND SWR_ROUTE_ID = #{swrRouteId}
+		</if>
+		<if test="swrEntityId != null and swrEntityId != ''">
+			AND SWR_ENTITY_ID = #{swrEntityId}
+		</if>
+		<if test="swrRouteCode != null and swrRouteCode != ''">
+			AND SWR_ROUTE_CODE = #{swrRouteCode}
+		</if>
+		<if test="swrNodeHead != null and swrNodeHead != ''">
+			AND SWR_NODE_HEAD = #{swrNodeHead}
+		</if>
+		<if test="swrNodeHeadName != null and swrNodeHeadName != ''">
+			AND SWR_NODE_HEAD_NAME = #{swrNodeHeadName}
+		</if>
+		<if test="swrNodeTail != null and swrNodeTail != ''">
+			AND SWR_NODE_TAIL = #{swrNodeTail}
+		</if>
+		<if test="swrNodeTailName != null and swrNodeTailName != ''">
+			AND SWR_NODE_TAIL_NAME = #{swrNodeTailName}
+		</if>
+		<if test="swrRouteStatus != null and swrRouteStatus != ''">
+			AND SWR_ROUTE_STATUS = #{swrRouteStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfRouteBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_ROUTE
+		WHERE 
+		SWR_ROUTE_ID = #{swrRouteId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
+		DELETE FROM SY_WKF_ROUTE
+		WHERE
+		SWR_ROUTE_ID = #{swrRouteId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
+		DELETE FROM SY_WKF_ROUTE
+		WHERE 1=1 
+		<if test="swrRouteId != null and swrRouteId != ''">
+			AND SWR_ROUTE_ID = #{swrRouteId}
+		</if>
+		<if test="swrEntityId != null and swrEntityId != ''">
+			AND SWR_ENTITY_ID = #{swrEntityId}
+		</if>
+		<if test="swrRouteCode != null and swrRouteCode != ''">
+			AND SWR_ROUTE_CODE = #{swrRouteCode}
+		</if>
+		<if test="swrNodeHead != null and swrNodeHead != ''">
+			AND SWR_NODE_HEAD = #{swrNodeHead}
+		</if>
+		<if test="swrNodeHeadName != null and swrNodeHeadName != ''">
+			AND SWR_NODE_HEAD_NAME = #{swrNodeHeadName}
+		</if>
+		<if test="swrNodeTail != null and swrNodeTail != ''">
+			AND SWR_NODE_TAIL = #{swrNodeTail}
+		</if>
+		<if test="swrNodeTailName != null and swrNodeTailName != ''">
+			AND SWR_NODE_TAIL_NAME = #{swrNodeTailName}
+		</if>
+		<if test="swrRouteStatus != null and swrRouteStatus != ''">
+			AND SWR_ROUTE_STATUS = #{swrRouteStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
+		INSERT INTO SY_WKF_ROUTE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="swrRouteId != null">
+				SWR_ROUTE_ID,
+			</if>		
+			<if test="swrEntityId != null">
+				SWR_ENTITY_ID,
+			</if>		
+			<if test="swrRouteCode != null">
+				SWR_ROUTE_CODE,
+			</if>		
+			<if test="swrNodeHead != null">
+				SWR_NODE_HEAD,
+			</if>		
+			<if test="swrNodeHeadName != null">
+				SWR_NODE_HEAD_NAME,
+			</if>		
+			<if test="swrNodeTail != null">
+				SWR_NODE_TAIL,
+			</if>		
+			<if test="swrNodeTailName != null">
+				SWR_NODE_TAIL_NAME,
+			</if>		
+			<if test="swrRouteStatus != null">
+				SWR_ROUTE_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="swrRouteId != null">
+				#{swrRouteId},
+			</if>	
+			<if test="swrEntityId != null">
+				#{swrEntityId},
+			</if>	
+			<if test="swrRouteCode != null">
+				#{swrRouteCode},
+			</if>	
+			<if test="swrNodeHead != null">
+				#{swrNodeHead},
+			</if>	
+			<if test="swrNodeHeadName != null">
+				#{swrNodeHeadName},
+			</if>	
+			<if test="swrNodeTail != null">
+				#{swrNodeTail},
+			</if>	
+			<if test="swrNodeTailName != null">
+				#{swrNodeTailName},
+			</if>	
+			<if test="swrRouteStatus != null">
+				#{swrRouteStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_ROUTE
+		<set>
+			<if test="value.isInitSwrRouteId">
+				<choose>
+					<when test="value.swrRouteId != null">
+						SWR_ROUTE_ID = #{value.swrRouteId},
+					</when>
+					<otherwise>
+						SWR_ROUTE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwrEntityId">
+				<choose>
+					<when test="value.swrEntityId != null">
+						SWR_ENTITY_ID = #{value.swrEntityId},
+					</when>
+					<otherwise>
+						SWR_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwrRouteCode">
+				<choose>
+					<when test="value.swrRouteCode != null">
+						SWR_ROUTE_CODE = #{value.swrRouteCode},
+					</when>
+					<otherwise>
+						SWR_ROUTE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwrNodeHead">
+				<choose>
+					<when test="value.swrNodeHead != null">
+						SWR_NODE_HEAD = #{value.swrNodeHead},
+					</when>
+					<otherwise>
+						SWR_NODE_HEAD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwrNodeHeadName">
+				<choose>
+					<when test="value.swrNodeHeadName != null">
+						SWR_NODE_HEAD_NAME = #{value.swrNodeHeadName},
+					</when>
+					<otherwise>
+						SWR_NODE_HEAD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwrNodeTail">
+				<choose>
+					<when test="value.swrNodeTail != null">
+						SWR_NODE_TAIL = #{value.swrNodeTail},
+					</when>
+					<otherwise>
+						SWR_NODE_TAIL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwrNodeTailName">
+				<choose>
+					<when test="value.swrNodeTailName != null">
+						SWR_NODE_TAIL_NAME = #{value.swrNodeTailName},
+					</when>
+					<otherwise>
+						SWR_NODE_TAIL_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwrRouteStatus">
+				<choose>
+					<when test="value.swrRouteStatus != null">
+						SWR_ROUTE_STATUS = #{value.swrRouteStatus},
+					</when>
+					<otherwise>
+						SWR_ROUTE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.swrRouteId != null and condition.swrRouteId != ''">
+			AND SWR_ROUTE_ID =	#{condition.swrRouteId} 
+		</if>
+		<if test="condition.swrEntityId != null and condition.swrEntityId != ''">
+			AND SWR_ENTITY_ID =	#{condition.swrEntityId} 
+		</if>
+		<if test="condition.swrRouteCode != null and condition.swrRouteCode != ''">
+			AND SWR_ROUTE_CODE =	#{condition.swrRouteCode} 
+		</if>
+		<if test="condition.swrNodeHead != null and condition.swrNodeHead != ''">
+			AND SWR_NODE_HEAD =	#{condition.swrNodeHead} 
+		</if>
+		<if test="condition.swrNodeHeadName != null and condition.swrNodeHeadName != ''">
+			AND SWR_NODE_HEAD_NAME =	#{condition.swrNodeHeadName} 
+		</if>
+		<if test="condition.swrNodeTail != null and condition.swrNodeTail != ''">
+			AND SWR_NODE_TAIL =	#{condition.swrNodeTail} 
+		</if>
+		<if test="condition.swrNodeTailName != null and condition.swrNodeTailName != ''">
+			AND SWR_NODE_TAIL_NAME =	#{condition.swrNodeTailName} 
+		</if>
+		<if test="condition.swrRouteStatus != null and condition.swrRouteStatus != ''">
+			AND SWR_ROUTE_STATUS =	#{condition.swrRouteStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
+		UPDATE SY_WKF_ROUTE
+		<set>
+			<if test="isInitSwrRouteId">
+				<choose>
+					<when test="swrRouteId != null">
+						SWR_ROUTE_ID = #{swrRouteId},
+					</when>
+					<otherwise>
+						SWR_ROUTE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwrEntityId">
+				<choose>
+					<when test="swrEntityId != null">
+						SWR_ENTITY_ID = #{swrEntityId},
+					</when>
+					<otherwise>
+						SWR_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwrRouteCode">
+				<choose>
+					<when test="swrRouteCode != null">
+						SWR_ROUTE_CODE = #{swrRouteCode},
+					</when>
+					<otherwise>
+						SWR_ROUTE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwrNodeHead">
+				<choose>
+					<when test="swrNodeHead != null">
+						SWR_NODE_HEAD = #{swrNodeHead},
+					</when>
+					<otherwise>
+						SWR_NODE_HEAD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwrNodeHeadName">
+				<choose>
+					<when test="swrNodeHeadName != null">
+						SWR_NODE_HEAD_NAME = #{swrNodeHeadName},
+					</when>
+					<otherwise>
+						SWR_NODE_HEAD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwrNodeTail">
+				<choose>
+					<when test="swrNodeTail != null">
+						SWR_NODE_TAIL = #{swrNodeTail},
+					</when>
+					<otherwise>
+						SWR_NODE_TAIL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwrNodeTailName">
+				<choose>
+					<when test="swrNodeTailName != null">
+						SWR_NODE_TAIL_NAME = #{swrNodeTailName},
+					</when>
+					<otherwise>
+						SWR_NODE_TAIL_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwrRouteStatus">
+				<choose>
+					<when test="swrRouteStatus != null">
+						SWR_ROUTE_STATUS = #{swrRouteStatus},
+					</when>
+					<otherwise>
+						SWR_ROUTE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SWR_ROUTE_ID = #{swrRouteId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_ROUTE WHERE 1=1
+		<if test="syWkfRoute!=null">
+			<if test="syWkfRoute.swrRouteId != null and syWkfRoute.swrRouteId != ''">
+				AND SWR_ROUTE_ID = #{syWkfRoute.swrRouteId}
+			</if>
+			<if test="syWkfRoute.swrEntityId != null and syWkfRoute.swrEntityId != ''">
+				AND SWR_ENTITY_ID = #{syWkfRoute.swrEntityId}
+			</if>
+			<if test="syWkfRoute.swrRouteCode != null and syWkfRoute.swrRouteCode != ''">
+				AND SWR_ROUTE_CODE = #{syWkfRoute.swrRouteCode}
+			</if>
+			<if test="syWkfRoute.swrNodeHead != null and syWkfRoute.swrNodeHead != ''">
+				AND SWR_NODE_HEAD = #{syWkfRoute.swrNodeHead}
+			</if>
+			<if test="syWkfRoute.swrNodeHeadName != null and syWkfRoute.swrNodeHeadName != ''">
+				AND SWR_NODE_HEAD_NAME = #{syWkfRoute.swrNodeHeadName}
+			</if>
+			<if test="syWkfRoute.swrNodeTail != null and syWkfRoute.swrNodeTail != ''">
+				AND SWR_NODE_TAIL = #{syWkfRoute.swrNodeTail}
+			</if>
+			<if test="syWkfRoute.swrNodeTailName != null and syWkfRoute.swrNodeTailName != ''">
+				AND SWR_NODE_TAIL_NAME = #{syWkfRoute.swrNodeTailName}
+			</if>
+			<if test="syWkfRoute.swrRouteStatus != null and syWkfRoute.swrRouteStatus != ''">
+				AND SWR_ROUTE_STATUS = #{syWkfRoute.swrRouteStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfRouteBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_ROUTE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="swrRouteId != null and swrRouteId != ''">
+				AND SWR_ROUTE_ID = #{swrRouteId}
+			</if>
+			<if test="swrEntityId != null and swrEntityId != ''">
+				AND SWR_ENTITY_ID = #{swrEntityId}
+			</if>
+			<if test="swrRouteCode != null and swrRouteCode != ''">
+				AND SWR_ROUTE_CODE = #{swrRouteCode}
+			</if>
+			<if test="swrNodeHead != null and swrNodeHead != ''">
+				AND SWR_NODE_HEAD = #{swrNodeHead}
+			</if>
+			<if test="swrNodeHeadName != null and swrNodeHeadName != ''">
+				AND SWR_NODE_HEAD_NAME = #{swrNodeHeadName}
+			</if>
+			<if test="swrNodeTail != null and swrNodeTail != ''">
+				AND SWR_NODE_TAIL = #{swrNodeTail}
+			</if>
+			<if test="swrNodeTailName != null and swrNodeTailName != ''">
+				AND SWR_NODE_TAIL_NAME = #{swrNodeTailName}
+			</if>
+			<if test="swrRouteStatus != null and swrRouteStatus != ''">
+				AND SWR_ROUTE_STATUS = #{swrRouteStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_ROUTE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.swrRouteId},		
+			#{item.swrEntityId},		
+			#{item.swrRouteCode},		
+			#{item.swrNodeHead},		
+			#{item.swrNodeHeadName},		
+			#{item.swrNodeTail},		
+			#{item.swrNodeTailName},		
+			#{item.swrRouteStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

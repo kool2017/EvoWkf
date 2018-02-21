@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfNodeTemplateDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
+		<id column="SNT_TEMPLATE_ID" property="sntTemplateId" />
+		<result column="SNT_TEMPLATE_NAME" property="sntTemplateName" />
+		<result column="SNT_ENTITY_ID" property="sntEntityId" />
+		<result column="SNT_EVENT_TYPE" property="sntEventType" />
+		<result column="SNT_EVENT_RULE" property="sntEventRule" />
+		<result column="SNT_EVENT_EXT" property="sntEventExt" />
+		<result column="SNT_RECORD_TYPE" property="sntRecordType" />
+		<result column="SNT_ROUTE_STRATEGY" property="sntRouteStrategy" />
+		<result column="SNT_ROUTE_STRATEGY_CLAZZ" property="sntRouteStrategyClazz" />
+		<result column="SNT_ROUTE_TYPE" property="sntRouteType" />
+		<result column="SNT_BRANCH_STRATEGY" property="sntBranchStrategy" />
+		<result column="SNT_BRANCH_STRATEGY_CLAZZ" property="sntBranchStrategyClazz" />
+		<result column="SNT_IS_AUTO" property="sntIsAuto" />
+		<result column="SNT_VIEW_URL" property="sntViewUrl" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SNT_TEMPLATE_ID, 			
+			SNT_TEMPLATE_NAME, 			
+			SNT_ENTITY_ID, 			
+			SNT_EVENT_TYPE, 			
+			SNT_EVENT_RULE, 			
+			SNT_EVENT_EXT, 			
+			SNT_RECORD_TYPE, 			
+			SNT_ROUTE_STRATEGY, 			
+			SNT_ROUTE_STRATEGY_CLAZZ, 			
+			SNT_ROUTE_TYPE, 			
+			SNT_BRANCH_STRATEGY, 			
+			SNT_BRANCH_STRATEGY_CLAZZ, 			
+			SNT_IS_AUTO, 			
+			SNT_VIEW_URL			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SNT_TEMPLATE_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_NODE_TEMPLATE WHERE 1=1 
+		<if test="sntTemplateId != null and sntTemplateId != ''">
+			AND SNT_TEMPLATE_ID = #{sntTemplateId}
+		</if>
+		<if test="sntTemplateName != null and sntTemplateName != ''">
+			AND SNT_TEMPLATE_NAME = #{sntTemplateName}
+		</if>
+		<if test="sntEntityId != null and sntEntityId != ''">
+			AND SNT_ENTITY_ID = #{sntEntityId}
+		</if>
+		<if test="sntEventType != null and sntEventType != ''">
+			AND SNT_EVENT_TYPE = #{sntEventType}
+		</if>
+		<if test="sntEventRule != null and sntEventRule != ''">
+			AND SNT_EVENT_RULE = #{sntEventRule}
+		</if>
+		<if test="sntEventExt != null and sntEventExt != ''">
+			AND SNT_EVENT_EXT = #{sntEventExt}
+		</if>
+		<if test="sntRecordType != null and sntRecordType != ''">
+			AND SNT_RECORD_TYPE = #{sntRecordType}
+		</if>
+		<if test="sntRouteStrategy != null and sntRouteStrategy != ''">
+			AND SNT_ROUTE_STRATEGY = #{sntRouteStrategy}
+		</if>
+		<if test="sntRouteStrategyClazz != null and sntRouteStrategyClazz != ''">
+			AND SNT_ROUTE_STRATEGY_CLAZZ = #{sntRouteStrategyClazz}
+		</if>
+		<if test="sntRouteType != null and sntRouteType != ''">
+			AND SNT_ROUTE_TYPE = #{sntRouteType}
+		</if>
+		<if test="sntBranchStrategy != null and sntBranchStrategy != ''">
+			AND SNT_BRANCH_STRATEGY = #{sntBranchStrategy}
+		</if>
+		<if test="sntBranchStrategyClazz != null and sntBranchStrategyClazz != ''">
+			AND SNT_BRANCH_STRATEGY_CLAZZ = #{sntBranchStrategyClazz}
+		</if>
+		<if test="sntIsAuto != null and sntIsAuto != ''">
+			AND SNT_IS_AUTO = #{sntIsAuto}
+		</if>
+		<if test="sntViewUrl != null and sntViewUrl != ''">
+			AND SNT_VIEW_URL = #{sntViewUrl}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_NODE_TEMPLATE
+		WHERE 
+		SNT_TEMPLATE_ID = #{sntTemplateId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
+		DELETE FROM SY_WKF_NODE_TEMPLATE
+		WHERE
+		SNT_TEMPLATE_ID = #{sntTemplateId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
+		DELETE FROM SY_WKF_NODE_TEMPLATE
+		WHERE 1=1 
+		<if test="sntTemplateId != null and sntTemplateId != ''">
+			AND SNT_TEMPLATE_ID = #{sntTemplateId}
+		</if>
+		<if test="sntTemplateName != null and sntTemplateName != ''">
+			AND SNT_TEMPLATE_NAME = #{sntTemplateName}
+		</if>
+		<if test="sntEntityId != null and sntEntityId != ''">
+			AND SNT_ENTITY_ID = #{sntEntityId}
+		</if>
+		<if test="sntEventType != null and sntEventType != ''">
+			AND SNT_EVENT_TYPE = #{sntEventType}
+		</if>
+		<if test="sntEventRule != null and sntEventRule != ''">
+			AND SNT_EVENT_RULE = #{sntEventRule}
+		</if>
+		<if test="sntEventExt != null and sntEventExt != ''">
+			AND SNT_EVENT_EXT = #{sntEventExt}
+		</if>
+		<if test="sntRecordType != null and sntRecordType != ''">
+			AND SNT_RECORD_TYPE = #{sntRecordType}
+		</if>
+		<if test="sntRouteStrategy != null and sntRouteStrategy != ''">
+			AND SNT_ROUTE_STRATEGY = #{sntRouteStrategy}
+		</if>
+		<if test="sntRouteStrategyClazz != null and sntRouteStrategyClazz != ''">
+			AND SNT_ROUTE_STRATEGY_CLAZZ = #{sntRouteStrategyClazz}
+		</if>
+		<if test="sntRouteType != null and sntRouteType != ''">
+			AND SNT_ROUTE_TYPE = #{sntRouteType}
+		</if>
+		<if test="sntBranchStrategy != null and sntBranchStrategy != ''">
+			AND SNT_BRANCH_STRATEGY = #{sntBranchStrategy}
+		</if>
+		<if test="sntBranchStrategyClazz != null and sntBranchStrategyClazz != ''">
+			AND SNT_BRANCH_STRATEGY_CLAZZ = #{sntBranchStrategyClazz}
+		</if>
+		<if test="sntIsAuto != null and sntIsAuto != ''">
+			AND SNT_IS_AUTO = #{sntIsAuto}
+		</if>
+		<if test="sntViewUrl != null and sntViewUrl != ''">
+			AND SNT_VIEW_URL = #{sntViewUrl}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
+		INSERT INTO SY_WKF_NODE_TEMPLATE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sntTemplateId != null">
+				SNT_TEMPLATE_ID,
+			</if>		
+			<if test="sntTemplateName != null">
+				SNT_TEMPLATE_NAME,
+			</if>		
+			<if test="sntEntityId != null">
+				SNT_ENTITY_ID,
+			</if>		
+			<if test="sntEventType != null">
+				SNT_EVENT_TYPE,
+			</if>		
+			<if test="sntEventRule != null">
+				SNT_EVENT_RULE,
+			</if>		
+			<if test="sntEventExt != null">
+				SNT_EVENT_EXT,
+			</if>		
+			<if test="sntRecordType != null">
+				SNT_RECORD_TYPE,
+			</if>		
+			<if test="sntRouteStrategy != null">
+				SNT_ROUTE_STRATEGY,
+			</if>		
+			<if test="sntRouteStrategyClazz != null">
+				SNT_ROUTE_STRATEGY_CLAZZ,
+			</if>		
+			<if test="sntRouteType != null">
+				SNT_ROUTE_TYPE,
+			</if>		
+			<if test="sntBranchStrategy != null">
+				SNT_BRANCH_STRATEGY,
+			</if>		
+			<if test="sntBranchStrategyClazz != null">
+				SNT_BRANCH_STRATEGY_CLAZZ,
+			</if>		
+			<if test="sntIsAuto != null">
+				SNT_IS_AUTO,
+			</if>		
+			<if test="sntViewUrl != null">
+				SNT_VIEW_URL,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sntTemplateId != null">
+				#{sntTemplateId},
+			</if>	
+			<if test="sntTemplateName != null">
+				#{sntTemplateName},
+			</if>	
+			<if test="sntEntityId != null">
+				#{sntEntityId},
+			</if>	
+			<if test="sntEventType != null">
+				#{sntEventType},
+			</if>	
+			<if test="sntEventRule != null">
+				#{sntEventRule},
+			</if>	
+			<if test="sntEventExt != null">
+				#{sntEventExt},
+			</if>	
+			<if test="sntRecordType != null">
+				#{sntRecordType},
+			</if>	
+			<if test="sntRouteStrategy != null">
+				#{sntRouteStrategy},
+			</if>	
+			<if test="sntRouteStrategyClazz != null">
+				#{sntRouteStrategyClazz},
+			</if>	
+			<if test="sntRouteType != null">
+				#{sntRouteType},
+			</if>	
+			<if test="sntBranchStrategy != null">
+				#{sntBranchStrategy},
+			</if>	
+			<if test="sntBranchStrategyClazz != null">
+				#{sntBranchStrategyClazz},
+			</if>	
+			<if test="sntIsAuto != null">
+				#{sntIsAuto},
+			</if>	
+			<if test="sntViewUrl != null">
+				#{sntViewUrl},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_NODE_TEMPLATE
+		<set>
+			<if test="value.isInitSntTemplateId">
+				<choose>
+					<when test="value.sntTemplateId != null">
+						SNT_TEMPLATE_ID = #{value.sntTemplateId},
+					</when>
+					<otherwise>
+						SNT_TEMPLATE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntTemplateName">
+				<choose>
+					<when test="value.sntTemplateName != null">
+						SNT_TEMPLATE_NAME = #{value.sntTemplateName},
+					</when>
+					<otherwise>
+						SNT_TEMPLATE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntEntityId">
+				<choose>
+					<when test="value.sntEntityId != null">
+						SNT_ENTITY_ID = #{value.sntEntityId},
+					</when>
+					<otherwise>
+						SNT_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntEventType">
+				<choose>
+					<when test="value.sntEventType != null">
+						SNT_EVENT_TYPE = #{value.sntEventType},
+					</when>
+					<otherwise>
+						SNT_EVENT_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntEventRule">
+				<choose>
+					<when test="value.sntEventRule != null">
+						SNT_EVENT_RULE = #{value.sntEventRule},
+					</when>
+					<otherwise>
+						SNT_EVENT_RULE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntEventExt">
+				<choose>
+					<when test="value.sntEventExt != null">
+						SNT_EVENT_EXT = #{value.sntEventExt},
+					</when>
+					<otherwise>
+						SNT_EVENT_EXT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntRecordType">
+				<choose>
+					<when test="value.sntRecordType != null">
+						SNT_RECORD_TYPE = #{value.sntRecordType},
+					</when>
+					<otherwise>
+						SNT_RECORD_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntRouteStrategy">
+				<choose>
+					<when test="value.sntRouteStrategy != null">
+						SNT_ROUTE_STRATEGY = #{value.sntRouteStrategy},
+					</when>
+					<otherwise>
+						SNT_ROUTE_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntRouteStrategyClazz">
+				<choose>
+					<when test="value.sntRouteStrategyClazz != null">
+						SNT_ROUTE_STRATEGY_CLAZZ = #{value.sntRouteStrategyClazz},
+					</when>
+					<otherwise>
+						SNT_ROUTE_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntRouteType">
+				<choose>
+					<when test="value.sntRouteType != null">
+						SNT_ROUTE_TYPE = #{value.sntRouteType},
+					</when>
+					<otherwise>
+						SNT_ROUTE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntBranchStrategy">
+				<choose>
+					<when test="value.sntBranchStrategy != null">
+						SNT_BRANCH_STRATEGY = #{value.sntBranchStrategy},
+					</when>
+					<otherwise>
+						SNT_BRANCH_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntBranchStrategyClazz">
+				<choose>
+					<when test="value.sntBranchStrategyClazz != null">
+						SNT_BRANCH_STRATEGY_CLAZZ = #{value.sntBranchStrategyClazz},
+					</when>
+					<otherwise>
+						SNT_BRANCH_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntIsAuto">
+				<choose>
+					<when test="value.sntIsAuto != null">
+						SNT_IS_AUTO = #{value.sntIsAuto},
+					</when>
+					<otherwise>
+						SNT_IS_AUTO = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSntViewUrl">
+				<choose>
+					<when test="value.sntViewUrl != null">
+						SNT_VIEW_URL = #{value.sntViewUrl},
+					</when>
+					<otherwise>
+						SNT_VIEW_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sntTemplateId != null and condition.sntTemplateId != ''">
+			AND SNT_TEMPLATE_ID =	#{condition.sntTemplateId} 
+		</if>
+		<if test="condition.sntTemplateName != null and condition.sntTemplateName != ''">
+			AND SNT_TEMPLATE_NAME =	#{condition.sntTemplateName} 
+		</if>
+		<if test="condition.sntEntityId != null and condition.sntEntityId != ''">
+			AND SNT_ENTITY_ID =	#{condition.sntEntityId} 
+		</if>
+		<if test="condition.sntEventType != null and condition.sntEventType != ''">
+			AND SNT_EVENT_TYPE =	#{condition.sntEventType} 
+		</if>
+		<if test="condition.sntEventRule != null and condition.sntEventRule != ''">
+			AND SNT_EVENT_RULE =	#{condition.sntEventRule} 
+		</if>
+		<if test="condition.sntEventExt != null and condition.sntEventExt != ''">
+			AND SNT_EVENT_EXT =	#{condition.sntEventExt} 
+		</if>
+		<if test="condition.sntRecordType != null and condition.sntRecordType != ''">
+			AND SNT_RECORD_TYPE =	#{condition.sntRecordType} 
+		</if>
+		<if test="condition.sntRouteStrategy != null and condition.sntRouteStrategy != ''">
+			AND SNT_ROUTE_STRATEGY =	#{condition.sntRouteStrategy} 
+		</if>
+		<if test="condition.sntRouteStrategyClazz != null and condition.sntRouteStrategyClazz != ''">
+			AND SNT_ROUTE_STRATEGY_CLAZZ =	#{condition.sntRouteStrategyClazz} 
+		</if>
+		<if test="condition.sntRouteType != null and condition.sntRouteType != ''">
+			AND SNT_ROUTE_TYPE =	#{condition.sntRouteType} 
+		</if>
+		<if test="condition.sntBranchStrategy != null and condition.sntBranchStrategy != ''">
+			AND SNT_BRANCH_STRATEGY =	#{condition.sntBranchStrategy} 
+		</if>
+		<if test="condition.sntBranchStrategyClazz != null and condition.sntBranchStrategyClazz != ''">
+			AND SNT_BRANCH_STRATEGY_CLAZZ =	#{condition.sntBranchStrategyClazz} 
+		</if>
+		<if test="condition.sntIsAuto != null and condition.sntIsAuto != ''">
+			AND SNT_IS_AUTO =	#{condition.sntIsAuto} 
+		</if>
+		<if test="condition.sntViewUrl != null and condition.sntViewUrl != ''">
+			AND SNT_VIEW_URL =	#{condition.sntViewUrl} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
+		UPDATE SY_WKF_NODE_TEMPLATE
+		<set>
+			<if test="isInitSntTemplateId">
+				<choose>
+					<when test="sntTemplateId != null">
+						SNT_TEMPLATE_ID = #{sntTemplateId},
+					</when>
+					<otherwise>
+						SNT_TEMPLATE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntTemplateName">
+				<choose>
+					<when test="sntTemplateName != null">
+						SNT_TEMPLATE_NAME = #{sntTemplateName},
+					</when>
+					<otherwise>
+						SNT_TEMPLATE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntEntityId">
+				<choose>
+					<when test="sntEntityId != null">
+						SNT_ENTITY_ID = #{sntEntityId},
+					</when>
+					<otherwise>
+						SNT_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntEventType">
+				<choose>
+					<when test="sntEventType != null">
+						SNT_EVENT_TYPE = #{sntEventType},
+					</when>
+					<otherwise>
+						SNT_EVENT_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntEventRule">
+				<choose>
+					<when test="sntEventRule != null">
+						SNT_EVENT_RULE = #{sntEventRule},
+					</when>
+					<otherwise>
+						SNT_EVENT_RULE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntEventExt">
+				<choose>
+					<when test="sntEventExt != null">
+						SNT_EVENT_EXT = #{sntEventExt},
+					</when>
+					<otherwise>
+						SNT_EVENT_EXT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntRecordType">
+				<choose>
+					<when test="sntRecordType != null">
+						SNT_RECORD_TYPE = #{sntRecordType},
+					</when>
+					<otherwise>
+						SNT_RECORD_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntRouteStrategy">
+				<choose>
+					<when test="sntRouteStrategy != null">
+						SNT_ROUTE_STRATEGY = #{sntRouteStrategy},
+					</when>
+					<otherwise>
+						SNT_ROUTE_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntRouteStrategyClazz">
+				<choose>
+					<when test="sntRouteStrategyClazz != null">
+						SNT_ROUTE_STRATEGY_CLAZZ = #{sntRouteStrategyClazz},
+					</when>
+					<otherwise>
+						SNT_ROUTE_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntRouteType">
+				<choose>
+					<when test="sntRouteType != null">
+						SNT_ROUTE_TYPE = #{sntRouteType},
+					</when>
+					<otherwise>
+						SNT_ROUTE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntBranchStrategy">
+				<choose>
+					<when test="sntBranchStrategy != null">
+						SNT_BRANCH_STRATEGY = #{sntBranchStrategy},
+					</when>
+					<otherwise>
+						SNT_BRANCH_STRATEGY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntBranchStrategyClazz">
+				<choose>
+					<when test="sntBranchStrategyClazz != null">
+						SNT_BRANCH_STRATEGY_CLAZZ = #{sntBranchStrategyClazz},
+					</when>
+					<otherwise>
+						SNT_BRANCH_STRATEGY_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntIsAuto">
+				<choose>
+					<when test="sntIsAuto != null">
+						SNT_IS_AUTO = #{sntIsAuto},
+					</when>
+					<otherwise>
+						SNT_IS_AUTO = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSntViewUrl">
+				<choose>
+					<when test="sntViewUrl != null">
+						SNT_VIEW_URL = #{sntViewUrl},
+					</when>
+					<otherwise>
+						SNT_VIEW_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SNT_TEMPLATE_ID = #{sntTemplateId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_NODE_TEMPLATE WHERE 1=1
+		<if test="syWkfNodeTemplate!=null">
+			<if test="syWkfNodeTemplate.sntTemplateId != null and syWkfNodeTemplate.sntTemplateId != ''">
+				AND SNT_TEMPLATE_ID = #{syWkfNodeTemplate.sntTemplateId}
+			</if>
+			<if test="syWkfNodeTemplate.sntTemplateName != null and syWkfNodeTemplate.sntTemplateName != ''">
+				AND SNT_TEMPLATE_NAME = #{syWkfNodeTemplate.sntTemplateName}
+			</if>
+			<if test="syWkfNodeTemplate.sntEntityId != null and syWkfNodeTemplate.sntEntityId != ''">
+				AND SNT_ENTITY_ID = #{syWkfNodeTemplate.sntEntityId}
+			</if>
+			<if test="syWkfNodeTemplate.sntEventType != null and syWkfNodeTemplate.sntEventType != ''">
+				AND SNT_EVENT_TYPE = #{syWkfNodeTemplate.sntEventType}
+			</if>
+			<if test="syWkfNodeTemplate.sntEventRule != null and syWkfNodeTemplate.sntEventRule != ''">
+				AND SNT_EVENT_RULE = #{syWkfNodeTemplate.sntEventRule}
+			</if>
+			<if test="syWkfNodeTemplate.sntEventExt != null and syWkfNodeTemplate.sntEventExt != ''">
+				AND SNT_EVENT_EXT = #{syWkfNodeTemplate.sntEventExt}
+			</if>
+			<if test="syWkfNodeTemplate.sntRecordType != null and syWkfNodeTemplate.sntRecordType != ''">
+				AND SNT_RECORD_TYPE = #{syWkfNodeTemplate.sntRecordType}
+			</if>
+			<if test="syWkfNodeTemplate.sntRouteStrategy != null and syWkfNodeTemplate.sntRouteStrategy != ''">
+				AND SNT_ROUTE_STRATEGY = #{syWkfNodeTemplate.sntRouteStrategy}
+			</if>
+			<if test="syWkfNodeTemplate.sntRouteStrategyClazz != null and syWkfNodeTemplate.sntRouteStrategyClazz != ''">
+				AND SNT_ROUTE_STRATEGY_CLAZZ = #{syWkfNodeTemplate.sntRouteStrategyClazz}
+			</if>
+			<if test="syWkfNodeTemplate.sntRouteType != null and syWkfNodeTemplate.sntRouteType != ''">
+				AND SNT_ROUTE_TYPE = #{syWkfNodeTemplate.sntRouteType}
+			</if>
+			<if test="syWkfNodeTemplate.sntBranchStrategy != null and syWkfNodeTemplate.sntBranchStrategy != ''">
+				AND SNT_BRANCH_STRATEGY = #{syWkfNodeTemplate.sntBranchStrategy}
+			</if>
+			<if test="syWkfNodeTemplate.sntBranchStrategyClazz != null and syWkfNodeTemplate.sntBranchStrategyClazz != ''">
+				AND SNT_BRANCH_STRATEGY_CLAZZ = #{syWkfNodeTemplate.sntBranchStrategyClazz}
+			</if>
+			<if test="syWkfNodeTemplate.sntIsAuto != null and syWkfNodeTemplate.sntIsAuto != ''">
+				AND SNT_IS_AUTO = #{syWkfNodeTemplate.sntIsAuto}
+			</if>
+			<if test="syWkfNodeTemplate.sntViewUrl != null and syWkfNodeTemplate.sntViewUrl != ''">
+				AND SNT_VIEW_URL = #{syWkfNodeTemplate.sntViewUrl}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_NODE_TEMPLATE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sntTemplateId != null and sntTemplateId != ''">
+				AND SNT_TEMPLATE_ID = #{sntTemplateId}
+			</if>
+			<if test="sntTemplateName != null and sntTemplateName != ''">
+				AND SNT_TEMPLATE_NAME = #{sntTemplateName}
+			</if>
+			<if test="sntEntityId != null and sntEntityId != ''">
+				AND SNT_ENTITY_ID = #{sntEntityId}
+			</if>
+			<if test="sntEventType != null and sntEventType != ''">
+				AND SNT_EVENT_TYPE = #{sntEventType}
+			</if>
+			<if test="sntEventRule != null and sntEventRule != ''">
+				AND SNT_EVENT_RULE = #{sntEventRule}
+			</if>
+			<if test="sntEventExt != null and sntEventExt != ''">
+				AND SNT_EVENT_EXT = #{sntEventExt}
+			</if>
+			<if test="sntRecordType != null and sntRecordType != ''">
+				AND SNT_RECORD_TYPE = #{sntRecordType}
+			</if>
+			<if test="sntRouteStrategy != null and sntRouteStrategy != ''">
+				AND SNT_ROUTE_STRATEGY = #{sntRouteStrategy}
+			</if>
+			<if test="sntRouteStrategyClazz != null and sntRouteStrategyClazz != ''">
+				AND SNT_ROUTE_STRATEGY_CLAZZ = #{sntRouteStrategyClazz}
+			</if>
+			<if test="sntRouteType != null and sntRouteType != ''">
+				AND SNT_ROUTE_TYPE = #{sntRouteType}
+			</if>
+			<if test="sntBranchStrategy != null and sntBranchStrategy != ''">
+				AND SNT_BRANCH_STRATEGY = #{sntBranchStrategy}
+			</if>
+			<if test="sntBranchStrategyClazz != null and sntBranchStrategyClazz != ''">
+				AND SNT_BRANCH_STRATEGY_CLAZZ = #{sntBranchStrategyClazz}
+			</if>
+			<if test="sntIsAuto != null and sntIsAuto != ''">
+				AND SNT_IS_AUTO = #{sntIsAuto}
+			</if>
+			<if test="sntViewUrl != null and sntViewUrl != ''">
+				AND SNT_VIEW_URL = #{sntViewUrl}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_NODE_TEMPLATE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sntTemplateId},		
+			#{item.sntTemplateName},		
+			#{item.sntEntityId},		
+			#{item.sntEventType},		
+			#{item.sntEventRule},		
+			#{item.sntEventExt},		
+			#{item.sntRecordType},		
+			#{item.sntRouteStrategy},		
+			#{item.sntRouteStrategyClazz},		
+			#{item.sntRouteType},		
+			#{item.sntBranchStrategy},		
+			#{item.sntBranchStrategyClazz},		
+			#{item.sntIsAuto},		
+			#{item.sntViewUrl},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

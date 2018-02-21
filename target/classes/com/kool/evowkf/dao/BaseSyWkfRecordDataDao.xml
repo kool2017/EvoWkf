@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfRecordDataDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordDataBean">
+		<id column="SRT_RECORD_ID" property="srtRecordId" />
+		<id column="SRT_DETAIL_ID" property="srtDetailId" />
+		<result column="SRT_BUS_PKG" property="srtBusPkg" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRT_RECORD_ID, 			
+			SRT_DETAIL_ID, 			
+			SRT_BUS_PKG			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRT_RECORD_ID, SRT_DETAIL_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_RECORD_DATA WHERE 1=1 
+		<if test="srtRecordId != null and srtRecordId != ''">
+			AND SRT_RECORD_ID = #{srtRecordId}
+		</if>
+		<if test="srtDetailId != null and srtDetailId != ''">
+			AND SRT_DETAIL_ID = #{srtDetailId}
+		</if>
+		
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_RECORD_DATA
+		WHERE 
+		SRT_RECORD_ID = #{srtRecordId} AND 
+		SRT_DETAIL_ID = #{srtDetailId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
+		DELETE FROM SY_WKF_RECORD_DATA
+		WHERE
+		SRT_RECORD_ID = #{srtRecordId} AND 
+		SRT_DETAIL_ID = #{srtDetailId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
+		DELETE FROM SY_WKF_RECORD_DATA
+		WHERE 1=1 
+		<if test="srtRecordId != null and srtRecordId != ''">
+			AND SRT_RECORD_ID = #{srtRecordId}
+		</if>
+		<if test="srtDetailId != null and srtDetailId != ''">
+			AND SRT_DETAIL_ID = #{srtDetailId}
+		</if>
+		
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
+		INSERT INTO SY_WKF_RECORD_DATA
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="srtRecordId != null">
+				SRT_RECORD_ID,
+			</if>		
+			<if test="srtDetailId != null">
+				SRT_DETAIL_ID,
+			</if>		
+			<if test="srtBusPkg != null">
+				SRT_BUS_PKG,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="srtRecordId != null">
+				#{srtRecordId},
+			</if>	
+			<if test="srtDetailId != null">
+				#{srtDetailId},
+			</if>	
+			<if test="srtBusPkg != null">
+				#{srtBusPkg},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_RECORD_DATA
+		<set>
+			<if test="value.isInitSrtRecordId">
+				<choose>
+					<when test="value.srtRecordId != null">
+						SRT_RECORD_ID = #{value.srtRecordId},
+					</when>
+					<otherwise>
+						SRT_RECORD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrtDetailId">
+				<choose>
+					<when test="value.srtDetailId != null">
+						SRT_DETAIL_ID = #{value.srtDetailId},
+					</when>
+					<otherwise>
+						SRT_DETAIL_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrtBusPkg">
+				<choose>
+					<when test="value.srtBusPkg != null">
+						SRT_BUS_PKG = #{value.srtBusPkg},
+					</when>
+					<otherwise>
+						SRT_BUS_PKG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.srtRecordId != null and condition.srtRecordId != ''">
+			AND SRT_RECORD_ID =	#{condition.srtRecordId} 
+		</if>
+		<if test="condition.srtDetailId != null and condition.srtDetailId != ''">
+			AND SRT_DETAIL_ID =	#{condition.srtDetailId} 
+		</if>
+		
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
+		UPDATE SY_WKF_RECORD_DATA
+		<set>
+			<if test="isInitSrtRecordId">
+				<choose>
+					<when test="srtRecordId != null">
+						SRT_RECORD_ID = #{srtRecordId},
+					</when>
+					<otherwise>
+						SRT_RECORD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrtDetailId">
+				<choose>
+					<when test="srtDetailId != null">
+						SRT_DETAIL_ID = #{srtDetailId},
+					</when>
+					<otherwise>
+						SRT_DETAIL_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrtBusPkg">
+				<choose>
+					<when test="srtBusPkg != null">
+						SRT_BUS_PKG = #{srtBusPkg},
+					</when>
+					<otherwise>
+						SRT_BUS_PKG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SRT_RECORD_ID = #{srtRecordId} AND 
+		SRT_DETAIL_ID = #{srtDetailId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_RECORD_DATA WHERE 1=1
+		<if test="syWkfRecordData!=null">
+			<if test="syWkfRecordData.srtRecordId != null and syWkfRecordData.srtRecordId != ''">
+				AND SRT_RECORD_ID = #{syWkfRecordData.srtRecordId}
+			</if>
+			<if test="syWkfRecordData.srtDetailId != null and syWkfRecordData.srtDetailId != ''">
+				AND SRT_DETAIL_ID = #{syWkfRecordData.srtDetailId}
+			</if>
+			
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_RECORD_DATA
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="srtRecordId != null and srtRecordId != ''">
+				AND SRT_RECORD_ID = #{srtRecordId}
+			</if>
+			<if test="srtDetailId != null and srtDetailId != ''">
+				AND SRT_DETAIL_ID = #{srtDetailId}
+			</if>
+			
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_RECORD_DATA(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.srtRecordId},		
+			#{item.srtDetailId},		
+			#{item.srtBusPkg},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

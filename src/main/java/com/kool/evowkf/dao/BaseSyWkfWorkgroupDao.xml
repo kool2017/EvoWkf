@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.BaseSyWkfWorkgroupDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfWorkgroupBean">
+		<id column="SWW_WG_ID" property="swwWgId" />
+		<result column="SWW_WG_NAME" property="swwWgName" />
+		<result column="SWW_WG_TYPE" property="swwWgType" />
+		<result column="SWW_WKF_TYPE" property="swwWkfType" />
+		<result column="SWW_WKF_CODE" property="swwWkfCode" />
+		<result column="SWW_ENTITY_ID" property="swwEntityId" />
+		<result column="SWW_BUS_TYPE" property="swwBusType" />
+		<result column="SWW_WG_STATUS" property="swwWgStatus" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SWW_WG_ID, 			
+			SWW_WG_NAME, 			
+			SWW_WG_TYPE, 			
+			SWW_WKF_TYPE, 			
+			SWW_WKF_CODE, 			
+			SWW_ENTITY_ID, 			
+			SWW_BUS_TYPE, 			
+			SWW_WG_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SWW_WG_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfWorkgroupBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_WORKGROUP WHERE 1=1 
+		<if test="swwWgId != null and swwWgId != ''">
+			AND SWW_WG_ID = #{swwWgId}
+		</if>
+		<if test="swwWgName != null and swwWgName != ''">
+			AND SWW_WG_NAME = #{swwWgName}
+		</if>
+		<if test="swwWgType != null and swwWgType != ''">
+			AND SWW_WG_TYPE = #{swwWgType}
+		</if>
+		<if test="swwWkfType != null and swwWkfType != ''">
+			AND SWW_WKF_TYPE = #{swwWkfType}
+		</if>
+		<if test="swwWkfCode != null and swwWkfCode != ''">
+			AND SWW_WKF_CODE = #{swwWkfCode}
+		</if>
+		<if test="swwEntityId != null and swwEntityId != ''">
+			AND SWW_ENTITY_ID = #{swwEntityId}
+		</if>
+		<if test="swwBusType != null and swwBusType != ''">
+			AND SWW_BUS_TYPE = #{swwBusType}
+		</if>
+		<if test="swwWgStatus != null and swwWgStatus != ''">
+			AND SWW_WG_STATUS = #{swwWgStatus}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.evowkf.bean.SyWkfWorkgroupBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_WKF_WORKGROUP
+		WHERE 
+		SWW_WG_ID = #{swwWgId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfWorkgroupBean">
+		DELETE FROM SY_WKF_WORKGROUP
+		WHERE
+		SWW_WG_ID = #{swwWgId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfWorkgroupBean">
+		DELETE FROM SY_WKF_WORKGROUP
+		WHERE 1=1 
+		<if test="swwWgId != null and swwWgId != ''">
+			AND SWW_WG_ID = #{swwWgId}
+		</if>
+		<if test="swwWgName != null and swwWgName != ''">
+			AND SWW_WG_NAME = #{swwWgName}
+		</if>
+		<if test="swwWgType != null and swwWgType != ''">
+			AND SWW_WG_TYPE = #{swwWgType}
+		</if>
+		<if test="swwWkfType != null and swwWkfType != ''">
+			AND SWW_WKF_TYPE = #{swwWkfType}
+		</if>
+		<if test="swwWkfCode != null and swwWkfCode != ''">
+			AND SWW_WKF_CODE = #{swwWkfCode}
+		</if>
+		<if test="swwEntityId != null and swwEntityId != ''">
+			AND SWW_ENTITY_ID = #{swwEntityId}
+		</if>
+		<if test="swwBusType != null and swwBusType != ''">
+			AND SWW_BUS_TYPE = #{swwBusType}
+		</if>
+		<if test="swwWgStatus != null and swwWgStatus != ''">
+			AND SWW_WG_STATUS = #{swwWgStatus}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfWorkgroupBean">
+		INSERT INTO SY_WKF_WORKGROUP
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="swwWgId != null">
+				SWW_WG_ID,
+			</if>		
+			<if test="swwWgName != null">
+				SWW_WG_NAME,
+			</if>		
+			<if test="swwWgType != null">
+				SWW_WG_TYPE,
+			</if>		
+			<if test="swwWkfType != null">
+				SWW_WKF_TYPE,
+			</if>		
+			<if test="swwWkfCode != null">
+				SWW_WKF_CODE,
+			</if>		
+			<if test="swwEntityId != null">
+				SWW_ENTITY_ID,
+			</if>		
+			<if test="swwBusType != null">
+				SWW_BUS_TYPE,
+			</if>		
+			<if test="swwWgStatus != null">
+				SWW_WG_STATUS,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="swwWgId != null">
+				#{swwWgId},
+			</if>	
+			<if test="swwWgName != null">
+				#{swwWgName},
+			</if>	
+			<if test="swwWgType != null">
+				#{swwWgType},
+			</if>	
+			<if test="swwWkfType != null">
+				#{swwWkfType},
+			</if>	
+			<if test="swwWkfCode != null">
+				#{swwWkfCode},
+			</if>	
+			<if test="swwEntityId != null">
+				#{swwEntityId},
+			</if>	
+			<if test="swwBusType != null">
+				#{swwBusType},
+			</if>	
+			<if test="swwWgStatus != null">
+				#{swwWgStatus},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_WKF_WORKGROUP
+		<set>
+			<if test="value.isInitSwwWgId">
+				<choose>
+					<when test="value.swwWgId != null">
+						SWW_WG_ID = #{value.swwWgId},
+					</when>
+					<otherwise>
+						SWW_WG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwwWgName">
+				<choose>
+					<when test="value.swwWgName != null">
+						SWW_WG_NAME = #{value.swwWgName},
+					</when>
+					<otherwise>
+						SWW_WG_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwwWgType">
+				<choose>
+					<when test="value.swwWgType != null">
+						SWW_WG_TYPE = #{value.swwWgType},
+					</when>
+					<otherwise>
+						SWW_WG_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwwWkfType">
+				<choose>
+					<when test="value.swwWkfType != null">
+						SWW_WKF_TYPE = #{value.swwWkfType},
+					</when>
+					<otherwise>
+						SWW_WKF_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwwWkfCode">
+				<choose>
+					<when test="value.swwWkfCode != null">
+						SWW_WKF_CODE = #{value.swwWkfCode},
+					</when>
+					<otherwise>
+						SWW_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwwEntityId">
+				<choose>
+					<when test="value.swwEntityId != null">
+						SWW_ENTITY_ID = #{value.swwEntityId},
+					</when>
+					<otherwise>
+						SWW_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwwBusType">
+				<choose>
+					<when test="value.swwBusType != null">
+						SWW_BUS_TYPE = #{value.swwBusType},
+					</when>
+					<otherwise>
+						SWW_BUS_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSwwWgStatus">
+				<choose>
+					<when test="value.swwWgStatus != null">
+						SWW_WG_STATUS = #{value.swwWgStatus},
+					</when>
+					<otherwise>
+						SWW_WG_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.swwWgId != null and condition.swwWgId != ''">
+			AND SWW_WG_ID =	#{condition.swwWgId} 
+		</if>
+		<if test="condition.swwWgName != null and condition.swwWgName != ''">
+			AND SWW_WG_NAME =	#{condition.swwWgName} 
+		</if>
+		<if test="condition.swwWgType != null and condition.swwWgType != ''">
+			AND SWW_WG_TYPE =	#{condition.swwWgType} 
+		</if>
+		<if test="condition.swwWkfType != null and condition.swwWkfType != ''">
+			AND SWW_WKF_TYPE =	#{condition.swwWkfType} 
+		</if>
+		<if test="condition.swwWkfCode != null and condition.swwWkfCode != ''">
+			AND SWW_WKF_CODE =	#{condition.swwWkfCode} 
+		</if>
+		<if test="condition.swwEntityId != null and condition.swwEntityId != ''">
+			AND SWW_ENTITY_ID =	#{condition.swwEntityId} 
+		</if>
+		<if test="condition.swwBusType != null and condition.swwBusType != ''">
+			AND SWW_BUS_TYPE =	#{condition.swwBusType} 
+		</if>
+		<if test="condition.swwWgStatus != null and condition.swwWgStatus != ''">
+			AND SWW_WG_STATUS =	#{condition.swwWgStatus} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfWorkgroupBean">
+		UPDATE SY_WKF_WORKGROUP
+		<set>
+			<if test="isInitSwwWgId">
+				<choose>
+					<when test="swwWgId != null">
+						SWW_WG_ID = #{swwWgId},
+					</when>
+					<otherwise>
+						SWW_WG_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwwWgName">
+				<choose>
+					<when test="swwWgName != null">
+						SWW_WG_NAME = #{swwWgName},
+					</when>
+					<otherwise>
+						SWW_WG_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwwWgType">
+				<choose>
+					<when test="swwWgType != null">
+						SWW_WG_TYPE = #{swwWgType},
+					</when>
+					<otherwise>
+						SWW_WG_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwwWkfType">
+				<choose>
+					<when test="swwWkfType != null">
+						SWW_WKF_TYPE = #{swwWkfType},
+					</when>
+					<otherwise>
+						SWW_WKF_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwwWkfCode">
+				<choose>
+					<when test="swwWkfCode != null">
+						SWW_WKF_CODE = #{swwWkfCode},
+					</when>
+					<otherwise>
+						SWW_WKF_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwwEntityId">
+				<choose>
+					<when test="swwEntityId != null">
+						SWW_ENTITY_ID = #{swwEntityId},
+					</when>
+					<otherwise>
+						SWW_ENTITY_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwwBusType">
+				<choose>
+					<when test="swwBusType != null">
+						SWW_BUS_TYPE = #{swwBusType},
+					</when>
+					<otherwise>
+						SWW_BUS_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSwwWgStatus">
+				<choose>
+					<when test="swwWgStatus != null">
+						SWW_WG_STATUS = #{swwWgStatus},
+					</when>
+					<otherwise>
+						SWW_WG_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SWW_WG_ID = #{swwWgId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_WKF_WORKGROUP WHERE 1=1
+		<if test="syWkfWorkgroup!=null">
+			<if test="syWkfWorkgroup.swwWgId != null and syWkfWorkgroup.swwWgId != ''">
+				AND SWW_WG_ID = #{syWkfWorkgroup.swwWgId}
+			</if>
+			<if test="syWkfWorkgroup.swwWgName != null and syWkfWorkgroup.swwWgName != ''">
+				AND SWW_WG_NAME = #{syWkfWorkgroup.swwWgName}
+			</if>
+			<if test="syWkfWorkgroup.swwWgType != null and syWkfWorkgroup.swwWgType != ''">
+				AND SWW_WG_TYPE = #{syWkfWorkgroup.swwWgType}
+			</if>
+			<if test="syWkfWorkgroup.swwWkfType != null and syWkfWorkgroup.swwWkfType != ''">
+				AND SWW_WKF_TYPE = #{syWkfWorkgroup.swwWkfType}
+			</if>
+			<if test="syWkfWorkgroup.swwWkfCode != null and syWkfWorkgroup.swwWkfCode != ''">
+				AND SWW_WKF_CODE = #{syWkfWorkgroup.swwWkfCode}
+			</if>
+			<if test="syWkfWorkgroup.swwEntityId != null and syWkfWorkgroup.swwEntityId != ''">
+				AND SWW_ENTITY_ID = #{syWkfWorkgroup.swwEntityId}
+			</if>
+			<if test="syWkfWorkgroup.swwBusType != null and syWkfWorkgroup.swwBusType != ''">
+				AND SWW_BUS_TYPE = #{syWkfWorkgroup.swwBusType}
+			</if>
+			<if test="syWkfWorkgroup.swwWgStatus != null and syWkfWorkgroup.swwWgStatus != ''">
+				AND SWW_WG_STATUS = #{syWkfWorkgroup.swwWgStatus}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.evowkf.bean.SyWkfWorkgroupBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_WORKGROUP
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="swwWgId != null and swwWgId != ''">
+				AND SWW_WG_ID = #{swwWgId}
+			</if>
+			<if test="swwWgName != null and swwWgName != ''">
+				AND SWW_WG_NAME = #{swwWgName}
+			</if>
+			<if test="swwWgType != null and swwWgType != ''">
+				AND SWW_WG_TYPE = #{swwWgType}
+			</if>
+			<if test="swwWkfType != null and swwWkfType != ''">
+				AND SWW_WKF_TYPE = #{swwWkfType}
+			</if>
+			<if test="swwWkfCode != null and swwWkfCode != ''">
+				AND SWW_WKF_CODE = #{swwWkfCode}
+			</if>
+			<if test="swwEntityId != null and swwEntityId != ''">
+				AND SWW_ENTITY_ID = #{swwEntityId}
+			</if>
+			<if test="swwBusType != null and swwBusType != ''">
+				AND SWW_BUS_TYPE = #{swwBusType}
+			</if>
+			<if test="swwWgStatus != null and swwWgStatus != ''">
+				AND SWW_WG_STATUS = #{swwWgStatus}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_WKF_WORKGROUP(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.swwWgId},		
+			#{item.swwWgName},		
+			#{item.swwWgType},		
+			#{item.swwWkfType},		
+			#{item.swwWkfCode},		
+			#{item.swwEntityId},		
+			#{item.swwBusType},		
+			#{item.swwWgStatus},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

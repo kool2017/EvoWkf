@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.evowkf.dao.SyWkfNodeTemplateDao">
+	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
+		<id column="SNT_TEMPLATE_ID" property="sntTemplateId" />
+		<result column="SNT_TEMPLATE_NAME" property="sntTemplateName" />
+		<result column="SNT_ENTITY_ID" property="sntEntityId" />
+		<result column="SNT_EVENT_TYPE" property="sntEventType" />
+		<result column="SNT_EVENT_RULE" property="sntEventRule" />
+		<result column="SNT_EVENT_EXT" property="sntEventExt" />
+		<result column="SNT_RECORD_TYPE" property="sntRecordType" />
+		<result column="SNT_ROUTE_STRATEGY" property="sntRouteStrategy" />
+		<result column="SNT_ROUTE_STRATEGY_CLAZZ" property="sntRouteStrategyClazz" />
+		<result column="SNT_ROUTE_TYPE" property="sntRouteType" />
+		<result column="SNT_BRANCH_STRATEGY" property="sntBranchStrategy" />
+		<result column="SNT_BRANCH_STRATEGY_CLAZZ" property="sntBranchStrategyClazz" />
+		<result column="SNT_IS_AUTO" property="sntIsAuto" />
+		<result column="SNT_VIEW_URL" property="sntViewUrl" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SNT_TEMPLATE_ID, 			
+			SNT_TEMPLATE_NAME, 			
+			SNT_ENTITY_ID, 			
+			SNT_EVENT_TYPE, 			
+			SNT_EVENT_RULE, 			
+			SNT_EVENT_EXT, 			
+			SNT_RECORD_TYPE, 			
+			SNT_ROUTE_STRATEGY, 			
+			SNT_ROUTE_STRATEGY_CLAZZ, 			
+			SNT_ROUTE_TYPE, 			
+			SNT_BRANCH_STRATEGY, 			
+			SNT_BRANCH_STRATEGY_CLAZZ, 			
+			SNT_IS_AUTO, 			
+			SNT_VIEW_URL			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SNT_TEMPLATE_ID
+	</sql>
+</mapper>  

@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyUserInfoDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserInfoBean">
+		<id column="SUI_ID" property="suiId" />
+		<result column="SUI_LOGIN_NAME" property="suiLoginName" />
+		<result column="SUI_PHONE" property="suiPhone" />
+		<result column="SUI_MAIL" property="suiMail" />
+		<result column="SUI_PWD" property="suiPwd" />
+		<result column="SUI_SALT" property="suiSalt" />
+		<result column="SUI_NEW_SALT" property="suiNewSalt" />
+		<result column="SUI_HASH_TIMES" property="suiHashTimes" />
+		<result column="SUI_FACE" property="suiFace" />
+		<result column="SUI_STATUS" property="suiStatus" />
+		<result column="SUI_ERROR_TIMES" property="suiErrorTimes" />
+		<result column="SUI_REGISTER_TIME" property="suiRegisterTime" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUI_ID, 			
+			SUI_LOGIN_NAME, 			
+			SUI_PHONE, 			
+			SUI_MAIL, 			
+			SUI_PWD, 			
+			SUI_SALT, 			
+			SUI_NEW_SALT, 			
+			SUI_HASH_TIMES, 			
+			SUI_FACE, 			
+			SUI_STATUS, 			
+			SUI_ERROR_TIMES, 			
+			SUI_REGISTER_TIME			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUI_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyUserInfoBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_INFO WHERE 1=1 
+		<if test="suiId != null and suiId != ''">
+			AND SUI_ID = #{suiId}
+		</if>
+		<if test="suiLoginName != null and suiLoginName != ''">
+			AND SUI_LOGIN_NAME = #{suiLoginName}
+		</if>
+		<if test="suiPhone != null and suiPhone != ''">
+			AND SUI_PHONE = #{suiPhone}
+		</if>
+		<if test="suiMail != null and suiMail != ''">
+			AND SUI_MAIL = #{suiMail}
+		</if>
+		<if test="suiPwd != null and suiPwd != ''">
+			AND SUI_PWD = #{suiPwd}
+		</if>
+		<if test="suiSalt != null and suiSalt != ''">
+			AND SUI_SALT = #{suiSalt}
+		</if>
+		<if test="suiNewSalt != null and suiNewSalt != ''">
+			AND SUI_NEW_SALT = #{suiNewSalt}
+		</if>
+		
+		<if test="suiFace != null and suiFace != ''">
+			AND SUI_FACE = #{suiFace}
+		</if>
+		<if test="suiStatus != null and suiStatus != ''">
+			AND SUI_STATUS = #{suiStatus}
+		</if>
+		
+		
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyUserInfoBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_INFO
+		WHERE 
+		SUI_ID = #{suiId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyUserInfoBean">
+		DELETE FROM SY_USER_INFO
+		WHERE
+		SUI_ID = #{suiId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyUserInfoBean">
+		DELETE FROM SY_USER_INFO
+		WHERE 1=1 
+		<if test="suiId != null and suiId != ''">
+			AND SUI_ID = #{suiId}
+		</if>
+		<if test="suiLoginName != null and suiLoginName != ''">
+			AND SUI_LOGIN_NAME = #{suiLoginName}
+		</if>
+		<if test="suiPhone != null and suiPhone != ''">
+			AND SUI_PHONE = #{suiPhone}
+		</if>
+		<if test="suiMail != null and suiMail != ''">
+			AND SUI_MAIL = #{suiMail}
+		</if>
+		<if test="suiPwd != null and suiPwd != ''">
+			AND SUI_PWD = #{suiPwd}
+		</if>
+		<if test="suiSalt != null and suiSalt != ''">
+			AND SUI_SALT = #{suiSalt}
+		</if>
+		<if test="suiNewSalt != null and suiNewSalt != ''">
+			AND SUI_NEW_SALT = #{suiNewSalt}
+		</if>
+		
+		<if test="suiFace != null and suiFace != ''">
+			AND SUI_FACE = #{suiFace}
+		</if>
+		<if test="suiStatus != null and suiStatus != ''">
+			AND SUI_STATUS = #{suiStatus}
+		</if>
+		
+		
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyUserInfoBean">
+		INSERT INTO SY_USER_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="suiId != null">
+				SUI_ID,
+			</if>		
+			<if test="suiLoginName != null">
+				SUI_LOGIN_NAME,
+			</if>		
+			<if test="suiPhone != null">
+				SUI_PHONE,
+			</if>		
+			<if test="suiMail != null">
+				SUI_MAIL,
+			</if>		
+			<if test="suiPwd != null">
+				SUI_PWD,
+			</if>		
+			<if test="suiSalt != null">
+				SUI_SALT,
+			</if>		
+			<if test="suiNewSalt != null">
+				SUI_NEW_SALT,
+			</if>		
+			<if test="suiHashTimes != null">
+				SUI_HASH_TIMES,
+			</if>		
+			<if test="suiFace != null">
+				SUI_FACE,
+			</if>		
+			<if test="suiStatus != null">
+				SUI_STATUS,
+			</if>		
+			<if test="suiErrorTimes != null">
+				SUI_ERROR_TIMES,
+			</if>		
+			<if test="suiRegisterTime != null">
+				SUI_REGISTER_TIME,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="suiId != null">
+				#{suiId},
+			</if>	
+			<if test="suiLoginName != null">
+				#{suiLoginName},
+			</if>	
+			<if test="suiPhone != null">
+				#{suiPhone},
+			</if>	
+			<if test="suiMail != null">
+				#{suiMail},
+			</if>	
+			<if test="suiPwd != null">
+				#{suiPwd},
+			</if>	
+			<if test="suiSalt != null">
+				#{suiSalt},
+			</if>	
+			<if test="suiNewSalt != null">
+				#{suiNewSalt},
+			</if>	
+			<if test="suiHashTimes != null">
+				#{suiHashTimes},
+			</if>	
+			<if test="suiFace != null">
+				#{suiFace},
+			</if>	
+			<if test="suiStatus != null">
+				#{suiStatus},
+			</if>	
+			<if test="suiErrorTimes != null">
+				#{suiErrorTimes},
+			</if>	
+			<if test="suiRegisterTime != null">
+				#{suiRegisterTime},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_USER_INFO
+		<set>
+			<if test="value.isInitSuiId">
+				<choose>
+					<when test="value.suiId != null">
+						SUI_ID = #{value.suiId},
+					</when>
+					<otherwise>
+						SUI_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiLoginName">
+				<choose>
+					<when test="value.suiLoginName != null">
+						SUI_LOGIN_NAME = #{value.suiLoginName},
+					</when>
+					<otherwise>
+						SUI_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiPhone">
+				<choose>
+					<when test="value.suiPhone != null">
+						SUI_PHONE = #{value.suiPhone},
+					</when>
+					<otherwise>
+						SUI_PHONE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiMail">
+				<choose>
+					<when test="value.suiMail != null">
+						SUI_MAIL = #{value.suiMail},
+					</when>
+					<otherwise>
+						SUI_MAIL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiPwd">
+				<choose>
+					<when test="value.suiPwd != null">
+						SUI_PWD = #{value.suiPwd},
+					</when>
+					<otherwise>
+						SUI_PWD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiSalt">
+				<choose>
+					<when test="value.suiSalt != null">
+						SUI_SALT = #{value.suiSalt},
+					</when>
+					<otherwise>
+						SUI_SALT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiNewSalt">
+				<choose>
+					<when test="value.suiNewSalt != null">
+						SUI_NEW_SALT = #{value.suiNewSalt},
+					</when>
+					<otherwise>
+						SUI_NEW_SALT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiHashTimes">
+				<choose>
+					<when test="value.suiHashTimes != null">
+						SUI_HASH_TIMES = #{value.suiHashTimes},
+					</when>
+					<otherwise>
+						SUI_HASH_TIMES = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiFace">
+				<choose>
+					<when test="value.suiFace != null">
+						SUI_FACE = #{value.suiFace},
+					</when>
+					<otherwise>
+						SUI_FACE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiStatus">
+				<choose>
+					<when test="value.suiStatus != null">
+						SUI_STATUS = #{value.suiStatus},
+					</when>
+					<otherwise>
+						SUI_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiErrorTimes">
+				<choose>
+					<when test="value.suiErrorTimes != null">
+						SUI_ERROR_TIMES = #{value.suiErrorTimes},
+					</when>
+					<otherwise>
+						SUI_ERROR_TIMES = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiRegisterTime">
+				<choose>
+					<when test="value.suiRegisterTime != null">
+						SUI_REGISTER_TIME = #{value.suiRegisterTime},
+					</when>
+					<otherwise>
+						SUI_REGISTER_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.suiId != null and condition.suiId != ''">
+			AND SUI_ID =	#{condition.suiId} 
+		</if>
+		<if test="condition.suiLoginName != null and condition.suiLoginName != ''">
+			AND SUI_LOGIN_NAME =	#{condition.suiLoginName} 
+		</if>
+		<if test="condition.suiPhone != null and condition.suiPhone != ''">
+			AND SUI_PHONE =	#{condition.suiPhone} 
+		</if>
+		<if test="condition.suiMail != null and condition.suiMail != ''">
+			AND SUI_MAIL =	#{condition.suiMail} 
+		</if>
+		<if test="condition.suiPwd != null and condition.suiPwd != ''">
+			AND SUI_PWD =	#{condition.suiPwd} 
+		</if>
+		<if test="condition.suiSalt != null and condition.suiSalt != ''">
+			AND SUI_SALT =	#{condition.suiSalt} 
+		</if>
+		<if test="condition.suiNewSalt != null and condition.suiNewSalt != ''">
+			AND SUI_NEW_SALT =	#{condition.suiNewSalt} 
+		</if>
+		
+		<if test="condition.suiFace != null and condition.suiFace != ''">
+			AND SUI_FACE =	#{condition.suiFace} 
+		</if>
+		<if test="condition.suiStatus != null and condition.suiStatus != ''">
+			AND SUI_STATUS =	#{condition.suiStatus} 
+		</if>
+		
+		
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyUserInfoBean">
+		UPDATE SY_USER_INFO
+		<set>
+			<if test="isInitSuiId">
+				<choose>
+					<when test="suiId != null">
+						SUI_ID = #{suiId},
+					</when>
+					<otherwise>
+						SUI_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiLoginName">
+				<choose>
+					<when test="suiLoginName != null">
+						SUI_LOGIN_NAME = #{suiLoginName},
+					</when>
+					<otherwise>
+						SUI_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiPhone">
+				<choose>
+					<when test="suiPhone != null">
+						SUI_PHONE = #{suiPhone},
+					</when>
+					<otherwise>
+						SUI_PHONE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiMail">
+				<choose>
+					<when test="suiMail != null">
+						SUI_MAIL = #{suiMail},
+					</when>
+					<otherwise>
+						SUI_MAIL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiPwd">
+				<choose>
+					<when test="suiPwd != null">
+						SUI_PWD = #{suiPwd},
+					</when>
+					<otherwise>
+						SUI_PWD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiSalt">
+				<choose>
+					<when test="suiSalt != null">
+						SUI_SALT = #{suiSalt},
+					</when>
+					<otherwise>
+						SUI_SALT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiNewSalt">
+				<choose>
+					<when test="suiNewSalt != null">
+						SUI_NEW_SALT = #{suiNewSalt},
+					</when>
+					<otherwise>
+						SUI_NEW_SALT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiHashTimes">
+				<choose>
+					<when test="suiHashTimes != null">
+						SUI_HASH_TIMES = #{suiHashTimes},
+					</when>
+					<otherwise>
+						SUI_HASH_TIMES = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiFace">
+				<choose>
+					<when test="suiFace != null">
+						SUI_FACE = #{suiFace},
+					</when>
+					<otherwise>
+						SUI_FACE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiStatus">
+				<choose>
+					<when test="suiStatus != null">
+						SUI_STATUS = #{suiStatus},
+					</when>
+					<otherwise>
+						SUI_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiErrorTimes">
+				<choose>
+					<when test="suiErrorTimes != null">
+						SUI_ERROR_TIMES = #{suiErrorTimes},
+					</when>
+					<otherwise>
+						SUI_ERROR_TIMES = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiRegisterTime">
+				<choose>
+					<when test="suiRegisterTime != null">
+						SUI_REGISTER_TIME = #{suiRegisterTime},
+					</when>
+					<otherwise>
+						SUI_REGISTER_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SUI_ID = #{suiId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_USER_INFO WHERE 1=1
+		<if test="syUserInfo!=null">
+			<if test="syUserInfo.suiId != null and syUserInfo.suiId != ''">
+				AND SUI_ID = #{syUserInfo.suiId}
+			</if>
+			<if test="syUserInfo.suiLoginName != null and syUserInfo.suiLoginName != ''">
+				AND SUI_LOGIN_NAME = #{syUserInfo.suiLoginName}
+			</if>
+			<if test="syUserInfo.suiPhone != null and syUserInfo.suiPhone != ''">
+				AND SUI_PHONE = #{syUserInfo.suiPhone}
+			</if>
+			<if test="syUserInfo.suiMail != null and syUserInfo.suiMail != ''">
+				AND SUI_MAIL = #{syUserInfo.suiMail}
+			</if>
+			<if test="syUserInfo.suiPwd != null and syUserInfo.suiPwd != ''">
+				AND SUI_PWD = #{syUserInfo.suiPwd}
+			</if>
+			<if test="syUserInfo.suiSalt != null and syUserInfo.suiSalt != ''">
+				AND SUI_SALT = #{syUserInfo.suiSalt}
+			</if>
+			<if test="syUserInfo.suiNewSalt != null and syUserInfo.suiNewSalt != ''">
+				AND SUI_NEW_SALT = #{syUserInfo.suiNewSalt}
+			</if>
+			
+			<if test="syUserInfo.suiFace != null and syUserInfo.suiFace != ''">
+				AND SUI_FACE = #{syUserInfo.suiFace}
+			</if>
+			<if test="syUserInfo.suiStatus != null and syUserInfo.suiStatus != ''">
+				AND SUI_STATUS = #{syUserInfo.suiStatus}
+			</if>
+			
+			
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyUserInfoBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_USER_INFO
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="suiId != null and suiId != ''">
+				AND SUI_ID = #{suiId}
+			</if>
+			<if test="suiLoginName != null and suiLoginName != ''">
+				AND SUI_LOGIN_NAME = #{suiLoginName}
+			</if>
+			<if test="suiPhone != null and suiPhone != ''">
+				AND SUI_PHONE = #{suiPhone}
+			</if>
+			<if test="suiMail != null and suiMail != ''">
+				AND SUI_MAIL = #{suiMail}
+			</if>
+			<if test="suiPwd != null and suiPwd != ''">
+				AND SUI_PWD = #{suiPwd}
+			</if>
+			<if test="suiSalt != null and suiSalt != ''">
+				AND SUI_SALT = #{suiSalt}
+			</if>
+			<if test="suiNewSalt != null and suiNewSalt != ''">
+				AND SUI_NEW_SALT = #{suiNewSalt}
+			</if>
+			
+			<if test="suiFace != null and suiFace != ''">
+				AND SUI_FACE = #{suiFace}
+			</if>
+			<if test="suiStatus != null and suiStatus != ''">
+				AND SUI_STATUS = #{suiStatus}
+			</if>
+			
+			
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_USER_INFO(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.suiId},		
+			#{item.suiLoginName},		
+			#{item.suiPhone},		
+			#{item.suiMail},		
+			#{item.suiPwd},		
+			#{item.suiSalt},		
+			#{item.suiNewSalt},		
+			#{item.suiHashTimes},		
+			#{item.suiFace},		
+			#{item.suiStatus},		
+			#{item.suiErrorTimes},		
+			#{item.suiRegisterTime},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

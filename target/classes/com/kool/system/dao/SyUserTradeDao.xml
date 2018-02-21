@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyUserTradeDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserTradeBean">
+		<id column="SUT_TRADE_ID" property="sutTradeId" />
+		<result column="SUT_TRADE_TYPE" property="sutTradeType" />
+		<result column="SUT_TRADE_TIME" property="sutTradeTime" />
+		<result column="SUT_OPR_USER_ID" property="sutOprUserId" />
+		<result column="SUT_OPR_LOGIN_NAME" property="sutOprLoginName" />
+		<result column="SUT_LOGIN_NAME" property="sutLoginName" />
+		<result column="SUT_PHONE" property="sutPhone" />
+		<result column="SUT_MAIL" property="sutMail" />
+		<result column="SUT_FACE" property="sutFace" />
+		<result column="SUT_RECORD_ID" property="sutRecordId" />
+		<result column="SUT_TRADE_STATUS" property="sutTradeStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUT_TRADE_ID, 			
+			SUT_TRADE_TYPE, 			
+			SUT_TRADE_TIME, 			
+			SUT_OPR_USER_ID, 			
+			SUT_OPR_LOGIN_NAME, 			
+			SUT_LOGIN_NAME, 			
+			SUT_PHONE, 			
+			SUT_MAIL, 			
+			SUT_FACE, 			
+			SUT_RECORD_ID, 			
+			SUT_TRADE_STATUS			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUT_TRADE_ID
+	</sql>
+</mapper>  
