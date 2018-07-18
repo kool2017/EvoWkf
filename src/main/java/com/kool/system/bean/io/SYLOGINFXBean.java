@@ -5,13 +5,15 @@
  */
 package com.kool.system.bean.io;
 
+import com.kool.core.base.BaseBean;
+
 /**
  * @DESCRIBE
  * @AUTHOR LUYU
  * @DATE 2017年12月31日 下午12:09:57
  *
  */
-public class SYLOGINFXBean {
+public class SYLOGINFXBean extends BaseBean {
 	protected String suiLoginName;
 	protected String suiPwdA;
 	protected String suiPwdB;

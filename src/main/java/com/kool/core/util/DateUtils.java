@@ -53,7 +53,7 @@ public class DateUtils {
 			SimpleDateFormat sdf = new SimpleDateFormat(format);
 			sDt = sdf.format(dt);
 		} catch (Exception e) {
-			throw new AppException("时间格式错误", e);
+			throw new AppException("SY000008", e);// 时间格式错误
 		}
 		return sDt;
 	}
@@ -62,7 +62,7 @@ public class DateUtils {
 		try {
 			Thread.sleep(millis);
 		} catch (Exception e) {
-			throw new AppException("延时器出错");
+			throw new AppException("SY000007");//延时器出错
 		}
 
 	}

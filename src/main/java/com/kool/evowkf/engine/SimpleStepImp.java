@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.core.util.SpringContextUtil;
 import com.kool.core.util.StringUtils;
 import com.kool.evowkf.WKFConstants;
@@ -42,33 +41,32 @@ public class SimpleStepImp implements IStep {
 	 * @DATE 2018年2月15日 下午8:11:45
 	 *
 	 * @param wkfInfo
-	 * @throws BusException
-	 * @throws AppException 
+	 * @throws AppException
 	 */
 	@Override
-	public void nextStep(WKFContext wkfInfo) throws BusException, AppException {
+	public void nextStep(WKFContext wkfInfo) throws AppException {
 		// 查询待办信息
 		String scheduleId = wkfInfo.getScheduleId();
 		SyWkfScheduleBean scheduleInfo = new SyWkfScheduleBean();
-		scheduleInfo.setSwsScheduleId(scheduleId);
+		scheduleInfo.setSwsScheduleCid(scheduleId);
 		SyWkfScheduleDao scheduleDao = (SyWkfScheduleDao) SpringContextUtil.getBean("SyWkfScheduleDao");
 		SyWkfScheduleBean schedule = scheduleDao.selectByPK(scheduleInfo);
 		if (null == schedule) {
-			throw new BusException("查询待办结果为空");
+			throw new AppException("查询待办结果为空");
 		}
 
 		// 查询流程执行记录
 		SyWkfRecordBean recordInfo = new SyWkfRecordBean();
-		recordInfo.setSrcRecordId(schedule.getSwsRecordId());
+		recordInfo.setSrcWkfNbr(schedule.getSwsWkfNbr());
 		SyWkfRecordDao recordDao = (SyWkfRecordDao) SpringContextUtil.getBean("SyWkfRecordDao");
 		SyWkfRecordBean record = recordDao.selectByPK(recordInfo);
 		if (null == record) {
-			throw new BusException("查询流程执行记录结果为空");
+			throw new AppException("查询流程执行记录结果为空");
 		}
 
-		wkfInfo.setRecordId(record.getSrcRecordId());
+		wkfInfo.setRecordId(record.getSrcWkfNbr());
 		// 初始化上下文的工作流定义、工作流实例、实例关联的路由集合、实例关联的结点集合
-		WKFContextHelper.initWkfCfg(record.getSrcEntityId(), wkfInfo);
+		WKFContextHelper.initWkfCfg(record.getSrcEntityCid(), wkfInfo);
 
 		// 获取工作流定义
 		SyWkfDefineBean define = wkfInfo.getDefine();
@@ -77,24 +75,24 @@ public class SimpleStepImp implements IStep {
 		SyWkfEntityBean entity = wkfInfo.getEntity();
 
 		// 检查是否可执行
-		if (WKFConstants.SWD_WKF_STATUS_CLOSE.equals(define.getSwdWkfStatus())) {
-			throw new BusException("工作流已关闭");
+		if (WKFConstants.SWD_STATE_CLOSE.equals(define.getSwdState())) {
+			throw new AppException("工作流已关闭");
 		}
-		if (WKFConstants.SWE_ENTITY_STATUS_CLOSE.equals(entity.getSweEntityStatus())) {
-			throw new BusException("工作流实例已关闭");
+		if (WKFConstants.SWE_STATE_CLOSE.equals(entity.getSweState())) {
+			throw new AppException("工作流实例已关闭");
 		}
 		if (WKFConstants.SWD_CHECK_FLAG_YES.equals(define.getSwdCheckFlag())
-				&& WKFConstants.SWS_SCHEDULE_STATUS_CHECK.equals(schedule.getSwsScheduleStatus()) == false) {
+				&& WKFConstants.SWS_STATE_CHECK.equals(schedule.getSwsState()) == false) {
 			// 如果流程签收标志=签收，待办状态非签收，报错
-			throw new BusException("未签收，请先签收");
+			throw new AppException("未签收，请先签收");
 		}
 		// 查询待办结点信息
 		SyWkfNodeBean nodeInfo = new SyWkfNodeBean();
-		nodeInfo.setSwnNodeId(schedule.getSwsScheduleNodeId());
+		nodeInfo.setSwnNodeCid(schedule.getSwsScheduleNodeCid());
 		SyWkfNodeDao nodeDao = (SyWkfNodeDao) SpringContextUtil.getBean("SyWkfNodeDao");
 		SyWkfNodeBean node = nodeDao.selectByPK(nodeInfo);
 		if (null == node) {
-			throw new BusException("查询待办结点信息结果为空");
+			throw new AppException("查询待办结点信息结果为空");
 		}
 
 		// 事件类型
@@ -111,21 +109,21 @@ public class SimpleStepImp implements IStep {
 
 		// 查询执行记录的明细数
 		SyWkfRecordDetailBean recordDtlInfo = new SyWkfRecordDetailBean();
-		recordDtlInfo.setSrdRecordId(schedule.getSwsRecordId());
+		recordDtlInfo.setSrdWkfNbr(schedule.getSwsWkfNbr());
 		SyWkfRecordDetailDao recordDtlDao = (SyWkfRecordDetailDao) SpringContextUtil.getBean("SyWkfRecordDetailDao");
 		int numOfDtl = recordDtlDao.selectTotal(recordDtlInfo);
 		// 补充明细业务数据
 		SyWkfRecordDetailBean recordDetail = new SyWkfRecordDetailBean();
 		String detailId = StringUtils.getUUID();
 		wkfInfo.setRecordDetailId(detailId);
-		recordDetail.setSrdDetailId(detailId);// 记录明细编号
-		recordDetail.setSrdRecordId(schedule.getSwsRecordId());// 记录编号
-		recordDetail.setSrdScheduleId(schedule.getSwsScheduleId());// 待办编号
+		recordDetail.setSrdDetailUid(detailId);// 记录明细编号
+		recordDetail.setSrdWkfNbr(schedule.getSwsWkfNbr());// 记录编号
+		recordDetail.setSrdScheduleCid(schedule.getSwsScheduleCid());// 待办编号
 		recordDetail.setSrdDetailSeq(numOfDtl + 1);// 序号
 		recordDetail.setSrdDetailTime(new Timestamp(System.currentTimeMillis()));// 记录时间
-		recordDetail.setSrdNodeId(schedule.getSwsScheduleNodeId());// 执行结点编号
+		recordDetail.setSrdNodeCid(schedule.getSwsScheduleNodeCid());// 执行结点编号
 		recordDetail.setSrdNodeName(schedule.getSwsScheduleNodeName());// 执行结点名称
-		recordDetail.setSrdUserId(wkfInfo.getUserId());// 执行人用户号
+		recordDetail.setSrdUserCid(wkfInfo.getUserId());// 执行人用户号
 		recordDetail.setSrdLoginName(wkfInfo.getLoginName());// 执行人登录名
 		recordDetail.setSrdEventType(node.getSwnEventType());// 事件类型
 		recordDetail.setSrdEventRule(node.getSwnEventRule());// 事件执行方式
@@ -149,21 +147,21 @@ public class SimpleStepImp implements IStep {
 			// 记录附加数据
 			if (StringUtils.isEmpty(wkfInfo.getExtData()) == false) {
 				SyWkfRecordDataBean recordData = new SyWkfRecordDataBean();
-				recordData.setSrtRecordId(schedule.getSwsRecordId());
-				recordData.setSrtDetailId(recordDetail.getSrdDetailId());
+				recordData.setSrtWkfNbr(schedule.getSwsWkfNbr());
+				recordData.setSrtDetailUid(recordDetail.getSrdDetailUid());
 				recordData.setSrtBusPkg(wkfInfo.getExtData());
 				SyWkfRecordDataDao recordDataDao = (SyWkfRecordDataDao) SpringContextUtil.getBean("SyWkfRecordDataDao");
 				recordDataDao.insert(recordData);
 			}
 		} else {
-			throw new BusException("不支持的数据记录方式");
+			throw new AppException("不支持的数据记录方式");
 		}
 		// 插入明细
-		recordDetail.setSrdRecordStatus(WKFConstants.SRD_RECORD_STATUS_FINISH);// 执行后状态=完成
+		recordDetail.setSrdState(WKFConstants.SRD_STATE_FINISH);// 执行后状态=完成
 		recordDtlDao.insert(recordDetail);
 
 		// 更新待办
-		schedule.setSwsScheduleStatus(WKFConstants.SWS_SCHEDULE_STATUS_FINISH);// 状态= 完成
+		schedule.setSwsState(WKFConstants.SWS_STATE_FINISH);// 状态= 完成
 		scheduleDao.update(schedule);
 
 		// 路由与分支处理
@@ -177,13 +175,13 @@ public class SimpleStepImp implements IStep {
 		// 更新流程执行执行记录
 		String recordStatus = routeResult.getRecordStatus();
 		if (StringUtils.isEmpty(recordStatus)) {
-			throw new BusException("执行记录状态不能为空");
+			throw new AppException("执行记录状态不能为空");
 		}
-		record.setSrcRecordStatus(recordStatus);
+		record.setSrcState(recordStatus);
 		recordDao.update(record);
-		if (WKFConstants.SRC_RECORD_STATUS_FINISH.equals(recordStatus)) {
+		if (WKFConstants.SRC_STATE_FINISH.equals(recordStatus)) {
 			// 更新其它分支待办状态=关闭
-			scheduleDao.closeOtherSchedule(record.getSrcRecordId(), scheduleId);
+			scheduleDao.closeOtherSchedule(record.getSrcWkfNbr(), scheduleId);
 		} else {
 			// 插入待办
 			List<SyWkfScheduleBean> nextSchedules = routeResult.getNextSchedules();
@@ -192,15 +190,15 @@ public class SimpleStepImp implements IStep {
 
 				// 如果下一结点是自动执行，执行nextStep
 				for (SyWkfScheduleBean nextSchedule : nextSchedules) {
-					SyWkfNodeBean nextNode = wkfInfo.getNodes().get(nextSchedule.getSwsScheduleNodeId());
+					SyWkfNodeBean nextNode = wkfInfo.getNodes().get(nextSchedule.getSwsScheduleNodeCid());
 					if (null == nextNode) {
-						throw new BusException("获取待办结点信息结果为空");
+						throw new AppException("获取待办结点信息结果为空");
 					}
 					if (WKFConstants.SWN_IS_AUTO_YES.equals(nextNode.getSwnIsAuto())) {
 						String checkFlag = define.getSwdCheckFlag();
 						if (WKFConstants.SWD_CHECK_FLAG_YES.equals(checkFlag)) {
 							// 如果流程需要签收
-							Alice.getInstance().getCheckWorker().check(record.getSrcRecordId(), nextSchedule.getSwsScheduleId(), "Alice",
+							Alice.getInstance().getCheckWorker().check(record.getSrcWkfNbr(), nextSchedule.getSwsScheduleCid(), "Alice",
 									"Alice");
 							wkfInfo.setUserId("Alice");
 							wkfInfo.setLoginName("Alice");

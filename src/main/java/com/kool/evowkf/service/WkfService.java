@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.kool.core.context.ContextHolder;
 import com.kool.core.context.LoginInfo;
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.evowkf.api.IEvoWkfApi;
 import com.kool.evowkf.api.SimpleApiImp;
 import com.kool.evowkf.bean.io.SYAPPROVEXBean;
@@ -59,7 +58,7 @@ public class WkfService {
 	 * @throws AppException
 	 * @throws BusException
 	 */
-	public void approve(SYAPPROVEXBean approveInfo) throws BusException, AppException {
+	public void approve(SYAPPROVEXBean approveInfo) throws AppException {
 		String recordId = approveInfo.getRecordId();
 		String approveFlag = approveInfo.getApproveFlag();
 		String scheduleId = approveInfo.getScheduleId();
@@ -85,7 +84,7 @@ public class WkfService {
 	 * @param checkInfo
 	 * @throws BusException
 	 */
-	public void check(SYCHECKXBean checkInfo) throws BusException {
+	public void check(SYCHECKXBean checkInfo) throws AppException {
 		String recordId = checkInfo.getRecordId();
 		String scheduleId = checkInfo.getScheduleId();
 		LoginInfo loginInfo = ContextHolder.getReqContext().getLoginInfo();

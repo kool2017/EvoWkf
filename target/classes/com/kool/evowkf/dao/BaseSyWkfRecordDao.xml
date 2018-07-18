@@ -3,45 +3,45 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfRecordDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordBean">
-		<id column="SRC_RECORD_ID" property="srcRecordId" />
+		<id column="SRC_WKF_NBR" property="srcWkfNbr" />
 		<result column="SRC_TIME_BEGIN" property="srcTimeBegin" />
 		<result column="SRC_TIME_END" property="srcTimeEnd" />
 		<result column="SRC_WKF_CODE" property="srcWkfCode" />
-		<result column="SRC_ENTITY_ID" property="srcEntityId" />
+		<result column="SRC_ENTITY_CID" property="srcEntityCid" />
 		<result column="SRC_BUSINESS_ID" property="srcBusinessId" />
 		<result column="SRC_BUSINESS_TYPE" property="srcBusinessType" />
 		<result column="SRC_NODE_HEAD" property="srcNodeHead" />
 		<result column="SRC_NODE_HEAD_NAME" property="srcNodeHeadName" />
-		<result column="SRC_START_USER_ID" property="srcStartUserId" />
+		<result column="SRC_START_USER_CID" property="srcStartUserCid" />
 		<result column="SRC_START_LOGIN_NAME" property="srcStartLoginName" />
-		<result column="SRC_END_USER_ID" property="srcEndUserId" />
+		<result column="SRC_END_USER_CID" property="srcEndUserCid" />
 		<result column="SRC_END_LOGIN_NAME" property="srcEndLoginName" />
 		<result column="SRC_DESCRIPTION" property="srcDescription" />
-		<result column="SRC_RECORD_STATUS" property="srcRecordStatus" />
+		<result column="SRC_STATE" property="srcState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SRC_RECORD_ID, 			
+			SRC_WKF_NBR, 			
 			SRC_TIME_BEGIN, 			
 			SRC_TIME_END, 			
 			SRC_WKF_CODE, 			
-			SRC_ENTITY_ID, 			
+			SRC_ENTITY_CID, 			
 			SRC_BUSINESS_ID, 			
 			SRC_BUSINESS_TYPE, 			
 			SRC_NODE_HEAD, 			
 			SRC_NODE_HEAD_NAME, 			
-			SRC_START_USER_ID, 			
+			SRC_START_USER_CID, 			
 			SRC_START_LOGIN_NAME, 			
-			SRC_END_USER_ID, 			
+			SRC_END_USER_CID, 			
 			SRC_END_LOGIN_NAME, 			
 			SRC_DESCRIPTION, 			
-			SRC_RECORD_STATUS			
+			SRC_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SRC_RECORD_ID
+		SRC_WKF_NBR
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfRecordBean"
@@ -49,16 +49,16 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_RECORD WHERE 1=1 
-		<if test="srcRecordId != null and srcRecordId != ''">
-			AND SRC_RECORD_ID = #{srcRecordId}
+		<if test="srcWkfNbr != null and srcWkfNbr != ''">
+			AND SRC_WKF_NBR = #{srcWkfNbr}
 		</if>
 		
 		
 		<if test="srcWkfCode != null and srcWkfCode != ''">
 			AND SRC_WKF_CODE = #{srcWkfCode}
 		</if>
-		<if test="srcEntityId != null and srcEntityId != ''">
-			AND SRC_ENTITY_ID = #{srcEntityId}
+		<if test="srcEntityCid != null and srcEntityCid != ''">
+			AND SRC_ENTITY_CID = #{srcEntityCid}
 		</if>
 		<if test="srcBusinessId != null and srcBusinessId != ''">
 			AND SRC_BUSINESS_ID = #{srcBusinessId}
@@ -72,14 +72,14 @@
 		<if test="srcNodeHeadName != null and srcNodeHeadName != ''">
 			AND SRC_NODE_HEAD_NAME = #{srcNodeHeadName}
 		</if>
-		<if test="srcStartUserId != null and srcStartUserId != ''">
-			AND SRC_START_USER_ID = #{srcStartUserId}
+		<if test="srcStartUserCid != null and srcStartUserCid != ''">
+			AND SRC_START_USER_CID = #{srcStartUserCid}
 		</if>
 		<if test="srcStartLoginName != null and srcStartLoginName != ''">
 			AND SRC_START_LOGIN_NAME = #{srcStartLoginName}
 		</if>
-		<if test="srcEndUserId != null and srcEndUserId != ''">
-			AND SRC_END_USER_ID = #{srcEndUserId}
+		<if test="srcEndUserCid != null and srcEndUserCid != ''">
+			AND SRC_END_USER_CID = #{srcEndUserCid}
 		</if>
 		<if test="srcEndLoginName != null and srcEndLoginName != ''">
 			AND SRC_END_LOGIN_NAME = #{srcEndLoginName}
@@ -87,8 +87,8 @@
 		<if test="srcDescription != null and srcDescription != ''">
 			AND SRC_DESCRIPTION = #{srcDescription}
 		</if>
-		<if test="srcRecordStatus != null and srcRecordStatus != ''">
-			AND SRC_RECORD_STATUS = #{srcRecordStatus}
+		<if test="srcState != null and srcState != ''">
+			AND SRC_STATE = #{srcState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -100,7 +100,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_RECORD
 		WHERE 
-		SRC_RECORD_ID = #{srcRecordId}
+		SRC_WKF_NBR = #{srcWkfNbr}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -108,22 +108,22 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfRecordBean">
 		DELETE FROM SY_WKF_RECORD
 		WHERE
-		SRC_RECORD_ID = #{srcRecordId}
+		SRC_WKF_NBR = #{srcWkfNbr}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfRecordBean">
 		DELETE FROM SY_WKF_RECORD
 		WHERE 1=1 
-		<if test="srcRecordId != null and srcRecordId != ''">
-			AND SRC_RECORD_ID = #{srcRecordId}
+		<if test="srcWkfNbr != null and srcWkfNbr != ''">
+			AND SRC_WKF_NBR = #{srcWkfNbr}
 		</if>
 		
 		
 		<if test="srcWkfCode != null and srcWkfCode != ''">
 			AND SRC_WKF_CODE = #{srcWkfCode}
 		</if>
-		<if test="srcEntityId != null and srcEntityId != ''">
-			AND SRC_ENTITY_ID = #{srcEntityId}
+		<if test="srcEntityCid != null and srcEntityCid != ''">
+			AND SRC_ENTITY_CID = #{srcEntityCid}
 		</if>
 		<if test="srcBusinessId != null and srcBusinessId != ''">
 			AND SRC_BUSINESS_ID = #{srcBusinessId}
@@ -137,14 +137,14 @@
 		<if test="srcNodeHeadName != null and srcNodeHeadName != ''">
 			AND SRC_NODE_HEAD_NAME = #{srcNodeHeadName}
 		</if>
-		<if test="srcStartUserId != null and srcStartUserId != ''">
-			AND SRC_START_USER_ID = #{srcStartUserId}
+		<if test="srcStartUserCid != null and srcStartUserCid != ''">
+			AND SRC_START_USER_CID = #{srcStartUserCid}
 		</if>
 		<if test="srcStartLoginName != null and srcStartLoginName != ''">
 			AND SRC_START_LOGIN_NAME = #{srcStartLoginName}
 		</if>
-		<if test="srcEndUserId != null and srcEndUserId != ''">
-			AND SRC_END_USER_ID = #{srcEndUserId}
+		<if test="srcEndUserCid != null and srcEndUserCid != ''">
+			AND SRC_END_USER_CID = #{srcEndUserCid}
 		</if>
 		<if test="srcEndLoginName != null and srcEndLoginName != ''">
 			AND SRC_END_LOGIN_NAME = #{srcEndLoginName}
@@ -152,16 +152,16 @@
 		<if test="srcDescription != null and srcDescription != ''">
 			AND SRC_DESCRIPTION = #{srcDescription}
 		</if>
-		<if test="srcRecordStatus != null and srcRecordStatus != ''">
-			AND SRC_RECORD_STATUS = #{srcRecordStatus}
+		<if test="srcState != null and srcState != ''">
+			AND SRC_STATE = #{srcState}
 		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfRecordBean">
 		INSERT INTO SY_WKF_RECORD
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="srcRecordId != null">
-				SRC_RECORD_ID,
+			<if test="srcWkfNbr != null">
+				SRC_WKF_NBR,
 			</if>		
 			<if test="srcTimeBegin != null">
 				SRC_TIME_BEGIN,
@@ -172,8 +172,8 @@
 			<if test="srcWkfCode != null">
 				SRC_WKF_CODE,
 			</if>		
-			<if test="srcEntityId != null">
-				SRC_ENTITY_ID,
+			<if test="srcEntityCid != null">
+				SRC_ENTITY_CID,
 			</if>		
 			<if test="srcBusinessId != null">
 				SRC_BUSINESS_ID,
@@ -187,14 +187,14 @@
 			<if test="srcNodeHeadName != null">
 				SRC_NODE_HEAD_NAME,
 			</if>		
-			<if test="srcStartUserId != null">
-				SRC_START_USER_ID,
+			<if test="srcStartUserCid != null">
+				SRC_START_USER_CID,
 			</if>		
 			<if test="srcStartLoginName != null">
 				SRC_START_LOGIN_NAME,
 			</if>		
-			<if test="srcEndUserId != null">
-				SRC_END_USER_ID,
+			<if test="srcEndUserCid != null">
+				SRC_END_USER_CID,
 			</if>		
 			<if test="srcEndLoginName != null">
 				SRC_END_LOGIN_NAME,
@@ -202,13 +202,13 @@
 			<if test="srcDescription != null">
 				SRC_DESCRIPTION,
 			</if>		
-			<if test="srcRecordStatus != null">
-				SRC_RECORD_STATUS,
+			<if test="srcState != null">
+				SRC_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="srcRecordId != null">
-				#{srcRecordId},
+			<if test="srcWkfNbr != null">
+				#{srcWkfNbr},
 			</if>	
 			<if test="srcTimeBegin != null">
 				#{srcTimeBegin},
@@ -219,8 +219,8 @@
 			<if test="srcWkfCode != null">
 				#{srcWkfCode},
 			</if>	
-			<if test="srcEntityId != null">
-				#{srcEntityId},
+			<if test="srcEntityCid != null">
+				#{srcEntityCid},
 			</if>	
 			<if test="srcBusinessId != null">
 				#{srcBusinessId},
@@ -234,14 +234,14 @@
 			<if test="srcNodeHeadName != null">
 				#{srcNodeHeadName},
 			</if>	
-			<if test="srcStartUserId != null">
-				#{srcStartUserId},
+			<if test="srcStartUserCid != null">
+				#{srcStartUserCid},
 			</if>	
 			<if test="srcStartLoginName != null">
 				#{srcStartLoginName},
 			</if>	
-			<if test="srcEndUserId != null">
-				#{srcEndUserId},
+			<if test="srcEndUserCid != null">
+				#{srcEndUserCid},
 			</if>	
 			<if test="srcEndLoginName != null">
 				#{srcEndLoginName},
@@ -249,8 +249,8 @@
 			<if test="srcDescription != null">
 				#{srcDescription},
 			</if>	
-			<if test="srcRecordStatus != null">
-				#{srcRecordStatus},
+			<if test="srcState != null">
+				#{srcState},
 			</if>	
 		</trim>
 	</insert>
@@ -258,13 +258,13 @@
 	<update id="updates">
 		UPDATE SY_WKF_RECORD
 		<set>
-			<if test="value.isInitSrcRecordId">
+			<if test="value.isInitSrcWkfNbr">
 				<choose>
-					<when test="value.srcRecordId != null">
-						SRC_RECORD_ID = #{value.srcRecordId},
+					<when test="value.srcWkfNbr != null">
+						SRC_WKF_NBR = #{value.srcWkfNbr},
 					</when>
 					<otherwise>
-						SRC_RECORD_ID = NULL,
+						SRC_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -298,13 +298,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrcEntityId">
+			<if test="value.isInitSrcEntityCid">
 				<choose>
-					<when test="value.srcEntityId != null">
-						SRC_ENTITY_ID = #{value.srcEntityId},
+					<when test="value.srcEntityCid != null">
+						SRC_ENTITY_CID = #{value.srcEntityCid},
 					</when>
 					<otherwise>
-						SRC_ENTITY_ID = NULL,
+						SRC_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -348,13 +348,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrcStartUserId">
+			<if test="value.isInitSrcStartUserCid">
 				<choose>
-					<when test="value.srcStartUserId != null">
-						SRC_START_USER_ID = #{value.srcStartUserId},
+					<when test="value.srcStartUserCid != null">
+						SRC_START_USER_CID = #{value.srcStartUserCid},
 					</when>
 					<otherwise>
-						SRC_START_USER_ID = NULL,
+						SRC_START_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -368,13 +368,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrcEndUserId">
+			<if test="value.isInitSrcEndUserCid">
 				<choose>
-					<when test="value.srcEndUserId != null">
-						SRC_END_USER_ID = #{value.srcEndUserId},
+					<when test="value.srcEndUserCid != null">
+						SRC_END_USER_CID = #{value.srcEndUserCid},
 					</when>
 					<otherwise>
-						SRC_END_USER_ID = NULL,
+						SRC_END_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -398,28 +398,28 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrcRecordStatus">
+			<if test="value.isInitSrcState">
 				<choose>
-					<when test="value.srcRecordStatus != null">
-						SRC_RECORD_STATUS = #{value.srcRecordStatus},
+					<when test="value.srcState != null">
+						SRC_STATE = #{value.srcState},
 					</when>
 					<otherwise>
-						SRC_RECORD_STATUS = NULL,
+						SRC_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.srcRecordId != null and condition.srcRecordId != ''">
-			AND SRC_RECORD_ID =	#{condition.srcRecordId} 
+		<if test="condition.srcWkfNbr != null and condition.srcWkfNbr != ''">
+			AND SRC_WKF_NBR =	#{condition.srcWkfNbr} 
 		</if>
 		
 		
 		<if test="condition.srcWkfCode != null and condition.srcWkfCode != ''">
 			AND SRC_WKF_CODE =	#{condition.srcWkfCode} 
 		</if>
-		<if test="condition.srcEntityId != null and condition.srcEntityId != ''">
-			AND SRC_ENTITY_ID =	#{condition.srcEntityId} 
+		<if test="condition.srcEntityCid != null and condition.srcEntityCid != ''">
+			AND SRC_ENTITY_CID =	#{condition.srcEntityCid} 
 		</if>
 		<if test="condition.srcBusinessId != null and condition.srcBusinessId != ''">
 			AND SRC_BUSINESS_ID =	#{condition.srcBusinessId} 
@@ -433,14 +433,14 @@
 		<if test="condition.srcNodeHeadName != null and condition.srcNodeHeadName != ''">
 			AND SRC_NODE_HEAD_NAME =	#{condition.srcNodeHeadName} 
 		</if>
-		<if test="condition.srcStartUserId != null and condition.srcStartUserId != ''">
-			AND SRC_START_USER_ID =	#{condition.srcStartUserId} 
+		<if test="condition.srcStartUserCid != null and condition.srcStartUserCid != ''">
+			AND SRC_START_USER_CID =	#{condition.srcStartUserCid} 
 		</if>
 		<if test="condition.srcStartLoginName != null and condition.srcStartLoginName != ''">
 			AND SRC_START_LOGIN_NAME =	#{condition.srcStartLoginName} 
 		</if>
-		<if test="condition.srcEndUserId != null and condition.srcEndUserId != ''">
-			AND SRC_END_USER_ID =	#{condition.srcEndUserId} 
+		<if test="condition.srcEndUserCid != null and condition.srcEndUserCid != ''">
+			AND SRC_END_USER_CID =	#{condition.srcEndUserCid} 
 		</if>
 		<if test="condition.srcEndLoginName != null and condition.srcEndLoginName != ''">
 			AND SRC_END_LOGIN_NAME =	#{condition.srcEndLoginName} 
@@ -448,21 +448,21 @@
 		<if test="condition.srcDescription != null and condition.srcDescription != ''">
 			AND SRC_DESCRIPTION =	#{condition.srcDescription} 
 		</if>
-		<if test="condition.srcRecordStatus != null and condition.srcRecordStatus != ''">
-			AND SRC_RECORD_STATUS =	#{condition.srcRecordStatus} 
+		<if test="condition.srcState != null and condition.srcState != ''">
+			AND SRC_STATE =	#{condition.srcState} 
 		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfRecordBean">
 		UPDATE SY_WKF_RECORD
 		<set>
-			<if test="isInitSrcRecordId">
+			<if test="isInitSrcWkfNbr">
 				<choose>
-					<when test="srcRecordId != null">
-						SRC_RECORD_ID = #{srcRecordId},
+					<when test="srcWkfNbr != null">
+						SRC_WKF_NBR = #{srcWkfNbr},
 					</when>
 					<otherwise>
-						SRC_RECORD_ID = NULL,
+						SRC_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -496,13 +496,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrcEntityId">
+			<if test="isInitSrcEntityCid">
 				<choose>
-					<when test="srcEntityId != null">
-						SRC_ENTITY_ID = #{srcEntityId},
+					<when test="srcEntityCid != null">
+						SRC_ENTITY_CID = #{srcEntityCid},
 					</when>
 					<otherwise>
-						SRC_ENTITY_ID = NULL,
+						SRC_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -546,13 +546,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrcStartUserId">
+			<if test="isInitSrcStartUserCid">
 				<choose>
-					<when test="srcStartUserId != null">
-						SRC_START_USER_ID = #{srcStartUserId},
+					<when test="srcStartUserCid != null">
+						SRC_START_USER_CID = #{srcStartUserCid},
 					</when>
 					<otherwise>
-						SRC_START_USER_ID = NULL,
+						SRC_START_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -566,13 +566,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrcEndUserId">
+			<if test="isInitSrcEndUserCid">
 				<choose>
-					<when test="srcEndUserId != null">
-						SRC_END_USER_ID = #{srcEndUserId},
+					<when test="srcEndUserCid != null">
+						SRC_END_USER_CID = #{srcEndUserCid},
 					</when>
 					<otherwise>
-						SRC_END_USER_ID = NULL,
+						SRC_END_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -596,19 +596,19 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrcRecordStatus">
+			<if test="isInitSrcState">
 				<choose>
-					<when test="srcRecordStatus != null">
-						SRC_RECORD_STATUS = #{srcRecordStatus},
+					<when test="srcState != null">
+						SRC_STATE = #{srcState},
 					</when>
 					<otherwise>
-						SRC_RECORD_STATUS = NULL,
+						SRC_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 
-		SRC_RECORD_ID = #{srcRecordId}
+		SRC_WKF_NBR = #{srcWkfNbr}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -617,16 +617,16 @@
 		FROM
 		SY_WKF_RECORD WHERE 1=1
 		<if test="syWkfRecord!=null">
-			<if test="syWkfRecord.srcRecordId != null and syWkfRecord.srcRecordId != ''">
-				AND SRC_RECORD_ID = #{syWkfRecord.srcRecordId}
+			<if test="syWkfRecord.srcWkfNbr != null and syWkfRecord.srcWkfNbr != ''">
+				AND SRC_WKF_NBR = #{syWkfRecord.srcWkfNbr}
 			</if>
 			
 			
 			<if test="syWkfRecord.srcWkfCode != null and syWkfRecord.srcWkfCode != ''">
 				AND SRC_WKF_CODE = #{syWkfRecord.srcWkfCode}
 			</if>
-			<if test="syWkfRecord.srcEntityId != null and syWkfRecord.srcEntityId != ''">
-				AND SRC_ENTITY_ID = #{syWkfRecord.srcEntityId}
+			<if test="syWkfRecord.srcEntityCid != null and syWkfRecord.srcEntityCid != ''">
+				AND SRC_ENTITY_CID = #{syWkfRecord.srcEntityCid}
 			</if>
 			<if test="syWkfRecord.srcBusinessId != null and syWkfRecord.srcBusinessId != ''">
 				AND SRC_BUSINESS_ID = #{syWkfRecord.srcBusinessId}
@@ -640,14 +640,14 @@
 			<if test="syWkfRecord.srcNodeHeadName != null and syWkfRecord.srcNodeHeadName != ''">
 				AND SRC_NODE_HEAD_NAME = #{syWkfRecord.srcNodeHeadName}
 			</if>
-			<if test="syWkfRecord.srcStartUserId != null and syWkfRecord.srcStartUserId != ''">
-				AND SRC_START_USER_ID = #{syWkfRecord.srcStartUserId}
+			<if test="syWkfRecord.srcStartUserCid != null and syWkfRecord.srcStartUserCid != ''">
+				AND SRC_START_USER_CID = #{syWkfRecord.srcStartUserCid}
 			</if>
 			<if test="syWkfRecord.srcStartLoginName != null and syWkfRecord.srcStartLoginName != ''">
 				AND SRC_START_LOGIN_NAME = #{syWkfRecord.srcStartLoginName}
 			</if>
-			<if test="syWkfRecord.srcEndUserId != null and syWkfRecord.srcEndUserId != ''">
-				AND SRC_END_USER_ID = #{syWkfRecord.srcEndUserId}
+			<if test="syWkfRecord.srcEndUserCid != null and syWkfRecord.srcEndUserCid != ''">
+				AND SRC_END_USER_CID = #{syWkfRecord.srcEndUserCid}
 			</if>
 			<if test="syWkfRecord.srcEndLoginName != null and syWkfRecord.srcEndLoginName != ''">
 				AND SRC_END_LOGIN_NAME = #{syWkfRecord.srcEndLoginName}
@@ -655,8 +655,8 @@
 			<if test="syWkfRecord.srcDescription != null and syWkfRecord.srcDescription != ''">
 				AND SRC_DESCRIPTION = #{syWkfRecord.srcDescription}
 			</if>
-			<if test="syWkfRecord.srcRecordStatus != null and syWkfRecord.srcRecordStatus != ''">
-				AND SRC_RECORD_STATUS = #{syWkfRecord.srcRecordStatus}
+			<if test="syWkfRecord.srcState != null and syWkfRecord.srcState != ''">
+				AND SRC_STATE = #{syWkfRecord.srcState}
 			</if>
 		</if>
 		ORDER BY
@@ -668,16 +668,16 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_RECORD
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="srcRecordId != null and srcRecordId != ''">
-				AND SRC_RECORD_ID = #{srcRecordId}
+			<if test="srcWkfNbr != null and srcWkfNbr != ''">
+				AND SRC_WKF_NBR = #{srcWkfNbr}
 			</if>
 			
 			
 			<if test="srcWkfCode != null and srcWkfCode != ''">
 				AND SRC_WKF_CODE = #{srcWkfCode}
 			</if>
-			<if test="srcEntityId != null and srcEntityId != ''">
-				AND SRC_ENTITY_ID = #{srcEntityId}
+			<if test="srcEntityCid != null and srcEntityCid != ''">
+				AND SRC_ENTITY_CID = #{srcEntityCid}
 			</if>
 			<if test="srcBusinessId != null and srcBusinessId != ''">
 				AND SRC_BUSINESS_ID = #{srcBusinessId}
@@ -691,14 +691,14 @@
 			<if test="srcNodeHeadName != null and srcNodeHeadName != ''">
 				AND SRC_NODE_HEAD_NAME = #{srcNodeHeadName}
 			</if>
-			<if test="srcStartUserId != null and srcStartUserId != ''">
-				AND SRC_START_USER_ID = #{srcStartUserId}
+			<if test="srcStartUserCid != null and srcStartUserCid != ''">
+				AND SRC_START_USER_CID = #{srcStartUserCid}
 			</if>
 			<if test="srcStartLoginName != null and srcStartLoginName != ''">
 				AND SRC_START_LOGIN_NAME = #{srcStartLoginName}
 			</if>
-			<if test="srcEndUserId != null and srcEndUserId != ''">
-				AND SRC_END_USER_ID = #{srcEndUserId}
+			<if test="srcEndUserCid != null and srcEndUserCid != ''">
+				AND SRC_END_USER_CID = #{srcEndUserCid}
 			</if>
 			<if test="srcEndLoginName != null and srcEndLoginName != ''">
 				AND SRC_END_LOGIN_NAME = #{srcEndLoginName}
@@ -706,8 +706,8 @@
 			<if test="srcDescription != null and srcDescription != ''">
 				AND SRC_DESCRIPTION = #{srcDescription}
 			</if>
-			<if test="srcRecordStatus != null and srcRecordStatus != ''">
-				AND SRC_RECORD_STATUS = #{srcRecordStatus}
+			<if test="srcState != null and srcState != ''">
+				AND SRC_STATE = #{srcState}
 			</if>
 		</if>
 	</select>
@@ -719,21 +719,21 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.srcRecordId},		
+			#{item.srcWkfNbr},		
 			#{item.srcTimeBegin},		
 			#{item.srcTimeEnd},		
 			#{item.srcWkfCode},		
-			#{item.srcEntityId},		
+			#{item.srcEntityCid},		
 			#{item.srcBusinessId},		
 			#{item.srcBusinessType},		
 			#{item.srcNodeHead},		
 			#{item.srcNodeHeadName},		
-			#{item.srcStartUserId},		
+			#{item.srcStartUserCid},		
 			#{item.srcStartLoginName},		
-			#{item.srcEndUserId},		
+			#{item.srcEndUserCid},		
 			#{item.srcEndLoginName},		
 			#{item.srcDescription},		
-			#{item.srcRecordStatus},		
+			#{item.srcState},		
 		</trim>
 		</foreach>
 	</insert>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyNtfRecordDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyNtfRecordBean">
+		<id column="SNR_NTF_UID" property="snrNtfUid" />
+		<result column="SNR_TOPIC" property="snrTopic" />
+		<result column="SNR_CONTENT" property="snrContent" />
+		<result column="SNR_TYPE" property="snrType" />
+		<result column="SNR_SENDER" property="snrSender" />
+		<result column="SNR_SENDER_NAME" property="snrSenderName" />
+		<result column="SNR_RECEIVER" property="snrReceiver" />
+		<result column="SNR_RECEIVER_NAME" property="snrReceiverName" />
+		<result column="SNR_SEND_TIME" property="snrSendTime" />
+		<result column="SNR_CHECK_TIME" property="snrCheckTime" />
+		<result column="SNR_STATE" property="snrState" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SNR_NTF_UID, 			
+			SNR_TOPIC, 			
+			SNR_CONTENT, 			
+			SNR_TYPE, 			
+			SNR_SENDER, 			
+			SNR_SENDER_NAME, 			
+			SNR_RECEIVER, 			
+			SNR_RECEIVER_NAME, 			
+			SNR_SEND_TIME, 			
+			SNR_CHECK_TIME, 			
+			SNR_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SNR_NTF_UID
+	</sql>
+</mapper>  

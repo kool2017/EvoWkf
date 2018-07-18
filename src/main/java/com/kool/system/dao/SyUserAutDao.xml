@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyUserAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserAutBean">
+		<id column="SUA_USER_CID" property="suaUserCid" />
+		<id column="SUA_AUT_CODE" property="suaAutCode" />
+		<result column="SUA_CMT" property="suaCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUA_USER_CID, 			
+			SUA_AUT_CODE, 			
+			SUA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUA_USER_CID, SUA_AUT_CODE
+	</sql>
+
+</mapper>  

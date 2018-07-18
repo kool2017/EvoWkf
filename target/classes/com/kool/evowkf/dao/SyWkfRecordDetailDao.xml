@@ -3,14 +3,14 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfRecordDetailDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordDetailBean">
-		<id column="SRD_DETAIL_ID" property="srdDetailId" />
-		<result column="SRD_RECORD_ID" property="srdRecordId" />
-		<result column="SRD_SCHEDULE_ID" property="srdScheduleId" />
+		<id column="SRD_DETAIL_UID" property="srdDetailUid" />
+		<result column="SRD_WKF_NBR" property="srdWkfNbr" />
+		<result column="SRD_SCHEDULE_CID" property="srdScheduleCid" />
 		<result column="SRD_DETAIL_SEQ" property="srdDetailSeq" />
 		<result column="SRD_DETAIL_TIME" property="srdDetailTime" />
-		<result column="SRD_NODE_ID" property="srdNodeId" />
+		<result column="SRD_NODE_CID" property="srdNodeCid" />
 		<result column="SRD_NODE_NAME" property="srdNodeName" />
-		<result column="SRD_USER_ID" property="srdUserId" />
+		<result column="SRD_USER_CID" property="srdUserCid" />
 		<result column="SRD_LOGIN_NAME" property="srdLoginName" />
 		<result column="SRD_EVENT_TYPE" property="srdEventType" />
 		<result column="SRD_EVENT_RULE" property="srdEventRule" />
@@ -26,18 +26,18 @@
 		<result column="SRD_BUSINESS_FIELD8" property="srdBusinessField8" />
 		<result column="SRD_BUSINESS_FIELD9" property="srdBusinessField9" />
 		<result column="SRD_BUSINESS_FIELD10" property="srdBusinessField10" />
-		<result column="SRD_RECORD_STATUS" property="srdRecordStatus" />
+		<result column="SRD_STATE" property="srdState" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SRD_DETAIL_ID, 			
-			SRD_RECORD_ID, 			
-			SRD_SCHEDULE_ID, 			
+			SRD_DETAIL_UID, 			
+			SRD_WKF_NBR, 			
+			SRD_SCHEDULE_CID, 			
 			SRD_DETAIL_SEQ, 			
 			SRD_DETAIL_TIME, 			
-			SRD_NODE_ID, 			
+			SRD_NODE_CID, 			
 			SRD_NODE_NAME, 			
-			SRD_USER_ID, 			
+			SRD_USER_CID, 			
 			SRD_LOGIN_NAME, 			
 			SRD_EVENT_TYPE, 			
 			SRD_EVENT_RULE, 			
@@ -53,10 +53,10 @@
 			SRD_BUSINESS_FIELD8, 			
 			SRD_BUSINESS_FIELD9, 			
 			SRD_BUSINESS_FIELD10, 			
-			SRD_RECORD_STATUS			
+			SRD_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SRD_DETAIL_ID
+		SRD_DETAIL_UID
 	</sql>
 </mapper>  

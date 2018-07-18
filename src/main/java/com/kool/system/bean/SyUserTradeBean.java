@@ -4,17 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 import com.kool.core.base.BaseBean;
 
+/**
+ * @AUTHOR LUYU
+ */
 public class SyUserTradeBean extends BaseBean {
-	protected String sutTradeId;
-	protected boolean isInitSutTradeId;
+	protected String sutTradeUid;
+	protected boolean isInitSutTradeUid;
 	protected String sutTradeType;
 	protected boolean isInitSutTradeType;
 	protected java.sql.Timestamp sutTradeTime;
 	protected boolean isInitSutTradeTime;
-	protected String sutOprUserId;
-	protected boolean isInitSutOprUserId;
-	protected String sutOprLoginName;
-	protected boolean isInitSutOprLoginName;
+	protected String sutOprUserCid;
+	protected boolean isInitSutOprUserCid;
+	protected String sutOprName;
+	protected boolean isInitSutOprName;
 	protected String sutLoginName;
 	protected boolean isInitSutLoginName;
 	protected String sutPhone;
@@ -23,13 +26,19 @@ public class SyUserTradeBean extends BaseBean {
 	protected boolean isInitSutMail;
 	protected String sutFace;
 	protected boolean isInitSutFace;
-	protected String sutRecordId;
-	protected boolean isInitSutRecordId;
-	protected String sutTradeStatus;
-	protected boolean isInitSutTradeStatus;
+	protected String sutWkfNbr;
+	protected boolean isInitSutWkfNbr;
+	protected String sutHasKey;
+	protected boolean isInitSutHasKey;
+	protected String sutKeyUid;
+	protected boolean isInitSutKeyUid;
+	protected String sutStaffCid;
+	protected boolean isInitSutStaffCid;
+	protected String sutState;
+	protected boolean isInitSutState;
 
-	public boolean getIsInitSutTradeId() {
-		return this.isInitSutTradeId;
+	public boolean getIsInitSutTradeUid() {
+		return this.isInitSutTradeUid;
 	}
 
 	public boolean getIsInitSutTradeType() {
@@ -40,12 +49,12 @@ public class SyUserTradeBean extends BaseBean {
 		return this.isInitSutTradeTime;
 	}
 
-	public boolean getIsInitSutOprUserId() {
-		return this.isInitSutOprUserId;
+	public boolean getIsInitSutOprUserCid() {
+		return this.isInitSutOprUserCid;
 	}
 
-	public boolean getIsInitSutOprLoginName() {
-		return this.isInitSutOprLoginName;
+	public boolean getIsInitSutOprName() {
+		return this.isInitSutOprName;
 	}
 
 	public boolean getIsInitSutLoginName() {
@@ -64,21 +73,33 @@ public class SyUserTradeBean extends BaseBean {
 		return this.isInitSutFace;
 	}
 
-	public boolean getIsInitSutRecordId() {
-		return this.isInitSutRecordId;
+	public boolean getIsInitSutWkfNbr() {
+		return this.isInitSutWkfNbr;
 	}
 
-	public boolean getIsInitSutTradeStatus() {
-		return this.isInitSutTradeStatus;
+	public boolean getIsInitSutHasKey() {
+		return this.isInitSutHasKey;
 	}
 
-	public String getSutTradeId() {
-		return sutTradeId;
+	public boolean getIsInitSutKeyUid() {
+		return this.isInitSutKeyUid;
 	}
 
-	public void setSutTradeId(String sutTradeId) {
-		this.sutTradeId = sutTradeId;
-		this.isInitSutTradeId = true;
+	public boolean getIsInitSutStaffCid() {
+		return this.isInitSutStaffCid;
+	}
+
+	public boolean getIsInitSutState() {
+		return this.isInitSutState;
+	}
+
+	public String getSutTradeUid() {
+		return sutTradeUid;
+	}
+
+	public void setSutTradeUid(String sutTradeUid) {
+		this.sutTradeUid = sutTradeUid;
+		this.isInitSutTradeUid = true;
 	}
 
 	public String getSutTradeType() {
@@ -99,22 +120,22 @@ public class SyUserTradeBean extends BaseBean {
 		this.isInitSutTradeTime = true;
 	}
 
-	public String getSutOprUserId() {
-		return sutOprUserId;
+	public String getSutOprUserCid() {
+		return sutOprUserCid;
 	}
 
-	public void setSutOprUserId(String sutOprUserId) {
-		this.sutOprUserId = sutOprUserId;
-		this.isInitSutOprUserId = true;
+	public void setSutOprUserCid(String sutOprUserCid) {
+		this.sutOprUserCid = sutOprUserCid;
+		this.isInitSutOprUserCid = true;
 	}
 
-	public String getSutOprLoginName() {
-		return sutOprLoginName;
+	public String getSutOprName() {
+		return sutOprName;
 	}
 
-	public void setSutOprLoginName(String sutOprLoginName) {
-		this.sutOprLoginName = sutOprLoginName;
-		this.isInitSutOprLoginName = true;
+	public void setSutOprName(String sutOprName) {
+		this.sutOprName = sutOprName;
+		this.isInitSutOprName = true;
 	}
 
 	public String getSutLoginName() {
@@ -153,28 +174,55 @@ public class SyUserTradeBean extends BaseBean {
 		this.isInitSutFace = true;
 	}
 
-	public String getSutRecordId() {
-		return sutRecordId;
+	public String getSutWkfNbr() {
+		return sutWkfNbr;
 	}
 
-	public void setSutRecordId(String sutRecordId) {
-		this.sutRecordId = sutRecordId;
-		this.isInitSutRecordId = true;
+	public void setSutWkfNbr(String sutWkfNbr) {
+		this.sutWkfNbr = sutWkfNbr;
+		this.isInitSutWkfNbr = true;
 	}
 
-	public String getSutTradeStatus() {
-		return sutTradeStatus;
+	public String getSutHasKey() {
+		return sutHasKey;
 	}
 
-	public void setSutTradeStatus(String sutTradeStatus) {
-		this.sutTradeStatus = sutTradeStatus;
-		this.isInitSutTradeStatus = true;
+	public void setSutHasKey(String sutHasKey) {
+		this.sutHasKey = sutHasKey;
+		this.isInitSutHasKey = true;
+	}
+
+	public String getSutKeyUid() {
+		return sutKeyUid;
+	}
+
+	public void setSutKeyUid(String sutKeyUid) {
+		this.sutKeyUid = sutKeyUid;
+		this.isInitSutKeyUid = true;
+	}
+
+	public String getSutStaffCid() {
+		return sutStaffCid;
+	}
+
+	public void setSutStaffCid(String sutStaffCid) {
+		this.sutStaffCid = sutStaffCid;
+		this.isInitSutStaffCid = true;
+	}
+
+	public String getSutState() {
+		return sutState;
+	}
+
+	public void setSutState(String sutState) {
+		this.sutState = sutState;
+		this.isInitSutState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSutTradeId) {
-			map.put("sutTradeId", formatString(sutTradeId));
+		if (isInitSutTradeUid) {
+			map.put("sutTradeUid", formatString(sutTradeUid));
 		}
 		if (isInitSutTradeType) {
 			map.put("sutTradeType", formatString(sutTradeType));
@@ -182,11 +230,11 @@ public class SyUserTradeBean extends BaseBean {
 		if (isInitSutTradeTime) {
 			map.put("sutTradeTime", formatString(sutTradeTime));
 		}
-		if (isInitSutOprUserId) {
-			map.put("sutOprUserId", formatString(sutOprUserId));
+		if (isInitSutOprUserCid) {
+			map.put("sutOprUserCid", formatString(sutOprUserCid));
 		}
-		if (isInitSutOprLoginName) {
-			map.put("sutOprLoginName", formatString(sutOprLoginName));
+		if (isInitSutOprName) {
+			map.put("sutOprName", formatString(sutOprName));
 		}
 		if (isInitSutLoginName) {
 			map.put("sutLoginName", formatString(sutLoginName));
@@ -200,13 +248,44 @@ public class SyUserTradeBean extends BaseBean {
 		if (isInitSutFace) {
 			map.put("sutFace", formatString(sutFace));
 		}
-		if (isInitSutRecordId) {
-			map.put("sutRecordId", formatString(sutRecordId));
+		if (isInitSutWkfNbr) {
+			map.put("sutWkfNbr", formatString(sutWkfNbr));
 		}
-		if (isInitSutTradeStatus) {
-			map.put("sutTradeStatus", formatString(sutTradeStatus));
+		if (isInitSutHasKey) {
+			map.put("sutHasKey", formatString(sutHasKey));
+		}
+		if (isInitSutKeyUid) {
+			map.put("sutKeyUid", formatString(sutKeyUid));
+		}
+		if (isInitSutStaffCid) {
+			map.put("sutStaffCid", formatString(sutStaffCid));
+		}
+		if (isInitSutState) {
+			map.put("sutState", formatString(sutState));
 		}
 
 		return map;
+	}
+
+	public static SyUserTradeBean DBResultToBean(Map<String, Object> map) {
+		if (null == map) {
+			return null;
+		}
+		SyUserTradeBean reqDef = new SyUserTradeBean();
+		reqDef.setSutTradeUid((String) map.get("SUT_TRADE_UID"));
+		reqDef.setSutTradeType((String) map.get("SUT_TRADE_TYPE"));
+		reqDef.setSutTradeTime((java.sql.Timestamp) map.get("SUT_TRADE_TIME"));
+		reqDef.setSutOprUserCid((String) map.get("SUT_OPR_USER_CID"));
+		reqDef.setSutOprName((String) map.get("SUT_OPR_NAME"));
+		reqDef.setSutLoginName((String) map.get("SUT_LOGIN_NAME"));
+		reqDef.setSutPhone((String) map.get("SUT_PHONE"));
+		reqDef.setSutMail((String) map.get("SUT_MAIL"));
+		reqDef.setSutFace((String) map.get("SUT_FACE"));
+		reqDef.setSutWkfNbr((String) map.get("SUT_WKF_NBR"));
+		reqDef.setSutHasKey((String) map.get("SUT_HAS_KEY"));
+		reqDef.setSutKeyUid((String) map.get("SUT_KEY_UID"));
+		reqDef.setSutStaffCid((String) map.get("SUT_STAFF_CID"));
+		reqDef.setSutState((String) map.get("SUT_STATE"));
+		return reqDef;
 	}
 }

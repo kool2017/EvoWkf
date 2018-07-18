@@ -3,9 +3,9 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfCfgLogDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfCfgLogBean">
-		<id column="SCL_LOG_ID" property="sclLogId" />
+		<id column="SCL_LOG_UID" property="sclLogUid" />
 		<result column="SCL_LOG_TIME" property="sclLogTime" />
-		<result column="SCL_USER_ID" property="sclUserId" />
+		<result column="SCL_USER_CID" property="sclUserCid" />
 		<result column="SCL_LOGIN_NAME" property="sclLoginName" />
 		<result column="SCL_TABLE" property="sclTable" />
 		<result column="SCL_OPR_TYPE" property="sclOprType" />
@@ -15,18 +15,18 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SCL_LOG_ID, 			
-			SCL_LOG_TIME, 			
-			SCL_USER_ID, 			
-			SCL_LOGIN_NAME, 			
-			SCL_TABLE, 			
-			SCL_OPR_TYPE, 			
-			SCL_FIELD, 			
-			SCL_OLD_VALUE, 			
-			SCL_NEW_VALUE			
+		SCL_LOG_UID,
+		SCL_LOG_TIME,
+		SCL_USER_CID,
+		SCL_LOGIN_NAME,
+		SCL_TABLE,
+		SCL_OPR_TYPE,
+		SCL_FIELD,
+		SCL_OLD_VALUE,
+		SCL_NEW_VALUE
 	</sql>
-	
+
 	<sql id="Primary_Key_List">
-		SCL_LOG_ID
+		SCL_LOG_UID
 	</sql>
 </mapper>  

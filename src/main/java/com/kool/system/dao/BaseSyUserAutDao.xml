@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyUserAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserAutBean">
+		<id column="SUA_USER_CID" property="suaUserCid" />
+		<id column="SUA_AUT_CODE" property="suaAutCode" />
+		<result column="SUA_CMT" property="suaCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUA_USER_CID, 			
+			SUA_AUT_CODE, 			
+			SUA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUA_USER_CID, SUA_AUT_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyUserAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_AUT WHERE 1=1 
+		<if test="suaUserCid != null and suaUserCid != ''">
+			AND SUA_USER_CID = #{suaUserCid}
+		</if>
+		<if test="suaAutCode != null and suaAutCode != ''">
+			AND SUA_AUT_CODE = #{suaAutCode}
+		</if>
+		<if test="suaCmt != null and suaCmt != ''">
+			AND SUA_CMT = #{suaCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyUserAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_AUT
+		WHERE 
+		SUA_USER_CID = #{suaUserCid} AND 
+		SUA_AUT_CODE = #{suaAutCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyUserAutBean">
+		DELETE FROM SY_USER_AUT
+		WHERE
+		SUA_USER_CID = #{suaUserCid} AND 
+		SUA_AUT_CODE = #{suaAutCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyUserAutBean">
+		DELETE FROM SY_USER_AUT
+		WHERE 1=1 
+		<if test="suaUserCid != null and suaUserCid != ''">
+			AND SUA_USER_CID = #{suaUserCid}
+		</if>
+		<if test="suaAutCode != null and suaAutCode != ''">
+			AND SUA_AUT_CODE = #{suaAutCode}
+		</if>
+		<if test="suaCmt != null and suaCmt != ''">
+			AND SUA_CMT = #{suaCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyUserAutBean">
+		INSERT INTO SY_USER_AUT
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="suaUserCid != null">
+				SUA_USER_CID,
+			</if>		
+			<if test="suaAutCode != null">
+				SUA_AUT_CODE,
+			</if>		
+			<if test="suaCmt != null">
+				SUA_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="suaUserCid != null">
+				#{suaUserCid},
+			</if>	
+			<if test="suaAutCode != null">
+				#{suaAutCode},
+			</if>	
+			<if test="suaCmt != null">
+				#{suaCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_USER_AUT
+		<set>
+			<if test="value.isInitSuaUserCid">
+				<choose>
+					<when test="value.suaUserCid != null">
+						SUA_USER_CID = #{value.suaUserCid},
+					</when>
+					<otherwise>
+						SUA_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuaAutCode">
+				<choose>
+					<when test="value.suaAutCode != null">
+						SUA_AUT_CODE = #{value.suaAutCode},
+					</when>
+					<otherwise>
+						SUA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuaCmt">
+				<choose>
+					<when test="value.suaCmt != null">
+						SUA_CMT = #{value.suaCmt},
+					</when>
+					<otherwise>
+						SUA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.suaUserCid != null and condition.suaUserCid != ''">
+			AND SUA_USER_CID =	#{condition.suaUserCid} 
+		</if>
+		<if test="condition.suaAutCode != null and condition.suaAutCode != ''">
+			AND SUA_AUT_CODE =	#{condition.suaAutCode} 
+		</if>
+		<if test="condition.suaCmt != null and condition.suaCmt != ''">
+			AND SUA_CMT =	#{condition.suaCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyUserAutBean">
+		UPDATE SY_USER_AUT
+		<set>
+			<if test="isInitSuaUserCid">
+				<choose>
+					<when test="suaUserCid != null">
+						SUA_USER_CID = #{suaUserCid},
+					</when>
+					<otherwise>
+						SUA_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuaAutCode">
+				<choose>
+					<when test="suaAutCode != null">
+						SUA_AUT_CODE = #{suaAutCode},
+					</when>
+					<otherwise>
+						SUA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuaCmt">
+				<choose>
+					<when test="suaCmt != null">
+						SUA_CMT = #{suaCmt},
+					</when>
+					<otherwise>
+						SUA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SUA_USER_CID = #{suaUserCid} AND 
+		SUA_AUT_CODE = #{suaAutCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_USER_AUT WHERE 1=1
+		<if test="syUserAut!=null">
+			<if test="syUserAut.suaUserCid != null and syUserAut.suaUserCid != ''">
+				AND SUA_USER_CID = #{syUserAut.suaUserCid}
+			</if>
+			<if test="syUserAut.suaAutCode != null and syUserAut.suaAutCode != ''">
+				AND SUA_AUT_CODE = #{syUserAut.suaAutCode}
+			</if>
+			<if test="syUserAut.suaCmt != null and syUserAut.suaCmt != ''">
+				AND SUA_CMT = #{syUserAut.suaCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyUserAutBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_USER_AUT
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="suaUserCid != null and suaUserCid != ''">
+				AND SUA_USER_CID = #{suaUserCid}
+			</if>
+			<if test="suaAutCode != null and suaAutCode != ''">
+				AND SUA_AUT_CODE = #{suaAutCode}
+			</if>
+			<if test="suaCmt != null and suaCmt != ''">
+				AND SUA_CMT = #{suaCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_USER_AUT(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.suaUserCid},		
+			#{item.suaAutCode},		
+			#{item.suaCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

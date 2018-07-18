@@ -5,7 +5,7 @@
  */
 package com.kool.evowkf.engine;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 
 /**
  * @DESCRIBE
@@ -14,5 +14,5 @@ import com.kool.core.exception.BusException;
  *
  */
 public interface ICheck {
-	public void check(String recordId, String scheduleId, String userId, String loginName) throws BusException;
+	public void check(String recordId, String scheduleId, String userId, String loginName) throws AppException;
 }

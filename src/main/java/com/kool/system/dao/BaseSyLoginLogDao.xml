@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyLoginLogDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyLoginLogBean">
+		<id column="SLL_LOG_UID" property="sllLogUid" />
+		<result column="SLL_USER_CID" property="sllUserCid" />
+		<result column="SLL_TIME" property="sllTime" />
+		<result column="SLL_IP" property="sllIp" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SLL_LOG_UID, 			
+			SLL_USER_CID, 			
+			SLL_TIME, 			
+			SLL_IP			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SLL_LOG_UID
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyLoginLogBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_LOGIN_LOG WHERE 1=1 
+		<if test="sllLogUid != null and sllLogUid != ''">
+			AND SLL_LOG_UID = #{sllLogUid}
+		</if>
+		<if test="sllUserCid != null and sllUserCid != ''">
+			AND SLL_USER_CID = #{sllUserCid}
+		</if>
+		
+		<if test="sllIp != null and sllIp != ''">
+			AND SLL_IP = #{sllIp}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyLoginLogBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_LOGIN_LOG
+		WHERE 
+		SLL_LOG_UID = #{sllLogUid}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyLoginLogBean">
+		DELETE FROM SY_LOGIN_LOG
+		WHERE
+		SLL_LOG_UID = #{sllLogUid}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyLoginLogBean">
+		DELETE FROM SY_LOGIN_LOG
+		WHERE 1=1 
+		<if test="sllLogUid != null and sllLogUid != ''">
+			AND SLL_LOG_UID = #{sllLogUid}
+		</if>
+		<if test="sllUserCid != null and sllUserCid != ''">
+			AND SLL_USER_CID = #{sllUserCid}
+		</if>
+		
+		<if test="sllIp != null and sllIp != ''">
+			AND SLL_IP = #{sllIp}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyLoginLogBean">
+		INSERT INTO SY_LOGIN_LOG
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sllLogUid != null">
+				SLL_LOG_UID,
+			</if>		
+			<if test="sllUserCid != null">
+				SLL_USER_CID,
+			</if>		
+			<if test="sllTime != null">
+				SLL_TIME,
+			</if>		
+			<if test="sllIp != null">
+				SLL_IP,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sllLogUid != null">
+				#{sllLogUid},
+			</if>	
+			<if test="sllUserCid != null">
+				#{sllUserCid},
+			</if>	
+			<if test="sllTime != null">
+				#{sllTime},
+			</if>	
+			<if test="sllIp != null">
+				#{sllIp},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_LOGIN_LOG
+		<set>
+			<if test="value.isInitSllLogUid">
+				<choose>
+					<when test="value.sllLogUid != null">
+						SLL_LOG_UID = #{value.sllLogUid},
+					</when>
+					<otherwise>
+						SLL_LOG_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSllUserCid">
+				<choose>
+					<when test="value.sllUserCid != null">
+						SLL_USER_CID = #{value.sllUserCid},
+					</when>
+					<otherwise>
+						SLL_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSllTime">
+				<choose>
+					<when test="value.sllTime != null">
+						SLL_TIME = #{value.sllTime},
+					</when>
+					<otherwise>
+						SLL_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSllIp">
+				<choose>
+					<when test="value.sllIp != null">
+						SLL_IP = #{value.sllIp},
+					</when>
+					<otherwise>
+						SLL_IP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sllLogUid != null and condition.sllLogUid != ''">
+			AND SLL_LOG_UID =	#{condition.sllLogUid} 
+		</if>
+		<if test="condition.sllUserCid != null and condition.sllUserCid != ''">
+			AND SLL_USER_CID =	#{condition.sllUserCid} 
+		</if>
+		
+		<if test="condition.sllIp != null and condition.sllIp != ''">
+			AND SLL_IP =	#{condition.sllIp} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyLoginLogBean">
+		UPDATE SY_LOGIN_LOG
+		<set>
+			<if test="isInitSllLogUid">
+				<choose>
+					<when test="sllLogUid != null">
+						SLL_LOG_UID = #{sllLogUid},
+					</when>
+					<otherwise>
+						SLL_LOG_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSllUserCid">
+				<choose>
+					<when test="sllUserCid != null">
+						SLL_USER_CID = #{sllUserCid},
+					</when>
+					<otherwise>
+						SLL_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSllTime">
+				<choose>
+					<when test="sllTime != null">
+						SLL_TIME = #{sllTime},
+					</when>
+					<otherwise>
+						SLL_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSllIp">
+				<choose>
+					<when test="sllIp != null">
+						SLL_IP = #{sllIp},
+					</when>
+					<otherwise>
+						SLL_IP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SLL_LOG_UID = #{sllLogUid}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_LOGIN_LOG WHERE 1=1
+		<if test="syLoginLog!=null">
+			<if test="syLoginLog.sllLogUid != null and syLoginLog.sllLogUid != ''">
+				AND SLL_LOG_UID = #{syLoginLog.sllLogUid}
+			</if>
+			<if test="syLoginLog.sllUserCid != null and syLoginLog.sllUserCid != ''">
+				AND SLL_USER_CID = #{syLoginLog.sllUserCid}
+			</if>
+			
+			<if test="syLoginLog.sllIp != null and syLoginLog.sllIp != ''">
+				AND SLL_IP = #{syLoginLog.sllIp}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyLoginLogBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_LOGIN_LOG
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sllLogUid != null and sllLogUid != ''">
+				AND SLL_LOG_UID = #{sllLogUid}
+			</if>
+			<if test="sllUserCid != null and sllUserCid != ''">
+				AND SLL_USER_CID = #{sllUserCid}
+			</if>
+			
+			<if test="sllIp != null and sllIp != ''">
+				AND SLL_IP = #{sllIp}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_LOGIN_LOG(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sllLogUid},		
+			#{item.sllUserCid},		
+			#{item.sllTime},		
+			#{item.sllIp},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

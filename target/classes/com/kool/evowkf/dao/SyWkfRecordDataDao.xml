@@ -3,18 +3,18 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfRecordDataDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordDataBean">
-		<id column="SRT_RECORD_ID" property="srtRecordId" />
-		<id column="SRT_DETAIL_ID" property="srtDetailId" />
+		<id column="SRT_WKF_NBR" property="srtWkfNbr" />
+		<id column="SRT_DETAIL_UID" property="srtDetailUid" />
 		<result column="SRT_BUS_PKG" property="srtBusPkg" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SRT_RECORD_ID, 			
-			SRT_DETAIL_ID, 			
+			SRT_WKF_NBR, 			
+			SRT_DETAIL_UID, 			
 			SRT_BUS_PKG			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SRT_RECORD_ID, SRT_DETAIL_ID
+		SRT_WKF_NBR, SRT_DETAIL_UID
 	</sql>
 </mapper>  

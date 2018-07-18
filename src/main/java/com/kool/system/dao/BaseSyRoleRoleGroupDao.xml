@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyRoleRoleGroupDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyRoleRoleGroupBean">
+		<id column="SRR_ROLE_CODE" property="srrRoleCode" />
+		<id column="SRR_GROUP_CODE" property="srrGroupCode" />
+		<result column="SRR_CMT" property="srrCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRR_ROLE_CODE, 			
+			SRR_GROUP_CODE, 			
+			SRR_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRR_ROLE_CODE, SRR_GROUP_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyRoleRoleGroupBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE_ROLE_GROUP WHERE 1=1 
+		<if test="srrRoleCode != null and srrRoleCode != ''">
+			AND SRR_ROLE_CODE = #{srrRoleCode}
+		</if>
+		<if test="srrGroupCode != null and srrGroupCode != ''">
+			AND SRR_GROUP_CODE = #{srrGroupCode}
+		</if>
+		<if test="srrCmt != null and srrCmt != ''">
+			AND SRR_CMT = #{srrCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyRoleRoleGroupBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE_ROLE_GROUP
+		WHERE 
+		SRR_ROLE_CODE = #{srrRoleCode} AND 
+		SRR_GROUP_CODE = #{srrGroupCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyRoleRoleGroupBean">
+		DELETE FROM SY_ROLE_ROLE_GROUP
+		WHERE
+		SRR_ROLE_CODE = #{srrRoleCode} AND 
+		SRR_GROUP_CODE = #{srrGroupCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyRoleRoleGroupBean">
+		DELETE FROM SY_ROLE_ROLE_GROUP
+		WHERE 1=1 
+		<if test="srrRoleCode != null and srrRoleCode != ''">
+			AND SRR_ROLE_CODE = #{srrRoleCode}
+		</if>
+		<if test="srrGroupCode != null and srrGroupCode != ''">
+			AND SRR_GROUP_CODE = #{srrGroupCode}
+		</if>
+		<if test="srrCmt != null and srrCmt != ''">
+			AND SRR_CMT = #{srrCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyRoleRoleGroupBean">
+		INSERT INTO SY_ROLE_ROLE_GROUP
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="srrRoleCode != null">
+				SRR_ROLE_CODE,
+			</if>		
+			<if test="srrGroupCode != null">
+				SRR_GROUP_CODE,
+			</if>		
+			<if test="srrCmt != null">
+				SRR_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="srrRoleCode != null">
+				#{srrRoleCode},
+			</if>	
+			<if test="srrGroupCode != null">
+				#{srrGroupCode},
+			</if>	
+			<if test="srrCmt != null">
+				#{srrCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_ROLE_ROLE_GROUP
+		<set>
+			<if test="value.isInitSrrRoleCode">
+				<choose>
+					<when test="value.srrRoleCode != null">
+						SRR_ROLE_CODE = #{value.srrRoleCode},
+					</when>
+					<otherwise>
+						SRR_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrrGroupCode">
+				<choose>
+					<when test="value.srrGroupCode != null">
+						SRR_GROUP_CODE = #{value.srrGroupCode},
+					</when>
+					<otherwise>
+						SRR_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrrCmt">
+				<choose>
+					<when test="value.srrCmt != null">
+						SRR_CMT = #{value.srrCmt},
+					</when>
+					<otherwise>
+						SRR_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.srrRoleCode != null and condition.srrRoleCode != ''">
+			AND SRR_ROLE_CODE =	#{condition.srrRoleCode} 
+		</if>
+		<if test="condition.srrGroupCode != null and condition.srrGroupCode != ''">
+			AND SRR_GROUP_CODE =	#{condition.srrGroupCode} 
+		</if>
+		<if test="condition.srrCmt != null and condition.srrCmt != ''">
+			AND SRR_CMT =	#{condition.srrCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyRoleRoleGroupBean">
+		UPDATE SY_ROLE_ROLE_GROUP
+		<set>
+			<if test="isInitSrrRoleCode">
+				<choose>
+					<when test="srrRoleCode != null">
+						SRR_ROLE_CODE = #{srrRoleCode},
+					</when>
+					<otherwise>
+						SRR_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrrGroupCode">
+				<choose>
+					<when test="srrGroupCode != null">
+						SRR_GROUP_CODE = #{srrGroupCode},
+					</when>
+					<otherwise>
+						SRR_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrrCmt">
+				<choose>
+					<when test="srrCmt != null">
+						SRR_CMT = #{srrCmt},
+					</when>
+					<otherwise>
+						SRR_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SRR_ROLE_CODE = #{srrRoleCode} AND 
+		SRR_GROUP_CODE = #{srrGroupCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_ROLE_ROLE_GROUP WHERE 1=1
+		<if test="syRoleRoleGroup!=null">
+			<if test="syRoleRoleGroup.srrRoleCode != null and syRoleRoleGroup.srrRoleCode != ''">
+				AND SRR_ROLE_CODE = #{syRoleRoleGroup.srrRoleCode}
+			</if>
+			<if test="syRoleRoleGroup.srrGroupCode != null and syRoleRoleGroup.srrGroupCode != ''">
+				AND SRR_GROUP_CODE = #{syRoleRoleGroup.srrGroupCode}
+			</if>
+			<if test="syRoleRoleGroup.srrCmt != null and syRoleRoleGroup.srrCmt != ''">
+				AND SRR_CMT = #{syRoleRoleGroup.srrCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyRoleRoleGroupBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_ROLE_ROLE_GROUP
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="srrRoleCode != null and srrRoleCode != ''">
+				AND SRR_ROLE_CODE = #{srrRoleCode}
+			</if>
+			<if test="srrGroupCode != null and srrGroupCode != ''">
+				AND SRR_GROUP_CODE = #{srrGroupCode}
+			</if>
+			<if test="srrCmt != null and srrCmt != ''">
+				AND SRR_CMT = #{srrCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_ROLE_ROLE_GROUP(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.srrRoleCode},		
+			#{item.srrGroupCode},		
+			#{item.srrCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

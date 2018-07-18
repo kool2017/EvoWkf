@@ -5,7 +5,7 @@
  */
 package com.kool.evowkf.engine;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 import com.kool.evowkf.WKFConstants;
 import com.kool.evowkf.bean.SyWkfNodeBean;
 
@@ -25,9 +25,9 @@ public class RouteStrategyFactory {
 	 * @return
 	 * @throws BusException
 	 */
-	public static IRouteStrategy getStrategy(boolean forward, SyWkfNodeBean node) throws BusException {
+	public static IRouteStrategy getStrategy(boolean forward, SyWkfNodeBean node) throws AppException {
 		if (null == node) {
-			throw new BusException("结点不能为空");
+			throw new AppException("结点不能为空");
 		}
 		String routeStrategy = node.getSwnRouteStrategy();
 		String routeClazz = node.getSwnRouteStrategyClazz();
@@ -46,7 +46,7 @@ public class RouteStrategyFactory {
 				A5Strategy.setRouteClazz(routeClazz);
 				strategy = A5Strategy;
 			} else {
-				throw new BusException("不支持的路由策略");
+				throw new AppException("不支持的路由策略");
 			}
 		} else {
 			if (WKFConstants.SWN_BACK_STRATEGY_LAST.equals(backStrategy)) {
@@ -60,7 +60,7 @@ public class RouteStrategyFactory {
 				C4Strategy.setBackClazz(backClazz);
 				strategy = C4Strategy;
 			}else {
-				throw new BusException("不支持的回退策略");
+				throw new AppException("不支持的回退策略");
 			}
 		}
 		return strategy;

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.core.dao.BaseSyCacheCtlDao">
+	<resultMap id="BaseResultMap" type="com.kool.core.bean.SyCacheCtlBean">
+		<id column="SCC_CACHE_CODE" property="sccCacheCode" />
+		<result column="SCC_NAME" property="sccName" />
+		<result column="SCC_CLAZZ" property="sccClazz" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SCC_CACHE_CODE, 			
+			SCC_NAME, 			
+			SCC_CLAZZ			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SCC_CACHE_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.core.bean.SyCacheCtlBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_CACHE_CTL WHERE 1=1 
+		<if test="sccCacheCode != null and sccCacheCode != ''">
+			AND SCC_CACHE_CODE = #{sccCacheCode}
+		</if>
+		<if test="sccName != null and sccName != ''">
+			AND SCC_NAME = #{sccName}
+		</if>
+		<if test="sccClazz != null and sccClazz != ''">
+			AND SCC_CLAZZ = #{sccClazz}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.core.bean.SyCacheCtlBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_CACHE_CTL
+		WHERE 
+		SCC_CACHE_CODE = #{sccCacheCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.core.bean.SyCacheCtlBean">
+		DELETE FROM SY_CACHE_CTL
+		WHERE
+		SCC_CACHE_CODE = #{sccCacheCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.core.bean.SyCacheCtlBean">
+		DELETE FROM SY_CACHE_CTL
+		WHERE 1=1 
+		<if test="sccCacheCode != null and sccCacheCode != ''">
+			AND SCC_CACHE_CODE = #{sccCacheCode}
+		</if>
+		<if test="sccName != null and sccName != ''">
+			AND SCC_NAME = #{sccName}
+		</if>
+		<if test="sccClazz != null and sccClazz != ''">
+			AND SCC_CLAZZ = #{sccClazz}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.core.bean.SyCacheCtlBean">
+		INSERT INTO SY_CACHE_CTL
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sccCacheCode != null">
+				SCC_CACHE_CODE,
+			</if>		
+			<if test="sccName != null">
+				SCC_NAME,
+			</if>		
+			<if test="sccClazz != null">
+				SCC_CLAZZ,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sccCacheCode != null">
+				#{sccCacheCode},
+			</if>	
+			<if test="sccName != null">
+				#{sccName},
+			</if>	
+			<if test="sccClazz != null">
+				#{sccClazz},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_CACHE_CTL
+		<set>
+			<if test="value.isInitSccCacheCode">
+				<choose>
+					<when test="value.sccCacheCode != null">
+						SCC_CACHE_CODE = #{value.sccCacheCode},
+					</when>
+					<otherwise>
+						SCC_CACHE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSccName">
+				<choose>
+					<when test="value.sccName != null">
+						SCC_NAME = #{value.sccName},
+					</when>
+					<otherwise>
+						SCC_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSccClazz">
+				<choose>
+					<when test="value.sccClazz != null">
+						SCC_CLAZZ = #{value.sccClazz},
+					</when>
+					<otherwise>
+						SCC_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sccCacheCode != null and condition.sccCacheCode != ''">
+			AND SCC_CACHE_CODE =	#{condition.sccCacheCode} 
+		</if>
+		<if test="condition.sccName != null and condition.sccName != ''">
+			AND SCC_NAME =	#{condition.sccName} 
+		</if>
+		<if test="condition.sccClazz != null and condition.sccClazz != ''">
+			AND SCC_CLAZZ =	#{condition.sccClazz} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.core.bean.SyCacheCtlBean">
+		UPDATE SY_CACHE_CTL
+		<set>
+			<if test="isInitSccCacheCode">
+				<choose>
+					<when test="sccCacheCode != null">
+						SCC_CACHE_CODE = #{sccCacheCode},
+					</when>
+					<otherwise>
+						SCC_CACHE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSccName">
+				<choose>
+					<when test="sccName != null">
+						SCC_NAME = #{sccName},
+					</when>
+					<otherwise>
+						SCC_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSccClazz">
+				<choose>
+					<when test="sccClazz != null">
+						SCC_CLAZZ = #{sccClazz},
+					</when>
+					<otherwise>
+						SCC_CLAZZ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SCC_CACHE_CODE = #{sccCacheCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_CACHE_CTL WHERE 1=1
+		<if test="syCacheCtl!=null">
+			<if test="syCacheCtl.sccCacheCode != null and syCacheCtl.sccCacheCode != ''">
+				AND SCC_CACHE_CODE = #{syCacheCtl.sccCacheCode}
+			</if>
+			<if test="syCacheCtl.sccName != null and syCacheCtl.sccName != ''">
+				AND SCC_NAME = #{syCacheCtl.sccName}
+			</if>
+			<if test="syCacheCtl.sccClazz != null and syCacheCtl.sccClazz != ''">
+				AND SCC_CLAZZ = #{syCacheCtl.sccClazz}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.core.bean.SyCacheCtlBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_CACHE_CTL
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sccCacheCode != null and sccCacheCode != ''">
+				AND SCC_CACHE_CODE = #{sccCacheCode}
+			</if>
+			<if test="sccName != null and sccName != ''">
+				AND SCC_NAME = #{sccName}
+			</if>
+			<if test="sccClazz != null and sccClazz != ''">
+				AND SCC_CLAZZ = #{sccClazz}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_CACHE_CTL(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sccCacheCode},		
+			#{item.sccName},		
+			#{item.sccClazz},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

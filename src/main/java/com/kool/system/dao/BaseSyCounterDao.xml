@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyCounterDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyCounterBean">
+		<id column="SCO_COUNTER_CODE" property="scoCounterCode" />
+		<result column="SCO_NAME" property="scoName" />
+		<result column="SCO_CUR_VALUE" property="scoCurValue" />
+		<result column="SCO_MIN" property="scoMin" />
+		<result column="SCO_MAX" property="scoMax" />
+		<result column="SCO_STEP" property="scoStep" />
+		<result column="SCO_OVER" property="scoOver" />
+		<result column="SCO_RESET_PERIOD" property="scoResetPeriod" />
+		<result column="SCO_RESET_TIME" property="scoResetTime" />
+		<result column="SCO_STATE" property="scoState" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SCO_COUNTER_CODE, 			
+			SCO_NAME, 			
+			SCO_CUR_VALUE, 			
+			SCO_MIN, 			
+			SCO_MAX, 			
+			SCO_STEP, 			
+			SCO_OVER, 			
+			SCO_RESET_PERIOD, 			
+			SCO_RESET_TIME, 			
+			SCO_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SCO_COUNTER_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyCounterBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_COUNTER WHERE 1=1 
+		<if test="scoCounterCode != null and scoCounterCode != ''">
+			AND SCO_COUNTER_CODE = #{scoCounterCode}
+		</if>
+		<if test="scoName != null and scoName != ''">
+			AND SCO_NAME = #{scoName}
+		</if>
+		<if test="scoCurValue != null and scoCurValue != ''">
+			AND SCO_CUR_VALUE = #{scoCurValue}
+		</if>
+		<if test="scoMin != null and scoMin != ''">
+			AND SCO_MIN = #{scoMin}
+		</if>
+		<if test="scoMax != null and scoMax != ''">
+			AND SCO_MAX = #{scoMax}
+		</if>
+		<if test="scoStep != null and scoStep != ''">
+			AND SCO_STEP = #{scoStep}
+		</if>
+		<if test="scoOver != null and scoOver != ''">
+			AND SCO_OVER = #{scoOver}
+		</if>
+		<if test="scoResetPeriod != null and scoResetPeriod != ''">
+			AND SCO_RESET_PERIOD = #{scoResetPeriod}
+		</if>
+		
+		<if test="scoState != null and scoState != ''">
+			AND SCO_STATE = #{scoState}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyCounterBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_COUNTER
+		WHERE 
+		SCO_COUNTER_CODE = #{scoCounterCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyCounterBean">
+		DELETE FROM SY_COUNTER
+		WHERE
+		SCO_COUNTER_CODE = #{scoCounterCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyCounterBean">
+		DELETE FROM SY_COUNTER
+		WHERE 1=1 
+		<if test="scoCounterCode != null and scoCounterCode != ''">
+			AND SCO_COUNTER_CODE = #{scoCounterCode}
+		</if>
+		<if test="scoName != null and scoName != ''">
+			AND SCO_NAME = #{scoName}
+		</if>
+		<if test="scoCurValue != null and scoCurValue != ''">
+			AND SCO_CUR_VALUE = #{scoCurValue}
+		</if>
+		<if test="scoMin != null and scoMin != ''">
+			AND SCO_MIN = #{scoMin}
+		</if>
+		<if test="scoMax != null and scoMax != ''">
+			AND SCO_MAX = #{scoMax}
+		</if>
+		<if test="scoStep != null and scoStep != ''">
+			AND SCO_STEP = #{scoStep}
+		</if>
+		<if test="scoOver != null and scoOver != ''">
+			AND SCO_OVER = #{scoOver}
+		</if>
+		<if test="scoResetPeriod != null and scoResetPeriod != ''">
+			AND SCO_RESET_PERIOD = #{scoResetPeriod}
+		</if>
+		
+		<if test="scoState != null and scoState != ''">
+			AND SCO_STATE = #{scoState}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyCounterBean">
+		INSERT INTO SY_COUNTER
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="scoCounterCode != null">
+				SCO_COUNTER_CODE,
+			</if>		
+			<if test="scoName != null">
+				SCO_NAME,
+			</if>		
+			<if test="scoCurValue != null">
+				SCO_CUR_VALUE,
+			</if>		
+			<if test="scoMin != null">
+				SCO_MIN,
+			</if>		
+			<if test="scoMax != null">
+				SCO_MAX,
+			</if>		
+			<if test="scoStep != null">
+				SCO_STEP,
+			</if>		
+			<if test="scoOver != null">
+				SCO_OVER,
+			</if>		
+			<if test="scoResetPeriod != null">
+				SCO_RESET_PERIOD,
+			</if>		
+			<if test="scoResetTime != null">
+				SCO_RESET_TIME,
+			</if>		
+			<if test="scoState != null">
+				SCO_STATE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="scoCounterCode != null">
+				#{scoCounterCode},
+			</if>	
+			<if test="scoName != null">
+				#{scoName},
+			</if>	
+			<if test="scoCurValue != null">
+				#{scoCurValue},
+			</if>	
+			<if test="scoMin != null">
+				#{scoMin},
+			</if>	
+			<if test="scoMax != null">
+				#{scoMax},
+			</if>	
+			<if test="scoStep != null">
+				#{scoStep},
+			</if>	
+			<if test="scoOver != null">
+				#{scoOver},
+			</if>	
+			<if test="scoResetPeriod != null">
+				#{scoResetPeriod},
+			</if>	
+			<if test="scoResetTime != null">
+				#{scoResetTime},
+			</if>	
+			<if test="scoState != null">
+				#{scoState},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_COUNTER
+		<set>
+			<if test="value.isInitScoCounterCode">
+				<choose>
+					<when test="value.scoCounterCode != null">
+						SCO_COUNTER_CODE = #{value.scoCounterCode},
+					</when>
+					<otherwise>
+						SCO_COUNTER_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoName">
+				<choose>
+					<when test="value.scoName != null">
+						SCO_NAME = #{value.scoName},
+					</when>
+					<otherwise>
+						SCO_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoCurValue">
+				<choose>
+					<when test="value.scoCurValue != null">
+						SCO_CUR_VALUE = #{value.scoCurValue},
+					</when>
+					<otherwise>
+						SCO_CUR_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoMin">
+				<choose>
+					<when test="value.scoMin != null">
+						SCO_MIN = #{value.scoMin},
+					</when>
+					<otherwise>
+						SCO_MIN = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoMax">
+				<choose>
+					<when test="value.scoMax != null">
+						SCO_MAX = #{value.scoMax},
+					</when>
+					<otherwise>
+						SCO_MAX = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoStep">
+				<choose>
+					<when test="value.scoStep != null">
+						SCO_STEP = #{value.scoStep},
+					</when>
+					<otherwise>
+						SCO_STEP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoOver">
+				<choose>
+					<when test="value.scoOver != null">
+						SCO_OVER = #{value.scoOver},
+					</when>
+					<otherwise>
+						SCO_OVER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoResetPeriod">
+				<choose>
+					<when test="value.scoResetPeriod != null">
+						SCO_RESET_PERIOD = #{value.scoResetPeriod},
+					</when>
+					<otherwise>
+						SCO_RESET_PERIOD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoResetTime">
+				<choose>
+					<when test="value.scoResetTime != null">
+						SCO_RESET_TIME = #{value.scoResetTime},
+					</when>
+					<otherwise>
+						SCO_RESET_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScoState">
+				<choose>
+					<when test="value.scoState != null">
+						SCO_STATE = #{value.scoState},
+					</when>
+					<otherwise>
+						SCO_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.scoCounterCode != null and condition.scoCounterCode != ''">
+			AND SCO_COUNTER_CODE =	#{condition.scoCounterCode} 
+		</if>
+		<if test="condition.scoName != null and condition.scoName != ''">
+			AND SCO_NAME =	#{condition.scoName} 
+		</if>
+		<if test="condition.scoCurValue != null and condition.scoCurValue != ''">
+			AND SCO_CUR_VALUE =	#{condition.scoCurValue} 
+		</if>
+		<if test="condition.scoMin != null and condition.scoMin != ''">
+			AND SCO_MIN =	#{condition.scoMin} 
+		</if>
+		<if test="condition.scoMax != null and condition.scoMax != ''">
+			AND SCO_MAX =	#{condition.scoMax} 
+		</if>
+		<if test="condition.scoStep != null and condition.scoStep != ''">
+			AND SCO_STEP =	#{condition.scoStep} 
+		</if>
+		<if test="condition.scoOver != null and condition.scoOver != ''">
+			AND SCO_OVER =	#{condition.scoOver} 
+		</if>
+		<if test="condition.scoResetPeriod != null and condition.scoResetPeriod != ''">
+			AND SCO_RESET_PERIOD =	#{condition.scoResetPeriod} 
+		</if>
+		
+		<if test="condition.scoState != null and condition.scoState != ''">
+			AND SCO_STATE =	#{condition.scoState} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyCounterBean">
+		UPDATE SY_COUNTER
+		<set>
+			<if test="isInitScoCounterCode">
+				<choose>
+					<when test="scoCounterCode != null">
+						SCO_COUNTER_CODE = #{scoCounterCode},
+					</when>
+					<otherwise>
+						SCO_COUNTER_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoName">
+				<choose>
+					<when test="scoName != null">
+						SCO_NAME = #{scoName},
+					</when>
+					<otherwise>
+						SCO_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoCurValue">
+				<choose>
+					<when test="scoCurValue != null">
+						SCO_CUR_VALUE = #{scoCurValue},
+					</when>
+					<otherwise>
+						SCO_CUR_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoMin">
+				<choose>
+					<when test="scoMin != null">
+						SCO_MIN = #{scoMin},
+					</when>
+					<otherwise>
+						SCO_MIN = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoMax">
+				<choose>
+					<when test="scoMax != null">
+						SCO_MAX = #{scoMax},
+					</when>
+					<otherwise>
+						SCO_MAX = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoStep">
+				<choose>
+					<when test="scoStep != null">
+						SCO_STEP = #{scoStep},
+					</when>
+					<otherwise>
+						SCO_STEP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoOver">
+				<choose>
+					<when test="scoOver != null">
+						SCO_OVER = #{scoOver},
+					</when>
+					<otherwise>
+						SCO_OVER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoResetPeriod">
+				<choose>
+					<when test="scoResetPeriod != null">
+						SCO_RESET_PERIOD = #{scoResetPeriod},
+					</when>
+					<otherwise>
+						SCO_RESET_PERIOD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoResetTime">
+				<choose>
+					<when test="scoResetTime != null">
+						SCO_RESET_TIME = #{scoResetTime},
+					</when>
+					<otherwise>
+						SCO_RESET_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScoState">
+				<choose>
+					<when test="scoState != null">
+						SCO_STATE = #{scoState},
+					</when>
+					<otherwise>
+						SCO_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SCO_COUNTER_CODE = #{scoCounterCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_COUNTER WHERE 1=1
+		<if test="syCounter!=null">
+			<if test="syCounter.scoCounterCode != null and syCounter.scoCounterCode != ''">
+				AND SCO_COUNTER_CODE = #{syCounter.scoCounterCode}
+			</if>
+			<if test="syCounter.scoName != null and syCounter.scoName != ''">
+				AND SCO_NAME = #{syCounter.scoName}
+			</if>
+			<if test="syCounter.scoCurValue != null and syCounter.scoCurValue != ''">
+				AND SCO_CUR_VALUE = #{syCounter.scoCurValue}
+			</if>
+			<if test="syCounter.scoMin != null and syCounter.scoMin != ''">
+				AND SCO_MIN = #{syCounter.scoMin}
+			</if>
+			<if test="syCounter.scoMax != null and syCounter.scoMax != ''">
+				AND SCO_MAX = #{syCounter.scoMax}
+			</if>
+			<if test="syCounter.scoStep != null and syCounter.scoStep != ''">
+				AND SCO_STEP = #{syCounter.scoStep}
+			</if>
+			<if test="syCounter.scoOver != null and syCounter.scoOver != ''">
+				AND SCO_OVER = #{syCounter.scoOver}
+			</if>
+			<if test="syCounter.scoResetPeriod != null and syCounter.scoResetPeriod != ''">
+				AND SCO_RESET_PERIOD = #{syCounter.scoResetPeriod}
+			</if>
+			
+			<if test="syCounter.scoState != null and syCounter.scoState != ''">
+				AND SCO_STATE = #{syCounter.scoState}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyCounterBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_COUNTER
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="scoCounterCode != null and scoCounterCode != ''">
+				AND SCO_COUNTER_CODE = #{scoCounterCode}
+			</if>
+			<if test="scoName != null and scoName != ''">
+				AND SCO_NAME = #{scoName}
+			</if>
+			<if test="scoCurValue != null and scoCurValue != ''">
+				AND SCO_CUR_VALUE = #{scoCurValue}
+			</if>
+			<if test="scoMin != null and scoMin != ''">
+				AND SCO_MIN = #{scoMin}
+			</if>
+			<if test="scoMax != null and scoMax != ''">
+				AND SCO_MAX = #{scoMax}
+			</if>
+			<if test="scoStep != null and scoStep != ''">
+				AND SCO_STEP = #{scoStep}
+			</if>
+			<if test="scoOver != null and scoOver != ''">
+				AND SCO_OVER = #{scoOver}
+			</if>
+			<if test="scoResetPeriod != null and scoResetPeriod != ''">
+				AND SCO_RESET_PERIOD = #{scoResetPeriod}
+			</if>
+			
+			<if test="scoState != null and scoState != ''">
+				AND SCO_STATE = #{scoState}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_COUNTER(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.scoCounterCode},		
+			#{item.scoName},		
+			#{item.scoCurValue},		
+			#{item.scoMin},		
+			#{item.scoMax},		
+			#{item.scoStep},		
+			#{item.scoOver},		
+			#{item.scoResetPeriod},		
+			#{item.scoResetTime},		
+			#{item.scoState},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

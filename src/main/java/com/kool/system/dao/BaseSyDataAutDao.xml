@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyDataAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyDataAutBean">
+		<id column="SDA_DATA_AUT_UID" property="sdaDataAutUid" />
+		<result column="SDA_DATA_CODE" property="sdaDataCode" />
+		<result column="SDA_VALUE" property="sdaValue" />
+		<result column="SDA_OWNER_TYPE" property="sdaOwnerType" />
+		<result column="SDA_USER_CID" property="sdaUserCid" />
+		<result column="SDA_ROLE_CODE" property="sdaRoleCode" />
+		<result column="SDA_GROUP_CODE" property="sdaGroupCode" />
+		<result column="SDA_CMT" property="sdaCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SDA_DATA_AUT_UID, 			
+			SDA_DATA_CODE, 			
+			SDA_VALUE, 			
+			SDA_OWNER_TYPE, 			
+			SDA_USER_CID, 			
+			SDA_ROLE_CODE, 			
+			SDA_GROUP_CODE, 			
+			SDA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SDA_DATA_AUT_UID
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyDataAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_DATA_AUT WHERE 1=1 
+		<if test="sdaDataAutUid != null and sdaDataAutUid != ''">
+			AND SDA_DATA_AUT_UID = #{sdaDataAutUid}
+		</if>
+		<if test="sdaDataCode != null and sdaDataCode != ''">
+			AND SDA_DATA_CODE = #{sdaDataCode}
+		</if>
+		<if test="sdaValue != null and sdaValue != ''">
+			AND SDA_VALUE = #{sdaValue}
+		</if>
+		<if test="sdaOwnerType != null and sdaOwnerType != ''">
+			AND SDA_OWNER_TYPE = #{sdaOwnerType}
+		</if>
+		<if test="sdaUserCid != null and sdaUserCid != ''">
+			AND SDA_USER_CID = #{sdaUserCid}
+		</if>
+		<if test="sdaRoleCode != null and sdaRoleCode != ''">
+			AND SDA_ROLE_CODE = #{sdaRoleCode}
+		</if>
+		<if test="sdaGroupCode != null and sdaGroupCode != ''">
+			AND SDA_GROUP_CODE = #{sdaGroupCode}
+		</if>
+		<if test="sdaCmt != null and sdaCmt != ''">
+			AND SDA_CMT = #{sdaCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyDataAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_DATA_AUT
+		WHERE 
+		SDA_DATA_AUT_UID = #{sdaDataAutUid}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyDataAutBean">
+		DELETE FROM SY_DATA_AUT
+		WHERE
+		SDA_DATA_AUT_UID = #{sdaDataAutUid}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyDataAutBean">
+		DELETE FROM SY_DATA_AUT
+		WHERE 1=1 
+		<if test="sdaDataAutUid != null and sdaDataAutUid != ''">
+			AND SDA_DATA_AUT_UID = #{sdaDataAutUid}
+		</if>
+		<if test="sdaDataCode != null and sdaDataCode != ''">
+			AND SDA_DATA_CODE = #{sdaDataCode}
+		</if>
+		<if test="sdaValue != null and sdaValue != ''">
+			AND SDA_VALUE = #{sdaValue}
+		</if>
+		<if test="sdaOwnerType != null and sdaOwnerType != ''">
+			AND SDA_OWNER_TYPE = #{sdaOwnerType}
+		</if>
+		<if test="sdaUserCid != null and sdaUserCid != ''">
+			AND SDA_USER_CID = #{sdaUserCid}
+		</if>
+		<if test="sdaRoleCode != null and sdaRoleCode != ''">
+			AND SDA_ROLE_CODE = #{sdaRoleCode}
+		</if>
+		<if test="sdaGroupCode != null and sdaGroupCode != ''">
+			AND SDA_GROUP_CODE = #{sdaGroupCode}
+		</if>
+		<if test="sdaCmt != null and sdaCmt != ''">
+			AND SDA_CMT = #{sdaCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyDataAutBean">
+		INSERT INTO SY_DATA_AUT
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sdaDataAutUid != null">
+				SDA_DATA_AUT_UID,
+			</if>		
+			<if test="sdaDataCode != null">
+				SDA_DATA_CODE,
+			</if>		
+			<if test="sdaValue != null">
+				SDA_VALUE,
+			</if>		
+			<if test="sdaOwnerType != null">
+				SDA_OWNER_TYPE,
+			</if>		
+			<if test="sdaUserCid != null">
+				SDA_USER_CID,
+			</if>		
+			<if test="sdaRoleCode != null">
+				SDA_ROLE_CODE,
+			</if>		
+			<if test="sdaGroupCode != null">
+				SDA_GROUP_CODE,
+			</if>		
+			<if test="sdaCmt != null">
+				SDA_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sdaDataAutUid != null">
+				#{sdaDataAutUid},
+			</if>	
+			<if test="sdaDataCode != null">
+				#{sdaDataCode},
+			</if>	
+			<if test="sdaValue != null">
+				#{sdaValue},
+			</if>	
+			<if test="sdaOwnerType != null">
+				#{sdaOwnerType},
+			</if>	
+			<if test="sdaUserCid != null">
+				#{sdaUserCid},
+			</if>	
+			<if test="sdaRoleCode != null">
+				#{sdaRoleCode},
+			</if>	
+			<if test="sdaGroupCode != null">
+				#{sdaGroupCode},
+			</if>	
+			<if test="sdaCmt != null">
+				#{sdaCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_DATA_AUT
+		<set>
+			<if test="value.isInitSdaDataAutUid">
+				<choose>
+					<when test="value.sdaDataAutUid != null">
+						SDA_DATA_AUT_UID = #{value.sdaDataAutUid},
+					</when>
+					<otherwise>
+						SDA_DATA_AUT_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSdaDataCode">
+				<choose>
+					<when test="value.sdaDataCode != null">
+						SDA_DATA_CODE = #{value.sdaDataCode},
+					</when>
+					<otherwise>
+						SDA_DATA_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSdaValue">
+				<choose>
+					<when test="value.sdaValue != null">
+						SDA_VALUE = #{value.sdaValue},
+					</when>
+					<otherwise>
+						SDA_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSdaOwnerType">
+				<choose>
+					<when test="value.sdaOwnerType != null">
+						SDA_OWNER_TYPE = #{value.sdaOwnerType},
+					</when>
+					<otherwise>
+						SDA_OWNER_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSdaUserCid">
+				<choose>
+					<when test="value.sdaUserCid != null">
+						SDA_USER_CID = #{value.sdaUserCid},
+					</when>
+					<otherwise>
+						SDA_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSdaRoleCode">
+				<choose>
+					<when test="value.sdaRoleCode != null">
+						SDA_ROLE_CODE = #{value.sdaRoleCode},
+					</when>
+					<otherwise>
+						SDA_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSdaGroupCode">
+				<choose>
+					<when test="value.sdaGroupCode != null">
+						SDA_GROUP_CODE = #{value.sdaGroupCode},
+					</when>
+					<otherwise>
+						SDA_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSdaCmt">
+				<choose>
+					<when test="value.sdaCmt != null">
+						SDA_CMT = #{value.sdaCmt},
+					</when>
+					<otherwise>
+						SDA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sdaDataAutUid != null and condition.sdaDataAutUid != ''">
+			AND SDA_DATA_AUT_UID =	#{condition.sdaDataAutUid} 
+		</if>
+		<if test="condition.sdaDataCode != null and condition.sdaDataCode != ''">
+			AND SDA_DATA_CODE =	#{condition.sdaDataCode} 
+		</if>
+		<if test="condition.sdaValue != null and condition.sdaValue != ''">
+			AND SDA_VALUE =	#{condition.sdaValue} 
+		</if>
+		<if test="condition.sdaOwnerType != null and condition.sdaOwnerType != ''">
+			AND SDA_OWNER_TYPE =	#{condition.sdaOwnerType} 
+		</if>
+		<if test="condition.sdaUserCid != null and condition.sdaUserCid != ''">
+			AND SDA_USER_CID =	#{condition.sdaUserCid} 
+		</if>
+		<if test="condition.sdaRoleCode != null and condition.sdaRoleCode != ''">
+			AND SDA_ROLE_CODE =	#{condition.sdaRoleCode} 
+		</if>
+		<if test="condition.sdaGroupCode != null and condition.sdaGroupCode != ''">
+			AND SDA_GROUP_CODE =	#{condition.sdaGroupCode} 
+		</if>
+		<if test="condition.sdaCmt != null and condition.sdaCmt != ''">
+			AND SDA_CMT =	#{condition.sdaCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyDataAutBean">
+		UPDATE SY_DATA_AUT
+		<set>
+			<if test="isInitSdaDataAutUid">
+				<choose>
+					<when test="sdaDataAutUid != null">
+						SDA_DATA_AUT_UID = #{sdaDataAutUid},
+					</when>
+					<otherwise>
+						SDA_DATA_AUT_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSdaDataCode">
+				<choose>
+					<when test="sdaDataCode != null">
+						SDA_DATA_CODE = #{sdaDataCode},
+					</when>
+					<otherwise>
+						SDA_DATA_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSdaValue">
+				<choose>
+					<when test="sdaValue != null">
+						SDA_VALUE = #{sdaValue},
+					</when>
+					<otherwise>
+						SDA_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSdaOwnerType">
+				<choose>
+					<when test="sdaOwnerType != null">
+						SDA_OWNER_TYPE = #{sdaOwnerType},
+					</when>
+					<otherwise>
+						SDA_OWNER_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSdaUserCid">
+				<choose>
+					<when test="sdaUserCid != null">
+						SDA_USER_CID = #{sdaUserCid},
+					</when>
+					<otherwise>
+						SDA_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSdaRoleCode">
+				<choose>
+					<when test="sdaRoleCode != null">
+						SDA_ROLE_CODE = #{sdaRoleCode},
+					</when>
+					<otherwise>
+						SDA_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSdaGroupCode">
+				<choose>
+					<when test="sdaGroupCode != null">
+						SDA_GROUP_CODE = #{sdaGroupCode},
+					</when>
+					<otherwise>
+						SDA_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSdaCmt">
+				<choose>
+					<when test="sdaCmt != null">
+						SDA_CMT = #{sdaCmt},
+					</when>
+					<otherwise>
+						SDA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SDA_DATA_AUT_UID = #{sdaDataAutUid}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_DATA_AUT WHERE 1=1
+		<if test="syDataAut!=null">
+			<if test="syDataAut.sdaDataAutUid != null and syDataAut.sdaDataAutUid != ''">
+				AND SDA_DATA_AUT_UID = #{syDataAut.sdaDataAutUid}
+			</if>
+			<if test="syDataAut.sdaDataCode != null and syDataAut.sdaDataCode != ''">
+				AND SDA_DATA_CODE = #{syDataAut.sdaDataCode}
+			</if>
+			<if test="syDataAut.sdaValue != null and syDataAut.sdaValue != ''">
+				AND SDA_VALUE = #{syDataAut.sdaValue}
+			</if>
+			<if test="syDataAut.sdaOwnerType != null and syDataAut.sdaOwnerType != ''">
+				AND SDA_OWNER_TYPE = #{syDataAut.sdaOwnerType}
+			</if>
+			<if test="syDataAut.sdaUserCid != null and syDataAut.sdaUserCid != ''">
+				AND SDA_USER_CID = #{syDataAut.sdaUserCid}
+			</if>
+			<if test="syDataAut.sdaRoleCode != null and syDataAut.sdaRoleCode != ''">
+				AND SDA_ROLE_CODE = #{syDataAut.sdaRoleCode}
+			</if>
+			<if test="syDataAut.sdaGroupCode != null and syDataAut.sdaGroupCode != ''">
+				AND SDA_GROUP_CODE = #{syDataAut.sdaGroupCode}
+			</if>
+			<if test="syDataAut.sdaCmt != null and syDataAut.sdaCmt != ''">
+				AND SDA_CMT = #{syDataAut.sdaCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyDataAutBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_DATA_AUT
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sdaDataAutUid != null and sdaDataAutUid != ''">
+				AND SDA_DATA_AUT_UID = #{sdaDataAutUid}
+			</if>
+			<if test="sdaDataCode != null and sdaDataCode != ''">
+				AND SDA_DATA_CODE = #{sdaDataCode}
+			</if>
+			<if test="sdaValue != null and sdaValue != ''">
+				AND SDA_VALUE = #{sdaValue}
+			</if>
+			<if test="sdaOwnerType != null and sdaOwnerType != ''">
+				AND SDA_OWNER_TYPE = #{sdaOwnerType}
+			</if>
+			<if test="sdaUserCid != null and sdaUserCid != ''">
+				AND SDA_USER_CID = #{sdaUserCid}
+			</if>
+			<if test="sdaRoleCode != null and sdaRoleCode != ''">
+				AND SDA_ROLE_CODE = #{sdaRoleCode}
+			</if>
+			<if test="sdaGroupCode != null and sdaGroupCode != ''">
+				AND SDA_GROUP_CODE = #{sdaGroupCode}
+			</if>
+			<if test="sdaCmt != null and sdaCmt != ''">
+				AND SDA_CMT = #{sdaCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_DATA_AUT(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sdaDataAutUid},		
+			#{item.sdaDataCode},		
+			#{item.sdaValue},		
+			#{item.sdaOwnerType},		
+			#{item.sdaUserCid},		
+			#{item.sdaRoleCode},		
+			#{item.sdaGroupCode},		
+			#{item.sdaCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

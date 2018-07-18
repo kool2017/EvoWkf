@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyCounterDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyCounterBean">
+		<id column="SCO_COUNTER_CODE" property="scoCounterCode" />
+		<result column="SCO_NAME" property="scoName" />
+		<result column="SCO_CUR_VALUE" property="scoCurValue" />
+		<result column="SCO_MIN" property="scoMin" />
+		<result column="SCO_MAX" property="scoMax" />
+		<result column="SCO_STEP" property="scoStep" />
+		<result column="SCO_OVER" property="scoOver" />
+		<result column="SCO_RESET_PERIOD" property="scoResetPeriod" />
+		<result column="SCO_RESET_TIME" property="scoResetTime" />
+		<result column="SCO_STATE" property="scoState" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SCO_COUNTER_CODE, 			
+			SCO_NAME, 			
+			SCO_CUR_VALUE, 			
+			SCO_MIN, 			
+			SCO_MAX, 			
+			SCO_STEP, 			
+			SCO_OVER, 			
+			SCO_RESET_PERIOD, 			
+			SCO_RESET_TIME, 			
+			SCO_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SCO_COUNTER_CODE
+	</sql>
+</mapper>  

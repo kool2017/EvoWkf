@@ -5,12 +5,12 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfCfgLogBean extends BaseBean {
-	protected String sclLogId;
-	protected boolean isInitSclLogId;
+	protected String sclLogUid;
+	protected boolean isInitSclLogUid;
 	protected java.sql.Timestamp sclLogTime;
 	protected boolean isInitSclLogTime;
-	protected String sclUserId;
-	protected boolean isInitSclUserId;
+	protected String sclUserCid;
+	protected boolean isInitSclUserCid;
 	protected String sclLoginName;
 	protected boolean isInitSclLoginName;
 	protected String sclTable;
@@ -24,16 +24,16 @@ public class SyWkfCfgLogBean extends BaseBean {
 	protected String sclNewValue;
 	protected boolean isInitSclNewValue;
 
-	public boolean getIsInitSclLogId() {
-		return this.isInitSclLogId;
+	public boolean getIsInitSclLogUid() {
+		return this.isInitSclLogUid;
 	}
 
 	public boolean getIsInitSclLogTime() {
 		return this.isInitSclLogTime;
 	}
 
-	public boolean getIsInitSclUserId() {
-		return this.isInitSclUserId;
+	public boolean getIsInitSclUserCid() {
+		return this.isInitSclUserCid;
 	}
 
 	public boolean getIsInitSclLoginName() {
@@ -60,13 +60,13 @@ public class SyWkfCfgLogBean extends BaseBean {
 		return this.isInitSclNewValue;
 	}
 
-	public String getSclLogId() {
-		return sclLogId;
+	public String getSclLogUid() {
+		return sclLogUid;
 	}
 
-	public void setSclLogId(String sclLogId) {
-		this.sclLogId = sclLogId;
-		this.isInitSclLogId = true;
+	public void setSclLogUid(String sclLogUid) {
+		this.sclLogUid = sclLogUid;
+		this.isInitSclLogUid = true;
 	}
 
 	public java.sql.Timestamp getSclLogTime() {
@@ -78,13 +78,13 @@ public class SyWkfCfgLogBean extends BaseBean {
 		this.isInitSclLogTime = true;
 	}
 
-	public String getSclUserId() {
-		return sclUserId;
+	public String getSclUserCid() {
+		return sclUserCid;
 	}
 
-	public void setSclUserId(String sclUserId) {
-		this.sclUserId = sclUserId;
-		this.isInitSclUserId = true;
+	public void setSclUserCid(String sclUserCid) {
+		this.sclUserCid = sclUserCid;
+		this.isInitSclUserCid = true;
 	}
 
 	public String getSclLoginName() {
@@ -143,14 +143,14 @@ public class SyWkfCfgLogBean extends BaseBean {
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSclLogId) {
-			map.put("sclLogId", formatString(sclLogId));
+		if (isInitSclLogUid) {
+			map.put("sclLogUid", formatString(sclLogUid));
 		}
 		if (isInitSclLogTime) {
 			map.put("sclLogTime", formatString(sclLogTime));
 		}
-		if (isInitSclUserId) {
-			map.put("sclUserId", formatString(sclUserId));
+		if (isInitSclUserCid) {
+			map.put("sclUserCid", formatString(sclUserCid));
 		}
 		if (isInitSclLoginName) {
 			map.put("sclLoginName", formatString(sclLoginName));

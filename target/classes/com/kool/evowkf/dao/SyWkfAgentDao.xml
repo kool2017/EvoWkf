@@ -3,22 +3,22 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfAgentDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfAgentBean">
-		<id column="SWA_USER_ID" property="swaUserId" />
+		<id column="SWA_USER_CID" property="swaUserCid" />
 		<result column="SWA_LOGIN_NAME" property="swaLoginName" />
-		<result column="SWA_AGENT_USER_ID" property="swaAgentUserId" />
+		<result column="SWA_AGENT_USER_CID" property="swaAgentUserCid" />
 		<result column="SWA_AGENT_LOGIN_NAME" property="swaAgentLoginName" />
-		<result column="SWA_AGENT_STATUS" property="swaAgentStatus" />
+		<result column="SWA_STATE" property="swaState" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWA_USER_ID, 			
+			SWA_USER_CID, 			
 			SWA_LOGIN_NAME, 			
-			SWA_AGENT_USER_ID, 			
+			SWA_AGENT_USER_CID, 			
 			SWA_AGENT_LOGIN_NAME, 			
-			SWA_AGENT_STATUS			
+			SWA_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWA_USER_ID
+		SWA_USER_CID
 	</sql>
 </mapper>  

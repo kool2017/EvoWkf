@@ -3,28 +3,28 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfWorkgroupDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfWorkgroupBean">
-		<id column="SWW_WG_ID" property="swwWgId" />
+		<id column="SWW_WG_CID" property="swwWgCid" />
 		<result column="SWW_WG_NAME" property="swwWgName" />
 		<result column="SWW_WG_TYPE" property="swwWgType" />
 		<result column="SWW_WKF_TYPE" property="swwWkfType" />
 		<result column="SWW_WKF_CODE" property="swwWkfCode" />
-		<result column="SWW_ENTITY_ID" property="swwEntityId" />
+		<result column="SWW_ENTITY_CID" property="swwEntityCid" />
 		<result column="SWW_BUS_TYPE" property="swwBusType" />
-		<result column="SWW_WG_STATUS" property="swwWgStatus" />
+		<result column="SWW_STATE" property="swwState" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWW_WG_ID, 			
+			SWW_WG_CID, 			
 			SWW_WG_NAME, 			
 			SWW_WG_TYPE, 			
 			SWW_WKF_TYPE, 			
 			SWW_WKF_CODE, 			
-			SWW_ENTITY_ID, 			
+			SWW_ENTITY_CID, 			
 			SWW_BUS_TYPE, 			
-			SWW_WG_STATUS			
+			SWW_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWW_WG_ID
+		SWW_WG_CID
 	</sql>
 </mapper>  

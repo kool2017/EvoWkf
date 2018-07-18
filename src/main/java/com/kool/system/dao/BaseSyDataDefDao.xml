@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyDataDefDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyDataDefBean">
+		<id column="SDD_DATA_CODE" property="sddDataCode" />
+		<result column="SDD_NAME" property="sddName" />
+		<result column="SDD_FIELD" property="sddField" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SDD_DATA_CODE, 			
+			SDD_NAME, 			
+			SDD_FIELD			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SDD_DATA_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyDataDefBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_DATA_DEF WHERE 1=1 
+		<if test="sddDataCode != null and sddDataCode != ''">
+			AND SDD_DATA_CODE = #{sddDataCode}
+		</if>
+		<if test="sddName != null and sddName != ''">
+			AND SDD_NAME = #{sddName}
+		</if>
+		<if test="sddField != null and sddField != ''">
+			AND SDD_FIELD = #{sddField}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyDataDefBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_DATA_DEF
+		WHERE 
+		SDD_DATA_CODE = #{sddDataCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyDataDefBean">
+		DELETE FROM SY_DATA_DEF
+		WHERE
+		SDD_DATA_CODE = #{sddDataCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyDataDefBean">
+		DELETE FROM SY_DATA_DEF
+		WHERE 1=1 
+		<if test="sddDataCode != null and sddDataCode != ''">
+			AND SDD_DATA_CODE = #{sddDataCode}
+		</if>
+		<if test="sddName != null and sddName != ''">
+			AND SDD_NAME = #{sddName}
+		</if>
+		<if test="sddField != null and sddField != ''">
+			AND SDD_FIELD = #{sddField}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyDataDefBean">
+		INSERT INTO SY_DATA_DEF
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sddDataCode != null">
+				SDD_DATA_CODE,
+			</if>		
+			<if test="sddName != null">
+				SDD_NAME,
+			</if>		
+			<if test="sddField != null">
+				SDD_FIELD,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sddDataCode != null">
+				#{sddDataCode},
+			</if>	
+			<if test="sddName != null">
+				#{sddName},
+			</if>	
+			<if test="sddField != null">
+				#{sddField},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_DATA_DEF
+		<set>
+			<if test="value.isInitSddDataCode">
+				<choose>
+					<when test="value.sddDataCode != null">
+						SDD_DATA_CODE = #{value.sddDataCode},
+					</when>
+					<otherwise>
+						SDD_DATA_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSddName">
+				<choose>
+					<when test="value.sddName != null">
+						SDD_NAME = #{value.sddName},
+					</when>
+					<otherwise>
+						SDD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSddField">
+				<choose>
+					<when test="value.sddField != null">
+						SDD_FIELD = #{value.sddField},
+					</when>
+					<otherwise>
+						SDD_FIELD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sddDataCode != null and condition.sddDataCode != ''">
+			AND SDD_DATA_CODE =	#{condition.sddDataCode} 
+		</if>
+		<if test="condition.sddName != null and condition.sddName != ''">
+			AND SDD_NAME =	#{condition.sddName} 
+		</if>
+		<if test="condition.sddField != null and condition.sddField != ''">
+			AND SDD_FIELD =	#{condition.sddField} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyDataDefBean">
+		UPDATE SY_DATA_DEF
+		<set>
+			<if test="isInitSddDataCode">
+				<choose>
+					<when test="sddDataCode != null">
+						SDD_DATA_CODE = #{sddDataCode},
+					</when>
+					<otherwise>
+						SDD_DATA_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSddName">
+				<choose>
+					<when test="sddName != null">
+						SDD_NAME = #{sddName},
+					</when>
+					<otherwise>
+						SDD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSddField">
+				<choose>
+					<when test="sddField != null">
+						SDD_FIELD = #{sddField},
+					</when>
+					<otherwise>
+						SDD_FIELD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SDD_DATA_CODE = #{sddDataCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_DATA_DEF WHERE 1=1
+		<if test="syDataDef!=null">
+			<if test="syDataDef.sddDataCode != null and syDataDef.sddDataCode != ''">
+				AND SDD_DATA_CODE = #{syDataDef.sddDataCode}
+			</if>
+			<if test="syDataDef.sddName != null and syDataDef.sddName != ''">
+				AND SDD_NAME = #{syDataDef.sddName}
+			</if>
+			<if test="syDataDef.sddField != null and syDataDef.sddField != ''">
+				AND SDD_FIELD = #{syDataDef.sddField}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyDataDefBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_DATA_DEF
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sddDataCode != null and sddDataCode != ''">
+				AND SDD_DATA_CODE = #{sddDataCode}
+			</if>
+			<if test="sddName != null and sddName != ''">
+				AND SDD_NAME = #{sddName}
+			</if>
+			<if test="sddField != null and sddField != ''">
+				AND SDD_FIELD = #{sddField}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_DATA_DEF(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sddDataCode},		
+			#{item.sddName},		
+			#{item.sddField},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

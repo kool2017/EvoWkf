@@ -5,14 +5,14 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfNodeBean extends BaseBean {
-	protected String swnNodeId;
-	protected boolean isInitSwnNodeId;
+	protected String swnNodeCid;
+	protected boolean isInitSwnNodeCid;
 	protected String swnNodeName;
 	protected boolean isInitSwnNodeName;
-	protected String swnEntityId;
-	protected boolean isInitSwnEntityId;
-	protected String swnWgId;
-	protected boolean isInitSwnWgId;
+	protected String swnEntityCid;
+	protected boolean isInitSwnEntityCid;
+	protected String swnWgCid;
+	protected boolean isInitSwnWgCid;
 	protected String swnEventType;
 	protected boolean isInitSwnEventType;
 	protected String swnEventRule;
@@ -37,23 +37,23 @@ public class SyWkfNodeBean extends BaseBean {
 	protected boolean isInitSwnIsAuto;
 	protected String swnViewUrl;
 	protected boolean isInitSwnViewUrl;
-	protected String swnNodeStatus;
-	protected boolean isInitSwnNodeStatus;
+	protected String swnState;
+	protected boolean isInitSwnState;
 
-	public boolean getIsInitSwnNodeId() {
-		return this.isInitSwnNodeId;
+	public boolean getIsInitSwnNodeCid() {
+		return this.isInitSwnNodeCid;
 	}
 
 	public boolean getIsInitSwnNodeName() {
 		return this.isInitSwnNodeName;
 	}
 
-	public boolean getIsInitSwnEntityId() {
-		return this.isInitSwnEntityId;
+	public boolean getIsInitSwnEntityCid() {
+		return this.isInitSwnEntityCid;
 	}
 
-	public boolean getIsInitSwnWgId() {
-		return this.isInitSwnWgId;
+	public boolean getIsInitSwnWgCid() {
+		return this.isInitSwnWgCid;
 	}
 
 	public boolean getIsInitSwnEventType() {
@@ -104,17 +104,17 @@ public class SyWkfNodeBean extends BaseBean {
 		return this.isInitSwnViewUrl;
 	}
 
-	public boolean getIsInitSwnNodeStatus() {
-		return this.isInitSwnNodeStatus;
+	public boolean getIsInitSwnState() {
+		return this.isInitSwnState;
 	}
 
-	public String getSwnNodeId() {
-		return swnNodeId;
+	public String getSwnNodeCid() {
+		return swnNodeCid;
 	}
 
-	public void setSwnNodeId(String swnNodeId) {
-		this.swnNodeId = swnNodeId;
-		this.isInitSwnNodeId = true;
+	public void setSwnNodeCid(String swnNodeCid) {
+		this.swnNodeCid = swnNodeCid;
+		this.isInitSwnNodeCid = true;
 	}
 
 	public String getSwnNodeName() {
@@ -126,22 +126,22 @@ public class SyWkfNodeBean extends BaseBean {
 		this.isInitSwnNodeName = true;
 	}
 
-	public String getSwnEntityId() {
-		return swnEntityId;
+	public String getSwnEntityCid() {
+		return swnEntityCid;
 	}
 
-	public void setSwnEntityId(String swnEntityId) {
-		this.swnEntityId = swnEntityId;
-		this.isInitSwnEntityId = true;
+	public void setSwnEntityCid(String swnEntityCid) {
+		this.swnEntityCid = swnEntityCid;
+		this.isInitSwnEntityCid = true;
 	}
 
-	public String getSwnWgId() {
-		return swnWgId;
+	public String getSwnWgCid() {
+		return swnWgCid;
 	}
 
-	public void setSwnWgId(String swnWgId) {
-		this.swnWgId = swnWgId;
-		this.isInitSwnWgId = true;
+	public void setSwnWgCid(String swnWgCid) {
+		this.swnWgCid = swnWgCid;
+		this.isInitSwnWgCid = true;
 	}
 
 	public String getSwnEventType() {
@@ -252,28 +252,28 @@ public class SyWkfNodeBean extends BaseBean {
 		this.isInitSwnViewUrl = true;
 	}
 
-	public String getSwnNodeStatus() {
-		return swnNodeStatus;
+	public String getSwnState() {
+		return swnState;
 	}
 
-	public void setSwnNodeStatus(String swnNodeStatus) {
-		this.swnNodeStatus = swnNodeStatus;
-		this.isInitSwnNodeStatus = true;
+	public void setSwnState(String swnState) {
+		this.swnState = swnState;
+		this.isInitSwnState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSwnNodeId) {
-			map.put("swnNodeId", formatString(swnNodeId));
+		if (isInitSwnNodeCid) {
+			map.put("swnNodeCid", formatString(swnNodeCid));
 		}
 		if (isInitSwnNodeName) {
 			map.put("swnNodeName", formatString(swnNodeName));
 		}
-		if (isInitSwnEntityId) {
-			map.put("swnEntityId", formatString(swnEntityId));
+		if (isInitSwnEntityCid) {
+			map.put("swnEntityCid", formatString(swnEntityCid));
 		}
-		if (isInitSwnWgId) {
-			map.put("swnWgId", formatString(swnWgId));
+		if (isInitSwnWgCid) {
+			map.put("swnWgCid", formatString(swnWgCid));
 		}
 		if (isInitSwnEventType) {
 			map.put("swnEventType", formatString(swnEventType));
@@ -311,8 +311,8 @@ public class SyWkfNodeBean extends BaseBean {
 		if (isInitSwnViewUrl) {
 			map.put("swnViewUrl", formatString(swnViewUrl));
 		}
-		if (isInitSwnNodeStatus) {
-			map.put("swnNodeStatus", formatString(swnNodeStatus));
+		if (isInitSwnState) {
+			map.put("swnState", formatString(swnState));
 		}
 
 		return map;

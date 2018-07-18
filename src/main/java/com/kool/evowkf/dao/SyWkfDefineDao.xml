@@ -8,18 +8,18 @@
 		<result column="SWD_WKF_TYPE" property="swdWkfType" />
 		<result column="SWD_ROUTE_TYPE" property="swdRouteType" />
 		<result column="SWD_CHECK_FLAG" property="swdCheckFlag" />
-		<result column="SWD_WKF_STATUS" property="swdWkfStatus" />
+		<result column="SWD_STATE" property="swdState" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWD_WKF_CODE, 			
-			SWD_WKF_NAME, 			
-			SWD_WKF_TYPE, 			
-			SWD_ROUTE_TYPE, 			
-			SWD_CHECK_FLAG, 			
-			SWD_WKF_STATUS			
+		SWD_WKF_CODE,
+		SWD_WKF_NAME,
+		SWD_WKF_TYPE,
+		SWD_ROUTE_TYPE,
+		SWD_CHECK_FLAG,
+		SWD_STATE
 	</sql>
-	
+
 	<sql id="Primary_Key_List">
 		SWD_WKF_CODE
 	</sql>

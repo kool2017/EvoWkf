@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyReqDefDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyReqDefBean">
+		<id column="SRD_REQ_URL" property="srdReqUrl" />
+		<result column="SRD_NAME" property="srdName" />
+		<result column="SRD_DBPOOL_TYPE" property="srdDbpoolType" />
+		<result column="SRD_DBPOOL_CODE" property="srdDbpoolCode" />
+		<result column="SRD_MSG_TYPE" property="srdMsgType" />
+		<result column="SRD_SIGN_FLAG" property="srdSignFlag" />
+		<result column="SRD_ENCRYPT" property="srdEncrypt" />
+		<result column="SRD_CHANNEL" property="srdChannel" />
+		<result column="SRD_STATE" property="srdState" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		SRD_REQ_URL, 			
+		SRD_NAME, 			
+		SRD_DBPOOL_TYPE, 			
+		SRD_DBPOOL_CODE, 			
+		SRD_MSG_TYPE, 			
+		SRD_SIGN_FLAG, 			
+		SRD_ENCRYPT, 			
+		SRD_CHANNEL, 			
+		SRD_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRD_REQ_URL
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyReqDefBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_REQ_DEF WHERE 1=1 
+		<if test="srdReqUrl != null and srdReqUrl != ''">
+			AND SRD_REQ_URL = #{srdReqUrl}
+		</if>
+		<if test="srdName != null and srdName != ''">
+			AND SRD_NAME = #{srdName}
+		</if>
+		<if test="srdDbpoolType != null and srdDbpoolType != ''">
+			AND SRD_DBPOOL_TYPE = #{srdDbpoolType}
+		</if>
+		<if test="srdDbpoolCode != null and srdDbpoolCode != ''">
+			AND SRD_DBPOOL_CODE = #{srdDbpoolCode}
+		</if>
+		<if test="srdMsgType != null and srdMsgType != ''">
+			AND SRD_MSG_TYPE = #{srdMsgType}
+		</if>
+		<if test="srdSignFlag != null and srdSignFlag != ''">
+			AND SRD_SIGN_FLAG = #{srdSignFlag}
+		</if>
+		<if test="srdEncrypt != null and srdEncrypt != ''">
+			AND SRD_ENCRYPT = #{srdEncrypt}
+		</if>
+		<if test="srdChannel != null and srdChannel != ''">
+			AND SRD_CHANNEL = #{srdChannel}
+		</if>
+		<if test="srdState != null and srdState != ''">
+			AND SRD_STATE = #{srdState}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyReqDefBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_REQ_DEF
+		WHERE 
+		SRD_REQ_URL = #{srdReqUrl}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyReqDefBean">
+		DELETE FROM SY_REQ_DEF
+		WHERE
+		SRD_REQ_URL = #{srdReqUrl}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyReqDefBean">
+		DELETE FROM SY_REQ_DEF
+		WHERE 1=1 
+		<if test="srdReqUrl != null and srdReqUrl != ''">
+			AND SRD_REQ_URL = #{srdReqUrl}
+		</if>
+		<if test="srdName != null and srdName != ''">
+			AND SRD_NAME = #{srdName}
+		</if>
+		<if test="srdDbpoolType != null and srdDbpoolType != ''">
+			AND SRD_DBPOOL_TYPE = #{srdDbpoolType}
+		</if>
+		<if test="srdDbpoolCode != null and srdDbpoolCode != ''">
+			AND SRD_DBPOOL_CODE = #{srdDbpoolCode}
+		</if>
+		<if test="srdMsgType != null and srdMsgType != ''">
+			AND SRD_MSG_TYPE = #{srdMsgType}
+		</if>
+		<if test="srdSignFlag != null and srdSignFlag != ''">
+			AND SRD_SIGN_FLAG = #{srdSignFlag}
+		</if>
+		<if test="srdEncrypt != null and srdEncrypt != ''">
+			AND SRD_ENCRYPT = #{srdEncrypt}
+		</if>
+		<if test="srdChannel != null and srdChannel != ''">
+			AND SRD_CHANNEL = #{srdChannel}
+		</if>
+		<if test="srdState != null and srdState != ''">
+			AND SRD_STATE = #{srdState}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyReqDefBean">
+		INSERT INTO SY_REQ_DEF
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="srdReqUrl != null">
+				SRD_REQ_URL,
+			</if>		
+			<if test="srdName != null">
+				SRD_NAME,
+			</if>		
+			<if test="srdDbpoolType != null">
+				SRD_DBPOOL_TYPE,
+			</if>		
+			<if test="srdDbpoolCode != null">
+				SRD_DBPOOL_CODE,
+			</if>		
+			<if test="srdMsgType != null">
+				SRD_MSG_TYPE,
+			</if>		
+			<if test="srdSignFlag != null">
+				SRD_SIGN_FLAG,
+			</if>		
+			<if test="srdEncrypt != null">
+				SRD_ENCRYPT,
+			</if>		
+			<if test="srdChannel != null">
+				SRD_CHANNEL,
+			</if>		
+			<if test="srdState != null">
+				SRD_STATE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="srdReqUrl != null">
+				#{srdReqUrl},
+			</if>	
+			<if test="srdName != null">
+				#{srdName},
+			</if>	
+			<if test="srdDbpoolType != null">
+				#{srdDbpoolType},
+			</if>	
+			<if test="srdDbpoolCode != null">
+				#{srdDbpoolCode},
+			</if>	
+			<if test="srdMsgType != null">
+				#{srdMsgType},
+			</if>	
+			<if test="srdSignFlag != null">
+				#{srdSignFlag},
+			</if>	
+			<if test="srdEncrypt != null">
+				#{srdEncrypt},
+			</if>	
+			<if test="srdChannel != null">
+				#{srdChannel},
+			</if>	
+			<if test="srdState != null">
+				#{srdState},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_REQ_DEF
+		<set>
+			<if test="value.isInitSrdReqUrl">
+				<choose>
+					<when test="value.srdReqUrl != null">
+						SRD_REQ_URL = #{value.srdReqUrl},
+					</when>
+					<otherwise>
+						SRD_REQ_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdName">
+				<choose>
+					<when test="value.srdName != null">
+						SRD_NAME = #{value.srdName},
+					</when>
+					<otherwise>
+						SRD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdDbpoolType">
+				<choose>
+					<when test="value.srdDbpoolType != null">
+						SRD_DBPOOL_TYPE = #{value.srdDbpoolType},
+					</when>
+					<otherwise>
+						SRD_DBPOOL_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdDbpoolCode">
+				<choose>
+					<when test="value.srdDbpoolCode != null">
+						SRD_DBPOOL_CODE = #{value.srdDbpoolCode},
+					</when>
+					<otherwise>
+						SRD_DBPOOL_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdMsgType">
+				<choose>
+					<when test="value.srdMsgType != null">
+						SRD_MSG_TYPE = #{value.srdMsgType},
+					</when>
+					<otherwise>
+						SRD_MSG_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdSignFlag">
+				<choose>
+					<when test="value.srdSignFlag != null">
+						SRD_SIGN_FLAG = #{value.srdSignFlag},
+					</when>
+					<otherwise>
+						SRD_SIGN_FLAG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdEncrypt">
+				<choose>
+					<when test="value.srdEncrypt != null">
+						SRD_ENCRYPT = #{value.srdEncrypt},
+					</when>
+					<otherwise>
+						SRD_ENCRYPT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdChannel">
+				<choose>
+					<when test="value.srdChannel != null">
+						SRD_CHANNEL = #{value.srdChannel},
+					</when>
+					<otherwise>
+						SRD_CHANNEL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrdState">
+				<choose>
+					<when test="value.srdState != null">
+						SRD_STATE = #{value.srdState},
+					</when>
+					<otherwise>
+						SRD_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.srdReqUrl != null and condition.srdReqUrl != ''">
+			AND SRD_REQ_URL =	#{condition.srdReqUrl} 
+		</if>
+		<if test="condition.srdName != null and condition.srdName != ''">
+			AND SRD_NAME =	#{condition.srdName} 
+		</if>
+		<if test="condition.srdDbpoolType != null and condition.srdDbpoolType != ''">
+			AND SRD_DBPOOL_TYPE =	#{condition.srdDbpoolType} 
+		</if>
+		<if test="condition.srdDbpoolCode != null and condition.srdDbpoolCode != ''">
+			AND SRD_DBPOOL_CODE =	#{condition.srdDbpoolCode} 
+		</if>
+		<if test="condition.srdMsgType != null and condition.srdMsgType != ''">
+			AND SRD_MSG_TYPE =	#{condition.srdMsgType} 
+		</if>
+		<if test="condition.srdSignFlag != null and condition.srdSignFlag != ''">
+			AND SRD_SIGN_FLAG =	#{condition.srdSignFlag} 
+		</if>
+		<if test="condition.srdEncrypt != null and condition.srdEncrypt != ''">
+			AND SRD_ENCRYPT =	#{condition.srdEncrypt} 
+		</if>
+		<if test="condition.srdChannel != null and condition.srdChannel != ''">
+			AND SRD_CHANNEL =	#{condition.srdChannel} 
+		</if>
+		<if test="condition.srdState != null and condition.srdState != ''">
+			AND SRD_STATE =	#{condition.srdState} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyReqDefBean">
+		UPDATE SY_REQ_DEF
+		<set>
+			<if test="isInitSrdReqUrl">
+				<choose>
+					<when test="srdReqUrl != null">
+						SRD_REQ_URL = #{srdReqUrl},
+					</when>
+					<otherwise>
+						SRD_REQ_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdName">
+				<choose>
+					<when test="srdName != null">
+						SRD_NAME = #{srdName},
+					</when>
+					<otherwise>
+						SRD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdDbpoolType">
+				<choose>
+					<when test="srdDbpoolType != null">
+						SRD_DBPOOL_TYPE = #{srdDbpoolType},
+					</when>
+					<otherwise>
+						SRD_DBPOOL_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdDbpoolCode">
+				<choose>
+					<when test="srdDbpoolCode != null">
+						SRD_DBPOOL_CODE = #{srdDbpoolCode},
+					</when>
+					<otherwise>
+						SRD_DBPOOL_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdMsgType">
+				<choose>
+					<when test="srdMsgType != null">
+						SRD_MSG_TYPE = #{srdMsgType},
+					</when>
+					<otherwise>
+						SRD_MSG_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdSignFlag">
+				<choose>
+					<when test="srdSignFlag != null">
+						SRD_SIGN_FLAG = #{srdSignFlag},
+					</when>
+					<otherwise>
+						SRD_SIGN_FLAG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdEncrypt">
+				<choose>
+					<when test="srdEncrypt != null">
+						SRD_ENCRYPT = #{srdEncrypt},
+					</when>
+					<otherwise>
+						SRD_ENCRYPT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdChannel">
+				<choose>
+					<when test="srdChannel != null">
+						SRD_CHANNEL = #{srdChannel},
+					</when>
+					<otherwise>
+						SRD_CHANNEL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrdState">
+				<choose>
+					<when test="srdState != null">
+						SRD_STATE = #{srdState},
+					</when>
+					<otherwise>
+						SRD_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SRD_REQ_URL = #{srdReqUrl}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_REQ_DEF WHERE 1=1
+		<if test="syReqDef!=null">
+			<if test="syReqDef.srdReqUrl != null and syReqDef.srdReqUrl != ''">
+				AND SRD_REQ_URL = #{syReqDef.srdReqUrl}
+			</if>
+			<if test="syReqDef.srdName != null and syReqDef.srdName != ''">
+				AND SRD_NAME = #{syReqDef.srdName}
+			</if>
+			<if test="syReqDef.srdDbpoolType != null and syReqDef.srdDbpoolType != ''">
+				AND SRD_DBPOOL_TYPE = #{syReqDef.srdDbpoolType}
+			</if>
+			<if test="syReqDef.srdDbpoolCode != null and syReqDef.srdDbpoolCode != ''">
+				AND SRD_DBPOOL_CODE = #{syReqDef.srdDbpoolCode}
+			</if>
+			<if test="syReqDef.srdMsgType != null and syReqDef.srdMsgType != ''">
+				AND SRD_MSG_TYPE = #{syReqDef.srdMsgType}
+			</if>
+			<if test="syReqDef.srdSignFlag != null and syReqDef.srdSignFlag != ''">
+				AND SRD_SIGN_FLAG = #{syReqDef.srdSignFlag}
+			</if>
+			<if test="syReqDef.srdEncrypt != null and syReqDef.srdEncrypt != ''">
+				AND SRD_ENCRYPT = #{syReqDef.srdEncrypt}
+			</if>
+			<if test="syReqDef.srdChannel != null and syReqDef.srdChannel != ''">
+				AND SRD_CHANNEL = #{syReqDef.srdChannel}
+			</if>
+			<if test="syReqDef.srdState != null and syReqDef.srdState != ''">
+				AND SRD_STATE = #{syReqDef.srdState}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyReqDefBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_REQ_DEF
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="srdReqUrl != null and srdReqUrl != ''">
+				AND SRD_REQ_URL = #{srdReqUrl}
+			</if>
+			<if test="srdName != null and srdName != ''">
+				AND SRD_NAME = #{srdName}
+			</if>
+			<if test="srdDbpoolType != null and srdDbpoolType != ''">
+				AND SRD_DBPOOL_TYPE = #{srdDbpoolType}
+			</if>
+			<if test="srdDbpoolCode != null and srdDbpoolCode != ''">
+				AND SRD_DBPOOL_CODE = #{srdDbpoolCode}
+			</if>
+			<if test="srdMsgType != null and srdMsgType != ''">
+				AND SRD_MSG_TYPE = #{srdMsgType}
+			</if>
+			<if test="srdSignFlag != null and srdSignFlag != ''">
+				AND SRD_SIGN_FLAG = #{srdSignFlag}
+			</if>
+			<if test="srdEncrypt != null and srdEncrypt != ''">
+				AND SRD_ENCRYPT = #{srdEncrypt}
+			</if>
+			<if test="srdChannel != null and srdChannel != ''">
+				AND SRD_CHANNEL = #{srdChannel}
+			</if>
+			<if test="srdState != null and srdState != ''">
+				AND SRD_STATE = #{srdState}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_REQ_DEF(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.srdReqUrl},		
+			#{item.srdName},		
+			#{item.srdDbpoolType},		
+			#{item.srdDbpoolCode},		
+			#{item.srdMsgType},		
+			#{item.srdSignFlag},		
+			#{item.srdEncrypt},		
+			#{item.srdChannel},		
+			#{item.srdState},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

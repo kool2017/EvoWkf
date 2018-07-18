@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<!-- 磁盘缓存位置 -->
+	<!-- <diskStore path="java.io.tmpdir/ehcache" /> -->
+
+	<!-- 默认缓存 -->
+	<defaultCache maxEntriesLocalHeap="10000" eternal="false"
+		timeToIdleSeconds="0" timeToLiveSeconds="0" maxEntriesLocalDisk="10000000"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</defaultCache>
+
+	<!-- 系统全局缓存 -->
+	<cache name="KCACHE" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+	<!-- 菜单缓存 -->
+	<cache name="MENU" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 请求缓存 -->
+	<cache name="REQ" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 权限缓存 -->
+	<cache name="AUT" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 角色缓存 -->
+	<cache name="ROLE" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 角色组缓存 -->
+	<cache name="ROLE_GROUP" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 用户身份认证信息缓存 -->
+	<cache name="USER" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 用户菜单关系缓存 -->
+	<cache name="USER_MENU" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 用户请求关系缓存 -->
+	<cache name="USER_REQ" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 错误码缓存 -->
+	<cache name="ERRCOD" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 参数缓存 -->
+	<cache name="PARAM" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 预定义缓存 -->
+	<cache name="GLOBAL_DEF" maxElementsInMemory="1000" eternal="false"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+</ehcache>

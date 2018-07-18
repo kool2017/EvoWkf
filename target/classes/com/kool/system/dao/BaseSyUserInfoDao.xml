@@ -3,8 +3,9 @@
 
 <mapper namespace="com.kool.system.dao.BaseSyUserInfoDao">
 	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserInfoBean">
-		<id column="SUI_ID" property="suiId" />
+		<id column="SUI_USER_CID" property="suiUserCid" />
 		<result column="SUI_LOGIN_NAME" property="suiLoginName" />
+		<result column="SUI_TYPE" property="suiType" />
 		<result column="SUI_PHONE" property="suiPhone" />
 		<result column="SUI_MAIL" property="suiMail" />
 		<result column="SUI_PWD" property="suiPwd" />
@@ -12,16 +13,20 @@
 		<result column="SUI_NEW_SALT" property="suiNewSalt" />
 		<result column="SUI_HASH_TIMES" property="suiHashTimes" />
 		<result column="SUI_FACE" property="suiFace" />
-		<result column="SUI_STATUS" property="suiStatus" />
+		<result column="SUI_STATE" property="suiState" />
 		<result column="SUI_ERROR_TIMES" property="suiErrorTimes" />
 		<result column="SUI_REGISTER_TIME" property="suiRegisterTime" />
+		<result column="SUI_HAS_KEY" property="suiHasKey" />
+		<result column="SUI_KEY_UID" property="suiKeyUid" />
+		<result column="SUI_STAFF_CID" property="suiStaffCid" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SUI_ID, 			
+			SUI_USER_CID, 			
 			SUI_LOGIN_NAME, 			
+			SUI_TYPE, 			
 			SUI_PHONE, 			
 			SUI_MAIL, 			
 			SUI_PWD, 			
@@ -29,13 +34,16 @@
 			SUI_NEW_SALT, 			
 			SUI_HASH_TIMES, 			
 			SUI_FACE, 			
-			SUI_STATUS, 			
+			SUI_STATE, 			
 			SUI_ERROR_TIMES, 			
-			SUI_REGISTER_TIME			
+			SUI_REGISTER_TIME, 			
+			SUI_HAS_KEY, 			
+			SUI_KEY_UID, 			
+			SUI_STAFF_CID			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SUI_ID
+		SUI_USER_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.system.bean.SyUserInfoBean"
@@ -43,11 +51,14 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_USER_INFO WHERE 1=1 
-		<if test="suiId != null and suiId != ''">
-			AND SUI_ID = #{suiId}
+		<if test="suiUserCid != null and suiUserCid != ''">
+			AND SUI_USER_CID = #{suiUserCid}
 		</if>
 		<if test="suiLoginName != null and suiLoginName != ''">
 			AND SUI_LOGIN_NAME = #{suiLoginName}
+		</if>
+		<if test="suiType != null and suiType != ''">
+			AND SUI_TYPE = #{suiType}
 		</if>
 		<if test="suiPhone != null and suiPhone != ''">
 			AND SUI_PHONE = #{suiPhone}
@@ -68,11 +79,20 @@
 		<if test="suiFace != null and suiFace != ''">
 			AND SUI_FACE = #{suiFace}
 		</if>
-		<if test="suiStatus != null and suiStatus != ''">
-			AND SUI_STATUS = #{suiStatus}
+		<if test="suiState != null and suiState != ''">
+			AND SUI_STATE = #{suiState}
 		</if>
 		
 		
+		<if test="suiHasKey != null and suiHasKey != ''">
+			AND SUI_HAS_KEY = #{suiHasKey}
+		</if>
+		<if test="suiKeyUid != null and suiKeyUid != ''">
+			AND SUI_KEY_UID = #{suiKeyUid}
+		</if>
+		<if test="suiStaffCid != null and suiStaffCid != ''">
+			AND SUI_STAFF_CID = #{suiStaffCid}
+		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -83,7 +103,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_USER_INFO
 		WHERE 
-		SUI_ID = #{suiId}
+		SUI_USER_CID = #{suiUserCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -91,17 +111,20 @@
 	<delete id="delete" parameterType="com.kool.system.bean.SyUserInfoBean">
 		DELETE FROM SY_USER_INFO
 		WHERE
-		SUI_ID = #{suiId}
+		SUI_USER_CID = #{suiUserCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.system.bean.SyUserInfoBean">
 		DELETE FROM SY_USER_INFO
 		WHERE 1=1 
-		<if test="suiId != null and suiId != ''">
-			AND SUI_ID = #{suiId}
+		<if test="suiUserCid != null and suiUserCid != ''">
+			AND SUI_USER_CID = #{suiUserCid}
 		</if>
 		<if test="suiLoginName != null and suiLoginName != ''">
 			AND SUI_LOGIN_NAME = #{suiLoginName}
+		</if>
+		<if test="suiType != null and suiType != ''">
+			AND SUI_TYPE = #{suiType}
 		</if>
 		<if test="suiPhone != null and suiPhone != ''">
 			AND SUI_PHONE = #{suiPhone}
@@ -122,21 +145,33 @@
 		<if test="suiFace != null and suiFace != ''">
 			AND SUI_FACE = #{suiFace}
 		</if>
-		<if test="suiStatus != null and suiStatus != ''">
-			AND SUI_STATUS = #{suiStatus}
+		<if test="suiState != null and suiState != ''">
+			AND SUI_STATE = #{suiState}
 		</if>
 		
 		
+		<if test="suiHasKey != null and suiHasKey != ''">
+			AND SUI_HAS_KEY = #{suiHasKey}
+		</if>
+		<if test="suiKeyUid != null and suiKeyUid != ''">
+			AND SUI_KEY_UID = #{suiKeyUid}
+		</if>
+		<if test="suiStaffCid != null and suiStaffCid != ''">
+			AND SUI_STAFF_CID = #{suiStaffCid}
+		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.system.bean.SyUserInfoBean">
 		INSERT INTO SY_USER_INFO
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="suiId != null">
-				SUI_ID,
+			<if test="suiUserCid != null">
+				SUI_USER_CID,
 			</if>		
 			<if test="suiLoginName != null">
 				SUI_LOGIN_NAME,
+			</if>		
+			<if test="suiType != null">
+				SUI_TYPE,
 			</if>		
 			<if test="suiPhone != null">
 				SUI_PHONE,
@@ -159,8 +194,8 @@
 			<if test="suiFace != null">
 				SUI_FACE,
 			</if>		
-			<if test="suiStatus != null">
-				SUI_STATUS,
+			<if test="suiState != null">
+				SUI_STATE,
 			</if>		
 			<if test="suiErrorTimes != null">
 				SUI_ERROR_TIMES,
@@ -168,13 +203,25 @@
 			<if test="suiRegisterTime != null">
 				SUI_REGISTER_TIME,
 			</if>		
+			<if test="suiHasKey != null">
+				SUI_HAS_KEY,
+			</if>		
+			<if test="suiKeyUid != null">
+				SUI_KEY_UID,
+			</if>		
+			<if test="suiStaffCid != null">
+				SUI_STAFF_CID,
+			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="suiId != null">
-				#{suiId},
+			<if test="suiUserCid != null">
+				#{suiUserCid},
 			</if>	
 			<if test="suiLoginName != null">
 				#{suiLoginName},
+			</if>	
+			<if test="suiType != null">
+				#{suiType},
 			</if>	
 			<if test="suiPhone != null">
 				#{suiPhone},
@@ -197,8 +244,8 @@
 			<if test="suiFace != null">
 				#{suiFace},
 			</if>	
-			<if test="suiStatus != null">
-				#{suiStatus},
+			<if test="suiState != null">
+				#{suiState},
 			</if>	
 			<if test="suiErrorTimes != null">
 				#{suiErrorTimes},
@@ -206,19 +253,28 @@
 			<if test="suiRegisterTime != null">
 				#{suiRegisterTime},
 			</if>	
+			<if test="suiHasKey != null">
+				#{suiHasKey},
+			</if>	
+			<if test="suiKeyUid != null">
+				#{suiKeyUid},
+			</if>	
+			<if test="suiStaffCid != null">
+				#{suiStaffCid},
+			</if>	
 		</trim>
 	</insert>
 	
 	<update id="updates">
 		UPDATE SY_USER_INFO
 		<set>
-			<if test="value.isInitSuiId">
+			<if test="value.isInitSuiUserCid">
 				<choose>
-					<when test="value.suiId != null">
-						SUI_ID = #{value.suiId},
+					<when test="value.suiUserCid != null">
+						SUI_USER_CID = #{value.suiUserCid},
 					</when>
 					<otherwise>
-						SUI_ID = NULL,
+						SUI_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -229,6 +285,16 @@
 					</when>
 					<otherwise>
 						SUI_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiType">
+				<choose>
+					<when test="value.suiType != null">
+						SUI_TYPE = #{value.suiType},
+					</when>
+					<otherwise>
+						SUI_TYPE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -302,13 +368,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSuiStatus">
+			<if test="value.isInitSuiState">
 				<choose>
-					<when test="value.suiStatus != null">
-						SUI_STATUS = #{value.suiStatus},
+					<when test="value.suiState != null">
+						SUI_STATE = #{value.suiState},
 					</when>
 					<otherwise>
-						SUI_STATUS = NULL,
+						SUI_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -332,13 +398,46 @@
 					</otherwise>
 				</choose>
 			</if>
+			<if test="value.isInitSuiHasKey">
+				<choose>
+					<when test="value.suiHasKey != null">
+						SUI_HAS_KEY = #{value.suiHasKey},
+					</when>
+					<otherwise>
+						SUI_HAS_KEY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiKeyUid">
+				<choose>
+					<when test="value.suiKeyUid != null">
+						SUI_KEY_UID = #{value.suiKeyUid},
+					</when>
+					<otherwise>
+						SUI_KEY_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSuiStaffCid">
+				<choose>
+					<when test="value.suiStaffCid != null">
+						SUI_STAFF_CID = #{value.suiStaffCid},
+					</when>
+					<otherwise>
+						SUI_STAFF_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.suiId != null and condition.suiId != ''">
-			AND SUI_ID =	#{condition.suiId} 
+		<if test="condition.suiUserCid != null and condition.suiUserCid != ''">
+			AND SUI_USER_CID =	#{condition.suiUserCid} 
 		</if>
 		<if test="condition.suiLoginName != null and condition.suiLoginName != ''">
 			AND SUI_LOGIN_NAME =	#{condition.suiLoginName} 
+		</if>
+		<if test="condition.suiType != null and condition.suiType != ''">
+			AND SUI_TYPE =	#{condition.suiType} 
 		</if>
 		<if test="condition.suiPhone != null and condition.suiPhone != ''">
 			AND SUI_PHONE =	#{condition.suiPhone} 
@@ -359,23 +458,32 @@
 		<if test="condition.suiFace != null and condition.suiFace != ''">
 			AND SUI_FACE =	#{condition.suiFace} 
 		</if>
-		<if test="condition.suiStatus != null and condition.suiStatus != ''">
-			AND SUI_STATUS =	#{condition.suiStatus} 
+		<if test="condition.suiState != null and condition.suiState != ''">
+			AND SUI_STATE =	#{condition.suiState} 
 		</if>
 		
 		
+		<if test="condition.suiHasKey != null and condition.suiHasKey != ''">
+			AND SUI_HAS_KEY =	#{condition.suiHasKey} 
+		</if>
+		<if test="condition.suiKeyUid != null and condition.suiKeyUid != ''">
+			AND SUI_KEY_UID =	#{condition.suiKeyUid} 
+		</if>
+		<if test="condition.suiStaffCid != null and condition.suiStaffCid != ''">
+			AND SUI_STAFF_CID =	#{condition.suiStaffCid} 
+		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.system.bean.SyUserInfoBean">
 		UPDATE SY_USER_INFO
 		<set>
-			<if test="isInitSuiId">
+			<if test="isInitSuiUserCid">
 				<choose>
-					<when test="suiId != null">
-						SUI_ID = #{suiId},
+					<when test="suiUserCid != null">
+						SUI_USER_CID = #{suiUserCid},
 					</when>
 					<otherwise>
-						SUI_ID = NULL,
+						SUI_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -386,6 +494,16 @@
 					</when>
 					<otherwise>
 						SUI_LOGIN_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiType">
+				<choose>
+					<when test="suiType != null">
+						SUI_TYPE = #{suiType},
+					</when>
+					<otherwise>
+						SUI_TYPE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -459,13 +577,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSuiStatus">
+			<if test="isInitSuiState">
 				<choose>
-					<when test="suiStatus != null">
-						SUI_STATUS = #{suiStatus},
+					<when test="suiState != null">
+						SUI_STATE = #{suiState},
 					</when>
 					<otherwise>
-						SUI_STATUS = NULL,
+						SUI_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -489,9 +607,39 @@
 					</otherwise>
 				</choose>
 			</if>
+			<if test="isInitSuiHasKey">
+				<choose>
+					<when test="suiHasKey != null">
+						SUI_HAS_KEY = #{suiHasKey},
+					</when>
+					<otherwise>
+						SUI_HAS_KEY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiKeyUid">
+				<choose>
+					<when test="suiKeyUid != null">
+						SUI_KEY_UID = #{suiKeyUid},
+					</when>
+					<otherwise>
+						SUI_KEY_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSuiStaffCid">
+				<choose>
+					<when test="suiStaffCid != null">
+						SUI_STAFF_CID = #{suiStaffCid},
+					</when>
+					<otherwise>
+						SUI_STAFF_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
 		</set>
 		WHERE 
-		SUI_ID = #{suiId}
+		SUI_USER_CID = #{suiUserCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -500,11 +648,14 @@
 		FROM
 		SY_USER_INFO WHERE 1=1
 		<if test="syUserInfo!=null">
-			<if test="syUserInfo.suiId != null and syUserInfo.suiId != ''">
-				AND SUI_ID = #{syUserInfo.suiId}
+			<if test="syUserInfo.suiUserCid != null and syUserInfo.suiUserCid != ''">
+				AND SUI_USER_CID = #{syUserInfo.suiUserCid}
 			</if>
 			<if test="syUserInfo.suiLoginName != null and syUserInfo.suiLoginName != ''">
 				AND SUI_LOGIN_NAME = #{syUserInfo.suiLoginName}
+			</if>
+			<if test="syUserInfo.suiType != null and syUserInfo.suiType != ''">
+				AND SUI_TYPE = #{syUserInfo.suiType}
 			</if>
 			<if test="syUserInfo.suiPhone != null and syUserInfo.suiPhone != ''">
 				AND SUI_PHONE = #{syUserInfo.suiPhone}
@@ -525,11 +676,20 @@
 			<if test="syUserInfo.suiFace != null and syUserInfo.suiFace != ''">
 				AND SUI_FACE = #{syUserInfo.suiFace}
 			</if>
-			<if test="syUserInfo.suiStatus != null and syUserInfo.suiStatus != ''">
-				AND SUI_STATUS = #{syUserInfo.suiStatus}
+			<if test="syUserInfo.suiState != null and syUserInfo.suiState != ''">
+				AND SUI_STATE = #{syUserInfo.suiState}
 			</if>
 			
 			
+			<if test="syUserInfo.suiHasKey != null and syUserInfo.suiHasKey != ''">
+				AND SUI_HAS_KEY = #{syUserInfo.suiHasKey}
+			</if>
+			<if test="syUserInfo.suiKeyUid != null and syUserInfo.suiKeyUid != ''">
+				AND SUI_KEY_UID = #{syUserInfo.suiKeyUid}
+			</if>
+			<if test="syUserInfo.suiStaffCid != null and syUserInfo.suiStaffCid != ''">
+				AND SUI_STAFF_CID = #{syUserInfo.suiStaffCid}
+			</if>
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -540,11 +700,14 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_USER_INFO
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="suiId != null and suiId != ''">
-				AND SUI_ID = #{suiId}
+			<if test="suiUserCid != null and suiUserCid != ''">
+				AND SUI_USER_CID = #{suiUserCid}
 			</if>
 			<if test="suiLoginName != null and suiLoginName != ''">
 				AND SUI_LOGIN_NAME = #{suiLoginName}
+			</if>
+			<if test="suiType != null and suiType != ''">
+				AND SUI_TYPE = #{suiType}
 			</if>
 			<if test="suiPhone != null and suiPhone != ''">
 				AND SUI_PHONE = #{suiPhone}
@@ -565,11 +728,20 @@
 			<if test="suiFace != null and suiFace != ''">
 				AND SUI_FACE = #{suiFace}
 			</if>
-			<if test="suiStatus != null and suiStatus != ''">
-				AND SUI_STATUS = #{suiStatus}
+			<if test="suiState != null and suiState != ''">
+				AND SUI_STATE = #{suiState}
 			</if>
 			
 			
+			<if test="suiHasKey != null and suiHasKey != ''">
+				AND SUI_HAS_KEY = #{suiHasKey}
+			</if>
+			<if test="suiKeyUid != null and suiKeyUid != ''">
+				AND SUI_KEY_UID = #{suiKeyUid}
+			</if>
+			<if test="suiStaffCid != null and suiStaffCid != ''">
+				AND SUI_STAFF_CID = #{suiStaffCid}
+			</if>
 		</if>
 	</select>
 	
@@ -580,8 +752,9 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.suiId},		
+			#{item.suiUserCid},		
 			#{item.suiLoginName},		
+			#{item.suiType},		
 			#{item.suiPhone},		
 			#{item.suiMail},		
 			#{item.suiPwd},		
@@ -589,9 +762,12 @@
 			#{item.suiNewSalt},		
 			#{item.suiHashTimes},		
 			#{item.suiFace},		
-			#{item.suiStatus},		
+			#{item.suiState},		
 			#{item.suiErrorTimes},		
 			#{item.suiRegisterTime},		
+			#{item.suiHasKey},		
+			#{item.suiKeyUid},		
+			#{item.suiStaffCid},		
 		</trim>
 		</foreach>
 	</insert>

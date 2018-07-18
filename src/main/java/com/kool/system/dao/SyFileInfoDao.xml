@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyFileInfoDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyFileInfoBean">
+		<id column="DFI_FILE_UID" property="dfiFileUid" />
+		<result column="DFI_FILE_NAME" property="dfiFileName" />
+		<result column="DFI_STORE_TYPE" property="dfiStoreType" />
+		<result column="DFI_IP" property="dfiIp" />
+		<result column="DFI_PORT" property="dfiPort" />
+		<result column="DFI_PATH" property="dfiPath" />
+		<result column="DFI_SECURITY" property="dfiSecurity" />
+		<result column="DFI_STATE" property="dfiState" />
+		<result column="DFI_PENDING_USER" property="dfiPendingUser" />
+		<result column="DFI_VERSION" property="dfiVersion" />
+		<result column="DFI_CMT" property="dfiCmt" />
+		<result column="DFI_CREATE_TIME" property="dfiCreateTime" />
+		<result column="DFI_CREATE_USER" property="dfiCreateUser" />
+		<result column="DFI_UPDATE_TIME" property="dfiUpdateTime" />
+		<result column="DFI_UPDATE_USER" property="dfiUpdateUser" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			DFI_FILE_UID, 			
+			DFI_FILE_NAME, 			
+			DFI_STORE_TYPE, 			
+			DFI_IP, 			
+			DFI_PORT, 			
+			DFI_PATH, 			
+			DFI_SECURITY, 			
+			DFI_STATE, 			
+			DFI_PENDING_USER, 			
+			DFI_VERSION, 			
+			DFI_CMT, 			
+			DFI_CREATE_TIME, 			
+			DFI_CREATE_USER, 			
+			DFI_UPDATE_TIME, 			
+			DFI_UPDATE_USER			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		DFI_FILE_UID
+	</sql>
+</mapper>  

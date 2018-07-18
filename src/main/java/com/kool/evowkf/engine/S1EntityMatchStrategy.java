@@ -7,7 +7,7 @@ package com.kool.evowkf.engine;
 
 import java.util.List;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 import com.kool.core.util.StringUtils;
 import com.kool.evowkf.bean.SyWkfEntityBean;
 import com.kool.evowkf.bean.vo.MatchValue;
@@ -30,10 +30,10 @@ public class S1EntityMatchStrategy implements IEntityMatchStrategy {
 	 * @throws BusException 
 	 */
 	@Override
-	public SyWkfEntityBean getEntity(List<SyWkfEntityBean> listEntity, MatchValue matchValueObj) throws BusException {
+	public SyWkfEntityBean getEntity(List<SyWkfEntityBean> listEntity, MatchValue matchValueObj) throws AppException {
 		String matchValue = matchValueObj.getMatchValue();
 		if (StringUtils.isEmpty(matchValue)) {
-			throw new BusException("简单匹配，传入的工作流实例的实例匹配业务值不能为空");
+			throw new AppException("简单匹配，传入的工作流实例的实例匹配业务值不能为空");
 		}
 		SyWkfEntityBean entity = null;
 		for (SyWkfEntityBean entityItem : listEntity) {
@@ -43,7 +43,7 @@ public class S1EntityMatchStrategy implements IEntityMatchStrategy {
 			}
 		}
 		if (null == entity) {
-			throw new BusException("无匹配的工作流实例");
+			throw new AppException("无匹配的工作流实例");
 		}
 		return entity;
 	}

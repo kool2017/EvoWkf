@@ -143,7 +143,65 @@ public class StringUtils {
 		return System.getProperty("user.dir");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AppException {
 		System.out.println(getUUID());
+	}
+
+	/**
+	 * @DESCRIBE
+	 * @DATE 2018年6月23日 下午10:03:20
+	 *
+	 * @param numberA
+	 * @param numberB
+	 * @throws AppException
+	 */
+	public static String add(String numberA, String numberB) throws AppException {
+		if (null == numberA || null == numberB) {
+			throw new AppException("SY000006");// 加数为空
+		}
+		int lenA = numberA.length();
+		int lenB = numberB.length();
+		StringBuilder sbSum = new StringBuilder();
+		String sLong = null;
+		String sShort = null;
+		if (lenA >= lenB) {
+			sLong = numberA;
+			sShort = numberB;
+		} else {
+			sLong = numberB;
+			sShort = numberA;
+		}
+		int plus = 0;
+		for (int i = 0; i < sShort.length(); i++) {
+			int C = Integer.valueOf(sLong.substring(sLong.length() - 1 - i, sLong.length() - i));
+			C += Integer.valueOf(sShort.substring(sShort.length() - 1 - i, sShort.length() - i));
+			C += plus;
+			if (C >= 10) {
+				C = C - 10;
+				plus = 1;
+			} else {
+				plus = 0;
+			}
+			sbSum.insert(0, C);
+		}
+
+		int j = sShort.length();
+		while (j < sLong.length()) {
+			int C = Integer.valueOf(sLong.substring(sLong.length() - j - 1, sLong.length() - j));
+			C += plus;
+			if (C >= 10) {
+				C = C - 10;
+				plus = 1;
+			} else {
+				plus = 0;
+			}
+			sbSum.insert(0, C);
+			j++;
+		}
+		if (plus == 1) {
+			sbSum.insert(0, 1);
+		}
+
+		return sbSum.toString();
 	}
 }

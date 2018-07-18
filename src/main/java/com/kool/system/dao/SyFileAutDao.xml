@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyFileAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyFileAutBean">
+		<id column="SFA_FILE_AUT_UID" property="sfaFileAutUid" />
+		<result column="SFA_FILE_UID" property="sfaFileUid" />
+		<result column="SFA_OWNER_TYPE" property="sfaOwnerType" />
+		<result column="SFA_USER_CID" property="sfaUserCid" />
+		<result column="SFA_ROLE_CODE" property="sfaRoleCode" />
+		<result column="SFA_GROUP_CODE" property="sfaGroupCode" />
+		<result column="SFA_CMT" property="sfaCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SFA_FILE_AUT_UID, 			
+			SFA_FILE_UID, 			
+			SFA_OWNER_TYPE, 			
+			SFA_USER_CID, 			
+			SFA_ROLE_CODE, 			
+			SFA_GROUP_CODE, 			
+			SFA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SFA_FILE_AUT_UID
+	</sql>
+</mapper>  

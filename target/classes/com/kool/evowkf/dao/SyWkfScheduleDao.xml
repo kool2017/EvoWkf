@@ -3,52 +3,52 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfScheduleDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfScheduleBean">
-		<id column="SWS_SCHEDULE_ID" property="swsScheduleId" />
-		<result column="SWS_RECORD_ID" property="swsRecordId" />
-		<result column="SWS_LAST_NODE_ID" property="swsLastNodeId" />
+		<id column="SWS_SCHEDULE_CID" property="swsScheduleCid" />
+		<result column="SWS_WKF_NBR" property="swsWkfNbr" />
+		<result column="SWS_LAST_NODE_CID" property="swsLastNodeCid" />
 		<result column="SWS_LAST_NODE_NAME" property="swsLastNodeName" />
-		<result column="SWS_LAST_USER_ID" property="swsLastUserId" />
+		<result column="SWS_LAST_USER_CID" property="swsLastUserCid" />
 		<result column="SWS_LAST_LOGIN_NAME" property="swsLastLoginName" />
-		<result column="SWS_SCHEDULE_NODE_ID" property="swsScheduleNodeId" />
+		<result column="SWS_SCHEDULE_NODE_CID" property="swsScheduleNodeCid" />
 		<result column="SWS_SCHEDULE_NODE_NAME" property="swsScheduleNodeName" />
-		<result column="SWS_WG_ID" property="swsWgId" />
+		<result column="SWS_WG_CID" property="swsWgCid" />
 		<result column="SWS_WG_NAME" property="swsWgName" />
-		<result column="SWS_SCHEDULE_USER_ID" property="swsScheduleUserId" />
+		<result column="SWS_SCHEDULE_USER_CID" property="swsScheduleUserCid" />
 		<result column="SWS_SCHEDULE_LOGIN_NAME" property="swsScheduleLoginName" />
 		<result column="SWS_BRANCH_FLAG" property="swsBranchFlag" />
-		<result column="SWS_BRANCH_HEAD_ID" property="swsBranchHeadId" />
+		<result column="SWS_BRANCH_HEAD_CID" property="swsBranchHeadCid" />
 		<result column="SWS_BRANCH_HEAD_NAME" property="swsBranchHeadName" />
-		<result column="SWS_SCHEDULE_STATUS" property="swsScheduleStatus" />
+		<result column="SWS_STATE" property="swsState" />
 		<result column="SWS_CREATE_TIME" property="swsCreateTime" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWS_SCHEDULE_ID, 			
-			SWS_RECORD_ID, 			
-			SWS_LAST_NODE_ID, 			
+			SWS_SCHEDULE_CID, 			
+			SWS_WKF_NBR, 			
+			SWS_LAST_NODE_CID, 			
 			SWS_LAST_NODE_NAME, 			
-			SWS_LAST_USER_ID, 			
+			SWS_LAST_USER_CID, 			
 			SWS_LAST_LOGIN_NAME, 			
-			SWS_SCHEDULE_NODE_ID, 			
+			SWS_SCHEDULE_NODE_CID, 			
 			SWS_SCHEDULE_NODE_NAME, 			
-			SWS_WG_ID, 			
+			SWS_WG_CID, 			
 			SWS_WG_NAME, 			
-			SWS_SCHEDULE_USER_ID, 			
+			SWS_SCHEDULE_USER_CID, 			
 			SWS_SCHEDULE_LOGIN_NAME, 			
 			SWS_BRANCH_FLAG, 			
-			SWS_BRANCH_HEAD_ID, 			
+			SWS_BRANCH_HEAD_CID, 			
 			SWS_BRANCH_HEAD_NAME, 			
-			SWS_SCHEDULE_STATUS, 			
+			SWS_STATE, 			
 			SWS_CREATE_TIME			
 	</sql>
-
+	
 	<sql id="Primary_Key_List">
-		SWS_SCHEDULE_ID
+		SWS_SCHEDULE_CID
 	</sql>
 	
 	<update id="closeOtherSchedule">
-		UPDATE SY_WKF_SCHEDULE SET SWS_SCHEDULE_STATUS =
+		UPDATE SY_WKF_SCHEDULE SET SWS_STATE =
 		'CLS'
-		WHERE SWS_RECORD_ID = #{recordId} AND SWS_SCHEDULE_ID != #{scheduleIdExclude}
+		WHERE SWS_WKF_NBR = #{recordId} AND SWS_SCHEDULE_CID != #{scheduleIdExclude}
 	</update>
 </mapper>  

@@ -5,8 +5,8 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfEntityBean extends BaseBean {
-	protected String sweEntityId;
-	protected boolean isInitSweEntityId;
+	protected String sweEntityCid;
+	protected boolean isInitSweEntityCid;
 	protected String sweEntityName;
 	protected boolean isInitSweEntityName;
 	protected String sweWkfCode;
@@ -19,11 +19,11 @@ public class SyWkfEntityBean extends BaseBean {
 	protected boolean isInitSweNodeHead;
 	protected String sweNodeHeadName;
 	protected boolean isInitSweNodeHeadName;
-	protected String sweEntityStatus;
-	protected boolean isInitSweEntityStatus;
+	protected String sweState;
+	protected boolean isInitSweState;
 
-	public boolean getIsInitSweEntityId() {
-		return this.isInitSweEntityId;
+	public boolean getIsInitSweEntityCid() {
+		return this.isInitSweEntityCid;
 	}
 
 	public boolean getIsInitSweEntityName() {
@@ -50,17 +50,17 @@ public class SyWkfEntityBean extends BaseBean {
 		return this.isInitSweNodeHeadName;
 	}
 
-	public boolean getIsInitSweEntityStatus() {
-		return this.isInitSweEntityStatus;
+	public boolean getIsInitSweState() {
+		return this.isInitSweState;
 	}
 
-	public String getSweEntityId() {
-		return sweEntityId;
+	public String getSweEntityCid() {
+		return sweEntityCid;
 	}
 
-	public void setSweEntityId(String sweEntityId) {
-		this.sweEntityId = sweEntityId;
-		this.isInitSweEntityId = true;
+	public void setSweEntityCid(String sweEntityCid) {
+		this.sweEntityCid = sweEntityCid;
+		this.isInitSweEntityCid = true;
 	}
 
 	public String getSweEntityName() {
@@ -117,19 +117,19 @@ public class SyWkfEntityBean extends BaseBean {
 		this.isInitSweNodeHeadName = true;
 	}
 
-	public String getSweEntityStatus() {
-		return sweEntityStatus;
+	public String getSweState() {
+		return sweState;
 	}
 
-	public void setSweEntityStatus(String sweEntityStatus) {
-		this.sweEntityStatus = sweEntityStatus;
-		this.isInitSweEntityStatus = true;
+	public void setSweState(String sweState) {
+		this.sweState = sweState;
+		this.isInitSweState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSweEntityId) {
-			map.put("sweEntityId", formatString(sweEntityId));
+		if (isInitSweEntityCid) {
+			map.put("sweEntityCid", formatString(sweEntityCid));
 		}
 		if (isInitSweEntityName) {
 			map.put("sweEntityName", formatString(sweEntityName));
@@ -149,8 +149,8 @@ public class SyWkfEntityBean extends BaseBean {
 		if (isInitSweNodeHeadName) {
 			map.put("sweNodeHeadName", formatString(sweNodeHeadName));
 		}
-		if (isInitSweEntityStatus) {
-			map.put("sweEntityStatus", formatString(sweEntityStatus));
+		if (isInitSweState) {
+			map.put("sweState", formatString(sweState));
 		}
 
 		return map;

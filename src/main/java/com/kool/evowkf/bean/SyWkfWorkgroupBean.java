@@ -5,8 +5,8 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfWorkgroupBean extends BaseBean {
-	protected String swwWgId;
-	protected boolean isInitSwwWgId;
+	protected String swwWgCid;
+	protected boolean isInitSwwWgCid;
 	protected String swwWgName;
 	protected boolean isInitSwwWgName;
 	protected String swwWgType;
@@ -15,15 +15,15 @@ public class SyWkfWorkgroupBean extends BaseBean {
 	protected boolean isInitSwwWkfType;
 	protected String swwWkfCode;
 	protected boolean isInitSwwWkfCode;
-	protected String swwEntityId;
-	protected boolean isInitSwwEntityId;
+	protected String swwEntityCid;
+	protected boolean isInitSwwEntityCid;
 	protected String swwBusType;
 	protected boolean isInitSwwBusType;
-	protected String swwWgStatus;
-	protected boolean isInitSwwWgStatus;
+	protected String swwState;
+	protected boolean isInitSwwState;
 
-	public boolean getIsInitSwwWgId() {
-		return this.isInitSwwWgId;
+	public boolean getIsInitSwwWgCid() {
+		return this.isInitSwwWgCid;
 	}
 
 	public boolean getIsInitSwwWgName() {
@@ -42,25 +42,25 @@ public class SyWkfWorkgroupBean extends BaseBean {
 		return this.isInitSwwWkfCode;
 	}
 
-	public boolean getIsInitSwwEntityId() {
-		return this.isInitSwwEntityId;
+	public boolean getIsInitSwwEntityCid() {
+		return this.isInitSwwEntityCid;
 	}
 
 	public boolean getIsInitSwwBusType() {
 		return this.isInitSwwBusType;
 	}
 
-	public boolean getIsInitSwwWgStatus() {
-		return this.isInitSwwWgStatus;
+	public boolean getIsInitSwwState() {
+		return this.isInitSwwState;
 	}
 
-	public String getSwwWgId() {
-		return swwWgId;
+	public String getSwwWgCid() {
+		return swwWgCid;
 	}
 
-	public void setSwwWgId(String swwWgId) {
-		this.swwWgId = swwWgId;
-		this.isInitSwwWgId = true;
+	public void setSwwWgCid(String swwWgCid) {
+		this.swwWgCid = swwWgCid;
+		this.isInitSwwWgCid = true;
 	}
 
 	public String getSwwWgName() {
@@ -99,13 +99,13 @@ public class SyWkfWorkgroupBean extends BaseBean {
 		this.isInitSwwWkfCode = true;
 	}
 
-	public String getSwwEntityId() {
-		return swwEntityId;
+	public String getSwwEntityCid() {
+		return swwEntityCid;
 	}
 
-	public void setSwwEntityId(String swwEntityId) {
-		this.swwEntityId = swwEntityId;
-		this.isInitSwwEntityId = true;
+	public void setSwwEntityCid(String swwEntityCid) {
+		this.swwEntityCid = swwEntityCid;
+		this.isInitSwwEntityCid = true;
 	}
 
 	public String getSwwBusType() {
@@ -117,19 +117,19 @@ public class SyWkfWorkgroupBean extends BaseBean {
 		this.isInitSwwBusType = true;
 	}
 
-	public String getSwwWgStatus() {
-		return swwWgStatus;
+	public String getSwwState() {
+		return swwState;
 	}
 
-	public void setSwwWgStatus(String swwWgStatus) {
-		this.swwWgStatus = swwWgStatus;
-		this.isInitSwwWgStatus = true;
+	public void setSwwState(String swwState) {
+		this.swwState = swwState;
+		this.isInitSwwState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSwwWgId) {
-			map.put("swwWgId", formatString(swwWgId));
+		if (isInitSwwWgCid) {
+			map.put("swwWgCid", formatString(swwWgCid));
 		}
 		if (isInitSwwWgName) {
 			map.put("swwWgName", formatString(swwWgName));
@@ -143,14 +143,14 @@ public class SyWkfWorkgroupBean extends BaseBean {
 		if (isInitSwwWkfCode) {
 			map.put("swwWkfCode", formatString(swwWkfCode));
 		}
-		if (isInitSwwEntityId) {
-			map.put("swwEntityId", formatString(swwEntityId));
+		if (isInitSwwEntityCid) {
+			map.put("swwEntityCid", formatString(swwEntityCid));
 		}
 		if (isInitSwwBusType) {
 			map.put("swwBusType", formatString(swwBusType));
 		}
-		if (isInitSwwWgStatus) {
-			map.put("swwWgStatus", formatString(swwWgStatus));
+		if (isInitSwwState) {
+			map.put("swwState", formatString(swwState));
 		}
 
 		return map;

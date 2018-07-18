@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyUserRoleDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserRoleBean">
+		<id column="SUR_USER_CID" property="surUserCid" />
+		<id column="SUR_ROLE_CODE" property="surRoleCode" />
+		<result column="SUR_CMT" property="surCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUR_USER_CID, 			
+			SUR_ROLE_CODE, 			
+			SUR_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUR_USER_CID, SUR_ROLE_CODE
+	</sql>
+</mapper>  

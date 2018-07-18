@@ -6,7 +6,6 @@
 package com.kool.evowkf.engine;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 
 /**
  * @DESCRIBE
@@ -15,5 +14,5 @@ import com.kool.core.exception.BusException;
  *
  */
 public interface IStart {
-	public String start(WKFContext wkfInfo) throws AppException, BusException;
+	public String start(WKFContext wkfInfo) throws AppException;
 }

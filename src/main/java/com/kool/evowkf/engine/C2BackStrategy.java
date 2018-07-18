@@ -28,7 +28,7 @@ public class C2BackStrategy implements IRouteStrategy{
 	@Override
 	public RouteResult route(SyWkfScheduleBean schedule, SyWkfNodeBean node, WKFContext wkfInfo) {
 		// 执行记录状态
-		String recordStatus = WKFConstants.SRC_RECORD_STATUS_FINISH;//完成
+		String recordStatus = WKFConstants.SRC_STATE_FINISH;//完成
 		RouteResult result = new RouteResult();
 		result.setRecordStatus(recordStatus);
 		return result;

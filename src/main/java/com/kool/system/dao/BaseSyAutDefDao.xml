@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyAutDefDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyAutDefBean">
+		<id column="SAD_AUT_CODE" property="sadAutCode" />
+		<result column="SAD_TYPE" property="sadType" />
+		<result column="SAD_NAME" property="sadName" />
+		<result column="SAD_STATE" property="sadState" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		SAD_AUT_CODE, 			
+		SAD_TYPE, 			
+		SAD_NAME, 			
+		SAD_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SAD_AUT_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyAutDefBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_AUT_DEF WHERE 1=1 
+		<if test="sadAutCode != null and sadAutCode != ''">
+			AND SAD_AUT_CODE = #{sadAutCode}
+		</if>
+		<if test="sadType != null and sadType != ''">
+			AND SAD_TYPE = #{sadType}
+		</if>
+		<if test="sadName != null and sadName != ''">
+			AND SAD_NAME = #{sadName}
+		</if>
+		<if test="sadState != null and sadState != ''">
+			AND SAD_STATE = #{sadState}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyAutDefBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_AUT_DEF
+		WHERE 
+		SAD_AUT_CODE = #{sadAutCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyAutDefBean">
+		DELETE FROM SY_AUT_DEF
+		WHERE
+		SAD_AUT_CODE = #{sadAutCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyAutDefBean">
+		DELETE FROM SY_AUT_DEF
+		WHERE 1=1 
+		<if test="sadAutCode != null and sadAutCode != ''">
+			AND SAD_AUT_CODE = #{sadAutCode}
+		</if>
+		<if test="sadType != null and sadType != ''">
+			AND SAD_TYPE = #{sadType}
+		</if>
+		<if test="sadName != null and sadName != ''">
+			AND SAD_NAME = #{sadName}
+		</if>
+		<if test="sadState != null and sadState != ''">
+			AND SAD_STATE = #{sadState}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyAutDefBean">
+		INSERT INTO SY_AUT_DEF
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sadAutCode != null">
+				SAD_AUT_CODE,
+			</if>		
+			<if test="sadType != null">
+				SAD_TYPE,
+			</if>		
+			<if test="sadName != null">
+				SAD_NAME,
+			</if>		
+			<if test="sadState != null">
+				SAD_STATE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sadAutCode != null">
+				#{sadAutCode},
+			</if>	
+			<if test="sadType != null">
+				#{sadType},
+			</if>	
+			<if test="sadName != null">
+				#{sadName},
+			</if>	
+			<if test="sadState != null">
+				#{sadState},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_AUT_DEF
+		<set>
+			<if test="value.isInitSadAutCode">
+				<choose>
+					<when test="value.sadAutCode != null">
+						SAD_AUT_CODE = #{value.sadAutCode},
+					</when>
+					<otherwise>
+						SAD_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSadType">
+				<choose>
+					<when test="value.sadType != null">
+						SAD_TYPE = #{value.sadType},
+					</when>
+					<otherwise>
+						SAD_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSadName">
+				<choose>
+					<when test="value.sadName != null">
+						SAD_NAME = #{value.sadName},
+					</when>
+					<otherwise>
+						SAD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSadState">
+				<choose>
+					<when test="value.sadState != null">
+						SAD_STATE = #{value.sadState},
+					</when>
+					<otherwise>
+						SAD_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sadAutCode != null and condition.sadAutCode != ''">
+			AND SAD_AUT_CODE =	#{condition.sadAutCode} 
+		</if>
+		<if test="condition.sadType != null and condition.sadType != ''">
+			AND SAD_TYPE =	#{condition.sadType} 
+		</if>
+		<if test="condition.sadName != null and condition.sadName != ''">
+			AND SAD_NAME =	#{condition.sadName} 
+		</if>
+		<if test="condition.sadState != null and condition.sadState != ''">
+			AND SAD_STATE =	#{condition.sadState} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyAutDefBean">
+		UPDATE SY_AUT_DEF
+		<set>
+			<if test="isInitSadAutCode">
+				<choose>
+					<when test="sadAutCode != null">
+						SAD_AUT_CODE = #{sadAutCode},
+					</when>
+					<otherwise>
+						SAD_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSadType">
+				<choose>
+					<when test="sadType != null">
+						SAD_TYPE = #{sadType},
+					</when>
+					<otherwise>
+						SAD_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSadName">
+				<choose>
+					<when test="sadName != null">
+						SAD_NAME = #{sadName},
+					</when>
+					<otherwise>
+						SAD_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSadState">
+				<choose>
+					<when test="sadState != null">
+						SAD_STATE = #{sadState},
+					</when>
+					<otherwise>
+						SAD_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SAD_AUT_CODE = #{sadAutCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_AUT_DEF WHERE 1=1
+		<if test="syAutDef!=null">
+			<if test="syAutDef.sadAutCode != null and syAutDef.sadAutCode != ''">
+				AND SAD_AUT_CODE = #{syAutDef.sadAutCode}
+			</if>
+			<if test="syAutDef.sadType != null and syAutDef.sadType != ''">
+				AND SAD_TYPE = #{syAutDef.sadType}
+			</if>
+			<if test="syAutDef.sadName != null and syAutDef.sadName != ''">
+				AND SAD_NAME = #{syAutDef.sadName}
+			</if>
+			<if test="syAutDef.sadState != null and syAutDef.sadState != ''">
+				AND SAD_STATE = #{syAutDef.sadState}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyAutDefBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_AUT_DEF
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sadAutCode != null and sadAutCode != ''">
+				AND SAD_AUT_CODE = #{sadAutCode}
+			</if>
+			<if test="sadType != null and sadType != ''">
+				AND SAD_TYPE = #{sadType}
+			</if>
+			<if test="sadName != null and sadName != ''">
+				AND SAD_NAME = #{sadName}
+			</if>
+			<if test="sadState != null and sadState != ''">
+				AND SAD_STATE = #{sadState}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_AUT_DEF(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sadAutCode},		
+			#{item.sadType},		
+			#{item.sadName},		
+			#{item.sadState},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

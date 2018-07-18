@@ -5,7 +5,7 @@
  */
 package com.kool.evowkf.engine;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 import com.kool.evowkf.WKFConstants;
 
 /**
@@ -15,7 +15,7 @@ import com.kool.evowkf.WKFConstants;
  *
  */
 public class EventHandlerBuilder {
-	public static EventHandler build(String eventType, String eventRule, String eventExt) throws BusException {
+	public static EventHandler build(String eventType, String eventRule, String eventExt) throws AppException {
 		EventHandler handler = null;
 		if (WKFConstants.SWN_EVENT_TYPE_EXECUTE.equals(eventType)) {
 			handler = new E1EventHandler();
@@ -26,7 +26,7 @@ public class EventHandlerBuilder {
 		} else if (WKFConstants.SWN_EVENT_TYPE_JOINTTRIAL.equals(eventType)) {
 			handler = new E4EventHandler();
 		} else {
-			throw new BusException("不支持的事件类型");
+			throw new AppException("不支持的事件类型");
 		}
 
 		if (WKFConstants.SWN_EVENT_RULE_WKFONLY.equals(eventRule)) {
@@ -40,7 +40,7 @@ public class EventHandlerBuilder {
 		} else if (WKFConstants.SWN_EVENT_RULE_MQASYN.equals(eventRule)) {
 			handler.setEventRule(new T4EventRule());
 		} else {
-			throw new BusException("不支持的事件执行方式");
+			throw new AppException("不支持的事件执行方式");
 
 		}
 		return handler;

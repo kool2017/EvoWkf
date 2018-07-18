@@ -8,7 +8,7 @@ package com.kool.evowkf.engine;
 import java.util.HashMap;
 import java.util.List;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 import com.kool.core.util.SpringContextUtil;
 import com.kool.core.util.StringUtils;
 import com.kool.evowkf.bean.SyWkfDefineBean;
@@ -34,23 +34,23 @@ public class WKFContextHelper {
 	 *
 	 * @param entityId
 	 * @param wkfInfo
-	 * @throws BusException
+	 * @throws AppException
 	 */
-	public static void initWkfCfg(String entityId, WKFContext wkfInfo) throws BusException {
+	public static void initWkfCfg(String entityId, WKFContext wkfInfo) throws AppException {
 		if (StringUtils.isEmpty(entityId)) {
-			throw new BusException("工作流实例编号不能为空");
+			throw new AppException("工作流实例编号不能为空");
 		}
 		if (null == wkfInfo) {
-			throw new BusException("工作流上下文不能为空");
+			throw new AppException("工作流上下文不能为空");
 		}
 
 		// 获取工作流实例
 		SyWkfEntityBean entityInfo = new SyWkfEntityBean();
-		entityInfo.setSweEntityId(entityId);
+		entityInfo.setSweEntityCid(entityId);
 		SyWkfEntityDao entityDao = (SyWkfEntityDao) SpringContextUtil.getBean("SyWkfEntityDao");
 		SyWkfEntityBean entity = entityDao.selectByPK(entityInfo);
 		if (null == entity) {
-			throw new BusException("获取工作流实例结果为空");
+			throw new AppException("获取工作流实例结果为空");
 		}
 		wkfInfo.setEntity(entity);
 
@@ -60,31 +60,31 @@ public class WKFContextHelper {
 		SyWkfDefineDao defineDao = (SyWkfDefineDao) SpringContextUtil.getBean("SyWkfDefineDao");
 		SyWkfDefineBean define = defineDao.selectByPK(defineInfo);
 		if (null == define) {
-			throw new BusException("获取工作流定义结果为空");
+			throw new AppException("获取工作流定义结果为空");
 		}
 		wkfInfo.setDefine(define);
 
 		// 获取路由
 		SyWkfRouteBean routeInfo = new SyWkfRouteBean();
-		routeInfo.setSwrEntityId(entityId);
+		routeInfo.setSwrEntityCid(entityId);
 		SyWkfRouteDao routeDao = (SyWkfRouteDao) SpringContextUtil.getBean("SyWkfRouteDao");
 		List<SyWkfRouteBean> listRoutes = routeDao.select(routeInfo);
 		if (null == listRoutes || listRoutes.size() <= 0) {
-			throw new BusException("获取路由结果为空");
+			throw new AppException("获取路由结果为空");
 		}
 		wkfInfo.setRoutes(listRoutes);
 
 		// 获取结点
 		SyWkfNodeBean nodeInfo = new SyWkfNodeBean();
-		nodeInfo.setSwnEntityId(entityId);
+		nodeInfo.setSwnEntityCid(entityId);
 		SyWkfNodeDao nodeDao = (SyWkfNodeDao) SpringContextUtil.getBean("SyWkfNodeDao");
 		List<SyWkfNodeBean> listNodes = nodeDao.select(nodeInfo);
 		if (null == listNodes || listNodes.size() <= 0) {
-			throw new BusException("获取结点结果为空");
+			throw new AppException("获取结点结果为空");
 		}
 		HashMap<String, SyWkfNodeBean> mapNodes = new HashMap<>();
 		for (SyWkfNodeBean node : listNodes) {
-			mapNodes.put(node.getSwnNodeId(), node);
+			mapNodes.put(node.getSwnNodeCid(), node);
 		}
 		wkfInfo.setNodes(mapNodes);
 	}

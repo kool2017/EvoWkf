@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyMenuAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyMenuAutBean">
+		<id column="SMA_MENU_CODE" property="smaMenuCode" />
+		<id column="SMA_AUT_CODE" property="smaAutCode" />
+		<result column="SMA_CMT" property="smaCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SMA_MENU_CODE, 			
+			SMA_AUT_CODE, 			
+			SMA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SMA_MENU_CODE, SMA_AUT_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyMenuAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_MENU_AUT WHERE 1=1 
+		<if test="smaMenuCode != null and smaMenuCode != ''">
+			AND SMA_MENU_CODE = #{smaMenuCode}
+		</if>
+		<if test="smaAutCode != null and smaAutCode != ''">
+			AND SMA_AUT_CODE = #{smaAutCode}
+		</if>
+		<if test="smaCmt != null and smaCmt != ''">
+			AND SMA_CMT = #{smaCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyMenuAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_MENU_AUT
+		WHERE 
+		SMA_MENU_CODE = #{smaMenuCode} AND 
+		SMA_AUT_CODE = #{smaAutCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyMenuAutBean">
+		DELETE FROM SY_MENU_AUT
+		WHERE
+		SMA_MENU_CODE = #{smaMenuCode} AND 
+		SMA_AUT_CODE = #{smaAutCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyMenuAutBean">
+		DELETE FROM SY_MENU_AUT
+		WHERE 1=1 
+		<if test="smaMenuCode != null and smaMenuCode != ''">
+			AND SMA_MENU_CODE = #{smaMenuCode}
+		</if>
+		<if test="smaAutCode != null and smaAutCode != ''">
+			AND SMA_AUT_CODE = #{smaAutCode}
+		</if>
+		<if test="smaCmt != null and smaCmt != ''">
+			AND SMA_CMT = #{smaCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyMenuAutBean">
+		INSERT INTO SY_MENU_AUT
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="smaMenuCode != null">
+				SMA_MENU_CODE,
+			</if>		
+			<if test="smaAutCode != null">
+				SMA_AUT_CODE,
+			</if>		
+			<if test="smaCmt != null">
+				SMA_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="smaMenuCode != null">
+				#{smaMenuCode},
+			</if>	
+			<if test="smaAutCode != null">
+				#{smaAutCode},
+			</if>	
+			<if test="smaCmt != null">
+				#{smaCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_MENU_AUT
+		<set>
+			<if test="value.isInitSmaMenuCode">
+				<choose>
+					<when test="value.smaMenuCode != null">
+						SMA_MENU_CODE = #{value.smaMenuCode},
+					</when>
+					<otherwise>
+						SMA_MENU_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmaAutCode">
+				<choose>
+					<when test="value.smaAutCode != null">
+						SMA_AUT_CODE = #{value.smaAutCode},
+					</when>
+					<otherwise>
+						SMA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmaCmt">
+				<choose>
+					<when test="value.smaCmt != null">
+						SMA_CMT = #{value.smaCmt},
+					</when>
+					<otherwise>
+						SMA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.smaMenuCode != null and condition.smaMenuCode != ''">
+			AND SMA_MENU_CODE =	#{condition.smaMenuCode} 
+		</if>
+		<if test="condition.smaAutCode != null and condition.smaAutCode != ''">
+			AND SMA_AUT_CODE =	#{condition.smaAutCode} 
+		</if>
+		<if test="condition.smaCmt != null and condition.smaCmt != ''">
+			AND SMA_CMT =	#{condition.smaCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyMenuAutBean">
+		UPDATE SY_MENU_AUT
+		<set>
+			<if test="isInitSmaMenuCode">
+				<choose>
+					<when test="smaMenuCode != null">
+						SMA_MENU_CODE = #{smaMenuCode},
+					</when>
+					<otherwise>
+						SMA_MENU_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmaAutCode">
+				<choose>
+					<when test="smaAutCode != null">
+						SMA_AUT_CODE = #{smaAutCode},
+					</when>
+					<otherwise>
+						SMA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmaCmt">
+				<choose>
+					<when test="smaCmt != null">
+						SMA_CMT = #{smaCmt},
+					</when>
+					<otherwise>
+						SMA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SMA_MENU_CODE = #{smaMenuCode} AND 
+		SMA_AUT_CODE = #{smaAutCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_MENU_AUT WHERE 1=1
+		<if test="syMenuAut!=null">
+			<if test="syMenuAut.smaMenuCode != null and syMenuAut.smaMenuCode != ''">
+				AND SMA_MENU_CODE = #{syMenuAut.smaMenuCode}
+			</if>
+			<if test="syMenuAut.smaAutCode != null and syMenuAut.smaAutCode != ''">
+				AND SMA_AUT_CODE = #{syMenuAut.smaAutCode}
+			</if>
+			<if test="syMenuAut.smaCmt != null and syMenuAut.smaCmt != ''">
+				AND SMA_CMT = #{syMenuAut.smaCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyMenuAutBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_MENU_AUT
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="smaMenuCode != null and smaMenuCode != ''">
+				AND SMA_MENU_CODE = #{smaMenuCode}
+			</if>
+			<if test="smaAutCode != null and smaAutCode != ''">
+				AND SMA_AUT_CODE = #{smaAutCode}
+			</if>
+			<if test="smaCmt != null and smaCmt != ''">
+				AND SMA_CMT = #{smaCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_MENU_AUT(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.smaMenuCode},		
+			#{item.smaAutCode},		
+			#{item.smaCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

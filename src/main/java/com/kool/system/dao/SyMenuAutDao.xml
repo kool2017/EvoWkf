@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyMenuAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyMenuAutBean">
+		<id column="SMA_MENU_CODE" property="smaMenuCode" />
+		<id column="SMA_AUT_CODE" property="smaAutCode" />
+		<result column="SMA_CMT" property="smaCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SMA_MENU_CODE, 			
+			SMA_AUT_CODE, 			
+			SMA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SMA_MENU_CODE, SMA_AUT_CODE
+	</sql>
+</mapper>  

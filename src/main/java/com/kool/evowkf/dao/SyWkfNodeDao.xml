@@ -3,10 +3,10 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfNodeDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeBean">
-		<id column="SWN_NODE_ID" property="swnNodeId" />
+		<id column="SWN_NODE_CID" property="swnNodeCid" />
 		<result column="SWN_NODE_NAME" property="swnNodeName" />
-		<result column="SWN_ENTITY_ID" property="swnEntityId" />
-		<result column="SWN_WG_ID" property="swnWgId" />
+		<result column="SWN_ENTITY_CID" property="swnEntityCid" />
+		<result column="SWN_WG_CID" property="swnWgCid" />
 		<result column="SWN_EVENT_TYPE" property="swnEventType" />
 		<result column="SWN_EVENT_RULE" property="swnEventRule" />
 		<result column="SWN_EVENT_EXT" property="swnEventExt" />
@@ -19,14 +19,14 @@
 		<result column="SWN_BRANCH_STRATEGY_CLAZZ" property="swnBranchStrategyClazz" />
 		<result column="SWN_IS_AUTO" property="swnIsAuto" />
 		<result column="SWN_VIEW_URL" property="swnViewUrl" />
-		<result column="SWN_NODE_STATUS" property="swnNodeStatus" />
+		<result column="SWN_STATE" property="swnState" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWN_NODE_ID, 			
+			SWN_NODE_CID, 			
 			SWN_NODE_NAME, 			
-			SWN_ENTITY_ID, 			
-			SWN_WG_ID, 			
+			SWN_ENTITY_CID, 			
+			SWN_WG_CID, 			
 			SWN_EVENT_TYPE, 			
 			SWN_EVENT_RULE, 			
 			SWN_EVENT_EXT, 			
@@ -39,10 +39,10 @@
 			SWN_BRANCH_STRATEGY_CLAZZ, 			
 			SWN_IS_AUTO, 			
 			SWN_VIEW_URL, 			
-			SWN_NODE_STATUS			
+			SWN_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWN_NODE_ID
+		SWN_NODE_CID
 	</sql>
 </mapper>  

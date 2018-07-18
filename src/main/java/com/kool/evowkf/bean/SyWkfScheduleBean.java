@@ -5,83 +5,83 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfScheduleBean extends BaseBean {
-	protected String swsScheduleId;
-	protected boolean isInitSwsScheduleId;
-	protected String swsRecordId;
-	protected boolean isInitSwsRecordId;
-	protected String swsLastNodeId;
-	protected boolean isInitSwsLastNodeId;
+	protected String swsScheduleCid;
+	protected boolean isInitSwsScheduleCid;
+	protected String swsWkfNbr;
+	protected boolean isInitSwsWkfNbr;
+	protected String swsLastNodeCid;
+	protected boolean isInitSwsLastNodeCid;
 	protected String swsLastNodeName;
 	protected boolean isInitSwsLastNodeName;
-	protected String swsLastUserId;
-	protected boolean isInitSwsLastUserId;
+	protected String swsLastUserCid;
+	protected boolean isInitSwsLastUserCid;
 	protected String swsLastLoginName;
 	protected boolean isInitSwsLastLoginName;
-	protected String swsScheduleNodeId;
-	protected boolean isInitSwsScheduleNodeId;
+	protected String swsScheduleNodeCid;
+	protected boolean isInitSwsScheduleNodeCid;
 	protected String swsScheduleNodeName;
 	protected boolean isInitSwsScheduleNodeName;
-	protected String swsWgId;
-	protected boolean isInitSwsWgId;
+	protected String swsWgCid;
+	protected boolean isInitSwsWgCid;
 	protected String swsWgName;
 	protected boolean isInitSwsWgName;
-	protected String swsScheduleUserId;
-	protected boolean isInitSwsScheduleUserId;
+	protected String swsScheduleUserCid;
+	protected boolean isInitSwsScheduleUserCid;
 	protected String swsScheduleLoginName;
 	protected boolean isInitSwsScheduleLoginName;
 	protected String swsBranchFlag;
 	protected boolean isInitSwsBranchFlag;
-	protected String swsBranchHeadId;
-	protected boolean isInitSwsBranchHeadId;
+	protected String swsBranchHeadCid;
+	protected boolean isInitSwsBranchHeadCid;
 	protected String swsBranchHeadName;
 	protected boolean isInitSwsBranchHeadName;
-	protected String swsScheduleStatus;
-	protected boolean isInitSwsScheduleStatus;
+	protected String swsState;
+	protected boolean isInitSwsState;
 	protected java.sql.Timestamp swsCreateTime;
 	protected boolean isInitSwsCreateTime;
 
-	public boolean getIsInitSwsScheduleId() {
-		return this.isInitSwsScheduleId;
+	public boolean getIsInitSwsScheduleCid() {
+		return this.isInitSwsScheduleCid;
 	}
 
-	public boolean getIsInitSwsRecordId() {
-		return this.isInitSwsRecordId;
+	public boolean getIsInitSwsWkfNbr() {
+		return this.isInitSwsWkfNbr;
 	}
 
-	public boolean getIsInitSwsLastNodeId() {
-		return this.isInitSwsLastNodeId;
+	public boolean getIsInitSwsLastNodeCid() {
+		return this.isInitSwsLastNodeCid;
 	}
 
 	public boolean getIsInitSwsLastNodeName() {
 		return this.isInitSwsLastNodeName;
 	}
 
-	public boolean getIsInitSwsLastUserId() {
-		return this.isInitSwsLastUserId;
+	public boolean getIsInitSwsLastUserCid() {
+		return this.isInitSwsLastUserCid;
 	}
 
 	public boolean getIsInitSwsLastLoginName() {
 		return this.isInitSwsLastLoginName;
 	}
 
-	public boolean getIsInitSwsScheduleNodeId() {
-		return this.isInitSwsScheduleNodeId;
+	public boolean getIsInitSwsScheduleNodeCid() {
+		return this.isInitSwsScheduleNodeCid;
 	}
 
 	public boolean getIsInitSwsScheduleNodeName() {
 		return this.isInitSwsScheduleNodeName;
 	}
 
-	public boolean getIsInitSwsWgId() {
-		return this.isInitSwsWgId;
+	public boolean getIsInitSwsWgCid() {
+		return this.isInitSwsWgCid;
 	}
 
 	public boolean getIsInitSwsWgName() {
 		return this.isInitSwsWgName;
 	}
 
-	public boolean getIsInitSwsScheduleUserId() {
-		return this.isInitSwsScheduleUserId;
+	public boolean getIsInitSwsScheduleUserCid() {
+		return this.isInitSwsScheduleUserCid;
 	}
 
 	public boolean getIsInitSwsScheduleLoginName() {
@@ -92,47 +92,47 @@ public class SyWkfScheduleBean extends BaseBean {
 		return this.isInitSwsBranchFlag;
 	}
 
-	public boolean getIsInitSwsBranchHeadId() {
-		return this.isInitSwsBranchHeadId;
+	public boolean getIsInitSwsBranchHeadCid() {
+		return this.isInitSwsBranchHeadCid;
 	}
 
 	public boolean getIsInitSwsBranchHeadName() {
 		return this.isInitSwsBranchHeadName;
 	}
 
-	public boolean getIsInitSwsScheduleStatus() {
-		return this.isInitSwsScheduleStatus;
+	public boolean getIsInitSwsState() {
+		return this.isInitSwsState;
 	}
 
 	public boolean getIsInitSwsCreateTime() {
 		return this.isInitSwsCreateTime;
 	}
 
-	public String getSwsScheduleId() {
-		return swsScheduleId;
+	public String getSwsScheduleCid() {
+		return swsScheduleCid;
 	}
 
-	public void setSwsScheduleId(String swsScheduleId) {
-		this.swsScheduleId = swsScheduleId;
-		this.isInitSwsScheduleId = true;
+	public void setSwsScheduleCid(String swsScheduleCid) {
+		this.swsScheduleCid = swsScheduleCid;
+		this.isInitSwsScheduleCid = true;
 	}
 
-	public String getSwsRecordId() {
-		return swsRecordId;
+	public String getSwsWkfNbr() {
+		return swsWkfNbr;
 	}
 
-	public void setSwsRecordId(String swsRecordId) {
-		this.swsRecordId = swsRecordId;
-		this.isInitSwsRecordId = true;
+	public void setSwsWkfNbr(String swsWkfNbr) {
+		this.swsWkfNbr = swsWkfNbr;
+		this.isInitSwsWkfNbr = true;
 	}
 
-	public String getSwsLastNodeId() {
-		return swsLastNodeId;
+	public String getSwsLastNodeCid() {
+		return swsLastNodeCid;
 	}
 
-	public void setSwsLastNodeId(String swsLastNodeId) {
-		this.swsLastNodeId = swsLastNodeId;
-		this.isInitSwsLastNodeId = true;
+	public void setSwsLastNodeCid(String swsLastNodeCid) {
+		this.swsLastNodeCid = swsLastNodeCid;
+		this.isInitSwsLastNodeCid = true;
 	}
 
 	public String getSwsLastNodeName() {
@@ -144,13 +144,13 @@ public class SyWkfScheduleBean extends BaseBean {
 		this.isInitSwsLastNodeName = true;
 	}
 
-	public String getSwsLastUserId() {
-		return swsLastUserId;
+	public String getSwsLastUserCid() {
+		return swsLastUserCid;
 	}
 
-	public void setSwsLastUserId(String swsLastUserId) {
-		this.swsLastUserId = swsLastUserId;
-		this.isInitSwsLastUserId = true;
+	public void setSwsLastUserCid(String swsLastUserCid) {
+		this.swsLastUserCid = swsLastUserCid;
+		this.isInitSwsLastUserCid = true;
 	}
 
 	public String getSwsLastLoginName() {
@@ -162,13 +162,13 @@ public class SyWkfScheduleBean extends BaseBean {
 		this.isInitSwsLastLoginName = true;
 	}
 
-	public String getSwsScheduleNodeId() {
-		return swsScheduleNodeId;
+	public String getSwsScheduleNodeCid() {
+		return swsScheduleNodeCid;
 	}
 
-	public void setSwsScheduleNodeId(String swsScheduleNodeId) {
-		this.swsScheduleNodeId = swsScheduleNodeId;
-		this.isInitSwsScheduleNodeId = true;
+	public void setSwsScheduleNodeCid(String swsScheduleNodeCid) {
+		this.swsScheduleNodeCid = swsScheduleNodeCid;
+		this.isInitSwsScheduleNodeCid = true;
 	}
 
 	public String getSwsScheduleNodeName() {
@@ -180,13 +180,13 @@ public class SyWkfScheduleBean extends BaseBean {
 		this.isInitSwsScheduleNodeName = true;
 	}
 
-	public String getSwsWgId() {
-		return swsWgId;
+	public String getSwsWgCid() {
+		return swsWgCid;
 	}
 
-	public void setSwsWgId(String swsWgId) {
-		this.swsWgId = swsWgId;
-		this.isInitSwsWgId = true;
+	public void setSwsWgCid(String swsWgCid) {
+		this.swsWgCid = swsWgCid;
+		this.isInitSwsWgCid = true;
 	}
 
 	public String getSwsWgName() {
@@ -198,13 +198,13 @@ public class SyWkfScheduleBean extends BaseBean {
 		this.isInitSwsWgName = true;
 	}
 
-	public String getSwsScheduleUserId() {
-		return swsScheduleUserId;
+	public String getSwsScheduleUserCid() {
+		return swsScheduleUserCid;
 	}
 
-	public void setSwsScheduleUserId(String swsScheduleUserId) {
-		this.swsScheduleUserId = swsScheduleUserId;
-		this.isInitSwsScheduleUserId = true;
+	public void setSwsScheduleUserCid(String swsScheduleUserCid) {
+		this.swsScheduleUserCid = swsScheduleUserCid;
+		this.isInitSwsScheduleUserCid = true;
 	}
 
 	public String getSwsScheduleLoginName() {
@@ -225,13 +225,13 @@ public class SyWkfScheduleBean extends BaseBean {
 		this.isInitSwsBranchFlag = true;
 	}
 
-	public String getSwsBranchHeadId() {
-		return swsBranchHeadId;
+	public String getSwsBranchHeadCid() {
+		return swsBranchHeadCid;
 	}
 
-	public void setSwsBranchHeadId(String swsBranchHeadId) {
-		this.swsBranchHeadId = swsBranchHeadId;
-		this.isInitSwsBranchHeadId = true;
+	public void setSwsBranchHeadCid(String swsBranchHeadCid) {
+		this.swsBranchHeadCid = swsBranchHeadCid;
+		this.isInitSwsBranchHeadCid = true;
 	}
 
 	public String getSwsBranchHeadName() {
@@ -243,13 +243,13 @@ public class SyWkfScheduleBean extends BaseBean {
 		this.isInitSwsBranchHeadName = true;
 	}
 
-	public String getSwsScheduleStatus() {
-		return swsScheduleStatus;
+	public String getSwsState() {
+		return swsState;
 	}
 
-	public void setSwsScheduleStatus(String swsScheduleStatus) {
-		this.swsScheduleStatus = swsScheduleStatus;
-		this.isInitSwsScheduleStatus = true;
+	public void setSwsState(String swsState) {
+		this.swsState = swsState;
+		this.isInitSwsState = true;
 	}
 
 	public java.sql.Timestamp getSwsCreateTime() {
@@ -263,38 +263,38 @@ public class SyWkfScheduleBean extends BaseBean {
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSwsScheduleId) {
-			map.put("swsScheduleId", formatString(swsScheduleId));
+		if (isInitSwsScheduleCid) {
+			map.put("swsScheduleCid", formatString(swsScheduleCid));
 		}
-		if (isInitSwsRecordId) {
-			map.put("swsRecordId", formatString(swsRecordId));
+		if (isInitSwsWkfNbr) {
+			map.put("swsWkfNbr", formatString(swsWkfNbr));
 		}
-		if (isInitSwsLastNodeId) {
-			map.put("swsLastNodeId", formatString(swsLastNodeId));
+		if (isInitSwsLastNodeCid) {
+			map.put("swsLastNodeCid", formatString(swsLastNodeCid));
 		}
 		if (isInitSwsLastNodeName) {
 			map.put("swsLastNodeName", formatString(swsLastNodeName));
 		}
-		if (isInitSwsLastUserId) {
-			map.put("swsLastUserId", formatString(swsLastUserId));
+		if (isInitSwsLastUserCid) {
+			map.put("swsLastUserCid", formatString(swsLastUserCid));
 		}
 		if (isInitSwsLastLoginName) {
 			map.put("swsLastLoginName", formatString(swsLastLoginName));
 		}
-		if (isInitSwsScheduleNodeId) {
-			map.put("swsScheduleNodeId", formatString(swsScheduleNodeId));
+		if (isInitSwsScheduleNodeCid) {
+			map.put("swsScheduleNodeCid", formatString(swsScheduleNodeCid));
 		}
 		if (isInitSwsScheduleNodeName) {
 			map.put("swsScheduleNodeName", formatString(swsScheduleNodeName));
 		}
-		if (isInitSwsWgId) {
-			map.put("swsWgId", formatString(swsWgId));
+		if (isInitSwsWgCid) {
+			map.put("swsWgCid", formatString(swsWgCid));
 		}
 		if (isInitSwsWgName) {
 			map.put("swsWgName", formatString(swsWgName));
 		}
-		if (isInitSwsScheduleUserId) {
-			map.put("swsScheduleUserId", formatString(swsScheduleUserId));
+		if (isInitSwsScheduleUserCid) {
+			map.put("swsScheduleUserCid", formatString(swsScheduleUserCid));
 		}
 		if (isInitSwsScheduleLoginName) {
 			map.put("swsScheduleLoginName", formatString(swsScheduleLoginName));
@@ -302,14 +302,14 @@ public class SyWkfScheduleBean extends BaseBean {
 		if (isInitSwsBranchFlag) {
 			map.put("swsBranchFlag", formatString(swsBranchFlag));
 		}
-		if (isInitSwsBranchHeadId) {
-			map.put("swsBranchHeadId", formatString(swsBranchHeadId));
+		if (isInitSwsBranchHeadCid) {
+			map.put("swsBranchHeadCid", formatString(swsBranchHeadCid));
 		}
 		if (isInitSwsBranchHeadName) {
 			map.put("swsBranchHeadName", formatString(swsBranchHeadName));
 		}
-		if (isInitSwsScheduleStatus) {
-			map.put("swsScheduleStatus", formatString(swsScheduleStatus));
+		if (isInitSwsState) {
+			map.put("swsState", formatString(swsState));
 		}
 		if (isInitSwsCreateTime) {
 			map.put("swsCreateTime", formatString(swsCreateTime));

@@ -3,14 +3,14 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfRecordDetailDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordDetailBean">
-		<id column="SRD_DETAIL_ID" property="srdDetailId" />
-		<result column="SRD_RECORD_ID" property="srdRecordId" />
-		<result column="SRD_SCHEDULE_ID" property="srdScheduleId" />
+		<id column="SRD_DETAIL_UID" property="srdDetailUid" />
+		<result column="SRD_WKF_NBR" property="srdWkfNbr" />
+		<result column="SRD_SCHEDULE_CID" property="srdScheduleCid" />
 		<result column="SRD_DETAIL_SEQ" property="srdDetailSeq" />
 		<result column="SRD_DETAIL_TIME" property="srdDetailTime" />
-		<result column="SRD_NODE_ID" property="srdNodeId" />
+		<result column="SRD_NODE_CID" property="srdNodeCid" />
 		<result column="SRD_NODE_NAME" property="srdNodeName" />
-		<result column="SRD_USER_ID" property="srdUserId" />
+		<result column="SRD_USER_CID" property="srdUserCid" />
 		<result column="SRD_LOGIN_NAME" property="srdLoginName" />
 		<result column="SRD_EVENT_TYPE" property="srdEventType" />
 		<result column="SRD_EVENT_RULE" property="srdEventRule" />
@@ -26,20 +26,20 @@
 		<result column="SRD_BUSINESS_FIELD8" property="srdBusinessField8" />
 		<result column="SRD_BUSINESS_FIELD9" property="srdBusinessField9" />
 		<result column="SRD_BUSINESS_FIELD10" property="srdBusinessField10" />
-		<result column="SRD_RECORD_STATUS" property="srdRecordStatus" />
+		<result column="SRD_STATE" property="srdState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SRD_DETAIL_ID, 			
-			SRD_RECORD_ID, 			
-			SRD_SCHEDULE_ID, 			
+			SRD_DETAIL_UID, 			
+			SRD_WKF_NBR, 			
+			SRD_SCHEDULE_CID, 			
 			SRD_DETAIL_SEQ, 			
 			SRD_DETAIL_TIME, 			
-			SRD_NODE_ID, 			
+			SRD_NODE_CID, 			
 			SRD_NODE_NAME, 			
-			SRD_USER_ID, 			
+			SRD_USER_CID, 			
 			SRD_LOGIN_NAME, 			
 			SRD_EVENT_TYPE, 			
 			SRD_EVENT_RULE, 			
@@ -55,11 +55,11 @@
 			SRD_BUSINESS_FIELD8, 			
 			SRD_BUSINESS_FIELD9, 			
 			SRD_BUSINESS_FIELD10, 			
-			SRD_RECORD_STATUS			
+			SRD_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SRD_DETAIL_ID
+		SRD_DETAIL_UID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean"
@@ -67,25 +67,25 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_RECORD_DETAIL WHERE 1=1 
-		<if test="srdDetailId != null and srdDetailId != ''">
-			AND SRD_DETAIL_ID = #{srdDetailId}
+		<if test="srdDetailUid != null and srdDetailUid != ''">
+			AND SRD_DETAIL_UID = #{srdDetailUid}
 		</if>
-		<if test="srdRecordId != null and srdRecordId != ''">
-			AND SRD_RECORD_ID = #{srdRecordId}
+		<if test="srdWkfNbr != null and srdWkfNbr != ''">
+			AND SRD_WKF_NBR = #{srdWkfNbr}
 		</if>
-		<if test="srdScheduleId != null and srdScheduleId != ''">
-			AND SRD_SCHEDULE_ID = #{srdScheduleId}
+		<if test="srdScheduleCid != null and srdScheduleCid != ''">
+			AND SRD_SCHEDULE_CID = #{srdScheduleCid}
 		</if>
 		
 		
-		<if test="srdNodeId != null and srdNodeId != ''">
-			AND SRD_NODE_ID = #{srdNodeId}
+		<if test="srdNodeCid != null and srdNodeCid != ''">
+			AND SRD_NODE_CID = #{srdNodeCid}
 		</if>
 		<if test="srdNodeName != null and srdNodeName != ''">
 			AND SRD_NODE_NAME = #{srdNodeName}
 		</if>
-		<if test="srdUserId != null and srdUserId != ''">
-			AND SRD_USER_ID = #{srdUserId}
+		<if test="srdUserCid != null and srdUserCid != ''">
+			AND SRD_USER_CID = #{srdUserCid}
 		</if>
 		<if test="srdLoginName != null and srdLoginName != ''">
 			AND SRD_LOGIN_NAME = #{srdLoginName}
@@ -126,8 +126,8 @@
 		
 		
 		
-		<if test="srdRecordStatus != null and srdRecordStatus != ''">
-			AND SRD_RECORD_STATUS = #{srdRecordStatus}
+		<if test="srdState != null and srdState != ''">
+			AND SRD_STATE = #{srdState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -139,7 +139,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_RECORD_DETAIL
 		WHERE 
-		SRD_DETAIL_ID = #{srdDetailId}
+		SRD_DETAIL_UID = #{srdDetailUid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -147,31 +147,31 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
 		DELETE FROM SY_WKF_RECORD_DETAIL
 		WHERE
-		SRD_DETAIL_ID = #{srdDetailId}
+		SRD_DETAIL_UID = #{srdDetailUid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
 		DELETE FROM SY_WKF_RECORD_DETAIL
 		WHERE 1=1 
-		<if test="srdDetailId != null and srdDetailId != ''">
-			AND SRD_DETAIL_ID = #{srdDetailId}
+		<if test="srdDetailUid != null and srdDetailUid != ''">
+			AND SRD_DETAIL_UID = #{srdDetailUid}
 		</if>
-		<if test="srdRecordId != null and srdRecordId != ''">
-			AND SRD_RECORD_ID = #{srdRecordId}
+		<if test="srdWkfNbr != null and srdWkfNbr != ''">
+			AND SRD_WKF_NBR = #{srdWkfNbr}
 		</if>
-		<if test="srdScheduleId != null and srdScheduleId != ''">
-			AND SRD_SCHEDULE_ID = #{srdScheduleId}
+		<if test="srdScheduleCid != null and srdScheduleCid != ''">
+			AND SRD_SCHEDULE_CID = #{srdScheduleCid}
 		</if>
 		
 		
-		<if test="srdNodeId != null and srdNodeId != ''">
-			AND SRD_NODE_ID = #{srdNodeId}
+		<if test="srdNodeCid != null and srdNodeCid != ''">
+			AND SRD_NODE_CID = #{srdNodeCid}
 		</if>
 		<if test="srdNodeName != null and srdNodeName != ''">
 			AND SRD_NODE_NAME = #{srdNodeName}
 		</if>
-		<if test="srdUserId != null and srdUserId != ''">
-			AND SRD_USER_ID = #{srdUserId}
+		<if test="srdUserCid != null and srdUserCid != ''">
+			AND SRD_USER_CID = #{srdUserCid}
 		</if>
 		<if test="srdLoginName != null and srdLoginName != ''">
 			AND SRD_LOGIN_NAME = #{srdLoginName}
@@ -212,22 +212,22 @@
 		
 		
 		
-		<if test="srdRecordStatus != null and srdRecordStatus != ''">
-			AND SRD_RECORD_STATUS = #{srdRecordStatus}
+		<if test="srdState != null and srdState != ''">
+			AND SRD_STATE = #{srdState}
 		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
 		INSERT INTO SY_WKF_RECORD_DETAIL
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="srdDetailId != null">
-				SRD_DETAIL_ID,
+			<if test="srdDetailUid != null">
+				SRD_DETAIL_UID,
 			</if>		
-			<if test="srdRecordId != null">
-				SRD_RECORD_ID,
+			<if test="srdWkfNbr != null">
+				SRD_WKF_NBR,
 			</if>		
-			<if test="srdScheduleId != null">
-				SRD_SCHEDULE_ID,
+			<if test="srdScheduleCid != null">
+				SRD_SCHEDULE_CID,
 			</if>		
 			<if test="srdDetailSeq != null">
 				SRD_DETAIL_SEQ,
@@ -235,14 +235,14 @@
 			<if test="srdDetailTime != null">
 				SRD_DETAIL_TIME,
 			</if>		
-			<if test="srdNodeId != null">
-				SRD_NODE_ID,
+			<if test="srdNodeCid != null">
+				SRD_NODE_CID,
 			</if>		
 			<if test="srdNodeName != null">
 				SRD_NODE_NAME,
 			</if>		
-			<if test="srdUserId != null">
-				SRD_USER_ID,
+			<if test="srdUserCid != null">
+				SRD_USER_CID,
 			</if>		
 			<if test="srdLoginName != null">
 				SRD_LOGIN_NAME,
@@ -289,19 +289,19 @@
 			<if test="srdBusinessField10 != null">
 				SRD_BUSINESS_FIELD10,
 			</if>		
-			<if test="srdRecordStatus != null">
-				SRD_RECORD_STATUS,
+			<if test="srdState != null">
+				SRD_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="srdDetailId != null">
-				#{srdDetailId},
+			<if test="srdDetailUid != null">
+				#{srdDetailUid},
 			</if>	
-			<if test="srdRecordId != null">
-				#{srdRecordId},
+			<if test="srdWkfNbr != null">
+				#{srdWkfNbr},
 			</if>	
-			<if test="srdScheduleId != null">
-				#{srdScheduleId},
+			<if test="srdScheduleCid != null">
+				#{srdScheduleCid},
 			</if>	
 			<if test="srdDetailSeq != null">
 				#{srdDetailSeq},
@@ -309,14 +309,14 @@
 			<if test="srdDetailTime != null">
 				#{srdDetailTime},
 			</if>	
-			<if test="srdNodeId != null">
-				#{srdNodeId},
+			<if test="srdNodeCid != null">
+				#{srdNodeCid},
 			</if>	
 			<if test="srdNodeName != null">
 				#{srdNodeName},
 			</if>	
-			<if test="srdUserId != null">
-				#{srdUserId},
+			<if test="srdUserCid != null">
+				#{srdUserCid},
 			</if>	
 			<if test="srdLoginName != null">
 				#{srdLoginName},
@@ -363,8 +363,8 @@
 			<if test="srdBusinessField10 != null">
 				#{srdBusinessField10},
 			</if>	
-			<if test="srdRecordStatus != null">
-				#{srdRecordStatus},
+			<if test="srdState != null">
+				#{srdState},
 			</if>	
 		</trim>
 	</insert>
@@ -372,33 +372,33 @@
 	<update id="updates">
 		UPDATE SY_WKF_RECORD_DETAIL
 		<set>
-			<if test="value.isInitSrdDetailId">
+			<if test="value.isInitSrdDetailUid">
 				<choose>
-					<when test="value.srdDetailId != null">
-						SRD_DETAIL_ID = #{value.srdDetailId},
+					<when test="value.srdDetailUid != null">
+						SRD_DETAIL_UID = #{value.srdDetailUid},
 					</when>
 					<otherwise>
-						SRD_DETAIL_ID = NULL,
+						SRD_DETAIL_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrdRecordId">
+			<if test="value.isInitSrdWkfNbr">
 				<choose>
-					<when test="value.srdRecordId != null">
-						SRD_RECORD_ID = #{value.srdRecordId},
+					<when test="value.srdWkfNbr != null">
+						SRD_WKF_NBR = #{value.srdWkfNbr},
 					</when>
 					<otherwise>
-						SRD_RECORD_ID = NULL,
+						SRD_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrdScheduleId">
+			<if test="value.isInitSrdScheduleCid">
 				<choose>
-					<when test="value.srdScheduleId != null">
-						SRD_SCHEDULE_ID = #{value.srdScheduleId},
+					<when test="value.srdScheduleCid != null">
+						SRD_SCHEDULE_CID = #{value.srdScheduleCid},
 					</when>
 					<otherwise>
-						SRD_SCHEDULE_ID = NULL,
+						SRD_SCHEDULE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -422,13 +422,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrdNodeId">
+			<if test="value.isInitSrdNodeCid">
 				<choose>
-					<when test="value.srdNodeId != null">
-						SRD_NODE_ID = #{value.srdNodeId},
+					<when test="value.srdNodeCid != null">
+						SRD_NODE_CID = #{value.srdNodeCid},
 					</when>
 					<otherwise>
-						SRD_NODE_ID = NULL,
+						SRD_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -442,13 +442,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrdUserId">
+			<if test="value.isInitSrdUserCid">
 				<choose>
-					<when test="value.srdUserId != null">
-						SRD_USER_ID = #{value.srdUserId},
+					<when test="value.srdUserCid != null">
+						SRD_USER_CID = #{value.srdUserCid},
 					</when>
 					<otherwise>
-						SRD_USER_ID = NULL,
+						SRD_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -602,37 +602,37 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrdRecordStatus">
+			<if test="value.isInitSrdState">
 				<choose>
-					<when test="value.srdRecordStatus != null">
-						SRD_RECORD_STATUS = #{value.srdRecordStatus},
+					<when test="value.srdState != null">
+						SRD_STATE = #{value.srdState},
 					</when>
 					<otherwise>
-						SRD_RECORD_STATUS = NULL,
+						SRD_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.srdDetailId != null and condition.srdDetailId != ''">
-			AND SRD_DETAIL_ID =	#{condition.srdDetailId} 
+		<if test="condition.srdDetailUid != null and condition.srdDetailUid != ''">
+			AND SRD_DETAIL_UID =	#{condition.srdDetailUid} 
 		</if>
-		<if test="condition.srdRecordId != null and condition.srdRecordId != ''">
-			AND SRD_RECORD_ID =	#{condition.srdRecordId} 
+		<if test="condition.srdWkfNbr != null and condition.srdWkfNbr != ''">
+			AND SRD_WKF_NBR =	#{condition.srdWkfNbr} 
 		</if>
-		<if test="condition.srdScheduleId != null and condition.srdScheduleId != ''">
-			AND SRD_SCHEDULE_ID =	#{condition.srdScheduleId} 
+		<if test="condition.srdScheduleCid != null and condition.srdScheduleCid != ''">
+			AND SRD_SCHEDULE_CID =	#{condition.srdScheduleCid} 
 		</if>
 		
 		
-		<if test="condition.srdNodeId != null and condition.srdNodeId != ''">
-			AND SRD_NODE_ID =	#{condition.srdNodeId} 
+		<if test="condition.srdNodeCid != null and condition.srdNodeCid != ''">
+			AND SRD_NODE_CID =	#{condition.srdNodeCid} 
 		</if>
 		<if test="condition.srdNodeName != null and condition.srdNodeName != ''">
 			AND SRD_NODE_NAME =	#{condition.srdNodeName} 
 		</if>
-		<if test="condition.srdUserId != null and condition.srdUserId != ''">
-			AND SRD_USER_ID =	#{condition.srdUserId} 
+		<if test="condition.srdUserCid != null and condition.srdUserCid != ''">
+			AND SRD_USER_CID =	#{condition.srdUserCid} 
 		</if>
 		<if test="condition.srdLoginName != null and condition.srdLoginName != ''">
 			AND SRD_LOGIN_NAME =	#{condition.srdLoginName} 
@@ -673,41 +673,41 @@
 		
 		
 		
-		<if test="condition.srdRecordStatus != null and condition.srdRecordStatus != ''">
-			AND SRD_RECORD_STATUS =	#{condition.srdRecordStatus} 
+		<if test="condition.srdState != null and condition.srdState != ''">
+			AND SRD_STATE =	#{condition.srdState} 
 		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfRecordDetailBean">
 		UPDATE SY_WKF_RECORD_DETAIL
 		<set>
-			<if test="isInitSrdDetailId">
+			<if test="isInitSrdDetailUid">
 				<choose>
-					<when test="srdDetailId != null">
-						SRD_DETAIL_ID = #{srdDetailId},
+					<when test="srdDetailUid != null">
+						SRD_DETAIL_UID = #{srdDetailUid},
 					</when>
 					<otherwise>
-						SRD_DETAIL_ID = NULL,
+						SRD_DETAIL_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrdRecordId">
+			<if test="isInitSrdWkfNbr">
 				<choose>
-					<when test="srdRecordId != null">
-						SRD_RECORD_ID = #{srdRecordId},
+					<when test="srdWkfNbr != null">
+						SRD_WKF_NBR = #{srdWkfNbr},
 					</when>
 					<otherwise>
-						SRD_RECORD_ID = NULL,
+						SRD_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrdScheduleId">
+			<if test="isInitSrdScheduleCid">
 				<choose>
-					<when test="srdScheduleId != null">
-						SRD_SCHEDULE_ID = #{srdScheduleId},
+					<when test="srdScheduleCid != null">
+						SRD_SCHEDULE_CID = #{srdScheduleCid},
 					</when>
 					<otherwise>
-						SRD_SCHEDULE_ID = NULL,
+						SRD_SCHEDULE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -731,13 +731,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrdNodeId">
+			<if test="isInitSrdNodeCid">
 				<choose>
-					<when test="srdNodeId != null">
-						SRD_NODE_ID = #{srdNodeId},
+					<when test="srdNodeCid != null">
+						SRD_NODE_CID = #{srdNodeCid},
 					</when>
 					<otherwise>
-						SRD_NODE_ID = NULL,
+						SRD_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -751,13 +751,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrdUserId">
+			<if test="isInitSrdUserCid">
 				<choose>
-					<when test="srdUserId != null">
-						SRD_USER_ID = #{srdUserId},
+					<when test="srdUserCid != null">
+						SRD_USER_CID = #{srdUserCid},
 					</when>
 					<otherwise>
-						SRD_USER_ID = NULL,
+						SRD_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -911,19 +911,19 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrdRecordStatus">
+			<if test="isInitSrdState">
 				<choose>
-					<when test="srdRecordStatus != null">
-						SRD_RECORD_STATUS = #{srdRecordStatus},
+					<when test="srdState != null">
+						SRD_STATE = #{srdState},
 					</when>
 					<otherwise>
-						SRD_RECORD_STATUS = NULL,
+						SRD_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 
-		SRD_DETAIL_ID = #{srdDetailId}
+		SRD_DETAIL_UID = #{srdDetailUid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -932,25 +932,25 @@
 		FROM
 		SY_WKF_RECORD_DETAIL WHERE 1=1
 		<if test="syWkfRecordDetail!=null">
-			<if test="syWkfRecordDetail.srdDetailId != null and syWkfRecordDetail.srdDetailId != ''">
-				AND SRD_DETAIL_ID = #{syWkfRecordDetail.srdDetailId}
+			<if test="syWkfRecordDetail.srdDetailUid != null and syWkfRecordDetail.srdDetailUid != ''">
+				AND SRD_DETAIL_UID = #{syWkfRecordDetail.srdDetailUid}
 			</if>
-			<if test="syWkfRecordDetail.srdRecordId != null and syWkfRecordDetail.srdRecordId != ''">
-				AND SRD_RECORD_ID = #{syWkfRecordDetail.srdRecordId}
+			<if test="syWkfRecordDetail.srdWkfNbr != null and syWkfRecordDetail.srdWkfNbr != ''">
+				AND SRD_WKF_NBR = #{syWkfRecordDetail.srdWkfNbr}
 			</if>
-			<if test="syWkfRecordDetail.srdScheduleId != null and syWkfRecordDetail.srdScheduleId != ''">
-				AND SRD_SCHEDULE_ID = #{syWkfRecordDetail.srdScheduleId}
+			<if test="syWkfRecordDetail.srdScheduleCid != null and syWkfRecordDetail.srdScheduleCid != ''">
+				AND SRD_SCHEDULE_CID = #{syWkfRecordDetail.srdScheduleCid}
 			</if>
 			
 			
-			<if test="syWkfRecordDetail.srdNodeId != null and syWkfRecordDetail.srdNodeId != ''">
-				AND SRD_NODE_ID = #{syWkfRecordDetail.srdNodeId}
+			<if test="syWkfRecordDetail.srdNodeCid != null and syWkfRecordDetail.srdNodeCid != ''">
+				AND SRD_NODE_CID = #{syWkfRecordDetail.srdNodeCid}
 			</if>
 			<if test="syWkfRecordDetail.srdNodeName != null and syWkfRecordDetail.srdNodeName != ''">
 				AND SRD_NODE_NAME = #{syWkfRecordDetail.srdNodeName}
 			</if>
-			<if test="syWkfRecordDetail.srdUserId != null and syWkfRecordDetail.srdUserId != ''">
-				AND SRD_USER_ID = #{syWkfRecordDetail.srdUserId}
+			<if test="syWkfRecordDetail.srdUserCid != null and syWkfRecordDetail.srdUserCid != ''">
+				AND SRD_USER_CID = #{syWkfRecordDetail.srdUserCid}
 			</if>
 			<if test="syWkfRecordDetail.srdLoginName != null and syWkfRecordDetail.srdLoginName != ''">
 				AND SRD_LOGIN_NAME = #{syWkfRecordDetail.srdLoginName}
@@ -991,8 +991,8 @@
 			
 			
 			
-			<if test="syWkfRecordDetail.srdRecordStatus != null and syWkfRecordDetail.srdRecordStatus != ''">
-				AND SRD_RECORD_STATUS = #{syWkfRecordDetail.srdRecordStatus}
+			<if test="syWkfRecordDetail.srdState != null and syWkfRecordDetail.srdState != ''">
+				AND SRD_STATE = #{syWkfRecordDetail.srdState}
 			</if>
 		</if>
 		ORDER BY
@@ -1004,25 +1004,25 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_RECORD_DETAIL
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="srdDetailId != null and srdDetailId != ''">
-				AND SRD_DETAIL_ID = #{srdDetailId}
+			<if test="srdDetailUid != null and srdDetailUid != ''">
+				AND SRD_DETAIL_UID = #{srdDetailUid}
 			</if>
-			<if test="srdRecordId != null and srdRecordId != ''">
-				AND SRD_RECORD_ID = #{srdRecordId}
+			<if test="srdWkfNbr != null and srdWkfNbr != ''">
+				AND SRD_WKF_NBR = #{srdWkfNbr}
 			</if>
-			<if test="srdScheduleId != null and srdScheduleId != ''">
-				AND SRD_SCHEDULE_ID = #{srdScheduleId}
+			<if test="srdScheduleCid != null and srdScheduleCid != ''">
+				AND SRD_SCHEDULE_CID = #{srdScheduleCid}
 			</if>
 			
 			
-			<if test="srdNodeId != null and srdNodeId != ''">
-				AND SRD_NODE_ID = #{srdNodeId}
+			<if test="srdNodeCid != null and srdNodeCid != ''">
+				AND SRD_NODE_CID = #{srdNodeCid}
 			</if>
 			<if test="srdNodeName != null and srdNodeName != ''">
 				AND SRD_NODE_NAME = #{srdNodeName}
 			</if>
-			<if test="srdUserId != null and srdUserId != ''">
-				AND SRD_USER_ID = #{srdUserId}
+			<if test="srdUserCid != null and srdUserCid != ''">
+				AND SRD_USER_CID = #{srdUserCid}
 			</if>
 			<if test="srdLoginName != null and srdLoginName != ''">
 				AND SRD_LOGIN_NAME = #{srdLoginName}
@@ -1063,8 +1063,8 @@
 			
 			
 			
-			<if test="srdRecordStatus != null and srdRecordStatus != ''">
-				AND SRD_RECORD_STATUS = #{srdRecordStatus}
+			<if test="srdState != null and srdState != ''">
+				AND SRD_STATE = #{srdState}
 			</if>
 		</if>
 	</select>
@@ -1076,14 +1076,14 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.srdDetailId},		
-			#{item.srdRecordId},		
-			#{item.srdScheduleId},		
+			#{item.srdDetailUid},		
+			#{item.srdWkfNbr},		
+			#{item.srdScheduleCid},		
 			#{item.srdDetailSeq},		
 			#{item.srdDetailTime},		
-			#{item.srdNodeId},		
+			#{item.srdNodeCid},		
 			#{item.srdNodeName},		
-			#{item.srdUserId},		
+			#{item.srdUserCid},		
 			#{item.srdLoginName},		
 			#{item.srdEventType},		
 			#{item.srdEventRule},		
@@ -1099,7 +1099,7 @@
 			#{item.srdBusinessField8},		
 			#{item.srdBusinessField9},		
 			#{item.srdBusinessField10},		
-			#{item.srdRecordStatus},		
+			#{item.srdState},		
 		</trim>
 		</foreach>
 	</insert>

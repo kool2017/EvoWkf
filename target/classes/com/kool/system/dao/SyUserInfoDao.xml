@@ -3,8 +3,9 @@
 
 <mapper namespace="com.kool.system.dao.SyUserInfoDao">
 	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserInfoBean">
-		<id column="SUI_ID" property="suiId" />
+		<id column="SUI_USER_CID" property="suiUserCid" />
 		<result column="SUI_LOGIN_NAME" property="suiLoginName" />
+		<result column="SUI_TYPE" property="suiType" />
 		<result column="SUI_PHONE" property="suiPhone" />
 		<result column="SUI_MAIL" property="suiMail" />
 		<result column="SUI_PWD" property="suiPwd" />
@@ -12,14 +13,18 @@
 		<result column="SUI_NEW_SALT" property="suiNewSalt" />
 		<result column="SUI_HASH_TIMES" property="suiHashTimes" />
 		<result column="SUI_FACE" property="suiFace" />
-		<result column="SUI_STATUS" property="suiStatus" />
+		<result column="SUI_STATE" property="suiState" />
 		<result column="SUI_ERROR_TIMES" property="suiErrorTimes" />
 		<result column="SUI_REGISTER_TIME" property="suiRegisterTime" />
+		<result column="SUI_HAS_KEY" property="suiHasKey" />
+		<result column="SUI_KEY_UID" property="suiKeyUid" />
+		<result column="SUI_STAFF_CID" property="suiStaffCid" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SUI_ID, 			
+			SUI_USER_CID, 			
 			SUI_LOGIN_NAME, 			
+			SUI_TYPE, 			
 			SUI_PHONE, 			
 			SUI_MAIL, 			
 			SUI_PWD, 			
@@ -27,12 +32,15 @@
 			SUI_NEW_SALT, 			
 			SUI_HASH_TIMES, 			
 			SUI_FACE, 			
-			SUI_STATUS, 			
+			SUI_STATE, 			
 			SUI_ERROR_TIMES, 			
-			SUI_REGISTER_TIME			
+			SUI_REGISTER_TIME, 			
+			SUI_HAS_KEY, 			
+			SUI_KEY_UID, 			
+			SUI_STAFF_CID			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SUI_ID
+		SUI_USER_CID
 	</sql>
 </mapper>  

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyUserRoleDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserRoleBean">
+		<id column="SUR_USER_CID" property="surUserCid" />
+		<id column="SUR_ROLE_CODE" property="surRoleCode" />
+		<result column="SUR_CMT" property="surCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SUR_USER_CID, 			
+			SUR_ROLE_CODE, 			
+			SUR_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SUR_USER_CID, SUR_ROLE_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyUserRoleBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_ROLE WHERE 1=1 
+		<if test="surUserCid != null and surUserCid != ''">
+			AND SUR_USER_CID = #{surUserCid}
+		</if>
+		<if test="surRoleCode != null and surRoleCode != ''">
+			AND SUR_ROLE_CODE = #{surRoleCode}
+		</if>
+		<if test="surCmt != null and surCmt != ''">
+			AND SUR_CMT = #{surCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyUserRoleBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_USER_ROLE
+		WHERE 
+		SUR_USER_CID = #{surUserCid} AND 
+		SUR_ROLE_CODE = #{surRoleCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyUserRoleBean">
+		DELETE FROM SY_USER_ROLE
+		WHERE
+		SUR_USER_CID = #{surUserCid} AND 
+		SUR_ROLE_CODE = #{surRoleCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyUserRoleBean">
+		DELETE FROM SY_USER_ROLE
+		WHERE 1=1 
+		<if test="surUserCid != null and surUserCid != ''">
+			AND SUR_USER_CID = #{surUserCid}
+		</if>
+		<if test="surRoleCode != null and surRoleCode != ''">
+			AND SUR_ROLE_CODE = #{surRoleCode}
+		</if>
+		<if test="surCmt != null and surCmt != ''">
+			AND SUR_CMT = #{surCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyUserRoleBean">
+		INSERT INTO SY_USER_ROLE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="surUserCid != null">
+				SUR_USER_CID,
+			</if>		
+			<if test="surRoleCode != null">
+				SUR_ROLE_CODE,
+			</if>		
+			<if test="surCmt != null">
+				SUR_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="surUserCid != null">
+				#{surUserCid},
+			</if>	
+			<if test="surRoleCode != null">
+				#{surRoleCode},
+			</if>	
+			<if test="surCmt != null">
+				#{surCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_USER_ROLE
+		<set>
+			<if test="value.isInitSurUserCid">
+				<choose>
+					<when test="value.surUserCid != null">
+						SUR_USER_CID = #{value.surUserCid},
+					</when>
+					<otherwise>
+						SUR_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSurRoleCode">
+				<choose>
+					<when test="value.surRoleCode != null">
+						SUR_ROLE_CODE = #{value.surRoleCode},
+					</when>
+					<otherwise>
+						SUR_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSurCmt">
+				<choose>
+					<when test="value.surCmt != null">
+						SUR_CMT = #{value.surCmt},
+					</when>
+					<otherwise>
+						SUR_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.surUserCid != null and condition.surUserCid != ''">
+			AND SUR_USER_CID =	#{condition.surUserCid} 
+		</if>
+		<if test="condition.surRoleCode != null and condition.surRoleCode != ''">
+			AND SUR_ROLE_CODE =	#{condition.surRoleCode} 
+		</if>
+		<if test="condition.surCmt != null and condition.surCmt != ''">
+			AND SUR_CMT =	#{condition.surCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyUserRoleBean">
+		UPDATE SY_USER_ROLE
+		<set>
+			<if test="isInitSurUserCid">
+				<choose>
+					<when test="surUserCid != null">
+						SUR_USER_CID = #{surUserCid},
+					</when>
+					<otherwise>
+						SUR_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSurRoleCode">
+				<choose>
+					<when test="surRoleCode != null">
+						SUR_ROLE_CODE = #{surRoleCode},
+					</when>
+					<otherwise>
+						SUR_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSurCmt">
+				<choose>
+					<when test="surCmt != null">
+						SUR_CMT = #{surCmt},
+					</when>
+					<otherwise>
+						SUR_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SUR_USER_CID = #{surUserCid} AND 
+		SUR_ROLE_CODE = #{surRoleCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_USER_ROLE WHERE 1=1
+		<if test="syUserRole!=null">
+			<if test="syUserRole.surUserCid != null and syUserRole.surUserCid != ''">
+				AND SUR_USER_CID = #{syUserRole.surUserCid}
+			</if>
+			<if test="syUserRole.surRoleCode != null and syUserRole.surRoleCode != ''">
+				AND SUR_ROLE_CODE = #{syUserRole.surRoleCode}
+			</if>
+			<if test="syUserRole.surCmt != null and syUserRole.surCmt != ''">
+				AND SUR_CMT = #{syUserRole.surCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyUserRoleBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_USER_ROLE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="surUserCid != null and surUserCid != ''">
+				AND SUR_USER_CID = #{surUserCid}
+			</if>
+			<if test="surRoleCode != null and surRoleCode != ''">
+				AND SUR_ROLE_CODE = #{surRoleCode}
+			</if>
+			<if test="surCmt != null and surCmt != ''">
+				AND SUR_CMT = #{surCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_USER_ROLE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.surUserCid},		
+			#{item.surRoleCode},		
+			#{item.surCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

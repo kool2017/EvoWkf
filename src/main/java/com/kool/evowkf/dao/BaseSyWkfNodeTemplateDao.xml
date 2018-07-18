@@ -3,9 +3,9 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfNodeTemplateDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
-		<id column="SNT_TEMPLATE_ID" property="sntTemplateId" />
+		<id column="SNT_TEMPLATE_CID" property="sntTemplateCid" />
 		<result column="SNT_TEMPLATE_NAME" property="sntTemplateName" />
-		<result column="SNT_ENTITY_ID" property="sntEntityId" />
+		<result column="SNT_ENTITY_CID" property="sntEntityCid" />
 		<result column="SNT_EVENT_TYPE" property="sntEventType" />
 		<result column="SNT_EVENT_RULE" property="sntEventRule" />
 		<result column="SNT_EVENT_EXT" property="sntEventExt" />
@@ -22,9 +22,9 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SNT_TEMPLATE_ID, 			
+			SNT_TEMPLATE_CID, 			
 			SNT_TEMPLATE_NAME, 			
-			SNT_ENTITY_ID, 			
+			SNT_ENTITY_CID, 			
 			SNT_EVENT_TYPE, 			
 			SNT_EVENT_RULE, 			
 			SNT_EVENT_EXT, 			
@@ -39,7 +39,7 @@
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SNT_TEMPLATE_ID
+		SNT_TEMPLATE_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean"
@@ -47,14 +47,14 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_NODE_TEMPLATE WHERE 1=1 
-		<if test="sntTemplateId != null and sntTemplateId != ''">
-			AND SNT_TEMPLATE_ID = #{sntTemplateId}
+		<if test="sntTemplateCid != null and sntTemplateCid != ''">
+			AND SNT_TEMPLATE_CID = #{sntTemplateCid}
 		</if>
 		<if test="sntTemplateName != null and sntTemplateName != ''">
 			AND SNT_TEMPLATE_NAME = #{sntTemplateName}
 		</if>
-		<if test="sntEntityId != null and sntEntityId != ''">
-			AND SNT_ENTITY_ID = #{sntEntityId}
+		<if test="sntEntityCid != null and sntEntityCid != ''">
+			AND SNT_ENTITY_CID = #{sntEntityCid}
 		</if>
 		<if test="sntEventType != null and sntEventType != ''">
 			AND SNT_EVENT_TYPE = #{sntEventType}
@@ -99,7 +99,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_NODE_TEMPLATE
 		WHERE 
-		SNT_TEMPLATE_ID = #{sntTemplateId}
+		SNT_TEMPLATE_CID = #{sntTemplateCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -107,20 +107,20 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
 		DELETE FROM SY_WKF_NODE_TEMPLATE
 		WHERE
-		SNT_TEMPLATE_ID = #{sntTemplateId}
+		SNT_TEMPLATE_CID = #{sntTemplateCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
 		DELETE FROM SY_WKF_NODE_TEMPLATE
 		WHERE 1=1 
-		<if test="sntTemplateId != null and sntTemplateId != ''">
-			AND SNT_TEMPLATE_ID = #{sntTemplateId}
+		<if test="sntTemplateCid != null and sntTemplateCid != ''">
+			AND SNT_TEMPLATE_CID = #{sntTemplateCid}
 		</if>
 		<if test="sntTemplateName != null and sntTemplateName != ''">
 			AND SNT_TEMPLATE_NAME = #{sntTemplateName}
 		</if>
-		<if test="sntEntityId != null and sntEntityId != ''">
-			AND SNT_ENTITY_ID = #{sntEntityId}
+		<if test="sntEntityCid != null and sntEntityCid != ''">
+			AND SNT_ENTITY_CID = #{sntEntityCid}
 		</if>
 		<if test="sntEventType != null and sntEventType != ''">
 			AND SNT_EVENT_TYPE = #{sntEventType}
@@ -160,14 +160,14 @@
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
 		INSERT INTO SY_WKF_NODE_TEMPLATE
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="sntTemplateId != null">
-				SNT_TEMPLATE_ID,
+			<if test="sntTemplateCid != null">
+				SNT_TEMPLATE_CID,
 			</if>		
 			<if test="sntTemplateName != null">
 				SNT_TEMPLATE_NAME,
 			</if>		
-			<if test="sntEntityId != null">
-				SNT_ENTITY_ID,
+			<if test="sntEntityCid != null">
+				SNT_ENTITY_CID,
 			</if>		
 			<if test="sntEventType != null">
 				SNT_EVENT_TYPE,
@@ -204,14 +204,14 @@
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="sntTemplateId != null">
-				#{sntTemplateId},
+			<if test="sntTemplateCid != null">
+				#{sntTemplateCid},
 			</if>	
 			<if test="sntTemplateName != null">
 				#{sntTemplateName},
 			</if>	
-			<if test="sntEntityId != null">
-				#{sntEntityId},
+			<if test="sntEntityCid != null">
+				#{sntEntityCid},
 			</if>	
 			<if test="sntEventType != null">
 				#{sntEventType},
@@ -252,13 +252,13 @@
 	<update id="updates">
 		UPDATE SY_WKF_NODE_TEMPLATE
 		<set>
-			<if test="value.isInitSntTemplateId">
+			<if test="value.isInitSntTemplateCid">
 				<choose>
-					<when test="value.sntTemplateId != null">
-						SNT_TEMPLATE_ID = #{value.sntTemplateId},
+					<when test="value.sntTemplateCid != null">
+						SNT_TEMPLATE_CID = #{value.sntTemplateCid},
 					</when>
 					<otherwise>
-						SNT_TEMPLATE_ID = NULL,
+						SNT_TEMPLATE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -272,13 +272,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSntEntityId">
+			<if test="value.isInitSntEntityCid">
 				<choose>
-					<when test="value.sntEntityId != null">
-						SNT_ENTITY_ID = #{value.sntEntityId},
+					<when test="value.sntEntityCid != null">
+						SNT_ENTITY_CID = #{value.sntEntityCid},
 					</when>
 					<otherwise>
-						SNT_ENTITY_ID = NULL,
+						SNT_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -394,14 +394,14 @@
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.sntTemplateId != null and condition.sntTemplateId != ''">
-			AND SNT_TEMPLATE_ID =	#{condition.sntTemplateId} 
+		<if test="condition.sntTemplateCid != null and condition.sntTemplateCid != ''">
+			AND SNT_TEMPLATE_CID =	#{condition.sntTemplateCid} 
 		</if>
 		<if test="condition.sntTemplateName != null and condition.sntTemplateName != ''">
 			AND SNT_TEMPLATE_NAME =	#{condition.sntTemplateName} 
 		</if>
-		<if test="condition.sntEntityId != null and condition.sntEntityId != ''">
-			AND SNT_ENTITY_ID =	#{condition.sntEntityId} 
+		<if test="condition.sntEntityCid != null and condition.sntEntityCid != ''">
+			AND SNT_ENTITY_CID =	#{condition.sntEntityCid} 
 		</if>
 		<if test="condition.sntEventType != null and condition.sntEventType != ''">
 			AND SNT_EVENT_TYPE =	#{condition.sntEventType} 
@@ -441,13 +441,13 @@
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
 		UPDATE SY_WKF_NODE_TEMPLATE
 		<set>
-			<if test="isInitSntTemplateId">
+			<if test="isInitSntTemplateCid">
 				<choose>
-					<when test="sntTemplateId != null">
-						SNT_TEMPLATE_ID = #{sntTemplateId},
+					<when test="sntTemplateCid != null">
+						SNT_TEMPLATE_CID = #{sntTemplateCid},
 					</when>
 					<otherwise>
-						SNT_TEMPLATE_ID = NULL,
+						SNT_TEMPLATE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -461,13 +461,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSntEntityId">
+			<if test="isInitSntEntityCid">
 				<choose>
-					<when test="sntEntityId != null">
-						SNT_ENTITY_ID = #{sntEntityId},
+					<when test="sntEntityCid != null">
+						SNT_ENTITY_CID = #{sntEntityCid},
 					</when>
 					<otherwise>
-						SNT_ENTITY_ID = NULL,
+						SNT_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -583,7 +583,7 @@
 			</if>
 		</set>
 		WHERE 
-		SNT_TEMPLATE_ID = #{sntTemplateId}
+		SNT_TEMPLATE_CID = #{sntTemplateCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -592,14 +592,14 @@
 		FROM
 		SY_WKF_NODE_TEMPLATE WHERE 1=1
 		<if test="syWkfNodeTemplate!=null">
-			<if test="syWkfNodeTemplate.sntTemplateId != null and syWkfNodeTemplate.sntTemplateId != ''">
-				AND SNT_TEMPLATE_ID = #{syWkfNodeTemplate.sntTemplateId}
+			<if test="syWkfNodeTemplate.sntTemplateCid != null and syWkfNodeTemplate.sntTemplateCid != ''">
+				AND SNT_TEMPLATE_CID = #{syWkfNodeTemplate.sntTemplateCid}
 			</if>
 			<if test="syWkfNodeTemplate.sntTemplateName != null and syWkfNodeTemplate.sntTemplateName != ''">
 				AND SNT_TEMPLATE_NAME = #{syWkfNodeTemplate.sntTemplateName}
 			</if>
-			<if test="syWkfNodeTemplate.sntEntityId != null and syWkfNodeTemplate.sntEntityId != ''">
-				AND SNT_ENTITY_ID = #{syWkfNodeTemplate.sntEntityId}
+			<if test="syWkfNodeTemplate.sntEntityCid != null and syWkfNodeTemplate.sntEntityCid != ''">
+				AND SNT_ENTITY_CID = #{syWkfNodeTemplate.sntEntityCid}
 			</if>
 			<if test="syWkfNodeTemplate.sntEventType != null and syWkfNodeTemplate.sntEventType != ''">
 				AND SNT_EVENT_TYPE = #{syWkfNodeTemplate.sntEventType}
@@ -644,14 +644,14 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_NODE_TEMPLATE
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="sntTemplateId != null and sntTemplateId != ''">
-				AND SNT_TEMPLATE_ID = #{sntTemplateId}
+			<if test="sntTemplateCid != null and sntTemplateCid != ''">
+				AND SNT_TEMPLATE_CID = #{sntTemplateCid}
 			</if>
 			<if test="sntTemplateName != null and sntTemplateName != ''">
 				AND SNT_TEMPLATE_NAME = #{sntTemplateName}
 			</if>
-			<if test="sntEntityId != null and sntEntityId != ''">
-				AND SNT_ENTITY_ID = #{sntEntityId}
+			<if test="sntEntityCid != null and sntEntityCid != ''">
+				AND SNT_ENTITY_CID = #{sntEntityCid}
 			</if>
 			<if test="sntEventType != null and sntEventType != ''">
 				AND SNT_EVENT_TYPE = #{sntEventType}
@@ -696,9 +696,9 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.sntTemplateId},		
+			#{item.sntTemplateCid},		
 			#{item.sntTemplateName},		
-			#{item.sntEntityId},		
+			#{item.sntEntityCid},		
 			#{item.sntEventType},		
 			#{item.sntEventRule},		
 			#{item.sntEventExt},		

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyErrorInfoDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyErrorInfoBean">
+		<id column="SEI_ERROR_CODE" property="seiErrorCode" />
+		<result column="SEI_CHN_MSG" property="seiChnMsg" />
+		<result column="SEI_ENG_MSG" property="seiEngMsg" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SEI_ERROR_CODE, 			
+			SEI_CHN_MSG, 			
+			SEI_ENG_MSG			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SEI_ERROR_CODE
+	</sql>
+</mapper>  

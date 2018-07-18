@@ -3,25 +3,25 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfAgentDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfAgentBean">
-		<id column="SWA_USER_ID" property="swaUserId" />
+		<id column="SWA_USER_CID" property="swaUserCid" />
 		<result column="SWA_LOGIN_NAME" property="swaLoginName" />
-		<result column="SWA_AGENT_USER_ID" property="swaAgentUserId" />
+		<result column="SWA_AGENT_USER_CID" property="swaAgentUserCid" />
 		<result column="SWA_AGENT_LOGIN_NAME" property="swaAgentLoginName" />
-		<result column="SWA_AGENT_STATUS" property="swaAgentStatus" />
+		<result column="SWA_STATE" property="swaState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWA_USER_ID, 			
+			SWA_USER_CID, 			
 			SWA_LOGIN_NAME, 			
-			SWA_AGENT_USER_ID, 			
+			SWA_AGENT_USER_CID, 			
 			SWA_AGENT_LOGIN_NAME, 			
-			SWA_AGENT_STATUS			
+			SWA_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWA_USER_ID
+		SWA_USER_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfAgentBean"
@@ -29,20 +29,20 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_AGENT WHERE 1=1 
-		<if test="swaUserId != null and swaUserId != ''">
-			AND SWA_USER_ID = #{swaUserId}
+		<if test="swaUserCid != null and swaUserCid != ''">
+			AND SWA_USER_CID = #{swaUserCid}
 		</if>
 		<if test="swaLoginName != null and swaLoginName != ''">
 			AND SWA_LOGIN_NAME = #{swaLoginName}
 		</if>
-		<if test="swaAgentUserId != null and swaAgentUserId != ''">
-			AND SWA_AGENT_USER_ID = #{swaAgentUserId}
+		<if test="swaAgentUserCid != null and swaAgentUserCid != ''">
+			AND SWA_AGENT_USER_CID = #{swaAgentUserCid}
 		</if>
 		<if test="swaAgentLoginName != null and swaAgentLoginName != ''">
 			AND SWA_AGENT_LOGIN_NAME = #{swaAgentLoginName}
 		</if>
-		<if test="swaAgentStatus != null and swaAgentStatus != ''">
-			AND SWA_AGENT_STATUS = #{swaAgentStatus}
+		<if test="swaState != null and swaState != ''">
+			AND SWA_STATE = #{swaState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -54,7 +54,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_AGENT
 		WHERE 
-		SWA_USER_ID = #{swaUserId}
+		SWA_USER_CID = #{swaUserCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -62,63 +62,63 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
 		DELETE FROM SY_WKF_AGENT
 		WHERE
-		SWA_USER_ID = #{swaUserId}
+		SWA_USER_CID = #{swaUserCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
 		DELETE FROM SY_WKF_AGENT
 		WHERE 1=1 
-		<if test="swaUserId != null and swaUserId != ''">
-			AND SWA_USER_ID = #{swaUserId}
+		<if test="swaUserCid != null and swaUserCid != ''">
+			AND SWA_USER_CID = #{swaUserCid}
 		</if>
 		<if test="swaLoginName != null and swaLoginName != ''">
 			AND SWA_LOGIN_NAME = #{swaLoginName}
 		</if>
-		<if test="swaAgentUserId != null and swaAgentUserId != ''">
-			AND SWA_AGENT_USER_ID = #{swaAgentUserId}
+		<if test="swaAgentUserCid != null and swaAgentUserCid != ''">
+			AND SWA_AGENT_USER_CID = #{swaAgentUserCid}
 		</if>
 		<if test="swaAgentLoginName != null and swaAgentLoginName != ''">
 			AND SWA_AGENT_LOGIN_NAME = #{swaAgentLoginName}
 		</if>
-		<if test="swaAgentStatus != null and swaAgentStatus != ''">
-			AND SWA_AGENT_STATUS = #{swaAgentStatus}
+		<if test="swaState != null and swaState != ''">
+			AND SWA_STATE = #{swaState}
 		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
 		INSERT INTO SY_WKF_AGENT
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="swaUserId != null">
-				SWA_USER_ID,
+			<if test="swaUserCid != null">
+				SWA_USER_CID,
 			</if>		
 			<if test="swaLoginName != null">
 				SWA_LOGIN_NAME,
 			</if>		
-			<if test="swaAgentUserId != null">
-				SWA_AGENT_USER_ID,
+			<if test="swaAgentUserCid != null">
+				SWA_AGENT_USER_CID,
 			</if>		
 			<if test="swaAgentLoginName != null">
 				SWA_AGENT_LOGIN_NAME,
 			</if>		
-			<if test="swaAgentStatus != null">
-				SWA_AGENT_STATUS,
+			<if test="swaState != null">
+				SWA_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="swaUserId != null">
-				#{swaUserId},
+			<if test="swaUserCid != null">
+				#{swaUserCid},
 			</if>	
 			<if test="swaLoginName != null">
 				#{swaLoginName},
 			</if>	
-			<if test="swaAgentUserId != null">
-				#{swaAgentUserId},
+			<if test="swaAgentUserCid != null">
+				#{swaAgentUserCid},
 			</if>	
 			<if test="swaAgentLoginName != null">
 				#{swaAgentLoginName},
 			</if>	
-			<if test="swaAgentStatus != null">
-				#{swaAgentStatus},
+			<if test="swaState != null">
+				#{swaState},
 			</if>	
 		</trim>
 	</insert>
@@ -126,13 +126,13 @@
 	<update id="updates">
 		UPDATE SY_WKF_AGENT
 		<set>
-			<if test="value.isInitSwaUserId">
+			<if test="value.isInitSwaUserCid">
 				<choose>
-					<when test="value.swaUserId != null">
-						SWA_USER_ID = #{value.swaUserId},
+					<when test="value.swaUserCid != null">
+						SWA_USER_CID = #{value.swaUserCid},
 					</when>
 					<otherwise>
-						SWA_USER_ID = NULL,
+						SWA_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -146,13 +146,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwaAgentUserId">
+			<if test="value.isInitSwaAgentUserCid">
 				<choose>
-					<when test="value.swaAgentUserId != null">
-						SWA_AGENT_USER_ID = #{value.swaAgentUserId},
+					<when test="value.swaAgentUserCid != null">
+						SWA_AGENT_USER_CID = #{value.swaAgentUserCid},
 					</when>
 					<otherwise>
-						SWA_AGENT_USER_ID = NULL,
+						SWA_AGENT_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -166,45 +166,45 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwaAgentStatus">
+			<if test="value.isInitSwaState">
 				<choose>
-					<when test="value.swaAgentStatus != null">
-						SWA_AGENT_STATUS = #{value.swaAgentStatus},
+					<when test="value.swaState != null">
+						SWA_STATE = #{value.swaState},
 					</when>
 					<otherwise>
-						SWA_AGENT_STATUS = NULL,
+						SWA_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.swaUserId != null and condition.swaUserId != ''">
-			AND SWA_USER_ID =	#{condition.swaUserId} 
+		<if test="condition.swaUserCid != null and condition.swaUserCid != ''">
+			AND SWA_USER_CID =	#{condition.swaUserCid} 
 		</if>
 		<if test="condition.swaLoginName != null and condition.swaLoginName != ''">
 			AND SWA_LOGIN_NAME =	#{condition.swaLoginName} 
 		</if>
-		<if test="condition.swaAgentUserId != null and condition.swaAgentUserId != ''">
-			AND SWA_AGENT_USER_ID =	#{condition.swaAgentUserId} 
+		<if test="condition.swaAgentUserCid != null and condition.swaAgentUserCid != ''">
+			AND SWA_AGENT_USER_CID =	#{condition.swaAgentUserCid} 
 		</if>
 		<if test="condition.swaAgentLoginName != null and condition.swaAgentLoginName != ''">
 			AND SWA_AGENT_LOGIN_NAME =	#{condition.swaAgentLoginName} 
 		</if>
-		<if test="condition.swaAgentStatus != null and condition.swaAgentStatus != ''">
-			AND SWA_AGENT_STATUS =	#{condition.swaAgentStatus} 
+		<if test="condition.swaState != null and condition.swaState != ''">
+			AND SWA_STATE =	#{condition.swaState} 
 		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfAgentBean">
 		UPDATE SY_WKF_AGENT
 		<set>
-			<if test="isInitSwaUserId">
+			<if test="isInitSwaUserCid">
 				<choose>
-					<when test="swaUserId != null">
-						SWA_USER_ID = #{swaUserId},
+					<when test="swaUserCid != null">
+						SWA_USER_CID = #{swaUserCid},
 					</when>
 					<otherwise>
-						SWA_USER_ID = NULL,
+						SWA_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -218,13 +218,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwaAgentUserId">
+			<if test="isInitSwaAgentUserCid">
 				<choose>
-					<when test="swaAgentUserId != null">
-						SWA_AGENT_USER_ID = #{swaAgentUserId},
+					<when test="swaAgentUserCid != null">
+						SWA_AGENT_USER_CID = #{swaAgentUserCid},
 					</when>
 					<otherwise>
-						SWA_AGENT_USER_ID = NULL,
+						SWA_AGENT_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -238,19 +238,19 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwaAgentStatus">
+			<if test="isInitSwaState">
 				<choose>
-					<when test="swaAgentStatus != null">
-						SWA_AGENT_STATUS = #{swaAgentStatus},
+					<when test="swaState != null">
+						SWA_STATE = #{swaState},
 					</when>
 					<otherwise>
-						SWA_AGENT_STATUS = NULL,
+						SWA_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 
-		SWA_USER_ID = #{swaUserId}
+		SWA_USER_CID = #{swaUserCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -259,20 +259,20 @@
 		FROM
 		SY_WKF_AGENT WHERE 1=1
 		<if test="syWkfAgent!=null">
-			<if test="syWkfAgent.swaUserId != null and syWkfAgent.swaUserId != ''">
-				AND SWA_USER_ID = #{syWkfAgent.swaUserId}
+			<if test="syWkfAgent.swaUserCid != null and syWkfAgent.swaUserCid != ''">
+				AND SWA_USER_CID = #{syWkfAgent.swaUserCid}
 			</if>
 			<if test="syWkfAgent.swaLoginName != null and syWkfAgent.swaLoginName != ''">
 				AND SWA_LOGIN_NAME = #{syWkfAgent.swaLoginName}
 			</if>
-			<if test="syWkfAgent.swaAgentUserId != null and syWkfAgent.swaAgentUserId != ''">
-				AND SWA_AGENT_USER_ID = #{syWkfAgent.swaAgentUserId}
+			<if test="syWkfAgent.swaAgentUserCid != null and syWkfAgent.swaAgentUserCid != ''">
+				AND SWA_AGENT_USER_CID = #{syWkfAgent.swaAgentUserCid}
 			</if>
 			<if test="syWkfAgent.swaAgentLoginName != null and syWkfAgent.swaAgentLoginName != ''">
 				AND SWA_AGENT_LOGIN_NAME = #{syWkfAgent.swaAgentLoginName}
 			</if>
-			<if test="syWkfAgent.swaAgentStatus != null and syWkfAgent.swaAgentStatus != ''">
-				AND SWA_AGENT_STATUS = #{syWkfAgent.swaAgentStatus}
+			<if test="syWkfAgent.swaState != null and syWkfAgent.swaState != ''">
+				AND SWA_STATE = #{syWkfAgent.swaState}
 			</if>
 		</if>
 		ORDER BY
@@ -284,20 +284,20 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_AGENT
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="swaUserId != null and swaUserId != ''">
-				AND SWA_USER_ID = #{swaUserId}
+			<if test="swaUserCid != null and swaUserCid != ''">
+				AND SWA_USER_CID = #{swaUserCid}
 			</if>
 			<if test="swaLoginName != null and swaLoginName != ''">
 				AND SWA_LOGIN_NAME = #{swaLoginName}
 			</if>
-			<if test="swaAgentUserId != null and swaAgentUserId != ''">
-				AND SWA_AGENT_USER_ID = #{swaAgentUserId}
+			<if test="swaAgentUserCid != null and swaAgentUserCid != ''">
+				AND SWA_AGENT_USER_CID = #{swaAgentUserCid}
 			</if>
 			<if test="swaAgentLoginName != null and swaAgentLoginName != ''">
 				AND SWA_AGENT_LOGIN_NAME = #{swaAgentLoginName}
 			</if>
-			<if test="swaAgentStatus != null and swaAgentStatus != ''">
-				AND SWA_AGENT_STATUS = #{swaAgentStatus}
+			<if test="swaState != null and swaState != ''">
+				AND SWA_STATE = #{swaState}
 			</if>
 		</if>
 	</select>
@@ -309,11 +309,11 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.swaUserId},		
+			#{item.swaUserCid},		
 			#{item.swaLoginName},		
-			#{item.swaAgentUserId},		
+			#{item.swaAgentUserCid},		
 			#{item.swaAgentLoginName},		
-			#{item.swaAgentStatus},		
+			#{item.swaState},		
 		</trim>
 		</foreach>
 	</insert>

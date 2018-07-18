@@ -5,7 +5,7 @@
  */
 package com.kool.evowkf.engine;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 import com.kool.core.util.StringUtils;
 import com.kool.core.validate.DefineValidator;
 import com.kool.evowkf.WKFConstants;
@@ -27,14 +27,14 @@ public class EntityMatchStrategyFactory {
 	 * @return
 	 * @throws BusException 
 	 */
-	public static IEntityMatchStrategy getStrategy(SyWkfEntityBusinessBean entityBusiness) throws BusException {
+	public static IEntityMatchStrategy getStrategy(SyWkfEntityBusinessBean entityBusiness) throws AppException {
 		if (null == entityBusiness) {
-			throw new BusException("工作流实例-业务控制配置不能为空");// 工作流实例-业务控制配置不能为空
+			throw new AppException("工作流实例-业务控制配置不能为空");// 工作流实例-业务控制配置不能为空
 		}
 		// 是否单实例标志
 		String isSingle = entityBusiness.getSebIsSingle();
 		if (StringUtils.isEmpty(isSingle)) {
-			throw new BusException("是否单实例标志不能为空");
+			throw new AppException("是否单实例标志不能为空");
 		}
 		DefineValidator.validate("SEB_IS_SINGLE", isSingle);
 

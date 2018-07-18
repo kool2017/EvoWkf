@@ -8,7 +8,6 @@ package com.kool.evowkf.engine;
 import java.util.List;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.core.util.StringUtils;
 import com.kool.evowkf.bean.SyWkfEntityBean;
 import com.kool.evowkf.bean.vo.MatchValue;
@@ -48,9 +47,9 @@ public class S2EntityMatchStrategy implements IEntityMatchStrategy {
 	 * @throws BusException 
 	 */
 	@Override
-	public SyWkfEntityBean getEntity(List<SyWkfEntityBean> listEntity, MatchValue matchValue) throws AppException, BusException {
+	public SyWkfEntityBean getEntity(List<SyWkfEntityBean> listEntity, MatchValue matchValue) throws AppException {
 		if (StringUtils.isEmpty(strategyClazz)) {
-			throw new BusException("自定义实例匹配策略配置不正确，缺少自定义实现类");
+			throw new AppException("自定义实例匹配策略配置不正确，缺少自定义实现类");
 		}
 		SyWkfEntityBean entity = null;
 		try {

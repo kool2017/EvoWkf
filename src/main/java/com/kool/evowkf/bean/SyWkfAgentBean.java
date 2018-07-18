@@ -5,44 +5,44 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfAgentBean extends BaseBean {
-	protected String swaUserId;
-	protected boolean isInitSwaUserId;
+	protected String swaUserCid;
+	protected boolean isInitSwaUserCid;
 	protected String swaLoginName;
 	protected boolean isInitSwaLoginName;
-	protected String swaAgentUserId;
-	protected boolean isInitSwaAgentUserId;
+	protected String swaAgentUserCid;
+	protected boolean isInitSwaAgentUserCid;
 	protected String swaAgentLoginName;
 	protected boolean isInitSwaAgentLoginName;
-	protected String swaAgentStatus;
-	protected boolean isInitSwaAgentStatus;
+	protected String swaState;
+	protected boolean isInitSwaState;
 
-	public boolean getIsInitSwaUserId() {
-		return this.isInitSwaUserId;
+	public boolean getIsInitSwaUserCid() {
+		return this.isInitSwaUserCid;
 	}
 
 	public boolean getIsInitSwaLoginName() {
 		return this.isInitSwaLoginName;
 	}
 
-	public boolean getIsInitSwaAgentUserId() {
-		return this.isInitSwaAgentUserId;
+	public boolean getIsInitSwaAgentUserCid() {
+		return this.isInitSwaAgentUserCid;
 	}
 
 	public boolean getIsInitSwaAgentLoginName() {
 		return this.isInitSwaAgentLoginName;
 	}
 
-	public boolean getIsInitSwaAgentStatus() {
-		return this.isInitSwaAgentStatus;
+	public boolean getIsInitSwaState() {
+		return this.isInitSwaState;
 	}
 
-	public String getSwaUserId() {
-		return swaUserId;
+	public String getSwaUserCid() {
+		return swaUserCid;
 	}
 
-	public void setSwaUserId(String swaUserId) {
-		this.swaUserId = swaUserId;
-		this.isInitSwaUserId = true;
+	public void setSwaUserCid(String swaUserCid) {
+		this.swaUserCid = swaUserCid;
+		this.isInitSwaUserCid = true;
 	}
 
 	public String getSwaLoginName() {
@@ -54,13 +54,13 @@ public class SyWkfAgentBean extends BaseBean {
 		this.isInitSwaLoginName = true;
 	}
 
-	public String getSwaAgentUserId() {
-		return swaAgentUserId;
+	public String getSwaAgentUserCid() {
+		return swaAgentUserCid;
 	}
 
-	public void setSwaAgentUserId(String swaAgentUserId) {
-		this.swaAgentUserId = swaAgentUserId;
-		this.isInitSwaAgentUserId = true;
+	public void setSwaAgentUserCid(String swaAgentUserCid) {
+		this.swaAgentUserCid = swaAgentUserCid;
+		this.isInitSwaAgentUserCid = true;
 	}
 
 	public String getSwaAgentLoginName() {
@@ -72,31 +72,31 @@ public class SyWkfAgentBean extends BaseBean {
 		this.isInitSwaAgentLoginName = true;
 	}
 
-	public String getSwaAgentStatus() {
-		return swaAgentStatus;
+	public String getSwaState() {
+		return swaState;
 	}
 
-	public void setSwaAgentStatus(String swaAgentStatus) {
-		this.swaAgentStatus = swaAgentStatus;
-		this.isInitSwaAgentStatus = true;
+	public void setSwaState(String swaState) {
+		this.swaState = swaState;
+		this.isInitSwaState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSwaUserId) {
-			map.put("swaUserId", formatString(swaUserId));
+		if (isInitSwaUserCid) {
+			map.put("swaUserCid", formatString(swaUserCid));
 		}
 		if (isInitSwaLoginName) {
 			map.put("swaLoginName", formatString(swaLoginName));
 		}
-		if (isInitSwaAgentUserId) {
-			map.put("swaAgentUserId", formatString(swaAgentUserId));
+		if (isInitSwaAgentUserCid) {
+			map.put("swaAgentUserCid", formatString(swaAgentUserCid));
 		}
 		if (isInitSwaAgentLoginName) {
 			map.put("swaAgentLoginName", formatString(swaAgentLoginName));
 		}
-		if (isInitSwaAgentStatus) {
-			map.put("swaAgentStatus", formatString(swaAgentStatus));
+		if (isInitSwaState) {
+			map.put("swaState", formatString(swaState));
 		}
 
 		return map;

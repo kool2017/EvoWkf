@@ -6,7 +6,6 @@
 package com.kool.evowkf.api;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.evowkf.bean.vo.BusinessEvent;
 
 /**
@@ -16,5 +15,5 @@ import com.kool.evowkf.bean.vo.BusinessEvent;
  *
  */
 public interface IBusinessEventHandler {
-	public void handle(BusinessEvent event) throws BusException, AppException;
+	public void handle(BusinessEvent event) throws AppException;
 }

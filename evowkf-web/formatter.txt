@@ -1,0 +1,13 @@
+{
+    "git.ignoreLegacyWarning": true,
+    "workbench.iconTheme": "vscode-icons",
+    "git.ignoreMissingGitWarning": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "update.channel": "none",
+    "git.autofetch": true
+}

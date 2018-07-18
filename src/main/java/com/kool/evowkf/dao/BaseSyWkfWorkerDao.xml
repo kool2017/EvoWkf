@@ -3,23 +3,23 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfWorkerDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfWorkerBean">
-		<id column="SWO_WG_ID" property="swoWgId" />
-		<id column="SWO_USER_ID" property="swoUserId" />
+		<id column="SWO_WG_CID" property="swoWgCid" />
+		<id column="SWO_USER_CID" property="swoUserCid" />
 		<result column="SWO_LOGIN_NAME" property="swoLoginName" />
-		<result column="SWO_USER_STATUS" property="swoUserStatus" />
+		<result column="SWO_USER_STATE" property="swoUserState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWO_WG_ID, 			
-			SWO_USER_ID, 			
+			SWO_WG_CID, 			
+			SWO_USER_CID, 			
 			SWO_LOGIN_NAME, 			
-			SWO_USER_STATUS			
+			SWO_USER_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWO_WG_ID, SWO_USER_ID
+		SWO_WG_CID, SWO_USER_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean"
@@ -27,17 +27,17 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_WORKER WHERE 1=1 
-		<if test="swoWgId != null and swoWgId != ''">
-			AND SWO_WG_ID = #{swoWgId}
+		<if test="swoWgCid != null and swoWgCid != ''">
+			AND SWO_WG_CID = #{swoWgCid}
 		</if>
-		<if test="swoUserId != null and swoUserId != ''">
-			AND SWO_USER_ID = #{swoUserId}
+		<if test="swoUserCid != null and swoUserCid != ''">
+			AND SWO_USER_CID = #{swoUserCid}
 		</if>
 		<if test="swoLoginName != null and swoLoginName != ''">
 			AND SWO_LOGIN_NAME = #{swoLoginName}
 		</if>
-		<if test="swoUserStatus != null and swoUserStatus != ''">
-			AND SWO_USER_STATUS = #{swoUserStatus}
+		<if test="swoUserState != null and swoUserState != ''">
+			AND SWO_USER_STATE = #{swoUserState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -49,8 +49,8 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_WORKER
 		WHERE 
-		SWO_WG_ID = #{swoWgId} AND 
-		SWO_USER_ID = #{swoUserId}
+		SWO_WG_CID = #{swoWgCid} AND 
+		SWO_USER_CID = #{swoUserCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -58,55 +58,55 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
 		DELETE FROM SY_WKF_WORKER
 		WHERE
-		SWO_WG_ID = #{swoWgId} AND 
-		SWO_USER_ID = #{swoUserId}
+		SWO_WG_CID = #{swoWgCid} AND 
+		SWO_USER_CID = #{swoUserCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
 		DELETE FROM SY_WKF_WORKER
 		WHERE 1=1 
-		<if test="swoWgId != null and swoWgId != ''">
-			AND SWO_WG_ID = #{swoWgId}
+		<if test="swoWgCid != null and swoWgCid != ''">
+			AND SWO_WG_CID = #{swoWgCid}
 		</if>
-		<if test="swoUserId != null and swoUserId != ''">
-			AND SWO_USER_ID = #{swoUserId}
+		<if test="swoUserCid != null and swoUserCid != ''">
+			AND SWO_USER_CID = #{swoUserCid}
 		</if>
 		<if test="swoLoginName != null and swoLoginName != ''">
 			AND SWO_LOGIN_NAME = #{swoLoginName}
 		</if>
-		<if test="swoUserStatus != null and swoUserStatus != ''">
-			AND SWO_USER_STATUS = #{swoUserStatus}
+		<if test="swoUserState != null and swoUserState != ''">
+			AND SWO_USER_STATE = #{swoUserState}
 		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
 		INSERT INTO SY_WKF_WORKER
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="swoWgId != null">
-				SWO_WG_ID,
+			<if test="swoWgCid != null">
+				SWO_WG_CID,
 			</if>		
-			<if test="swoUserId != null">
-				SWO_USER_ID,
+			<if test="swoUserCid != null">
+				SWO_USER_CID,
 			</if>		
 			<if test="swoLoginName != null">
 				SWO_LOGIN_NAME,
 			</if>		
-			<if test="swoUserStatus != null">
-				SWO_USER_STATUS,
+			<if test="swoUserState != null">
+				SWO_USER_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="swoWgId != null">
-				#{swoWgId},
+			<if test="swoWgCid != null">
+				#{swoWgCid},
 			</if>	
-			<if test="swoUserId != null">
-				#{swoUserId},
+			<if test="swoUserCid != null">
+				#{swoUserCid},
 			</if>	
 			<if test="swoLoginName != null">
 				#{swoLoginName},
 			</if>	
-			<if test="swoUserStatus != null">
-				#{swoUserStatus},
+			<if test="swoUserState != null">
+				#{swoUserState},
 			</if>	
 		</trim>
 	</insert>
@@ -114,23 +114,23 @@
 	<update id="updates">
 		UPDATE SY_WKF_WORKER
 		<set>
-			<if test="value.isInitSwoWgId">
+			<if test="value.isInitSwoWgCid">
 				<choose>
-					<when test="value.swoWgId != null">
-						SWO_WG_ID = #{value.swoWgId},
+					<when test="value.swoWgCid != null">
+						SWO_WG_CID = #{value.swoWgCid},
 					</when>
 					<otherwise>
-						SWO_WG_ID = NULL,
+						SWO_WG_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwoUserId">
+			<if test="value.isInitSwoUserCid">
 				<choose>
-					<when test="value.swoUserId != null">
-						SWO_USER_ID = #{value.swoUserId},
+					<when test="value.swoUserCid != null">
+						SWO_USER_CID = #{value.swoUserCid},
 					</when>
 					<otherwise>
-						SWO_USER_ID = NULL,
+						SWO_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -144,52 +144,52 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwoUserStatus">
+			<if test="value.isInitSwoUserState">
 				<choose>
-					<when test="value.swoUserStatus != null">
-						SWO_USER_STATUS = #{value.swoUserStatus},
+					<when test="value.swoUserState != null">
+						SWO_USER_STATE = #{value.swoUserState},
 					</when>
 					<otherwise>
-						SWO_USER_STATUS = NULL,
+						SWO_USER_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.swoWgId != null and condition.swoWgId != ''">
-			AND SWO_WG_ID =	#{condition.swoWgId} 
+		<if test="condition.swoWgCid != null and condition.swoWgCid != ''">
+			AND SWO_WG_CID =	#{condition.swoWgCid} 
 		</if>
-		<if test="condition.swoUserId != null and condition.swoUserId != ''">
-			AND SWO_USER_ID =	#{condition.swoUserId} 
+		<if test="condition.swoUserCid != null and condition.swoUserCid != ''">
+			AND SWO_USER_CID =	#{condition.swoUserCid} 
 		</if>
 		<if test="condition.swoLoginName != null and condition.swoLoginName != ''">
 			AND SWO_LOGIN_NAME =	#{condition.swoLoginName} 
 		</if>
-		<if test="condition.swoUserStatus != null and condition.swoUserStatus != ''">
-			AND SWO_USER_STATUS =	#{condition.swoUserStatus} 
+		<if test="condition.swoUserState != null and condition.swoUserState != ''">
+			AND SWO_USER_STATE =	#{condition.swoUserState} 
 		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfWorkerBean">
 		UPDATE SY_WKF_WORKER
 		<set>
-			<if test="isInitSwoWgId">
+			<if test="isInitSwoWgCid">
 				<choose>
-					<when test="swoWgId != null">
-						SWO_WG_ID = #{swoWgId},
+					<when test="swoWgCid != null">
+						SWO_WG_CID = #{swoWgCid},
 					</when>
 					<otherwise>
-						SWO_WG_ID = NULL,
+						SWO_WG_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwoUserId">
+			<if test="isInitSwoUserCid">
 				<choose>
-					<when test="swoUserId != null">
-						SWO_USER_ID = #{swoUserId},
+					<when test="swoUserCid != null">
+						SWO_USER_CID = #{swoUserCid},
 					</when>
 					<otherwise>
-						SWO_USER_ID = NULL,
+						SWO_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -203,20 +203,20 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwoUserStatus">
+			<if test="isInitSwoUserState">
 				<choose>
-					<when test="swoUserStatus != null">
-						SWO_USER_STATUS = #{swoUserStatus},
+					<when test="swoUserState != null">
+						SWO_USER_STATE = #{swoUserState},
 					</when>
 					<otherwise>
-						SWO_USER_STATUS = NULL,
+						SWO_USER_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 
-		SWO_WG_ID = #{swoWgId} AND 
-		SWO_USER_ID = #{swoUserId}
+		SWO_WG_CID = #{swoWgCid} AND 
+		SWO_USER_CID = #{swoUserCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -225,17 +225,17 @@
 		FROM
 		SY_WKF_WORKER WHERE 1=1
 		<if test="syWkfWorker!=null">
-			<if test="syWkfWorker.swoWgId != null and syWkfWorker.swoWgId != ''">
-				AND SWO_WG_ID = #{syWkfWorker.swoWgId}
+			<if test="syWkfWorker.swoWgCid != null and syWkfWorker.swoWgCid != ''">
+				AND SWO_WG_CID = #{syWkfWorker.swoWgCid}
 			</if>
-			<if test="syWkfWorker.swoUserId != null and syWkfWorker.swoUserId != ''">
-				AND SWO_USER_ID = #{syWkfWorker.swoUserId}
+			<if test="syWkfWorker.swoUserCid != null and syWkfWorker.swoUserCid != ''">
+				AND SWO_USER_CID = #{syWkfWorker.swoUserCid}
 			</if>
 			<if test="syWkfWorker.swoLoginName != null and syWkfWorker.swoLoginName != ''">
 				AND SWO_LOGIN_NAME = #{syWkfWorker.swoLoginName}
 			</if>
-			<if test="syWkfWorker.swoUserStatus != null and syWkfWorker.swoUserStatus != ''">
-				AND SWO_USER_STATUS = #{syWkfWorker.swoUserStatus}
+			<if test="syWkfWorker.swoUserState != null and syWkfWorker.swoUserState != ''">
+				AND SWO_USER_STATE = #{syWkfWorker.swoUserState}
 			</if>
 		</if>
 		ORDER BY
@@ -247,17 +247,17 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_WORKER
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="swoWgId != null and swoWgId != ''">
-				AND SWO_WG_ID = #{swoWgId}
+			<if test="swoWgCid != null and swoWgCid != ''">
+				AND SWO_WG_CID = #{swoWgCid}
 			</if>
-			<if test="swoUserId != null and swoUserId != ''">
-				AND SWO_USER_ID = #{swoUserId}
+			<if test="swoUserCid != null and swoUserCid != ''">
+				AND SWO_USER_CID = #{swoUserCid}
 			</if>
 			<if test="swoLoginName != null and swoLoginName != ''">
 				AND SWO_LOGIN_NAME = #{swoLoginName}
 			</if>
-			<if test="swoUserStatus != null and swoUserStatus != ''">
-				AND SWO_USER_STATUS = #{swoUserStatus}
+			<if test="swoUserState != null and swoUserState != ''">
+				AND SWO_USER_STATE = #{swoUserState}
 			</if>
 		</if>
 	</select>
@@ -269,10 +269,10 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.swoWgId},		
-			#{item.swoUserId},		
+			#{item.swoWgCid},		
+			#{item.swoUserCid},		
 			#{item.swoLoginName},		
-			#{item.swoUserStatus},		
+			#{item.swoUserState},		
 		</trim>
 		</foreach>
 	</insert>

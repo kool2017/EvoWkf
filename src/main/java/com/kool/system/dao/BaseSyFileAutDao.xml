@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyFileAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyFileAutBean">
+		<id column="SFA_FILE_AUT_UID" property="sfaFileAutUid" />
+		<result column="SFA_FILE_UID" property="sfaFileUid" />
+		<result column="SFA_OWNER_TYPE" property="sfaOwnerType" />
+		<result column="SFA_USER_CID" property="sfaUserCid" />
+		<result column="SFA_ROLE_CODE" property="sfaRoleCode" />
+		<result column="SFA_GROUP_CODE" property="sfaGroupCode" />
+		<result column="SFA_CMT" property="sfaCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SFA_FILE_AUT_UID, 			
+			SFA_FILE_UID, 			
+			SFA_OWNER_TYPE, 			
+			SFA_USER_CID, 			
+			SFA_ROLE_CODE, 			
+			SFA_GROUP_CODE, 			
+			SFA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SFA_FILE_AUT_UID
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyFileAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_FILE_AUT WHERE 1=1 
+		<if test="sfaFileAutUid != null and sfaFileAutUid != ''">
+			AND SFA_FILE_AUT_UID = #{sfaFileAutUid}
+		</if>
+		<if test="sfaFileUid != null and sfaFileUid != ''">
+			AND SFA_FILE_UID = #{sfaFileUid}
+		</if>
+		<if test="sfaOwnerType != null and sfaOwnerType != ''">
+			AND SFA_OWNER_TYPE = #{sfaOwnerType}
+		</if>
+		<if test="sfaUserCid != null and sfaUserCid != ''">
+			AND SFA_USER_CID = #{sfaUserCid}
+		</if>
+		<if test="sfaRoleCode != null and sfaRoleCode != ''">
+			AND SFA_ROLE_CODE = #{sfaRoleCode}
+		</if>
+		<if test="sfaGroupCode != null and sfaGroupCode != ''">
+			AND SFA_GROUP_CODE = #{sfaGroupCode}
+		</if>
+		<if test="sfaCmt != null and sfaCmt != ''">
+			AND SFA_CMT = #{sfaCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyFileAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_FILE_AUT
+		WHERE 
+		SFA_FILE_AUT_UID = #{sfaFileAutUid}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyFileAutBean">
+		DELETE FROM SY_FILE_AUT
+		WHERE
+		SFA_FILE_AUT_UID = #{sfaFileAutUid}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyFileAutBean">
+		DELETE FROM SY_FILE_AUT
+		WHERE 1=1 
+		<if test="sfaFileAutUid != null and sfaFileAutUid != ''">
+			AND SFA_FILE_AUT_UID = #{sfaFileAutUid}
+		</if>
+		<if test="sfaFileUid != null and sfaFileUid != ''">
+			AND SFA_FILE_UID = #{sfaFileUid}
+		</if>
+		<if test="sfaOwnerType != null and sfaOwnerType != ''">
+			AND SFA_OWNER_TYPE = #{sfaOwnerType}
+		</if>
+		<if test="sfaUserCid != null and sfaUserCid != ''">
+			AND SFA_USER_CID = #{sfaUserCid}
+		</if>
+		<if test="sfaRoleCode != null and sfaRoleCode != ''">
+			AND SFA_ROLE_CODE = #{sfaRoleCode}
+		</if>
+		<if test="sfaGroupCode != null and sfaGroupCode != ''">
+			AND SFA_GROUP_CODE = #{sfaGroupCode}
+		</if>
+		<if test="sfaCmt != null and sfaCmt != ''">
+			AND SFA_CMT = #{sfaCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyFileAutBean">
+		INSERT INTO SY_FILE_AUT
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sfaFileAutUid != null">
+				SFA_FILE_AUT_UID,
+			</if>		
+			<if test="sfaFileUid != null">
+				SFA_FILE_UID,
+			</if>		
+			<if test="sfaOwnerType != null">
+				SFA_OWNER_TYPE,
+			</if>		
+			<if test="sfaUserCid != null">
+				SFA_USER_CID,
+			</if>		
+			<if test="sfaRoleCode != null">
+				SFA_ROLE_CODE,
+			</if>		
+			<if test="sfaGroupCode != null">
+				SFA_GROUP_CODE,
+			</if>		
+			<if test="sfaCmt != null">
+				SFA_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sfaFileAutUid != null">
+				#{sfaFileAutUid},
+			</if>	
+			<if test="sfaFileUid != null">
+				#{sfaFileUid},
+			</if>	
+			<if test="sfaOwnerType != null">
+				#{sfaOwnerType},
+			</if>	
+			<if test="sfaUserCid != null">
+				#{sfaUserCid},
+			</if>	
+			<if test="sfaRoleCode != null">
+				#{sfaRoleCode},
+			</if>	
+			<if test="sfaGroupCode != null">
+				#{sfaGroupCode},
+			</if>	
+			<if test="sfaCmt != null">
+				#{sfaCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_FILE_AUT
+		<set>
+			<if test="value.isInitSfaFileAutUid">
+				<choose>
+					<when test="value.sfaFileAutUid != null">
+						SFA_FILE_AUT_UID = #{value.sfaFileAutUid},
+					</when>
+					<otherwise>
+						SFA_FILE_AUT_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSfaFileUid">
+				<choose>
+					<when test="value.sfaFileUid != null">
+						SFA_FILE_UID = #{value.sfaFileUid},
+					</when>
+					<otherwise>
+						SFA_FILE_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSfaOwnerType">
+				<choose>
+					<when test="value.sfaOwnerType != null">
+						SFA_OWNER_TYPE = #{value.sfaOwnerType},
+					</when>
+					<otherwise>
+						SFA_OWNER_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSfaUserCid">
+				<choose>
+					<when test="value.sfaUserCid != null">
+						SFA_USER_CID = #{value.sfaUserCid},
+					</when>
+					<otherwise>
+						SFA_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSfaRoleCode">
+				<choose>
+					<when test="value.sfaRoleCode != null">
+						SFA_ROLE_CODE = #{value.sfaRoleCode},
+					</when>
+					<otherwise>
+						SFA_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSfaGroupCode">
+				<choose>
+					<when test="value.sfaGroupCode != null">
+						SFA_GROUP_CODE = #{value.sfaGroupCode},
+					</when>
+					<otherwise>
+						SFA_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSfaCmt">
+				<choose>
+					<when test="value.sfaCmt != null">
+						SFA_CMT = #{value.sfaCmt},
+					</when>
+					<otherwise>
+						SFA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sfaFileAutUid != null and condition.sfaFileAutUid != ''">
+			AND SFA_FILE_AUT_UID =	#{condition.sfaFileAutUid} 
+		</if>
+		<if test="condition.sfaFileUid != null and condition.sfaFileUid != ''">
+			AND SFA_FILE_UID =	#{condition.sfaFileUid} 
+		</if>
+		<if test="condition.sfaOwnerType != null and condition.sfaOwnerType != ''">
+			AND SFA_OWNER_TYPE =	#{condition.sfaOwnerType} 
+		</if>
+		<if test="condition.sfaUserCid != null and condition.sfaUserCid != ''">
+			AND SFA_USER_CID =	#{condition.sfaUserCid} 
+		</if>
+		<if test="condition.sfaRoleCode != null and condition.sfaRoleCode != ''">
+			AND SFA_ROLE_CODE =	#{condition.sfaRoleCode} 
+		</if>
+		<if test="condition.sfaGroupCode != null and condition.sfaGroupCode != ''">
+			AND SFA_GROUP_CODE =	#{condition.sfaGroupCode} 
+		</if>
+		<if test="condition.sfaCmt != null and condition.sfaCmt != ''">
+			AND SFA_CMT =	#{condition.sfaCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyFileAutBean">
+		UPDATE SY_FILE_AUT
+		<set>
+			<if test="isInitSfaFileAutUid">
+				<choose>
+					<when test="sfaFileAutUid != null">
+						SFA_FILE_AUT_UID = #{sfaFileAutUid},
+					</when>
+					<otherwise>
+						SFA_FILE_AUT_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSfaFileUid">
+				<choose>
+					<when test="sfaFileUid != null">
+						SFA_FILE_UID = #{sfaFileUid},
+					</when>
+					<otherwise>
+						SFA_FILE_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSfaOwnerType">
+				<choose>
+					<when test="sfaOwnerType != null">
+						SFA_OWNER_TYPE = #{sfaOwnerType},
+					</when>
+					<otherwise>
+						SFA_OWNER_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSfaUserCid">
+				<choose>
+					<when test="sfaUserCid != null">
+						SFA_USER_CID = #{sfaUserCid},
+					</when>
+					<otherwise>
+						SFA_USER_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSfaRoleCode">
+				<choose>
+					<when test="sfaRoleCode != null">
+						SFA_ROLE_CODE = #{sfaRoleCode},
+					</when>
+					<otherwise>
+						SFA_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSfaGroupCode">
+				<choose>
+					<when test="sfaGroupCode != null">
+						SFA_GROUP_CODE = #{sfaGroupCode},
+					</when>
+					<otherwise>
+						SFA_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSfaCmt">
+				<choose>
+					<when test="sfaCmt != null">
+						SFA_CMT = #{sfaCmt},
+					</when>
+					<otherwise>
+						SFA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SFA_FILE_AUT_UID = #{sfaFileAutUid}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_FILE_AUT WHERE 1=1
+		<if test="syFileAut!=null">
+			<if test="syFileAut.sfaFileAutUid != null and syFileAut.sfaFileAutUid != ''">
+				AND SFA_FILE_AUT_UID = #{syFileAut.sfaFileAutUid}
+			</if>
+			<if test="syFileAut.sfaFileUid != null and syFileAut.sfaFileUid != ''">
+				AND SFA_FILE_UID = #{syFileAut.sfaFileUid}
+			</if>
+			<if test="syFileAut.sfaOwnerType != null and syFileAut.sfaOwnerType != ''">
+				AND SFA_OWNER_TYPE = #{syFileAut.sfaOwnerType}
+			</if>
+			<if test="syFileAut.sfaUserCid != null and syFileAut.sfaUserCid != ''">
+				AND SFA_USER_CID = #{syFileAut.sfaUserCid}
+			</if>
+			<if test="syFileAut.sfaRoleCode != null and syFileAut.sfaRoleCode != ''">
+				AND SFA_ROLE_CODE = #{syFileAut.sfaRoleCode}
+			</if>
+			<if test="syFileAut.sfaGroupCode != null and syFileAut.sfaGroupCode != ''">
+				AND SFA_GROUP_CODE = #{syFileAut.sfaGroupCode}
+			</if>
+			<if test="syFileAut.sfaCmt != null and syFileAut.sfaCmt != ''">
+				AND SFA_CMT = #{syFileAut.sfaCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyFileAutBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_FILE_AUT
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sfaFileAutUid != null and sfaFileAutUid != ''">
+				AND SFA_FILE_AUT_UID = #{sfaFileAutUid}
+			</if>
+			<if test="sfaFileUid != null and sfaFileUid != ''">
+				AND SFA_FILE_UID = #{sfaFileUid}
+			</if>
+			<if test="sfaOwnerType != null and sfaOwnerType != ''">
+				AND SFA_OWNER_TYPE = #{sfaOwnerType}
+			</if>
+			<if test="sfaUserCid != null and sfaUserCid != ''">
+				AND SFA_USER_CID = #{sfaUserCid}
+			</if>
+			<if test="sfaRoleCode != null and sfaRoleCode != ''">
+				AND SFA_ROLE_CODE = #{sfaRoleCode}
+			</if>
+			<if test="sfaGroupCode != null and sfaGroupCode != ''">
+				AND SFA_GROUP_CODE = #{sfaGroupCode}
+			</if>
+			<if test="sfaCmt != null and sfaCmt != ''">
+				AND SFA_CMT = #{sfaCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_FILE_AUT(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sfaFileAutUid},		
+			#{item.sfaFileUid},		
+			#{item.sfaOwnerType},		
+			#{item.sfaUserCid},		
+			#{item.sfaRoleCode},		
+			#{item.sfaGroupCode},		
+			#{item.sfaCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

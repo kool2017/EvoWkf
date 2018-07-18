@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyRoleGroupAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyRoleGroupAutBean">
+		<id column="SGA_GROUP_CODE" property="sgaGroupCode" />
+		<id column="SGA_AUT_CODE" property="sgaAutCode" />
+		<result column="SGA_CMT" property="sgaCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SGA_GROUP_CODE, 			
+			SGA_AUT_CODE, 			
+			SGA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SGA_GROUP_CODE, SGA_AUT_CODE
+	</sql>
+</mapper>  

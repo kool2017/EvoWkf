@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyRoleDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyRoleBean">
+		<id column="SRO_ROLE_CODE" property="sroRoleCode" />
+		<result column="SRO_NAME" property="sroName" />
+		<result column="SRO_STATE" property="sroState" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRO_ROLE_CODE, 			
+			SRO_NAME, 			
+			SRO_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRO_ROLE_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyRoleBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE WHERE 1=1 
+		<if test="sroRoleCode != null and sroRoleCode != ''">
+			AND SRO_ROLE_CODE = #{sroRoleCode}
+		</if>
+		<if test="sroName != null and sroName != ''">
+			AND SRO_NAME = #{sroName}
+		</if>
+		<if test="sroState != null and sroState != ''">
+			AND SRO_STATE = #{sroState}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyRoleBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE
+		WHERE 
+		SRO_ROLE_CODE = #{sroRoleCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyRoleBean">
+		DELETE FROM SY_ROLE
+		WHERE
+		SRO_ROLE_CODE = #{sroRoleCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyRoleBean">
+		DELETE FROM SY_ROLE
+		WHERE 1=1 
+		<if test="sroRoleCode != null and sroRoleCode != ''">
+			AND SRO_ROLE_CODE = #{sroRoleCode}
+		</if>
+		<if test="sroName != null and sroName != ''">
+			AND SRO_NAME = #{sroName}
+		</if>
+		<if test="sroState != null and sroState != ''">
+			AND SRO_STATE = #{sroState}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyRoleBean">
+		INSERT INTO SY_ROLE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sroRoleCode != null">
+				SRO_ROLE_CODE,
+			</if>		
+			<if test="sroName != null">
+				SRO_NAME,
+			</if>		
+			<if test="sroState != null">
+				SRO_STATE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sroRoleCode != null">
+				#{sroRoleCode},
+			</if>	
+			<if test="sroName != null">
+				#{sroName},
+			</if>	
+			<if test="sroState != null">
+				#{sroState},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_ROLE
+		<set>
+			<if test="value.isInitSroRoleCode">
+				<choose>
+					<when test="value.sroRoleCode != null">
+						SRO_ROLE_CODE = #{value.sroRoleCode},
+					</when>
+					<otherwise>
+						SRO_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSroName">
+				<choose>
+					<when test="value.sroName != null">
+						SRO_NAME = #{value.sroName},
+					</when>
+					<otherwise>
+						SRO_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSroState">
+				<choose>
+					<when test="value.sroState != null">
+						SRO_STATE = #{value.sroState},
+					</when>
+					<otherwise>
+						SRO_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sroRoleCode != null and condition.sroRoleCode != ''">
+			AND SRO_ROLE_CODE =	#{condition.sroRoleCode} 
+		</if>
+		<if test="condition.sroName != null and condition.sroName != ''">
+			AND SRO_NAME =	#{condition.sroName} 
+		</if>
+		<if test="condition.sroState != null and condition.sroState != ''">
+			AND SRO_STATE =	#{condition.sroState} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyRoleBean">
+		UPDATE SY_ROLE
+		<set>
+			<if test="isInitSroRoleCode">
+				<choose>
+					<when test="sroRoleCode != null">
+						SRO_ROLE_CODE = #{sroRoleCode},
+					</when>
+					<otherwise>
+						SRO_ROLE_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSroName">
+				<choose>
+					<when test="sroName != null">
+						SRO_NAME = #{sroName},
+					</when>
+					<otherwise>
+						SRO_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSroState">
+				<choose>
+					<when test="sroState != null">
+						SRO_STATE = #{sroState},
+					</when>
+					<otherwise>
+						SRO_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SRO_ROLE_CODE = #{sroRoleCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_ROLE WHERE 1=1
+		<if test="syRole!=null">
+			<if test="syRole.sroRoleCode != null and syRole.sroRoleCode != ''">
+				AND SRO_ROLE_CODE = #{syRole.sroRoleCode}
+			</if>
+			<if test="syRole.sroName != null and syRole.sroName != ''">
+				AND SRO_NAME = #{syRole.sroName}
+			</if>
+			<if test="syRole.sroState != null and syRole.sroState != ''">
+				AND SRO_STATE = #{syRole.sroState}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyRoleBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_ROLE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sroRoleCode != null and sroRoleCode != ''">
+				AND SRO_ROLE_CODE = #{sroRoleCode}
+			</if>
+			<if test="sroName != null and sroName != ''">
+				AND SRO_NAME = #{sroName}
+			</if>
+			<if test="sroState != null and sroState != ''">
+				AND SRO_STATE = #{sroState}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_ROLE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sroRoleCode},		
+			#{item.sroName},		
+			#{item.sroState},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

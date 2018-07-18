@@ -3,37 +3,43 @@
 
 <mapper namespace="com.kool.system.dao.BaseSyUserTradeDao">
 	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyUserTradeBean">
-		<id column="SUT_TRADE_ID" property="sutTradeId" />
+		<id column="SUT_TRADE_UID" property="sutTradeUid" />
 		<result column="SUT_TRADE_TYPE" property="sutTradeType" />
 		<result column="SUT_TRADE_TIME" property="sutTradeTime" />
-		<result column="SUT_OPR_USER_ID" property="sutOprUserId" />
-		<result column="SUT_OPR_LOGIN_NAME" property="sutOprLoginName" />
+		<result column="SUT_OPR_USER_CID" property="sutOprUserCid" />
+		<result column="SUT_OPR_NAME" property="sutOprName" />
 		<result column="SUT_LOGIN_NAME" property="sutLoginName" />
 		<result column="SUT_PHONE" property="sutPhone" />
 		<result column="SUT_MAIL" property="sutMail" />
 		<result column="SUT_FACE" property="sutFace" />
-		<result column="SUT_RECORD_ID" property="sutRecordId" />
-		<result column="SUT_TRADE_STATUS" property="sutTradeStatus" />
+		<result column="SUT_WKF_NBR" property="sutWkfNbr" />
+		<result column="SUT_HAS_KEY" property="sutHasKey" />
+		<result column="SUT_KEY_UID" property="sutKeyUid" />
+		<result column="SUT_STAFF_CID" property="sutStaffCid" />
+		<result column="SUT_STATE" property="sutState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SUT_TRADE_ID, 			
+			SUT_TRADE_UID, 			
 			SUT_TRADE_TYPE, 			
 			SUT_TRADE_TIME, 			
-			SUT_OPR_USER_ID, 			
-			SUT_OPR_LOGIN_NAME, 			
+			SUT_OPR_USER_CID, 			
+			SUT_OPR_NAME, 			
 			SUT_LOGIN_NAME, 			
 			SUT_PHONE, 			
 			SUT_MAIL, 			
 			SUT_FACE, 			
-			SUT_RECORD_ID, 			
-			SUT_TRADE_STATUS			
+			SUT_WKF_NBR, 			
+			SUT_HAS_KEY, 			
+			SUT_KEY_UID, 			
+			SUT_STAFF_CID, 			
+			SUT_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SUT_TRADE_ID
+		SUT_TRADE_UID
 	</sql>
 
 	<select id="select" parameterType="com.kool.system.bean.SyUserTradeBean"
@@ -41,18 +47,18 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_USER_TRADE WHERE 1=1 
-		<if test="sutTradeId != null and sutTradeId != ''">
-			AND SUT_TRADE_ID = #{sutTradeId}
+		<if test="sutTradeUid != null and sutTradeUid != ''">
+			AND SUT_TRADE_UID = #{sutTradeUid}
 		</if>
 		<if test="sutTradeType != null and sutTradeType != ''">
 			AND SUT_TRADE_TYPE = #{sutTradeType}
 		</if>
 		
-		<if test="sutOprUserId != null and sutOprUserId != ''">
-			AND SUT_OPR_USER_ID = #{sutOprUserId}
+		<if test="sutOprUserCid != null and sutOprUserCid != ''">
+			AND SUT_OPR_USER_CID = #{sutOprUserCid}
 		</if>
-		<if test="sutOprLoginName != null and sutOprLoginName != ''">
-			AND SUT_OPR_LOGIN_NAME = #{sutOprLoginName}
+		<if test="sutOprName != null and sutOprName != ''">
+			AND SUT_OPR_NAME = #{sutOprName}
 		</if>
 		<if test="sutLoginName != null and sutLoginName != ''">
 			AND SUT_LOGIN_NAME = #{sutLoginName}
@@ -66,11 +72,20 @@
 		<if test="sutFace != null and sutFace != ''">
 			AND SUT_FACE = #{sutFace}
 		</if>
-		<if test="sutRecordId != null and sutRecordId != ''">
-			AND SUT_RECORD_ID = #{sutRecordId}
+		<if test="sutWkfNbr != null and sutWkfNbr != ''">
+			AND SUT_WKF_NBR = #{sutWkfNbr}
 		</if>
-		<if test="sutTradeStatus != null and sutTradeStatus != ''">
-			AND SUT_TRADE_STATUS = #{sutTradeStatus}
+		<if test="sutHasKey != null and sutHasKey != ''">
+			AND SUT_HAS_KEY = #{sutHasKey}
+		</if>
+		<if test="sutKeyUid != null and sutKeyUid != ''">
+			AND SUT_KEY_UID = #{sutKeyUid}
+		</if>
+		<if test="sutStaffCid != null and sutStaffCid != ''">
+			AND SUT_STAFF_CID = #{sutStaffCid}
+		</if>
+		<if test="sutState != null and sutState != ''">
+			AND SUT_STATE = #{sutState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -82,7 +97,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_USER_TRADE
 		WHERE 
-		SUT_TRADE_ID = #{sutTradeId}
+		SUT_TRADE_UID = #{sutTradeUid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -90,24 +105,24 @@
 	<delete id="delete" parameterType="com.kool.system.bean.SyUserTradeBean">
 		DELETE FROM SY_USER_TRADE
 		WHERE
-		SUT_TRADE_ID = #{sutTradeId}
+		SUT_TRADE_UID = #{sutTradeUid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.system.bean.SyUserTradeBean">
 		DELETE FROM SY_USER_TRADE
 		WHERE 1=1 
-		<if test="sutTradeId != null and sutTradeId != ''">
-			AND SUT_TRADE_ID = #{sutTradeId}
+		<if test="sutTradeUid != null and sutTradeUid != ''">
+			AND SUT_TRADE_UID = #{sutTradeUid}
 		</if>
 		<if test="sutTradeType != null and sutTradeType != ''">
 			AND SUT_TRADE_TYPE = #{sutTradeType}
 		</if>
 		
-		<if test="sutOprUserId != null and sutOprUserId != ''">
-			AND SUT_OPR_USER_ID = #{sutOprUserId}
+		<if test="sutOprUserCid != null and sutOprUserCid != ''">
+			AND SUT_OPR_USER_CID = #{sutOprUserCid}
 		</if>
-		<if test="sutOprLoginName != null and sutOprLoginName != ''">
-			AND SUT_OPR_LOGIN_NAME = #{sutOprLoginName}
+		<if test="sutOprName != null and sutOprName != ''">
+			AND SUT_OPR_NAME = #{sutOprName}
 		</if>
 		<if test="sutLoginName != null and sutLoginName != ''">
 			AND SUT_LOGIN_NAME = #{sutLoginName}
@@ -121,19 +136,28 @@
 		<if test="sutFace != null and sutFace != ''">
 			AND SUT_FACE = #{sutFace}
 		</if>
-		<if test="sutRecordId != null and sutRecordId != ''">
-			AND SUT_RECORD_ID = #{sutRecordId}
+		<if test="sutWkfNbr != null and sutWkfNbr != ''">
+			AND SUT_WKF_NBR = #{sutWkfNbr}
 		</if>
-		<if test="sutTradeStatus != null and sutTradeStatus != ''">
-			AND SUT_TRADE_STATUS = #{sutTradeStatus}
+		<if test="sutHasKey != null and sutHasKey != ''">
+			AND SUT_HAS_KEY = #{sutHasKey}
+		</if>
+		<if test="sutKeyUid != null and sutKeyUid != ''">
+			AND SUT_KEY_UID = #{sutKeyUid}
+		</if>
+		<if test="sutStaffCid != null and sutStaffCid != ''">
+			AND SUT_STAFF_CID = #{sutStaffCid}
+		</if>
+		<if test="sutState != null and sutState != ''">
+			AND SUT_STATE = #{sutState}
 		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.system.bean.SyUserTradeBean">
 		INSERT INTO SY_USER_TRADE
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="sutTradeId != null">
-				SUT_TRADE_ID,
+			<if test="sutTradeUid != null">
+				SUT_TRADE_UID,
 			</if>		
 			<if test="sutTradeType != null">
 				SUT_TRADE_TYPE,
@@ -141,11 +165,11 @@
 			<if test="sutTradeTime != null">
 				SUT_TRADE_TIME,
 			</if>		
-			<if test="sutOprUserId != null">
-				SUT_OPR_USER_ID,
+			<if test="sutOprUserCid != null">
+				SUT_OPR_USER_CID,
 			</if>		
-			<if test="sutOprLoginName != null">
-				SUT_OPR_LOGIN_NAME,
+			<if test="sutOprName != null">
+				SUT_OPR_NAME,
 			</if>		
 			<if test="sutLoginName != null">
 				SUT_LOGIN_NAME,
@@ -159,16 +183,25 @@
 			<if test="sutFace != null">
 				SUT_FACE,
 			</if>		
-			<if test="sutRecordId != null">
-				SUT_RECORD_ID,
+			<if test="sutWkfNbr != null">
+				SUT_WKF_NBR,
 			</if>		
-			<if test="sutTradeStatus != null">
-				SUT_TRADE_STATUS,
+			<if test="sutHasKey != null">
+				SUT_HAS_KEY,
+			</if>		
+			<if test="sutKeyUid != null">
+				SUT_KEY_UID,
+			</if>		
+			<if test="sutStaffCid != null">
+				SUT_STAFF_CID,
+			</if>		
+			<if test="sutState != null">
+				SUT_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="sutTradeId != null">
-				#{sutTradeId},
+			<if test="sutTradeUid != null">
+				#{sutTradeUid},
 			</if>	
 			<if test="sutTradeType != null">
 				#{sutTradeType},
@@ -176,11 +209,11 @@
 			<if test="sutTradeTime != null">
 				#{sutTradeTime},
 			</if>	
-			<if test="sutOprUserId != null">
-				#{sutOprUserId},
+			<if test="sutOprUserCid != null">
+				#{sutOprUserCid},
 			</if>	
-			<if test="sutOprLoginName != null">
-				#{sutOprLoginName},
+			<if test="sutOprName != null">
+				#{sutOprName},
 			</if>	
 			<if test="sutLoginName != null">
 				#{sutLoginName},
@@ -194,11 +227,20 @@
 			<if test="sutFace != null">
 				#{sutFace},
 			</if>	
-			<if test="sutRecordId != null">
-				#{sutRecordId},
+			<if test="sutWkfNbr != null">
+				#{sutWkfNbr},
 			</if>	
-			<if test="sutTradeStatus != null">
-				#{sutTradeStatus},
+			<if test="sutHasKey != null">
+				#{sutHasKey},
+			</if>	
+			<if test="sutKeyUid != null">
+				#{sutKeyUid},
+			</if>	
+			<if test="sutStaffCid != null">
+				#{sutStaffCid},
+			</if>	
+			<if test="sutState != null">
+				#{sutState},
 			</if>	
 		</trim>
 	</insert>
@@ -206,13 +248,13 @@
 	<update id="updates">
 		UPDATE SY_USER_TRADE
 		<set>
-			<if test="value.isInitSutTradeId">
+			<if test="value.isInitSutTradeUid">
 				<choose>
-					<when test="value.sutTradeId != null">
-						SUT_TRADE_ID = #{value.sutTradeId},
+					<when test="value.sutTradeUid != null">
+						SUT_TRADE_UID = #{value.sutTradeUid},
 					</when>
 					<otherwise>
-						SUT_TRADE_ID = NULL,
+						SUT_TRADE_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -236,23 +278,23 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSutOprUserId">
+			<if test="value.isInitSutOprUserCid">
 				<choose>
-					<when test="value.sutOprUserId != null">
-						SUT_OPR_USER_ID = #{value.sutOprUserId},
+					<when test="value.sutOprUserCid != null">
+						SUT_OPR_USER_CID = #{value.sutOprUserCid},
 					</when>
 					<otherwise>
-						SUT_OPR_USER_ID = NULL,
+						SUT_OPR_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSutOprLoginName">
+			<if test="value.isInitSutOprName">
 				<choose>
-					<when test="value.sutOprLoginName != null">
-						SUT_OPR_LOGIN_NAME = #{value.sutOprLoginName},
+					<when test="value.sutOprName != null">
+						SUT_OPR_NAME = #{value.sutOprName},
 					</when>
 					<otherwise>
-						SUT_OPR_LOGIN_NAME = NULL,
+						SUT_OPR_NAME = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -296,40 +338,70 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSutRecordId">
+			<if test="value.isInitSutWkfNbr">
 				<choose>
-					<when test="value.sutRecordId != null">
-						SUT_RECORD_ID = #{value.sutRecordId},
+					<when test="value.sutWkfNbr != null">
+						SUT_WKF_NBR = #{value.sutWkfNbr},
 					</when>
 					<otherwise>
-						SUT_RECORD_ID = NULL,
+						SUT_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSutTradeStatus">
+			<if test="value.isInitSutHasKey">
 				<choose>
-					<when test="value.sutTradeStatus != null">
-						SUT_TRADE_STATUS = #{value.sutTradeStatus},
+					<when test="value.sutHasKey != null">
+						SUT_HAS_KEY = #{value.sutHasKey},
 					</when>
 					<otherwise>
-						SUT_TRADE_STATUS = NULL,
+						SUT_HAS_KEY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutKeyUid">
+				<choose>
+					<when test="value.sutKeyUid != null">
+						SUT_KEY_UID = #{value.sutKeyUid},
+					</when>
+					<otherwise>
+						SUT_KEY_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutStaffCid">
+				<choose>
+					<when test="value.sutStaffCid != null">
+						SUT_STAFF_CID = #{value.sutStaffCid},
+					</when>
+					<otherwise>
+						SUT_STAFF_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSutState">
+				<choose>
+					<when test="value.sutState != null">
+						SUT_STATE = #{value.sutState},
+					</when>
+					<otherwise>
+						SUT_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.sutTradeId != null and condition.sutTradeId != ''">
-			AND SUT_TRADE_ID =	#{condition.sutTradeId} 
+		<if test="condition.sutTradeUid != null and condition.sutTradeUid != ''">
+			AND SUT_TRADE_UID =	#{condition.sutTradeUid} 
 		</if>
 		<if test="condition.sutTradeType != null and condition.sutTradeType != ''">
 			AND SUT_TRADE_TYPE =	#{condition.sutTradeType} 
 		</if>
 		
-		<if test="condition.sutOprUserId != null and condition.sutOprUserId != ''">
-			AND SUT_OPR_USER_ID =	#{condition.sutOprUserId} 
+		<if test="condition.sutOprUserCid != null and condition.sutOprUserCid != ''">
+			AND SUT_OPR_USER_CID =	#{condition.sutOprUserCid} 
 		</if>
-		<if test="condition.sutOprLoginName != null and condition.sutOprLoginName != ''">
-			AND SUT_OPR_LOGIN_NAME =	#{condition.sutOprLoginName} 
+		<if test="condition.sutOprName != null and condition.sutOprName != ''">
+			AND SUT_OPR_NAME =	#{condition.sutOprName} 
 		</if>
 		<if test="condition.sutLoginName != null and condition.sutLoginName != ''">
 			AND SUT_LOGIN_NAME =	#{condition.sutLoginName} 
@@ -343,24 +415,33 @@
 		<if test="condition.sutFace != null and condition.sutFace != ''">
 			AND SUT_FACE =	#{condition.sutFace} 
 		</if>
-		<if test="condition.sutRecordId != null and condition.sutRecordId != ''">
-			AND SUT_RECORD_ID =	#{condition.sutRecordId} 
+		<if test="condition.sutWkfNbr != null and condition.sutWkfNbr != ''">
+			AND SUT_WKF_NBR =	#{condition.sutWkfNbr} 
 		</if>
-		<if test="condition.sutTradeStatus != null and condition.sutTradeStatus != ''">
-			AND SUT_TRADE_STATUS =	#{condition.sutTradeStatus} 
+		<if test="condition.sutHasKey != null and condition.sutHasKey != ''">
+			AND SUT_HAS_KEY =	#{condition.sutHasKey} 
+		</if>
+		<if test="condition.sutKeyUid != null and condition.sutKeyUid != ''">
+			AND SUT_KEY_UID =	#{condition.sutKeyUid} 
+		</if>
+		<if test="condition.sutStaffCid != null and condition.sutStaffCid != ''">
+			AND SUT_STAFF_CID =	#{condition.sutStaffCid} 
+		</if>
+		<if test="condition.sutState != null and condition.sutState != ''">
+			AND SUT_STATE =	#{condition.sutState} 
 		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.system.bean.SyUserTradeBean">
 		UPDATE SY_USER_TRADE
 		<set>
-			<if test="isInitSutTradeId">
+			<if test="isInitSutTradeUid">
 				<choose>
-					<when test="sutTradeId != null">
-						SUT_TRADE_ID = #{sutTradeId},
+					<when test="sutTradeUid != null">
+						SUT_TRADE_UID = #{sutTradeUid},
 					</when>
 					<otherwise>
-						SUT_TRADE_ID = NULL,
+						SUT_TRADE_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -384,23 +465,23 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSutOprUserId">
+			<if test="isInitSutOprUserCid">
 				<choose>
-					<when test="sutOprUserId != null">
-						SUT_OPR_USER_ID = #{sutOprUserId},
+					<when test="sutOprUserCid != null">
+						SUT_OPR_USER_CID = #{sutOprUserCid},
 					</when>
 					<otherwise>
-						SUT_OPR_USER_ID = NULL,
+						SUT_OPR_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSutOprLoginName">
+			<if test="isInitSutOprName">
 				<choose>
-					<when test="sutOprLoginName != null">
-						SUT_OPR_LOGIN_NAME = #{sutOprLoginName},
+					<when test="sutOprName != null">
+						SUT_OPR_NAME = #{sutOprName},
 					</when>
 					<otherwise>
-						SUT_OPR_LOGIN_NAME = NULL,
+						SUT_OPR_NAME = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -444,29 +525,59 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSutRecordId">
+			<if test="isInitSutWkfNbr">
 				<choose>
-					<when test="sutRecordId != null">
-						SUT_RECORD_ID = #{sutRecordId},
+					<when test="sutWkfNbr != null">
+						SUT_WKF_NBR = #{sutWkfNbr},
 					</when>
 					<otherwise>
-						SUT_RECORD_ID = NULL,
+						SUT_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSutTradeStatus">
+			<if test="isInitSutHasKey">
 				<choose>
-					<when test="sutTradeStatus != null">
-						SUT_TRADE_STATUS = #{sutTradeStatus},
+					<when test="sutHasKey != null">
+						SUT_HAS_KEY = #{sutHasKey},
 					</when>
 					<otherwise>
-						SUT_TRADE_STATUS = NULL,
+						SUT_HAS_KEY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutKeyUid">
+				<choose>
+					<when test="sutKeyUid != null">
+						SUT_KEY_UID = #{sutKeyUid},
+					</when>
+					<otherwise>
+						SUT_KEY_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutStaffCid">
+				<choose>
+					<when test="sutStaffCid != null">
+						SUT_STAFF_CID = #{sutStaffCid},
+					</when>
+					<otherwise>
+						SUT_STAFF_CID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSutState">
+				<choose>
+					<when test="sutState != null">
+						SUT_STATE = #{sutState},
+					</when>
+					<otherwise>
+						SUT_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 
-		SUT_TRADE_ID = #{sutTradeId}
+		SUT_TRADE_UID = #{sutTradeUid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -475,18 +586,18 @@
 		FROM
 		SY_USER_TRADE WHERE 1=1
 		<if test="syUserTrade!=null">
-			<if test="syUserTrade.sutTradeId != null and syUserTrade.sutTradeId != ''">
-				AND SUT_TRADE_ID = #{syUserTrade.sutTradeId}
+			<if test="syUserTrade.sutTradeUid != null and syUserTrade.sutTradeUid != ''">
+				AND SUT_TRADE_UID = #{syUserTrade.sutTradeUid}
 			</if>
 			<if test="syUserTrade.sutTradeType != null and syUserTrade.sutTradeType != ''">
 				AND SUT_TRADE_TYPE = #{syUserTrade.sutTradeType}
 			</if>
 			
-			<if test="syUserTrade.sutOprUserId != null and syUserTrade.sutOprUserId != ''">
-				AND SUT_OPR_USER_ID = #{syUserTrade.sutOprUserId}
+			<if test="syUserTrade.sutOprUserCid != null and syUserTrade.sutOprUserCid != ''">
+				AND SUT_OPR_USER_CID = #{syUserTrade.sutOprUserCid}
 			</if>
-			<if test="syUserTrade.sutOprLoginName != null and syUserTrade.sutOprLoginName != ''">
-				AND SUT_OPR_LOGIN_NAME = #{syUserTrade.sutOprLoginName}
+			<if test="syUserTrade.sutOprName != null and syUserTrade.sutOprName != ''">
+				AND SUT_OPR_NAME = #{syUserTrade.sutOprName}
 			</if>
 			<if test="syUserTrade.sutLoginName != null and syUserTrade.sutLoginName != ''">
 				AND SUT_LOGIN_NAME = #{syUserTrade.sutLoginName}
@@ -500,11 +611,20 @@
 			<if test="syUserTrade.sutFace != null and syUserTrade.sutFace != ''">
 				AND SUT_FACE = #{syUserTrade.sutFace}
 			</if>
-			<if test="syUserTrade.sutRecordId != null and syUserTrade.sutRecordId != ''">
-				AND SUT_RECORD_ID = #{syUserTrade.sutRecordId}
+			<if test="syUserTrade.sutWkfNbr != null and syUserTrade.sutWkfNbr != ''">
+				AND SUT_WKF_NBR = #{syUserTrade.sutWkfNbr}
 			</if>
-			<if test="syUserTrade.sutTradeStatus != null and syUserTrade.sutTradeStatus != ''">
-				AND SUT_TRADE_STATUS = #{syUserTrade.sutTradeStatus}
+			<if test="syUserTrade.sutHasKey != null and syUserTrade.sutHasKey != ''">
+				AND SUT_HAS_KEY = #{syUserTrade.sutHasKey}
+			</if>
+			<if test="syUserTrade.sutKeyUid != null and syUserTrade.sutKeyUid != ''">
+				AND SUT_KEY_UID = #{syUserTrade.sutKeyUid}
+			</if>
+			<if test="syUserTrade.sutStaffCid != null and syUserTrade.sutStaffCid != ''">
+				AND SUT_STAFF_CID = #{syUserTrade.sutStaffCid}
+			</if>
+			<if test="syUserTrade.sutState != null and syUserTrade.sutState != ''">
+				AND SUT_STATE = #{syUserTrade.sutState}
 			</if>
 		</if>
 		ORDER BY
@@ -516,18 +636,18 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_USER_TRADE
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="sutTradeId != null and sutTradeId != ''">
-				AND SUT_TRADE_ID = #{sutTradeId}
+			<if test="sutTradeUid != null and sutTradeUid != ''">
+				AND SUT_TRADE_UID = #{sutTradeUid}
 			</if>
 			<if test="sutTradeType != null and sutTradeType != ''">
 				AND SUT_TRADE_TYPE = #{sutTradeType}
 			</if>
 			
-			<if test="sutOprUserId != null and sutOprUserId != ''">
-				AND SUT_OPR_USER_ID = #{sutOprUserId}
+			<if test="sutOprUserCid != null and sutOprUserCid != ''">
+				AND SUT_OPR_USER_CID = #{sutOprUserCid}
 			</if>
-			<if test="sutOprLoginName != null and sutOprLoginName != ''">
-				AND SUT_OPR_LOGIN_NAME = #{sutOprLoginName}
+			<if test="sutOprName != null and sutOprName != ''">
+				AND SUT_OPR_NAME = #{sutOprName}
 			</if>
 			<if test="sutLoginName != null and sutLoginName != ''">
 				AND SUT_LOGIN_NAME = #{sutLoginName}
@@ -541,11 +661,20 @@
 			<if test="sutFace != null and sutFace != ''">
 				AND SUT_FACE = #{sutFace}
 			</if>
-			<if test="sutRecordId != null and sutRecordId != ''">
-				AND SUT_RECORD_ID = #{sutRecordId}
+			<if test="sutWkfNbr != null and sutWkfNbr != ''">
+				AND SUT_WKF_NBR = #{sutWkfNbr}
 			</if>
-			<if test="sutTradeStatus != null and sutTradeStatus != ''">
-				AND SUT_TRADE_STATUS = #{sutTradeStatus}
+			<if test="sutHasKey != null and sutHasKey != ''">
+				AND SUT_HAS_KEY = #{sutHasKey}
+			</if>
+			<if test="sutKeyUid != null and sutKeyUid != ''">
+				AND SUT_KEY_UID = #{sutKeyUid}
+			</if>
+			<if test="sutStaffCid != null and sutStaffCid != ''">
+				AND SUT_STAFF_CID = #{sutStaffCid}
+			</if>
+			<if test="sutState != null and sutState != ''">
+				AND SUT_STATE = #{sutState}
 			</if>
 		</if>
 	</select>
@@ -557,17 +686,20 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.sutTradeId},		
+			#{item.sutTradeUid},		
 			#{item.sutTradeType},		
 			#{item.sutTradeTime},		
-			#{item.sutOprUserId},		
-			#{item.sutOprLoginName},		
+			#{item.sutOprUserCid},		
+			#{item.sutOprName},		
 			#{item.sutLoginName},		
 			#{item.sutPhone},		
 			#{item.sutMail},		
 			#{item.sutFace},		
-			#{item.sutRecordId},		
-			#{item.sutTradeStatus},		
+			#{item.sutWkfNbr},		
+			#{item.sutHasKey},		
+			#{item.sutKeyUid},		
+			#{item.sutStaffCid},		
+			#{item.sutState},		
 		</trim>
 		</foreach>
 	</insert>

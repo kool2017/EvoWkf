@@ -3,8 +3,8 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfRouteDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRouteBean">
-		<id column="SWR_ROUTE_ID" property="swrRouteId" />
-		<result column="SWR_ENTITY_ID" property="swrEntityId" />
+		<id column="SWR_ROUTE_CID" property="swrRouteCid" />
+		<result column="SWR_ENTITY_CID" property="swrEntityCid" />
 		<result column="SWR_ROUTE_CODE" property="swrRouteCode" />
 		<result column="SWR_NODE_HEAD" property="swrNodeHead" />
 		<result column="SWR_NODE_HEAD_NAME" property="swrNodeHeadName" />
@@ -16,8 +16,8 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWR_ROUTE_ID, 			
-			SWR_ENTITY_ID, 			
+			SWR_ROUTE_CID, 			
+			SWR_ENTITY_CID, 			
 			SWR_ROUTE_CODE, 			
 			SWR_NODE_HEAD, 			
 			SWR_NODE_HEAD_NAME, 			
@@ -27,7 +27,7 @@
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWR_ROUTE_ID
+		SWR_ROUTE_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfRouteBean"
@@ -35,11 +35,11 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_ROUTE WHERE 1=1 
-		<if test="swrRouteId != null and swrRouteId != ''">
-			AND SWR_ROUTE_ID = #{swrRouteId}
+		<if test="swrRouteCid != null and swrRouteCid != ''">
+			AND SWR_ROUTE_CID = #{swrRouteCid}
 		</if>
-		<if test="swrEntityId != null and swrEntityId != ''">
-			AND SWR_ENTITY_ID = #{swrEntityId}
+		<if test="swrEntityCid != null and swrEntityCid != ''">
+			AND SWR_ENTITY_CID = #{swrEntityCid}
 		</if>
 		<if test="swrRouteCode != null and swrRouteCode != ''">
 			AND SWR_ROUTE_CODE = #{swrRouteCode}
@@ -69,7 +69,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_ROUTE
 		WHERE 
-		SWR_ROUTE_ID = #{swrRouteId}
+		SWR_ROUTE_CID = #{swrRouteCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -77,17 +77,17 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
 		DELETE FROM SY_WKF_ROUTE
 		WHERE
-		SWR_ROUTE_ID = #{swrRouteId}
+		SWR_ROUTE_CID = #{swrRouteCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
 		DELETE FROM SY_WKF_ROUTE
 		WHERE 1=1 
-		<if test="swrRouteId != null and swrRouteId != ''">
-			AND SWR_ROUTE_ID = #{swrRouteId}
+		<if test="swrRouteCid != null and swrRouteCid != ''">
+			AND SWR_ROUTE_CID = #{swrRouteCid}
 		</if>
-		<if test="swrEntityId != null and swrEntityId != ''">
-			AND SWR_ENTITY_ID = #{swrEntityId}
+		<if test="swrEntityCid != null and swrEntityCid != ''">
+			AND SWR_ENTITY_CID = #{swrEntityCid}
 		</if>
 		<if test="swrRouteCode != null and swrRouteCode != ''">
 			AND SWR_ROUTE_CODE = #{swrRouteCode}
@@ -112,11 +112,11 @@
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
 		INSERT INTO SY_WKF_ROUTE
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="swrRouteId != null">
-				SWR_ROUTE_ID,
+			<if test="swrRouteCid != null">
+				SWR_ROUTE_CID,
 			</if>		
-			<if test="swrEntityId != null">
-				SWR_ENTITY_ID,
+			<if test="swrEntityCid != null">
+				SWR_ENTITY_CID,
 			</if>		
 			<if test="swrRouteCode != null">
 				SWR_ROUTE_CODE,
@@ -138,11 +138,11 @@
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="swrRouteId != null">
-				#{swrRouteId},
+			<if test="swrRouteCid != null">
+				#{swrRouteCid},
 			</if>	
-			<if test="swrEntityId != null">
-				#{swrEntityId},
+			<if test="swrEntityCid != null">
+				#{swrEntityCid},
 			</if>	
 			<if test="swrRouteCode != null">
 				#{swrRouteCode},
@@ -168,23 +168,23 @@
 	<update id="updates">
 		UPDATE SY_WKF_ROUTE
 		<set>
-			<if test="value.isInitSwrRouteId">
+			<if test="value.isInitSwrRouteCid">
 				<choose>
-					<when test="value.swrRouteId != null">
-						SWR_ROUTE_ID = #{value.swrRouteId},
+					<when test="value.swrRouteCid != null">
+						SWR_ROUTE_CID = #{value.swrRouteCid},
 					</when>
 					<otherwise>
-						SWR_ROUTE_ID = NULL,
+						SWR_ROUTE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwrEntityId">
+			<if test="value.isInitSwrEntityCid">
 				<choose>
-					<when test="value.swrEntityId != null">
-						SWR_ENTITY_ID = #{value.swrEntityId},
+					<when test="value.swrEntityCid != null">
+						SWR_ENTITY_CID = #{value.swrEntityCid},
 					</when>
 					<otherwise>
-						SWR_ENTITY_ID = NULL,
+						SWR_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -250,11 +250,11 @@
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.swrRouteId != null and condition.swrRouteId != ''">
-			AND SWR_ROUTE_ID =	#{condition.swrRouteId} 
+		<if test="condition.swrRouteCid != null and condition.swrRouteCid != ''">
+			AND SWR_ROUTE_CID =	#{condition.swrRouteCid} 
 		</if>
-		<if test="condition.swrEntityId != null and condition.swrEntityId != ''">
-			AND SWR_ENTITY_ID =	#{condition.swrEntityId} 
+		<if test="condition.swrEntityCid != null and condition.swrEntityCid != ''">
+			AND SWR_ENTITY_CID =	#{condition.swrEntityCid} 
 		</if>
 		<if test="condition.swrRouteCode != null and condition.swrRouteCode != ''">
 			AND SWR_ROUTE_CODE =	#{condition.swrRouteCode} 
@@ -279,23 +279,23 @@
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfRouteBean">
 		UPDATE SY_WKF_ROUTE
 		<set>
-			<if test="isInitSwrRouteId">
+			<if test="isInitSwrRouteCid">
 				<choose>
-					<when test="swrRouteId != null">
-						SWR_ROUTE_ID = #{swrRouteId},
+					<when test="swrRouteCid != null">
+						SWR_ROUTE_CID = #{swrRouteCid},
 					</when>
 					<otherwise>
-						SWR_ROUTE_ID = NULL,
+						SWR_ROUTE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwrEntityId">
+			<if test="isInitSwrEntityCid">
 				<choose>
-					<when test="swrEntityId != null">
-						SWR_ENTITY_ID = #{swrEntityId},
+					<when test="swrEntityCid != null">
+						SWR_ENTITY_CID = #{swrEntityCid},
 					</when>
 					<otherwise>
-						SWR_ENTITY_ID = NULL,
+						SWR_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -361,7 +361,7 @@
 			</if>
 		</set>
 		WHERE 
-		SWR_ROUTE_ID = #{swrRouteId}
+		SWR_ROUTE_CID = #{swrRouteCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -370,11 +370,11 @@
 		FROM
 		SY_WKF_ROUTE WHERE 1=1
 		<if test="syWkfRoute!=null">
-			<if test="syWkfRoute.swrRouteId != null and syWkfRoute.swrRouteId != ''">
-				AND SWR_ROUTE_ID = #{syWkfRoute.swrRouteId}
+			<if test="syWkfRoute.swrRouteCid != null and syWkfRoute.swrRouteCid != ''">
+				AND SWR_ROUTE_CID = #{syWkfRoute.swrRouteCid}
 			</if>
-			<if test="syWkfRoute.swrEntityId != null and syWkfRoute.swrEntityId != ''">
-				AND SWR_ENTITY_ID = #{syWkfRoute.swrEntityId}
+			<if test="syWkfRoute.swrEntityCid != null and syWkfRoute.swrEntityCid != ''">
+				AND SWR_ENTITY_CID = #{syWkfRoute.swrEntityCid}
 			</if>
 			<if test="syWkfRoute.swrRouteCode != null and syWkfRoute.swrRouteCode != ''">
 				AND SWR_ROUTE_CODE = #{syWkfRoute.swrRouteCode}
@@ -404,11 +404,11 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_ROUTE
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="swrRouteId != null and swrRouteId != ''">
-				AND SWR_ROUTE_ID = #{swrRouteId}
+			<if test="swrRouteCid != null and swrRouteCid != ''">
+				AND SWR_ROUTE_CID = #{swrRouteCid}
 			</if>
-			<if test="swrEntityId != null and swrEntityId != ''">
-				AND SWR_ENTITY_ID = #{swrEntityId}
+			<if test="swrEntityCid != null and swrEntityCid != ''">
+				AND SWR_ENTITY_CID = #{swrEntityCid}
 			</if>
 			<if test="swrRouteCode != null and swrRouteCode != ''">
 				AND SWR_ROUTE_CODE = #{swrRouteCode}
@@ -438,8 +438,8 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.swrRouteId},		
-			#{item.swrEntityId},		
+			#{item.swrRouteCid},		
+			#{item.swrEntityCid},		
 			#{item.swrRouteCode},		
 			#{item.swrNodeHead},		
 			#{item.swrNodeHeadName},		

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyMenuDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyMenuBean">
+		<id column="SME_MENU_CODE" property="smeMenuCode" />
+		<result column="SME_TITLE" property="smeTitle" />
+		<result column="SME_FAT_MENU" property="smeFatMenu" />
+		<result column="SME_ROOT_MENU" property="smeRootMenu" />
+		<result column="SME_DEEP" property="smeDeep" />
+		<result column="SME_SEQ" property="smeSeq" />
+		<result column="SME_INDEX" property="smeIndex" />
+		<result column="SME_STATE" property="smeState" />
+		<result column="SME_ICON" property="smeIcon" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SME_MENU_CODE, 			
+			SME_TITLE, 			
+			SME_FAT_MENU, 			
+			SME_ROOT_MENU, 			
+			SME_DEEP, 			
+			SME_SEQ, 			
+			SME_INDEX, 			
+			SME_STATE, 			
+			SME_ICON			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SME_MENU_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyMenuBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_MENU WHERE 1=1 
+		<if test="smeMenuCode != null and smeMenuCode != ''">
+			AND SME_MENU_CODE = #{smeMenuCode}
+		</if>
+		<if test="smeTitle != null and smeTitle != ''">
+			AND SME_TITLE = #{smeTitle}
+		</if>
+		<if test="smeFatMenu != null and smeFatMenu != ''">
+			AND SME_FAT_MENU = #{smeFatMenu}
+		</if>
+		<if test="smeRootMenu != null and smeRootMenu != ''">
+			AND SME_ROOT_MENU = #{smeRootMenu}
+		</if>
+		
+		
+		<if test="smeIndex != null and smeIndex != ''">
+			AND SME_INDEX = #{smeIndex}
+		</if>
+		<if test="smeState != null and smeState != ''">
+			AND SME_STATE = #{smeState}
+		</if>
+		<if test="smeIcon != null and smeIcon != ''">
+			AND SME_ICON = #{smeIcon}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyMenuBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_MENU
+		WHERE 
+		SME_MENU_CODE = #{smeMenuCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyMenuBean">
+		DELETE FROM SY_MENU
+		WHERE
+		SME_MENU_CODE = #{smeMenuCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyMenuBean">
+		DELETE FROM SY_MENU
+		WHERE 1=1 
+		<if test="smeMenuCode != null and smeMenuCode != ''">
+			AND SME_MENU_CODE = #{smeMenuCode}
+		</if>
+		<if test="smeTitle != null and smeTitle != ''">
+			AND SME_TITLE = #{smeTitle}
+		</if>
+		<if test="smeFatMenu != null and smeFatMenu != ''">
+			AND SME_FAT_MENU = #{smeFatMenu}
+		</if>
+		<if test="smeRootMenu != null and smeRootMenu != ''">
+			AND SME_ROOT_MENU = #{smeRootMenu}
+		</if>
+		
+		
+		<if test="smeIndex != null and smeIndex != ''">
+			AND SME_INDEX = #{smeIndex}
+		</if>
+		<if test="smeState != null and smeState != ''">
+			AND SME_STATE = #{smeState}
+		</if>
+		<if test="smeIcon != null and smeIcon != ''">
+			AND SME_ICON = #{smeIcon}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyMenuBean">
+		INSERT INTO SY_MENU
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="smeMenuCode != null">
+				SME_MENU_CODE,
+			</if>		
+			<if test="smeTitle != null">
+				SME_TITLE,
+			</if>		
+			<if test="smeFatMenu != null">
+				SME_FAT_MENU,
+			</if>		
+			<if test="smeRootMenu != null">
+				SME_ROOT_MENU,
+			</if>		
+			<if test="smeDeep != null">
+				SME_DEEP,
+			</if>		
+			<if test="smeSeq != null">
+				SME_SEQ,
+			</if>		
+			<if test="smeIndex != null">
+				SME_INDEX,
+			</if>		
+			<if test="smeState != null">
+				SME_STATE,
+			</if>		
+			<if test="smeIcon != null">
+				SME_ICON,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="smeMenuCode != null">
+				#{smeMenuCode},
+			</if>	
+			<if test="smeTitle != null">
+				#{smeTitle},
+			</if>	
+			<if test="smeFatMenu != null">
+				#{smeFatMenu},
+			</if>	
+			<if test="smeRootMenu != null">
+				#{smeRootMenu},
+			</if>	
+			<if test="smeDeep != null">
+				#{smeDeep},
+			</if>	
+			<if test="smeSeq != null">
+				#{smeSeq},
+			</if>	
+			<if test="smeIndex != null">
+				#{smeIndex},
+			</if>	
+			<if test="smeState != null">
+				#{smeState},
+			</if>	
+			<if test="smeIcon != null">
+				#{smeIcon},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_MENU
+		<set>
+			<if test="value.isInitSmeMenuCode">
+				<choose>
+					<when test="value.smeMenuCode != null">
+						SME_MENU_CODE = #{value.smeMenuCode},
+					</when>
+					<otherwise>
+						SME_MENU_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeTitle">
+				<choose>
+					<when test="value.smeTitle != null">
+						SME_TITLE = #{value.smeTitle},
+					</when>
+					<otherwise>
+						SME_TITLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeFatMenu">
+				<choose>
+					<when test="value.smeFatMenu != null">
+						SME_FAT_MENU = #{value.smeFatMenu},
+					</when>
+					<otherwise>
+						SME_FAT_MENU = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeRootMenu">
+				<choose>
+					<when test="value.smeRootMenu != null">
+						SME_ROOT_MENU = #{value.smeRootMenu},
+					</when>
+					<otherwise>
+						SME_ROOT_MENU = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeDeep">
+				<choose>
+					<when test="value.smeDeep != null">
+						SME_DEEP = #{value.smeDeep},
+					</when>
+					<otherwise>
+						SME_DEEP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeSeq">
+				<choose>
+					<when test="value.smeSeq != null">
+						SME_SEQ = #{value.smeSeq},
+					</when>
+					<otherwise>
+						SME_SEQ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeIndex">
+				<choose>
+					<when test="value.smeIndex != null">
+						SME_INDEX = #{value.smeIndex},
+					</when>
+					<otherwise>
+						SME_INDEX = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeState">
+				<choose>
+					<when test="value.smeState != null">
+						SME_STATE = #{value.smeState},
+					</when>
+					<otherwise>
+						SME_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSmeIcon">
+				<choose>
+					<when test="value.smeIcon != null">
+						SME_ICON = #{value.smeIcon},
+					</when>
+					<otherwise>
+						SME_ICON = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.smeMenuCode != null and condition.smeMenuCode != ''">
+			AND SME_MENU_CODE =	#{condition.smeMenuCode} 
+		</if>
+		<if test="condition.smeTitle != null and condition.smeTitle != ''">
+			AND SME_TITLE =	#{condition.smeTitle} 
+		</if>
+		<if test="condition.smeFatMenu != null and condition.smeFatMenu != ''">
+			AND SME_FAT_MENU =	#{condition.smeFatMenu} 
+		</if>
+		<if test="condition.smeRootMenu != null and condition.smeRootMenu != ''">
+			AND SME_ROOT_MENU =	#{condition.smeRootMenu} 
+		</if>
+		
+		
+		<if test="condition.smeIndex != null and condition.smeIndex != ''">
+			AND SME_INDEX =	#{condition.smeIndex} 
+		</if>
+		<if test="condition.smeState != null and condition.smeState != ''">
+			AND SME_STATE =	#{condition.smeState} 
+		</if>
+		<if test="condition.smeIcon != null and condition.smeIcon != ''">
+			AND SME_ICON =	#{condition.smeIcon} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyMenuBean">
+		UPDATE SY_MENU
+		<set>
+			<if test="isInitSmeMenuCode">
+				<choose>
+					<when test="smeMenuCode != null">
+						SME_MENU_CODE = #{smeMenuCode},
+					</when>
+					<otherwise>
+						SME_MENU_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeTitle">
+				<choose>
+					<when test="smeTitle != null">
+						SME_TITLE = #{smeTitle},
+					</when>
+					<otherwise>
+						SME_TITLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeFatMenu">
+				<choose>
+					<when test="smeFatMenu != null">
+						SME_FAT_MENU = #{smeFatMenu},
+					</when>
+					<otherwise>
+						SME_FAT_MENU = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeRootMenu">
+				<choose>
+					<when test="smeRootMenu != null">
+						SME_ROOT_MENU = #{smeRootMenu},
+					</when>
+					<otherwise>
+						SME_ROOT_MENU = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeDeep">
+				<choose>
+					<when test="smeDeep != null">
+						SME_DEEP = #{smeDeep},
+					</when>
+					<otherwise>
+						SME_DEEP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeSeq">
+				<choose>
+					<when test="smeSeq != null">
+						SME_SEQ = #{smeSeq},
+					</when>
+					<otherwise>
+						SME_SEQ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeIndex">
+				<choose>
+					<when test="smeIndex != null">
+						SME_INDEX = #{smeIndex},
+					</when>
+					<otherwise>
+						SME_INDEX = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeState">
+				<choose>
+					<when test="smeState != null">
+						SME_STATE = #{smeState},
+					</when>
+					<otherwise>
+						SME_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSmeIcon">
+				<choose>
+					<when test="smeIcon != null">
+						SME_ICON = #{smeIcon},
+					</when>
+					<otherwise>
+						SME_ICON = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SME_MENU_CODE = #{smeMenuCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_MENU WHERE 1=1
+		<if test="syMenu!=null">
+			<if test="syMenu.smeMenuCode != null and syMenu.smeMenuCode != ''">
+				AND SME_MENU_CODE = #{syMenu.smeMenuCode}
+			</if>
+			<if test="syMenu.smeTitle != null and syMenu.smeTitle != ''">
+				AND SME_TITLE = #{syMenu.smeTitle}
+			</if>
+			<if test="syMenu.smeFatMenu != null and syMenu.smeFatMenu != ''">
+				AND SME_FAT_MENU = #{syMenu.smeFatMenu}
+			</if>
+			<if test="syMenu.smeRootMenu != null and syMenu.smeRootMenu != ''">
+				AND SME_ROOT_MENU = #{syMenu.smeRootMenu}
+			</if>
+			
+			
+			<if test="syMenu.smeIndex != null and syMenu.smeIndex != ''">
+				AND SME_INDEX = #{syMenu.smeIndex}
+			</if>
+			<if test="syMenu.smeState != null and syMenu.smeState != ''">
+				AND SME_STATE = #{syMenu.smeState}
+			</if>
+			<if test="syMenu.smeIcon != null and syMenu.smeIcon != ''">
+				AND SME_ICON = #{syMenu.smeIcon}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyMenuBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_MENU
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="smeMenuCode != null and smeMenuCode != ''">
+				AND SME_MENU_CODE = #{smeMenuCode}
+			</if>
+			<if test="smeTitle != null and smeTitle != ''">
+				AND SME_TITLE = #{smeTitle}
+			</if>
+			<if test="smeFatMenu != null and smeFatMenu != ''">
+				AND SME_FAT_MENU = #{smeFatMenu}
+			</if>
+			<if test="smeRootMenu != null and smeRootMenu != ''">
+				AND SME_ROOT_MENU = #{smeRootMenu}
+			</if>
+			
+			
+			<if test="smeIndex != null and smeIndex != ''">
+				AND SME_INDEX = #{smeIndex}
+			</if>
+			<if test="smeState != null and smeState != ''">
+				AND SME_STATE = #{smeState}
+			</if>
+			<if test="smeIcon != null and smeIcon != ''">
+				AND SME_ICON = #{smeIcon}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_MENU(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.smeMenuCode},		
+			#{item.smeTitle},		
+			#{item.smeFatMenu},		
+			#{item.smeRootMenu},		
+			#{item.smeDeep},		
+			#{item.smeSeq},		
+			#{item.smeIndex},		
+			#{item.smeState},		
+			#{item.smeIcon},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

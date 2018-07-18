@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/tx 
      	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -34,6 +34,9 @@
 				<ref bean="stat-filter" />
 			</list>
 		</property>
+		<property name="connectionProperties"
+			value="druid.stat.slowSqlMillis=5000;config.decrypt=true;config.decrypt.key=${jdbc.publickey}" />
+		<property name="filters" value="config" />
 	</bean>
 
 	<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
@@ -55,6 +58,6 @@
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.kool.system.dao;com.kool.evowkf.dao" />
+		<property name="basePackage" value="com.kool.core.dao;com.kool.system.dao;com.kool.evowkf.dao" />
 	</bean>
 </beans>

@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyFileInfoDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyFileInfoBean">
+		<id column="DFI_FILE_UID" property="dfiFileUid" />
+		<result column="DFI_FILE_NAME" property="dfiFileName" />
+		<result column="DFI_STORE_TYPE" property="dfiStoreType" />
+		<result column="DFI_IP" property="dfiIp" />
+		<result column="DFI_PORT" property="dfiPort" />
+		<result column="DFI_PATH" property="dfiPath" />
+		<result column="DFI_SECURITY" property="dfiSecurity" />
+		<result column="DFI_STATE" property="dfiState" />
+		<result column="DFI_PENDING_USER" property="dfiPendingUser" />
+		<result column="DFI_VERSION" property="dfiVersion" />
+		<result column="DFI_CMT" property="dfiCmt" />
+		<result column="DFI_CREATE_TIME" property="dfiCreateTime" />
+		<result column="DFI_CREATE_USER" property="dfiCreateUser" />
+		<result column="DFI_UPDATE_TIME" property="dfiUpdateTime" />
+		<result column="DFI_UPDATE_USER" property="dfiUpdateUser" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			DFI_FILE_UID, 			
+			DFI_FILE_NAME, 			
+			DFI_STORE_TYPE, 			
+			DFI_IP, 			
+			DFI_PORT, 			
+			DFI_PATH, 			
+			DFI_SECURITY, 			
+			DFI_STATE, 			
+			DFI_PENDING_USER, 			
+			DFI_VERSION, 			
+			DFI_CMT, 			
+			DFI_CREATE_TIME, 			
+			DFI_CREATE_USER, 			
+			DFI_UPDATE_TIME, 			
+			DFI_UPDATE_USER			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		DFI_FILE_UID
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyFileInfoBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_FILE_INFO WHERE 1=1 
+		<if test="dfiFileUid != null and dfiFileUid != ''">
+			AND DFI_FILE_UID = #{dfiFileUid}
+		</if>
+		<if test="dfiFileName != null and dfiFileName != ''">
+			AND DFI_FILE_NAME = #{dfiFileName}
+		</if>
+		<if test="dfiStoreType != null and dfiStoreType != ''">
+			AND DFI_STORE_TYPE = #{dfiStoreType}
+		</if>
+		<if test="dfiIp != null and dfiIp != ''">
+			AND DFI_IP = #{dfiIp}
+		</if>
+		
+		<if test="dfiPath != null and dfiPath != ''">
+			AND DFI_PATH = #{dfiPath}
+		</if>
+		<if test="dfiSecurity != null and dfiSecurity != ''">
+			AND DFI_SECURITY = #{dfiSecurity}
+		</if>
+		<if test="dfiState != null and dfiState != ''">
+			AND DFI_STATE = #{dfiState}
+		</if>
+		<if test="dfiPendingUser != null and dfiPendingUser != ''">
+			AND DFI_PENDING_USER = #{dfiPendingUser}
+		</if>
+		
+		<if test="dfiCmt != null and dfiCmt != ''">
+			AND DFI_CMT = #{dfiCmt}
+		</if>
+		
+		<if test="dfiCreateUser != null and dfiCreateUser != ''">
+			AND DFI_CREATE_USER = #{dfiCreateUser}
+		</if>
+		
+		<if test="dfiUpdateUser != null and dfiUpdateUser != ''">
+			AND DFI_UPDATE_USER = #{dfiUpdateUser}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyFileInfoBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_FILE_INFO
+		WHERE 
+		DFI_FILE_UID = #{dfiFileUid}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyFileInfoBean">
+		DELETE FROM SY_FILE_INFO
+		WHERE
+		DFI_FILE_UID = #{dfiFileUid}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyFileInfoBean">
+		DELETE FROM SY_FILE_INFO
+		WHERE 1=1 
+		<if test="dfiFileUid != null and dfiFileUid != ''">
+			AND DFI_FILE_UID = #{dfiFileUid}
+		</if>
+		<if test="dfiFileName != null and dfiFileName != ''">
+			AND DFI_FILE_NAME = #{dfiFileName}
+		</if>
+		<if test="dfiStoreType != null and dfiStoreType != ''">
+			AND DFI_STORE_TYPE = #{dfiStoreType}
+		</if>
+		<if test="dfiIp != null and dfiIp != ''">
+			AND DFI_IP = #{dfiIp}
+		</if>
+		
+		<if test="dfiPath != null and dfiPath != ''">
+			AND DFI_PATH = #{dfiPath}
+		</if>
+		<if test="dfiSecurity != null and dfiSecurity != ''">
+			AND DFI_SECURITY = #{dfiSecurity}
+		</if>
+		<if test="dfiState != null and dfiState != ''">
+			AND DFI_STATE = #{dfiState}
+		</if>
+		<if test="dfiPendingUser != null and dfiPendingUser != ''">
+			AND DFI_PENDING_USER = #{dfiPendingUser}
+		</if>
+		
+		<if test="dfiCmt != null and dfiCmt != ''">
+			AND DFI_CMT = #{dfiCmt}
+		</if>
+		
+		<if test="dfiCreateUser != null and dfiCreateUser != ''">
+			AND DFI_CREATE_USER = #{dfiCreateUser}
+		</if>
+		
+		<if test="dfiUpdateUser != null and dfiUpdateUser != ''">
+			AND DFI_UPDATE_USER = #{dfiUpdateUser}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyFileInfoBean">
+		INSERT INTO SY_FILE_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="dfiFileUid != null">
+				DFI_FILE_UID,
+			</if>		
+			<if test="dfiFileName != null">
+				DFI_FILE_NAME,
+			</if>		
+			<if test="dfiStoreType != null">
+				DFI_STORE_TYPE,
+			</if>		
+			<if test="dfiIp != null">
+				DFI_IP,
+			</if>		
+			<if test="dfiPort != null">
+				DFI_PORT,
+			</if>		
+			<if test="dfiPath != null">
+				DFI_PATH,
+			</if>		
+			<if test="dfiSecurity != null">
+				DFI_SECURITY,
+			</if>		
+			<if test="dfiState != null">
+				DFI_STATE,
+			</if>		
+			<if test="dfiPendingUser != null">
+				DFI_PENDING_USER,
+			</if>		
+			<if test="dfiVersion != null">
+				DFI_VERSION,
+			</if>		
+			<if test="dfiCmt != null">
+				DFI_CMT,
+			</if>		
+			<if test="dfiCreateTime != null">
+				DFI_CREATE_TIME,
+			</if>		
+			<if test="dfiCreateUser != null">
+				DFI_CREATE_USER,
+			</if>		
+			<if test="dfiUpdateTime != null">
+				DFI_UPDATE_TIME,
+			</if>		
+			<if test="dfiUpdateUser != null">
+				DFI_UPDATE_USER,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="dfiFileUid != null">
+				#{dfiFileUid},
+			</if>	
+			<if test="dfiFileName != null">
+				#{dfiFileName},
+			</if>	
+			<if test="dfiStoreType != null">
+				#{dfiStoreType},
+			</if>	
+			<if test="dfiIp != null">
+				#{dfiIp},
+			</if>	
+			<if test="dfiPort != null">
+				#{dfiPort},
+			</if>	
+			<if test="dfiPath != null">
+				#{dfiPath},
+			</if>	
+			<if test="dfiSecurity != null">
+				#{dfiSecurity},
+			</if>	
+			<if test="dfiState != null">
+				#{dfiState},
+			</if>	
+			<if test="dfiPendingUser != null">
+				#{dfiPendingUser},
+			</if>	
+			<if test="dfiVersion != null">
+				#{dfiVersion},
+			</if>	
+			<if test="dfiCmt != null">
+				#{dfiCmt},
+			</if>	
+			<if test="dfiCreateTime != null">
+				#{dfiCreateTime},
+			</if>	
+			<if test="dfiCreateUser != null">
+				#{dfiCreateUser},
+			</if>	
+			<if test="dfiUpdateTime != null">
+				#{dfiUpdateTime},
+			</if>	
+			<if test="dfiUpdateUser != null">
+				#{dfiUpdateUser},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_FILE_INFO
+		<set>
+			<if test="value.isInitDfiFileUid">
+				<choose>
+					<when test="value.dfiFileUid != null">
+						DFI_FILE_UID = #{value.dfiFileUid},
+					</when>
+					<otherwise>
+						DFI_FILE_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiFileName">
+				<choose>
+					<when test="value.dfiFileName != null">
+						DFI_FILE_NAME = #{value.dfiFileName},
+					</when>
+					<otherwise>
+						DFI_FILE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiStoreType">
+				<choose>
+					<when test="value.dfiStoreType != null">
+						DFI_STORE_TYPE = #{value.dfiStoreType},
+					</when>
+					<otherwise>
+						DFI_STORE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiIp">
+				<choose>
+					<when test="value.dfiIp != null">
+						DFI_IP = #{value.dfiIp},
+					</when>
+					<otherwise>
+						DFI_IP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiPort">
+				<choose>
+					<when test="value.dfiPort != null">
+						DFI_PORT = #{value.dfiPort},
+					</when>
+					<otherwise>
+						DFI_PORT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiPath">
+				<choose>
+					<when test="value.dfiPath != null">
+						DFI_PATH = #{value.dfiPath},
+					</when>
+					<otherwise>
+						DFI_PATH = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiSecurity">
+				<choose>
+					<when test="value.dfiSecurity != null">
+						DFI_SECURITY = #{value.dfiSecurity},
+					</when>
+					<otherwise>
+						DFI_SECURITY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiState">
+				<choose>
+					<when test="value.dfiState != null">
+						DFI_STATE = #{value.dfiState},
+					</when>
+					<otherwise>
+						DFI_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiPendingUser">
+				<choose>
+					<when test="value.dfiPendingUser != null">
+						DFI_PENDING_USER = #{value.dfiPendingUser},
+					</when>
+					<otherwise>
+						DFI_PENDING_USER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiVersion">
+				<choose>
+					<when test="value.dfiVersion != null">
+						DFI_VERSION = #{value.dfiVersion},
+					</when>
+					<otherwise>
+						DFI_VERSION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiCmt">
+				<choose>
+					<when test="value.dfiCmt != null">
+						DFI_CMT = #{value.dfiCmt},
+					</when>
+					<otherwise>
+						DFI_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiCreateTime">
+				<choose>
+					<when test="value.dfiCreateTime != null">
+						DFI_CREATE_TIME = #{value.dfiCreateTime},
+					</when>
+					<otherwise>
+						DFI_CREATE_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiCreateUser">
+				<choose>
+					<when test="value.dfiCreateUser != null">
+						DFI_CREATE_USER = #{value.dfiCreateUser},
+					</when>
+					<otherwise>
+						DFI_CREATE_USER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiUpdateTime">
+				<choose>
+					<when test="value.dfiUpdateTime != null">
+						DFI_UPDATE_TIME = #{value.dfiUpdateTime},
+					</when>
+					<otherwise>
+						DFI_UPDATE_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDfiUpdateUser">
+				<choose>
+					<when test="value.dfiUpdateUser != null">
+						DFI_UPDATE_USER = #{value.dfiUpdateUser},
+					</when>
+					<otherwise>
+						DFI_UPDATE_USER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.dfiFileUid != null and condition.dfiFileUid != ''">
+			AND DFI_FILE_UID =	#{condition.dfiFileUid} 
+		</if>
+		<if test="condition.dfiFileName != null and condition.dfiFileName != ''">
+			AND DFI_FILE_NAME =	#{condition.dfiFileName} 
+		</if>
+		<if test="condition.dfiStoreType != null and condition.dfiStoreType != ''">
+			AND DFI_STORE_TYPE =	#{condition.dfiStoreType} 
+		</if>
+		<if test="condition.dfiIp != null and condition.dfiIp != ''">
+			AND DFI_IP =	#{condition.dfiIp} 
+		</if>
+		
+		<if test="condition.dfiPath != null and condition.dfiPath != ''">
+			AND DFI_PATH =	#{condition.dfiPath} 
+		</if>
+		<if test="condition.dfiSecurity != null and condition.dfiSecurity != ''">
+			AND DFI_SECURITY =	#{condition.dfiSecurity} 
+		</if>
+		<if test="condition.dfiState != null and condition.dfiState != ''">
+			AND DFI_STATE =	#{condition.dfiState} 
+		</if>
+		<if test="condition.dfiPendingUser != null and condition.dfiPendingUser != ''">
+			AND DFI_PENDING_USER =	#{condition.dfiPendingUser} 
+		</if>
+		
+		<if test="condition.dfiCmt != null and condition.dfiCmt != ''">
+			AND DFI_CMT =	#{condition.dfiCmt} 
+		</if>
+		
+		<if test="condition.dfiCreateUser != null and condition.dfiCreateUser != ''">
+			AND DFI_CREATE_USER =	#{condition.dfiCreateUser} 
+		</if>
+		
+		<if test="condition.dfiUpdateUser != null and condition.dfiUpdateUser != ''">
+			AND DFI_UPDATE_USER =	#{condition.dfiUpdateUser} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyFileInfoBean">
+		UPDATE SY_FILE_INFO
+		<set>
+			<if test="isInitDfiFileUid">
+				<choose>
+					<when test="dfiFileUid != null">
+						DFI_FILE_UID = #{dfiFileUid},
+					</when>
+					<otherwise>
+						DFI_FILE_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiFileName">
+				<choose>
+					<when test="dfiFileName != null">
+						DFI_FILE_NAME = #{dfiFileName},
+					</when>
+					<otherwise>
+						DFI_FILE_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiStoreType">
+				<choose>
+					<when test="dfiStoreType != null">
+						DFI_STORE_TYPE = #{dfiStoreType},
+					</when>
+					<otherwise>
+						DFI_STORE_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiIp">
+				<choose>
+					<when test="dfiIp != null">
+						DFI_IP = #{dfiIp},
+					</when>
+					<otherwise>
+						DFI_IP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiPort">
+				<choose>
+					<when test="dfiPort != null">
+						DFI_PORT = #{dfiPort},
+					</when>
+					<otherwise>
+						DFI_PORT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiPath">
+				<choose>
+					<when test="dfiPath != null">
+						DFI_PATH = #{dfiPath},
+					</when>
+					<otherwise>
+						DFI_PATH = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiSecurity">
+				<choose>
+					<when test="dfiSecurity != null">
+						DFI_SECURITY = #{dfiSecurity},
+					</when>
+					<otherwise>
+						DFI_SECURITY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiState">
+				<choose>
+					<when test="dfiState != null">
+						DFI_STATE = #{dfiState},
+					</when>
+					<otherwise>
+						DFI_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiPendingUser">
+				<choose>
+					<when test="dfiPendingUser != null">
+						DFI_PENDING_USER = #{dfiPendingUser},
+					</when>
+					<otherwise>
+						DFI_PENDING_USER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiVersion">
+				<choose>
+					<when test="dfiVersion != null">
+						DFI_VERSION = #{dfiVersion},
+					</when>
+					<otherwise>
+						DFI_VERSION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiCmt">
+				<choose>
+					<when test="dfiCmt != null">
+						DFI_CMT = #{dfiCmt},
+					</when>
+					<otherwise>
+						DFI_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiCreateTime">
+				<choose>
+					<when test="dfiCreateTime != null">
+						DFI_CREATE_TIME = #{dfiCreateTime},
+					</when>
+					<otherwise>
+						DFI_CREATE_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiCreateUser">
+				<choose>
+					<when test="dfiCreateUser != null">
+						DFI_CREATE_USER = #{dfiCreateUser},
+					</when>
+					<otherwise>
+						DFI_CREATE_USER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiUpdateTime">
+				<choose>
+					<when test="dfiUpdateTime != null">
+						DFI_UPDATE_TIME = #{dfiUpdateTime},
+					</when>
+					<otherwise>
+						DFI_UPDATE_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDfiUpdateUser">
+				<choose>
+					<when test="dfiUpdateUser != null">
+						DFI_UPDATE_USER = #{dfiUpdateUser},
+					</when>
+					<otherwise>
+						DFI_UPDATE_USER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		DFI_FILE_UID = #{dfiFileUid}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_FILE_INFO WHERE 1=1
+		<if test="syFileInfo!=null">
+			<if test="syFileInfo.dfiFileUid != null and syFileInfo.dfiFileUid != ''">
+				AND DFI_FILE_UID = #{syFileInfo.dfiFileUid}
+			</if>
+			<if test="syFileInfo.dfiFileName != null and syFileInfo.dfiFileName != ''">
+				AND DFI_FILE_NAME = #{syFileInfo.dfiFileName}
+			</if>
+			<if test="syFileInfo.dfiStoreType != null and syFileInfo.dfiStoreType != ''">
+				AND DFI_STORE_TYPE = #{syFileInfo.dfiStoreType}
+			</if>
+			<if test="syFileInfo.dfiIp != null and syFileInfo.dfiIp != ''">
+				AND DFI_IP = #{syFileInfo.dfiIp}
+			</if>
+			
+			<if test="syFileInfo.dfiPath != null and syFileInfo.dfiPath != ''">
+				AND DFI_PATH = #{syFileInfo.dfiPath}
+			</if>
+			<if test="syFileInfo.dfiSecurity != null and syFileInfo.dfiSecurity != ''">
+				AND DFI_SECURITY = #{syFileInfo.dfiSecurity}
+			</if>
+			<if test="syFileInfo.dfiState != null and syFileInfo.dfiState != ''">
+				AND DFI_STATE = #{syFileInfo.dfiState}
+			</if>
+			<if test="syFileInfo.dfiPendingUser != null and syFileInfo.dfiPendingUser != ''">
+				AND DFI_PENDING_USER = #{syFileInfo.dfiPendingUser}
+			</if>
+			
+			<if test="syFileInfo.dfiCmt != null and syFileInfo.dfiCmt != ''">
+				AND DFI_CMT = #{syFileInfo.dfiCmt}
+			</if>
+			
+			<if test="syFileInfo.dfiCreateUser != null and syFileInfo.dfiCreateUser != ''">
+				AND DFI_CREATE_USER = #{syFileInfo.dfiCreateUser}
+			</if>
+			
+			<if test="syFileInfo.dfiUpdateUser != null and syFileInfo.dfiUpdateUser != ''">
+				AND DFI_UPDATE_USER = #{syFileInfo.dfiUpdateUser}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyFileInfoBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_FILE_INFO
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="dfiFileUid != null and dfiFileUid != ''">
+				AND DFI_FILE_UID = #{dfiFileUid}
+			</if>
+			<if test="dfiFileName != null and dfiFileName != ''">
+				AND DFI_FILE_NAME = #{dfiFileName}
+			</if>
+			<if test="dfiStoreType != null and dfiStoreType != ''">
+				AND DFI_STORE_TYPE = #{dfiStoreType}
+			</if>
+			<if test="dfiIp != null and dfiIp != ''">
+				AND DFI_IP = #{dfiIp}
+			</if>
+			
+			<if test="dfiPath != null and dfiPath != ''">
+				AND DFI_PATH = #{dfiPath}
+			</if>
+			<if test="dfiSecurity != null and dfiSecurity != ''">
+				AND DFI_SECURITY = #{dfiSecurity}
+			</if>
+			<if test="dfiState != null and dfiState != ''">
+				AND DFI_STATE = #{dfiState}
+			</if>
+			<if test="dfiPendingUser != null and dfiPendingUser != ''">
+				AND DFI_PENDING_USER = #{dfiPendingUser}
+			</if>
+			
+			<if test="dfiCmt != null and dfiCmt != ''">
+				AND DFI_CMT = #{dfiCmt}
+			</if>
+			
+			<if test="dfiCreateUser != null and dfiCreateUser != ''">
+				AND DFI_CREATE_USER = #{dfiCreateUser}
+			</if>
+			
+			<if test="dfiUpdateUser != null and dfiUpdateUser != ''">
+				AND DFI_UPDATE_USER = #{dfiUpdateUser}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_FILE_INFO(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.dfiFileUid},		
+			#{item.dfiFileName},		
+			#{item.dfiStoreType},		
+			#{item.dfiIp},		
+			#{item.dfiPort},		
+			#{item.dfiPath},		
+			#{item.dfiSecurity},		
+			#{item.dfiState},		
+			#{item.dfiPendingUser},		
+			#{item.dfiVersion},		
+			#{item.dfiCmt},		
+			#{item.dfiCreateTime},		
+			#{item.dfiCreateUser},		
+			#{item.dfiUpdateTime},		
+			#{item.dfiUpdateUser},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

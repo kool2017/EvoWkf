@@ -5,13 +5,15 @@
  */
 package com.kool.system.bean.io;
 
+import com.kool.core.base.BaseBean;
+
 /**
  * @DESCRIBE
  * @AUTHOR LUYU
  * @DATE 2018年2月20日 上午11:09:17
  *
  */
-public class SYPAGEINFOYBean {
+public class SYPAGEINFOYBean extends BaseBean {
 	private Integer pageSize;
 	private Integer total;
 	private Integer pageCount;

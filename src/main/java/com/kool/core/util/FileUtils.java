@@ -38,7 +38,7 @@ public class FileUtils {
 	 */
 	public static String readFile(String sFilePath, String sCharset) throws AppException {
 		if (StringUtils.isEmpty(sFilePath)) {
-			throw new AppException("FilePath could not be null!");
+			throw new AppException("SY000011");// 文件路径为空!
 		}
 		if (StringUtils.isEmpty(sCharset)) {
 			sCharset = "UTF-8";
@@ -47,7 +47,7 @@ public class FileUtils {
 		File fInput = new File(sFilePath);
 
 		if (fInput.exists() == false) {
-			throw new AppException("filePath error, could not find file!");
+			throw new AppException("SY000012");// 文件不存在
 		}
 		FileInputStream fis = null;
 		InputStreamReader isr = null;
@@ -64,11 +64,11 @@ public class FileUtils {
 			}
 			sContext = sbTemp.toString();
 		} catch (FileNotFoundException e) {
-			throw new AppException("file not found",e);
+			throw new AppException("SY000013", e);// 读文件异常
 		} catch (UnsupportedEncodingException e) {
-			throw new AppException("UnsupportedEncoding",e);
+			throw new AppException("SY000013", e);// 读文件异常
 		} catch (IOException e) {
-			throw new AppException("it's error to read from file!",e);
+			throw new AppException("SY000013", e);// 读文件异常
 		} finally {
 			try {
 				if (fis != null) {
@@ -81,7 +81,7 @@ public class FileUtils {
 					br.close();
 				}
 			} catch (IOException e) {
-				throw new AppException("IOException:" + e.getMessage(),e);
+				throw new AppException("SY000013", e);// 读文件异常
 			}
 		}
 
@@ -104,12 +104,19 @@ public class FileUtils {
 	 *            true末尾追加内容，false覆盖内容
 	 * @throws AppException
 	 */
-	public static void writeFile(String sContext, String sFilePath, String sCharset, boolean append) throws AppException {
+	public static void writeFile(String sContext, String sFilePath, String sCharset, boolean append)
+			throws AppException {
 		if (StringUtils.isEmpty(sFilePath)) {
-			throw new AppException("FilePath could not be null!");
+			throw new AppException("SY000011");// 文件路径为空!
 		}
 		if (StringUtils.isEmpty(sCharset)) {
 			sCharset = "UTF-8";
+		}
+
+		String dirPath = sFilePath.substring(0, sFilePath.lastIndexOf(getSeparator()));
+		File fDir = new File(dirPath);
+		if (fDir.exists() == false) {
+			fDir.mkdirs();
 		}
 
 		File fOutput = new File(sFilePath);
@@ -123,19 +130,30 @@ public class FileUtils {
 			fos.flush();
 
 		} catch (FileNotFoundException e) {
-			throw new AppException("file not found",e);
+			throw new AppException("SY000013", e);// 读文件异常
 		} catch (UnsupportedEncodingException e) {
-			throw new AppException("UnsupportedEncoding",e);
+			throw new AppException("SY000013", e);// 读文件异常
 		} catch (IOException e) {
-			throw new AppException("it's error to write file!",e);
+			throw new AppException("SY000013", e);// 读文件异常
 		} finally {
 			try {
 				if (fos != null) {
 					fos.close();
 				}
 			} catch (IOException e) {
-				throw new AppException("IOException:" + e.getMessage(),e);
+				throw new AppException("SY000013", e);// 读文件异常
 			}
 		}
+	}
+
+	/**
+	 * 
+	 * @DESCRIBE 获取操作系统的文件路径分隔符
+	 * @DATE 2018年7月14日 下午6:04:01
+	 *
+	 * @return
+	 */
+	public static String getSeparator() {
+		return System.getProperty("file.separator");
 	}
 }

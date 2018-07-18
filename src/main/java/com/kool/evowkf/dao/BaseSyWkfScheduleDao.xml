@@ -3,49 +3,49 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfScheduleDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfScheduleBean">
-		<id column="SWS_SCHEDULE_ID" property="swsScheduleId" />
-		<result column="SWS_RECORD_ID" property="swsRecordId" />
-		<result column="SWS_LAST_NODE_ID" property="swsLastNodeId" />
+		<id column="SWS_SCHEDULE_CID" property="swsScheduleCid" />
+		<result column="SWS_WKF_NBR" property="swsWkfNbr" />
+		<result column="SWS_LAST_NODE_CID" property="swsLastNodeCid" />
 		<result column="SWS_LAST_NODE_NAME" property="swsLastNodeName" />
-		<result column="SWS_LAST_USER_ID" property="swsLastUserId" />
+		<result column="SWS_LAST_USER_CID" property="swsLastUserCid" />
 		<result column="SWS_LAST_LOGIN_NAME" property="swsLastLoginName" />
-		<result column="SWS_SCHEDULE_NODE_ID" property="swsScheduleNodeId" />
+		<result column="SWS_SCHEDULE_NODE_CID" property="swsScheduleNodeCid" />
 		<result column="SWS_SCHEDULE_NODE_NAME" property="swsScheduleNodeName" />
-		<result column="SWS_WG_ID" property="swsWgId" />
+		<result column="SWS_WG_CID" property="swsWgCid" />
 		<result column="SWS_WG_NAME" property="swsWgName" />
-		<result column="SWS_SCHEDULE_USER_ID" property="swsScheduleUserId" />
+		<result column="SWS_SCHEDULE_USER_CID" property="swsScheduleUserCid" />
 		<result column="SWS_SCHEDULE_LOGIN_NAME" property="swsScheduleLoginName" />
 		<result column="SWS_BRANCH_FLAG" property="swsBranchFlag" />
-		<result column="SWS_BRANCH_HEAD_ID" property="swsBranchHeadId" />
+		<result column="SWS_BRANCH_HEAD_CID" property="swsBranchHeadCid" />
 		<result column="SWS_BRANCH_HEAD_NAME" property="swsBranchHeadName" />
-		<result column="SWS_SCHEDULE_STATUS" property="swsScheduleStatus" />
+		<result column="SWS_STATE" property="swsState" />
 		<result column="SWS_CREATE_TIME" property="swsCreateTime" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWS_SCHEDULE_ID, 			
-			SWS_RECORD_ID, 			
-			SWS_LAST_NODE_ID, 			
+			SWS_SCHEDULE_CID, 			
+			SWS_WKF_NBR, 			
+			SWS_LAST_NODE_CID, 			
 			SWS_LAST_NODE_NAME, 			
-			SWS_LAST_USER_ID, 			
+			SWS_LAST_USER_CID, 			
 			SWS_LAST_LOGIN_NAME, 			
-			SWS_SCHEDULE_NODE_ID, 			
+			SWS_SCHEDULE_NODE_CID, 			
 			SWS_SCHEDULE_NODE_NAME, 			
-			SWS_WG_ID, 			
+			SWS_WG_CID, 			
 			SWS_WG_NAME, 			
-			SWS_SCHEDULE_USER_ID, 			
+			SWS_SCHEDULE_USER_CID, 			
 			SWS_SCHEDULE_LOGIN_NAME, 			
 			SWS_BRANCH_FLAG, 			
-			SWS_BRANCH_HEAD_ID, 			
+			SWS_BRANCH_HEAD_CID, 			
 			SWS_BRANCH_HEAD_NAME, 			
-			SWS_SCHEDULE_STATUS, 			
+			SWS_STATE, 			
 			SWS_CREATE_TIME			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWS_SCHEDULE_ID
+		SWS_SCHEDULE_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfScheduleBean"
@@ -53,38 +53,38 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_SCHEDULE WHERE 1=1 
-		<if test="swsScheduleId != null and swsScheduleId != ''">
-			AND SWS_SCHEDULE_ID = #{swsScheduleId}
+		<if test="swsScheduleCid != null and swsScheduleCid != ''">
+			AND SWS_SCHEDULE_CID = #{swsScheduleCid}
 		</if>
-		<if test="swsRecordId != null and swsRecordId != ''">
-			AND SWS_RECORD_ID = #{swsRecordId}
+		<if test="swsWkfNbr != null and swsWkfNbr != ''">
+			AND SWS_WKF_NBR = #{swsWkfNbr}
 		</if>
-		<if test="swsLastNodeId != null and swsLastNodeId != ''">
-			AND SWS_LAST_NODE_ID = #{swsLastNodeId}
+		<if test="swsLastNodeCid != null and swsLastNodeCid != ''">
+			AND SWS_LAST_NODE_CID = #{swsLastNodeCid}
 		</if>
 		<if test="swsLastNodeName != null and swsLastNodeName != ''">
 			AND SWS_LAST_NODE_NAME = #{swsLastNodeName}
 		</if>
-		<if test="swsLastUserId != null and swsLastUserId != ''">
-			AND SWS_LAST_USER_ID = #{swsLastUserId}
+		<if test="swsLastUserCid != null and swsLastUserCid != ''">
+			AND SWS_LAST_USER_CID = #{swsLastUserCid}
 		</if>
 		<if test="swsLastLoginName != null and swsLastLoginName != ''">
 			AND SWS_LAST_LOGIN_NAME = #{swsLastLoginName}
 		</if>
-		<if test="swsScheduleNodeId != null and swsScheduleNodeId != ''">
-			AND SWS_SCHEDULE_NODE_ID = #{swsScheduleNodeId}
+		<if test="swsScheduleNodeCid != null and swsScheduleNodeCid != ''">
+			AND SWS_SCHEDULE_NODE_CID = #{swsScheduleNodeCid}
 		</if>
 		<if test="swsScheduleNodeName != null and swsScheduleNodeName != ''">
 			AND SWS_SCHEDULE_NODE_NAME = #{swsScheduleNodeName}
 		</if>
-		<if test="swsWgId != null and swsWgId != ''">
-			AND SWS_WG_ID = #{swsWgId}
+		<if test="swsWgCid != null and swsWgCid != ''">
+			AND SWS_WG_CID = #{swsWgCid}
 		</if>
 		<if test="swsWgName != null and swsWgName != ''">
 			AND SWS_WG_NAME = #{swsWgName}
 		</if>
-		<if test="swsScheduleUserId != null and swsScheduleUserId != ''">
-			AND SWS_SCHEDULE_USER_ID = #{swsScheduleUserId}
+		<if test="swsScheduleUserCid != null and swsScheduleUserCid != ''">
+			AND SWS_SCHEDULE_USER_CID = #{swsScheduleUserCid}
 		</if>
 		<if test="swsScheduleLoginName != null and swsScheduleLoginName != ''">
 			AND SWS_SCHEDULE_LOGIN_NAME = #{swsScheduleLoginName}
@@ -92,14 +92,14 @@
 		<if test="swsBranchFlag != null and swsBranchFlag != ''">
 			AND SWS_BRANCH_FLAG = #{swsBranchFlag}
 		</if>
-		<if test="swsBranchHeadId != null and swsBranchHeadId != ''">
-			AND SWS_BRANCH_HEAD_ID = #{swsBranchHeadId}
+		<if test="swsBranchHeadCid != null and swsBranchHeadCid != ''">
+			AND SWS_BRANCH_HEAD_CID = #{swsBranchHeadCid}
 		</if>
 		<if test="swsBranchHeadName != null and swsBranchHeadName != ''">
 			AND SWS_BRANCH_HEAD_NAME = #{swsBranchHeadName}
 		</if>
-		<if test="swsScheduleStatus != null and swsScheduleStatus != ''">
-			AND SWS_SCHEDULE_STATUS = #{swsScheduleStatus}
+		<if test="swsState != null and swsState != ''">
+			AND SWS_STATE = #{swsState}
 		</if>
 		
 		ORDER BY
@@ -112,7 +112,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_SCHEDULE
 		WHERE 
-		SWS_SCHEDULE_ID = #{swsScheduleId}
+		SWS_SCHEDULE_CID = #{swsScheduleCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -120,44 +120,44 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfScheduleBean">
 		DELETE FROM SY_WKF_SCHEDULE
 		WHERE
-		SWS_SCHEDULE_ID = #{swsScheduleId}
+		SWS_SCHEDULE_CID = #{swsScheduleCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfScheduleBean">
 		DELETE FROM SY_WKF_SCHEDULE
 		WHERE 1=1 
-		<if test="swsScheduleId != null and swsScheduleId != ''">
-			AND SWS_SCHEDULE_ID = #{swsScheduleId}
+		<if test="swsScheduleCid != null and swsScheduleCid != ''">
+			AND SWS_SCHEDULE_CID = #{swsScheduleCid}
 		</if>
-		<if test="swsRecordId != null and swsRecordId != ''">
-			AND SWS_RECORD_ID = #{swsRecordId}
+		<if test="swsWkfNbr != null and swsWkfNbr != ''">
+			AND SWS_WKF_NBR = #{swsWkfNbr}
 		</if>
-		<if test="swsLastNodeId != null and swsLastNodeId != ''">
-			AND SWS_LAST_NODE_ID = #{swsLastNodeId}
+		<if test="swsLastNodeCid != null and swsLastNodeCid != ''">
+			AND SWS_LAST_NODE_CID = #{swsLastNodeCid}
 		</if>
 		<if test="swsLastNodeName != null and swsLastNodeName != ''">
 			AND SWS_LAST_NODE_NAME = #{swsLastNodeName}
 		</if>
-		<if test="swsLastUserId != null and swsLastUserId != ''">
-			AND SWS_LAST_USER_ID = #{swsLastUserId}
+		<if test="swsLastUserCid != null and swsLastUserCid != ''">
+			AND SWS_LAST_USER_CID = #{swsLastUserCid}
 		</if>
 		<if test="swsLastLoginName != null and swsLastLoginName != ''">
 			AND SWS_LAST_LOGIN_NAME = #{swsLastLoginName}
 		</if>
-		<if test="swsScheduleNodeId != null and swsScheduleNodeId != ''">
-			AND SWS_SCHEDULE_NODE_ID = #{swsScheduleNodeId}
+		<if test="swsScheduleNodeCid != null and swsScheduleNodeCid != ''">
+			AND SWS_SCHEDULE_NODE_CID = #{swsScheduleNodeCid}
 		</if>
 		<if test="swsScheduleNodeName != null and swsScheduleNodeName != ''">
 			AND SWS_SCHEDULE_NODE_NAME = #{swsScheduleNodeName}
 		</if>
-		<if test="swsWgId != null and swsWgId != ''">
-			AND SWS_WG_ID = #{swsWgId}
+		<if test="swsWgCid != null and swsWgCid != ''">
+			AND SWS_WG_CID = #{swsWgCid}
 		</if>
 		<if test="swsWgName != null and swsWgName != ''">
 			AND SWS_WG_NAME = #{swsWgName}
 		</if>
-		<if test="swsScheduleUserId != null and swsScheduleUserId != ''">
-			AND SWS_SCHEDULE_USER_ID = #{swsScheduleUserId}
+		<if test="swsScheduleUserCid != null and swsScheduleUserCid != ''">
+			AND SWS_SCHEDULE_USER_CID = #{swsScheduleUserCid}
 		</if>
 		<if test="swsScheduleLoginName != null and swsScheduleLoginName != ''">
 			AND SWS_SCHEDULE_LOGIN_NAME = #{swsScheduleLoginName}
@@ -165,14 +165,14 @@
 		<if test="swsBranchFlag != null and swsBranchFlag != ''">
 			AND SWS_BRANCH_FLAG = #{swsBranchFlag}
 		</if>
-		<if test="swsBranchHeadId != null and swsBranchHeadId != ''">
-			AND SWS_BRANCH_HEAD_ID = #{swsBranchHeadId}
+		<if test="swsBranchHeadCid != null and swsBranchHeadCid != ''">
+			AND SWS_BRANCH_HEAD_CID = #{swsBranchHeadCid}
 		</if>
 		<if test="swsBranchHeadName != null and swsBranchHeadName != ''">
 			AND SWS_BRANCH_HEAD_NAME = #{swsBranchHeadName}
 		</if>
-		<if test="swsScheduleStatus != null and swsScheduleStatus != ''">
-			AND SWS_SCHEDULE_STATUS = #{swsScheduleStatus}
+		<if test="swsState != null and swsState != ''">
+			AND SWS_STATE = #{swsState}
 		</if>
 		
 	</delete>
@@ -180,38 +180,38 @@
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfScheduleBean">
 		INSERT INTO SY_WKF_SCHEDULE
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="swsScheduleId != null">
-				SWS_SCHEDULE_ID,
+			<if test="swsScheduleCid != null">
+				SWS_SCHEDULE_CID,
 			</if>		
-			<if test="swsRecordId != null">
-				SWS_RECORD_ID,
+			<if test="swsWkfNbr != null">
+				SWS_WKF_NBR,
 			</if>		
-			<if test="swsLastNodeId != null">
-				SWS_LAST_NODE_ID,
+			<if test="swsLastNodeCid != null">
+				SWS_LAST_NODE_CID,
 			</if>		
 			<if test="swsLastNodeName != null">
 				SWS_LAST_NODE_NAME,
 			</if>		
-			<if test="swsLastUserId != null">
-				SWS_LAST_USER_ID,
+			<if test="swsLastUserCid != null">
+				SWS_LAST_USER_CID,
 			</if>		
 			<if test="swsLastLoginName != null">
 				SWS_LAST_LOGIN_NAME,
 			</if>		
-			<if test="swsScheduleNodeId != null">
-				SWS_SCHEDULE_NODE_ID,
+			<if test="swsScheduleNodeCid != null">
+				SWS_SCHEDULE_NODE_CID,
 			</if>		
 			<if test="swsScheduleNodeName != null">
 				SWS_SCHEDULE_NODE_NAME,
 			</if>		
-			<if test="swsWgId != null">
-				SWS_WG_ID,
+			<if test="swsWgCid != null">
+				SWS_WG_CID,
 			</if>		
 			<if test="swsWgName != null">
 				SWS_WG_NAME,
 			</if>		
-			<if test="swsScheduleUserId != null">
-				SWS_SCHEDULE_USER_ID,
+			<if test="swsScheduleUserCid != null">
+				SWS_SCHEDULE_USER_CID,
 			</if>		
 			<if test="swsScheduleLoginName != null">
 				SWS_SCHEDULE_LOGIN_NAME,
@@ -219,52 +219,52 @@
 			<if test="swsBranchFlag != null">
 				SWS_BRANCH_FLAG,
 			</if>		
-			<if test="swsBranchHeadId != null">
-				SWS_BRANCH_HEAD_ID,
+			<if test="swsBranchHeadCid != null">
+				SWS_BRANCH_HEAD_CID,
 			</if>		
 			<if test="swsBranchHeadName != null">
 				SWS_BRANCH_HEAD_NAME,
 			</if>		
-			<if test="swsScheduleStatus != null">
-				SWS_SCHEDULE_STATUS,
+			<if test="swsState != null">
+				SWS_STATE,
 			</if>		
 			<if test="swsCreateTime != null">
 				SWS_CREATE_TIME,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="swsScheduleId != null">
-				#{swsScheduleId},
+			<if test="swsScheduleCid != null">
+				#{swsScheduleCid},
 			</if>	
-			<if test="swsRecordId != null">
-				#{swsRecordId},
+			<if test="swsWkfNbr != null">
+				#{swsWkfNbr},
 			</if>	
-			<if test="swsLastNodeId != null">
-				#{swsLastNodeId},
+			<if test="swsLastNodeCid != null">
+				#{swsLastNodeCid},
 			</if>	
 			<if test="swsLastNodeName != null">
 				#{swsLastNodeName},
 			</if>	
-			<if test="swsLastUserId != null">
-				#{swsLastUserId},
+			<if test="swsLastUserCid != null">
+				#{swsLastUserCid},
 			</if>	
 			<if test="swsLastLoginName != null">
 				#{swsLastLoginName},
 			</if>	
-			<if test="swsScheduleNodeId != null">
-				#{swsScheduleNodeId},
+			<if test="swsScheduleNodeCid != null">
+				#{swsScheduleNodeCid},
 			</if>	
 			<if test="swsScheduleNodeName != null">
 				#{swsScheduleNodeName},
 			</if>	
-			<if test="swsWgId != null">
-				#{swsWgId},
+			<if test="swsWgCid != null">
+				#{swsWgCid},
 			</if>	
 			<if test="swsWgName != null">
 				#{swsWgName},
 			</if>	
-			<if test="swsScheduleUserId != null">
-				#{swsScheduleUserId},
+			<if test="swsScheduleUserCid != null">
+				#{swsScheduleUserCid},
 			</if>	
 			<if test="swsScheduleLoginName != null">
 				#{swsScheduleLoginName},
@@ -272,14 +272,14 @@
 			<if test="swsBranchFlag != null">
 				#{swsBranchFlag},
 			</if>	
-			<if test="swsBranchHeadId != null">
-				#{swsBranchHeadId},
+			<if test="swsBranchHeadCid != null">
+				#{swsBranchHeadCid},
 			</if>	
 			<if test="swsBranchHeadName != null">
 				#{swsBranchHeadName},
 			</if>	
-			<if test="swsScheduleStatus != null">
-				#{swsScheduleStatus},
+			<if test="swsState != null">
+				#{swsState},
 			</if>	
 			<if test="swsCreateTime != null">
 				#{swsCreateTime},
@@ -290,33 +290,33 @@
 	<update id="updates">
 		UPDATE SY_WKF_SCHEDULE
 		<set>
-			<if test="value.isInitSwsScheduleId">
+			<if test="value.isInitSwsScheduleCid">
 				<choose>
-					<when test="value.swsScheduleId != null">
-						SWS_SCHEDULE_ID = #{value.swsScheduleId},
+					<when test="value.swsScheduleCid != null">
+						SWS_SCHEDULE_CID = #{value.swsScheduleCid},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_ID = NULL,
+						SWS_SCHEDULE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsRecordId">
+			<if test="value.isInitSwsWkfNbr">
 				<choose>
-					<when test="value.swsRecordId != null">
-						SWS_RECORD_ID = #{value.swsRecordId},
+					<when test="value.swsWkfNbr != null">
+						SWS_WKF_NBR = #{value.swsWkfNbr},
 					</when>
 					<otherwise>
-						SWS_RECORD_ID = NULL,
+						SWS_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsLastNodeId">
+			<if test="value.isInitSwsLastNodeCid">
 				<choose>
-					<when test="value.swsLastNodeId != null">
-						SWS_LAST_NODE_ID = #{value.swsLastNodeId},
+					<when test="value.swsLastNodeCid != null">
+						SWS_LAST_NODE_CID = #{value.swsLastNodeCid},
 					</when>
 					<otherwise>
-						SWS_LAST_NODE_ID = NULL,
+						SWS_LAST_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -330,13 +330,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsLastUserId">
+			<if test="value.isInitSwsLastUserCid">
 				<choose>
-					<when test="value.swsLastUserId != null">
-						SWS_LAST_USER_ID = #{value.swsLastUserId},
+					<when test="value.swsLastUserCid != null">
+						SWS_LAST_USER_CID = #{value.swsLastUserCid},
 					</when>
 					<otherwise>
-						SWS_LAST_USER_ID = NULL,
+						SWS_LAST_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -350,13 +350,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsScheduleNodeId">
+			<if test="value.isInitSwsScheduleNodeCid">
 				<choose>
-					<when test="value.swsScheduleNodeId != null">
-						SWS_SCHEDULE_NODE_ID = #{value.swsScheduleNodeId},
+					<when test="value.swsScheduleNodeCid != null">
+						SWS_SCHEDULE_NODE_CID = #{value.swsScheduleNodeCid},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_NODE_ID = NULL,
+						SWS_SCHEDULE_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -370,13 +370,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsWgId">
+			<if test="value.isInitSwsWgCid">
 				<choose>
-					<when test="value.swsWgId != null">
-						SWS_WG_ID = #{value.swsWgId},
+					<when test="value.swsWgCid != null">
+						SWS_WG_CID = #{value.swsWgCid},
 					</when>
 					<otherwise>
-						SWS_WG_ID = NULL,
+						SWS_WG_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -390,13 +390,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsScheduleUserId">
+			<if test="value.isInitSwsScheduleUserCid">
 				<choose>
-					<when test="value.swsScheduleUserId != null">
-						SWS_SCHEDULE_USER_ID = #{value.swsScheduleUserId},
+					<when test="value.swsScheduleUserCid != null">
+						SWS_SCHEDULE_USER_CID = #{value.swsScheduleUserCid},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_USER_ID = NULL,
+						SWS_SCHEDULE_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -420,13 +420,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsBranchHeadId">
+			<if test="value.isInitSwsBranchHeadCid">
 				<choose>
-					<when test="value.swsBranchHeadId != null">
-						SWS_BRANCH_HEAD_ID = #{value.swsBranchHeadId},
+					<when test="value.swsBranchHeadCid != null">
+						SWS_BRANCH_HEAD_CID = #{value.swsBranchHeadCid},
 					</when>
 					<otherwise>
-						SWS_BRANCH_HEAD_ID = NULL,
+						SWS_BRANCH_HEAD_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -440,13 +440,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwsScheduleStatus">
+			<if test="value.isInitSwsState">
 				<choose>
-					<when test="value.swsScheduleStatus != null">
-						SWS_SCHEDULE_STATUS = #{value.swsScheduleStatus},
+					<when test="value.swsState != null">
+						SWS_STATE = #{value.swsState},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_STATUS = NULL,
+						SWS_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -462,38 +462,38 @@
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.swsScheduleId != null and condition.swsScheduleId != ''">
-			AND SWS_SCHEDULE_ID =	#{condition.swsScheduleId} 
+		<if test="condition.swsScheduleCid != null and condition.swsScheduleCid != ''">
+			AND SWS_SCHEDULE_CID =	#{condition.swsScheduleCid} 
 		</if>
-		<if test="condition.swsRecordId != null and condition.swsRecordId != ''">
-			AND SWS_RECORD_ID =	#{condition.swsRecordId} 
+		<if test="condition.swsWkfNbr != null and condition.swsWkfNbr != ''">
+			AND SWS_WKF_NBR =	#{condition.swsWkfNbr} 
 		</if>
-		<if test="condition.swsLastNodeId != null and condition.swsLastNodeId != ''">
-			AND SWS_LAST_NODE_ID =	#{condition.swsLastNodeId} 
+		<if test="condition.swsLastNodeCid != null and condition.swsLastNodeCid != ''">
+			AND SWS_LAST_NODE_CID =	#{condition.swsLastNodeCid} 
 		</if>
 		<if test="condition.swsLastNodeName != null and condition.swsLastNodeName != ''">
 			AND SWS_LAST_NODE_NAME =	#{condition.swsLastNodeName} 
 		</if>
-		<if test="condition.swsLastUserId != null and condition.swsLastUserId != ''">
-			AND SWS_LAST_USER_ID =	#{condition.swsLastUserId} 
+		<if test="condition.swsLastUserCid != null and condition.swsLastUserCid != ''">
+			AND SWS_LAST_USER_CID =	#{condition.swsLastUserCid} 
 		</if>
 		<if test="condition.swsLastLoginName != null and condition.swsLastLoginName != ''">
 			AND SWS_LAST_LOGIN_NAME =	#{condition.swsLastLoginName} 
 		</if>
-		<if test="condition.swsScheduleNodeId != null and condition.swsScheduleNodeId != ''">
-			AND SWS_SCHEDULE_NODE_ID =	#{condition.swsScheduleNodeId} 
+		<if test="condition.swsScheduleNodeCid != null and condition.swsScheduleNodeCid != ''">
+			AND SWS_SCHEDULE_NODE_CID =	#{condition.swsScheduleNodeCid} 
 		</if>
 		<if test="condition.swsScheduleNodeName != null and condition.swsScheduleNodeName != ''">
 			AND SWS_SCHEDULE_NODE_NAME =	#{condition.swsScheduleNodeName} 
 		</if>
-		<if test="condition.swsWgId != null and condition.swsWgId != ''">
-			AND SWS_WG_ID =	#{condition.swsWgId} 
+		<if test="condition.swsWgCid != null and condition.swsWgCid != ''">
+			AND SWS_WG_CID =	#{condition.swsWgCid} 
 		</if>
 		<if test="condition.swsWgName != null and condition.swsWgName != ''">
 			AND SWS_WG_NAME =	#{condition.swsWgName} 
 		</if>
-		<if test="condition.swsScheduleUserId != null and condition.swsScheduleUserId != ''">
-			AND SWS_SCHEDULE_USER_ID =	#{condition.swsScheduleUserId} 
+		<if test="condition.swsScheduleUserCid != null and condition.swsScheduleUserCid != ''">
+			AND SWS_SCHEDULE_USER_CID =	#{condition.swsScheduleUserCid} 
 		</if>
 		<if test="condition.swsScheduleLoginName != null and condition.swsScheduleLoginName != ''">
 			AND SWS_SCHEDULE_LOGIN_NAME =	#{condition.swsScheduleLoginName} 
@@ -501,14 +501,14 @@
 		<if test="condition.swsBranchFlag != null and condition.swsBranchFlag != ''">
 			AND SWS_BRANCH_FLAG =	#{condition.swsBranchFlag} 
 		</if>
-		<if test="condition.swsBranchHeadId != null and condition.swsBranchHeadId != ''">
-			AND SWS_BRANCH_HEAD_ID =	#{condition.swsBranchHeadId} 
+		<if test="condition.swsBranchHeadCid != null and condition.swsBranchHeadCid != ''">
+			AND SWS_BRANCH_HEAD_CID =	#{condition.swsBranchHeadCid} 
 		</if>
 		<if test="condition.swsBranchHeadName != null and condition.swsBranchHeadName != ''">
 			AND SWS_BRANCH_HEAD_NAME =	#{condition.swsBranchHeadName} 
 		</if>
-		<if test="condition.swsScheduleStatus != null and condition.swsScheduleStatus != ''">
-			AND SWS_SCHEDULE_STATUS =	#{condition.swsScheduleStatus} 
+		<if test="condition.swsState != null and condition.swsState != ''">
+			AND SWS_STATE =	#{condition.swsState} 
 		</if>
 		
 	</update>
@@ -516,33 +516,33 @@
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfScheduleBean">
 		UPDATE SY_WKF_SCHEDULE
 		<set>
-			<if test="isInitSwsScheduleId">
+			<if test="isInitSwsScheduleCid">
 				<choose>
-					<when test="swsScheduleId != null">
-						SWS_SCHEDULE_ID = #{swsScheduleId},
+					<when test="swsScheduleCid != null">
+						SWS_SCHEDULE_CID = #{swsScheduleCid},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_ID = NULL,
+						SWS_SCHEDULE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsRecordId">
+			<if test="isInitSwsWkfNbr">
 				<choose>
-					<when test="swsRecordId != null">
-						SWS_RECORD_ID = #{swsRecordId},
+					<when test="swsWkfNbr != null">
+						SWS_WKF_NBR = #{swsWkfNbr},
 					</when>
 					<otherwise>
-						SWS_RECORD_ID = NULL,
+						SWS_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsLastNodeId">
+			<if test="isInitSwsLastNodeCid">
 				<choose>
-					<when test="swsLastNodeId != null">
-						SWS_LAST_NODE_ID = #{swsLastNodeId},
+					<when test="swsLastNodeCid != null">
+						SWS_LAST_NODE_CID = #{swsLastNodeCid},
 					</when>
 					<otherwise>
-						SWS_LAST_NODE_ID = NULL,
+						SWS_LAST_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -556,13 +556,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsLastUserId">
+			<if test="isInitSwsLastUserCid">
 				<choose>
-					<when test="swsLastUserId != null">
-						SWS_LAST_USER_ID = #{swsLastUserId},
+					<when test="swsLastUserCid != null">
+						SWS_LAST_USER_CID = #{swsLastUserCid},
 					</when>
 					<otherwise>
-						SWS_LAST_USER_ID = NULL,
+						SWS_LAST_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -576,13 +576,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsScheduleNodeId">
+			<if test="isInitSwsScheduleNodeCid">
 				<choose>
-					<when test="swsScheduleNodeId != null">
-						SWS_SCHEDULE_NODE_ID = #{swsScheduleNodeId},
+					<when test="swsScheduleNodeCid != null">
+						SWS_SCHEDULE_NODE_CID = #{swsScheduleNodeCid},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_NODE_ID = NULL,
+						SWS_SCHEDULE_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -596,13 +596,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsWgId">
+			<if test="isInitSwsWgCid">
 				<choose>
-					<when test="swsWgId != null">
-						SWS_WG_ID = #{swsWgId},
+					<when test="swsWgCid != null">
+						SWS_WG_CID = #{swsWgCid},
 					</when>
 					<otherwise>
-						SWS_WG_ID = NULL,
+						SWS_WG_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -616,13 +616,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsScheduleUserId">
+			<if test="isInitSwsScheduleUserCid">
 				<choose>
-					<when test="swsScheduleUserId != null">
-						SWS_SCHEDULE_USER_ID = #{swsScheduleUserId},
+					<when test="swsScheduleUserCid != null">
+						SWS_SCHEDULE_USER_CID = #{swsScheduleUserCid},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_USER_ID = NULL,
+						SWS_SCHEDULE_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -646,13 +646,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsBranchHeadId">
+			<if test="isInitSwsBranchHeadCid">
 				<choose>
-					<when test="swsBranchHeadId != null">
-						SWS_BRANCH_HEAD_ID = #{swsBranchHeadId},
+					<when test="swsBranchHeadCid != null">
+						SWS_BRANCH_HEAD_CID = #{swsBranchHeadCid},
 					</when>
 					<otherwise>
-						SWS_BRANCH_HEAD_ID = NULL,
+						SWS_BRANCH_HEAD_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -666,13 +666,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwsScheduleStatus">
+			<if test="isInitSwsState">
 				<choose>
-					<when test="swsScheduleStatus != null">
-						SWS_SCHEDULE_STATUS = #{swsScheduleStatus},
+					<when test="swsState != null">
+						SWS_STATE = #{swsState},
 					</when>
 					<otherwise>
-						SWS_SCHEDULE_STATUS = NULL,
+						SWS_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -688,7 +688,7 @@
 			</if>
 		</set>
 		WHERE 
-		SWS_SCHEDULE_ID = #{swsScheduleId}
+		SWS_SCHEDULE_CID = #{swsScheduleCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -697,38 +697,38 @@
 		FROM
 		SY_WKF_SCHEDULE WHERE 1=1
 		<if test="syWkfSchedule!=null">
-			<if test="syWkfSchedule.swsScheduleId != null and syWkfSchedule.swsScheduleId != ''">
-				AND SWS_SCHEDULE_ID = #{syWkfSchedule.swsScheduleId}
+			<if test="syWkfSchedule.swsScheduleCid != null and syWkfSchedule.swsScheduleCid != ''">
+				AND SWS_SCHEDULE_CID = #{syWkfSchedule.swsScheduleCid}
 			</if>
-			<if test="syWkfSchedule.swsRecordId != null and syWkfSchedule.swsRecordId != ''">
-				AND SWS_RECORD_ID = #{syWkfSchedule.swsRecordId}
+			<if test="syWkfSchedule.swsWkfNbr != null and syWkfSchedule.swsWkfNbr != ''">
+				AND SWS_WKF_NBR = #{syWkfSchedule.swsWkfNbr}
 			</if>
-			<if test="syWkfSchedule.swsLastNodeId != null and syWkfSchedule.swsLastNodeId != ''">
-				AND SWS_LAST_NODE_ID = #{syWkfSchedule.swsLastNodeId}
+			<if test="syWkfSchedule.swsLastNodeCid != null and syWkfSchedule.swsLastNodeCid != ''">
+				AND SWS_LAST_NODE_CID = #{syWkfSchedule.swsLastNodeCid}
 			</if>
 			<if test="syWkfSchedule.swsLastNodeName != null and syWkfSchedule.swsLastNodeName != ''">
 				AND SWS_LAST_NODE_NAME = #{syWkfSchedule.swsLastNodeName}
 			</if>
-			<if test="syWkfSchedule.swsLastUserId != null and syWkfSchedule.swsLastUserId != ''">
-				AND SWS_LAST_USER_ID = #{syWkfSchedule.swsLastUserId}
+			<if test="syWkfSchedule.swsLastUserCid != null and syWkfSchedule.swsLastUserCid != ''">
+				AND SWS_LAST_USER_CID = #{syWkfSchedule.swsLastUserCid}
 			</if>
 			<if test="syWkfSchedule.swsLastLoginName != null and syWkfSchedule.swsLastLoginName != ''">
 				AND SWS_LAST_LOGIN_NAME = #{syWkfSchedule.swsLastLoginName}
 			</if>
-			<if test="syWkfSchedule.swsScheduleNodeId != null and syWkfSchedule.swsScheduleNodeId != ''">
-				AND SWS_SCHEDULE_NODE_ID = #{syWkfSchedule.swsScheduleNodeId}
+			<if test="syWkfSchedule.swsScheduleNodeCid != null and syWkfSchedule.swsScheduleNodeCid != ''">
+				AND SWS_SCHEDULE_NODE_CID = #{syWkfSchedule.swsScheduleNodeCid}
 			</if>
 			<if test="syWkfSchedule.swsScheduleNodeName != null and syWkfSchedule.swsScheduleNodeName != ''">
 				AND SWS_SCHEDULE_NODE_NAME = #{syWkfSchedule.swsScheduleNodeName}
 			</if>
-			<if test="syWkfSchedule.swsWgId != null and syWkfSchedule.swsWgId != ''">
-				AND SWS_WG_ID = #{syWkfSchedule.swsWgId}
+			<if test="syWkfSchedule.swsWgCid != null and syWkfSchedule.swsWgCid != ''">
+				AND SWS_WG_CID = #{syWkfSchedule.swsWgCid}
 			</if>
 			<if test="syWkfSchedule.swsWgName != null and syWkfSchedule.swsWgName != ''">
 				AND SWS_WG_NAME = #{syWkfSchedule.swsWgName}
 			</if>
-			<if test="syWkfSchedule.swsScheduleUserId != null and syWkfSchedule.swsScheduleUserId != ''">
-				AND SWS_SCHEDULE_USER_ID = #{syWkfSchedule.swsScheduleUserId}
+			<if test="syWkfSchedule.swsScheduleUserCid != null and syWkfSchedule.swsScheduleUserCid != ''">
+				AND SWS_SCHEDULE_USER_CID = #{syWkfSchedule.swsScheduleUserCid}
 			</if>
 			<if test="syWkfSchedule.swsScheduleLoginName != null and syWkfSchedule.swsScheduleLoginName != ''">
 				AND SWS_SCHEDULE_LOGIN_NAME = #{syWkfSchedule.swsScheduleLoginName}
@@ -736,14 +736,14 @@
 			<if test="syWkfSchedule.swsBranchFlag != null and syWkfSchedule.swsBranchFlag != ''">
 				AND SWS_BRANCH_FLAG = #{syWkfSchedule.swsBranchFlag}
 			</if>
-			<if test="syWkfSchedule.swsBranchHeadId != null and syWkfSchedule.swsBranchHeadId != ''">
-				AND SWS_BRANCH_HEAD_ID = #{syWkfSchedule.swsBranchHeadId}
+			<if test="syWkfSchedule.swsBranchHeadCid != null and syWkfSchedule.swsBranchHeadCid != ''">
+				AND SWS_BRANCH_HEAD_CID = #{syWkfSchedule.swsBranchHeadCid}
 			</if>
 			<if test="syWkfSchedule.swsBranchHeadName != null and syWkfSchedule.swsBranchHeadName != ''">
 				AND SWS_BRANCH_HEAD_NAME = #{syWkfSchedule.swsBranchHeadName}
 			</if>
-			<if test="syWkfSchedule.swsScheduleStatus != null and syWkfSchedule.swsScheduleStatus != ''">
-				AND SWS_SCHEDULE_STATUS = #{syWkfSchedule.swsScheduleStatus}
+			<if test="syWkfSchedule.swsState != null and syWkfSchedule.swsState != ''">
+				AND SWS_STATE = #{syWkfSchedule.swsState}
 			</if>
 			
 		</if>
@@ -756,38 +756,38 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_SCHEDULE
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="swsScheduleId != null and swsScheduleId != ''">
-				AND SWS_SCHEDULE_ID = #{swsScheduleId}
+			<if test="swsScheduleCid != null and swsScheduleCid != ''">
+				AND SWS_SCHEDULE_CID = #{swsScheduleCid}
 			</if>
-			<if test="swsRecordId != null and swsRecordId != ''">
-				AND SWS_RECORD_ID = #{swsRecordId}
+			<if test="swsWkfNbr != null and swsWkfNbr != ''">
+				AND SWS_WKF_NBR = #{swsWkfNbr}
 			</if>
-			<if test="swsLastNodeId != null and swsLastNodeId != ''">
-				AND SWS_LAST_NODE_ID = #{swsLastNodeId}
+			<if test="swsLastNodeCid != null and swsLastNodeCid != ''">
+				AND SWS_LAST_NODE_CID = #{swsLastNodeCid}
 			</if>
 			<if test="swsLastNodeName != null and swsLastNodeName != ''">
 				AND SWS_LAST_NODE_NAME = #{swsLastNodeName}
 			</if>
-			<if test="swsLastUserId != null and swsLastUserId != ''">
-				AND SWS_LAST_USER_ID = #{swsLastUserId}
+			<if test="swsLastUserCid != null and swsLastUserCid != ''">
+				AND SWS_LAST_USER_CID = #{swsLastUserCid}
 			</if>
 			<if test="swsLastLoginName != null and swsLastLoginName != ''">
 				AND SWS_LAST_LOGIN_NAME = #{swsLastLoginName}
 			</if>
-			<if test="swsScheduleNodeId != null and swsScheduleNodeId != ''">
-				AND SWS_SCHEDULE_NODE_ID = #{swsScheduleNodeId}
+			<if test="swsScheduleNodeCid != null and swsScheduleNodeCid != ''">
+				AND SWS_SCHEDULE_NODE_CID = #{swsScheduleNodeCid}
 			</if>
 			<if test="swsScheduleNodeName != null and swsScheduleNodeName != ''">
 				AND SWS_SCHEDULE_NODE_NAME = #{swsScheduleNodeName}
 			</if>
-			<if test="swsWgId != null and swsWgId != ''">
-				AND SWS_WG_ID = #{swsWgId}
+			<if test="swsWgCid != null and swsWgCid != ''">
+				AND SWS_WG_CID = #{swsWgCid}
 			</if>
 			<if test="swsWgName != null and swsWgName != ''">
 				AND SWS_WG_NAME = #{swsWgName}
 			</if>
-			<if test="swsScheduleUserId != null and swsScheduleUserId != ''">
-				AND SWS_SCHEDULE_USER_ID = #{swsScheduleUserId}
+			<if test="swsScheduleUserCid != null and swsScheduleUserCid != ''">
+				AND SWS_SCHEDULE_USER_CID = #{swsScheduleUserCid}
 			</if>
 			<if test="swsScheduleLoginName != null and swsScheduleLoginName != ''">
 				AND SWS_SCHEDULE_LOGIN_NAME = #{swsScheduleLoginName}
@@ -795,14 +795,14 @@
 			<if test="swsBranchFlag != null and swsBranchFlag != ''">
 				AND SWS_BRANCH_FLAG = #{swsBranchFlag}
 			</if>
-			<if test="swsBranchHeadId != null and swsBranchHeadId != ''">
-				AND SWS_BRANCH_HEAD_ID = #{swsBranchHeadId}
+			<if test="swsBranchHeadCid != null and swsBranchHeadCid != ''">
+				AND SWS_BRANCH_HEAD_CID = #{swsBranchHeadCid}
 			</if>
 			<if test="swsBranchHeadName != null and swsBranchHeadName != ''">
 				AND SWS_BRANCH_HEAD_NAME = #{swsBranchHeadName}
 			</if>
-			<if test="swsScheduleStatus != null and swsScheduleStatus != ''">
-				AND SWS_SCHEDULE_STATUS = #{swsScheduleStatus}
+			<if test="swsState != null and swsState != ''">
+				AND SWS_STATE = #{swsState}
 			</if>
 			
 		</if>
@@ -815,22 +815,22 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.swsScheduleId},		
-			#{item.swsRecordId},		
-			#{item.swsLastNodeId},		
+			#{item.swsScheduleCid},		
+			#{item.swsWkfNbr},		
+			#{item.swsLastNodeCid},		
 			#{item.swsLastNodeName},		
-			#{item.swsLastUserId},		
+			#{item.swsLastUserCid},		
 			#{item.swsLastLoginName},		
-			#{item.swsScheduleNodeId},		
+			#{item.swsScheduleNodeCid},		
 			#{item.swsScheduleNodeName},		
-			#{item.swsWgId},		
+			#{item.swsWgCid},		
 			#{item.swsWgName},		
-			#{item.swsScheduleUserId},		
+			#{item.swsScheduleUserCid},		
 			#{item.swsScheduleLoginName},		
 			#{item.swsBranchFlag},		
-			#{item.swsBranchHeadId},		
+			#{item.swsBranchHeadCid},		
 			#{item.swsBranchHeadName},		
-			#{item.swsScheduleStatus},		
+			#{item.swsState},		
 			#{item.swsCreateTime},		
 		</trim>
 		</foreach>

@@ -15,8 +15,8 @@ public class SyWkfDefineBean extends BaseBean {
 	protected boolean isInitSwdRouteType;
 	protected String swdCheckFlag;
 	protected boolean isInitSwdCheckFlag;
-	protected String swdWkfStatus;
-	protected boolean isInitSwdWkfStatus;
+	protected String swdState;
+	protected boolean isInitSwdState;
 
 	public boolean getIsInitSwdWkfCode() {
 		return this.isInitSwdWkfCode;
@@ -38,8 +38,8 @@ public class SyWkfDefineBean extends BaseBean {
 		return this.isInitSwdCheckFlag;
 	}
 
-	public boolean getIsInitSwdWkfStatus() {
-		return this.isInitSwdWkfStatus;
+	public boolean getIsInitSwdState() {
+		return this.isInitSwdState;
 	}
 
 	public String getSwdWkfCode() {
@@ -87,13 +87,13 @@ public class SyWkfDefineBean extends BaseBean {
 		this.isInitSwdCheckFlag = true;
 	}
 
-	public String getSwdWkfStatus() {
-		return swdWkfStatus;
+	public String getSwdState() {
+		return swdState;
 	}
 
-	public void setSwdWkfStatus(String swdWkfStatus) {
-		this.swdWkfStatus = swdWkfStatus;
-		this.isInitSwdWkfStatus = true;
+	public void setSwdState(String swdState) {
+		this.swdState = swdState;
+		this.isInitSwdState = true;
 	}
 
 	public Map<String, String> toMap() {
@@ -113,8 +113,8 @@ public class SyWkfDefineBean extends BaseBean {
 		if (isInitSwdCheckFlag) {
 			map.put("swdCheckFlag", formatString(swdCheckFlag));
 		}
-		if (isInitSwdWkfStatus) {
-			map.put("swdWkfStatus", formatString(swdWkfStatus));
+		if (isInitSwdState) {
+			map.put("swdState", formatString(swdState));
 		}
 
 		return map;

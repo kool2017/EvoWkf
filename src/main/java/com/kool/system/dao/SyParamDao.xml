@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyParamDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyParamBean">
+		<id column="SPA_PARAM_CODE" property="spaParamCode" />
+		<result column="SPA_VALUE" property="spaValue" />
+		<result column="SPA_NAME" property="spaName" />
+		<result column="SPA_ROOT_CODE" property="spaRootCode" />
+		<result column="SPA_FAT_CODE" property="spaFatCode" />
+		<result column="SPA_DEEP" property="spaDeep" />
+		<result column="SPA_SEQ" property="spaSeq" />
+		<result column="SPA_CMT" property="spaCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SPA_PARAM_CODE, 			
+			SPA_VALUE, 			
+			SPA_NAME, 			
+			SPA_ROOT_CODE, 			
+			SPA_FAT_CODE, 			
+			SPA_DEEP, 			
+			SPA_SEQ, 			
+			SPA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SPA_PARAM_CODE
+	</sql>
+</mapper>  

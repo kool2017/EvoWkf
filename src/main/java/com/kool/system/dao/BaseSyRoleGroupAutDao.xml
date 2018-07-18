@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyRoleGroupAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyRoleGroupAutBean">
+		<id column="SGA_GROUP_CODE" property="sgaGroupCode" />
+		<id column="SGA_AUT_CODE" property="sgaAutCode" />
+		<result column="SGA_CMT" property="sgaCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SGA_GROUP_CODE, 			
+			SGA_AUT_CODE, 			
+			SGA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SGA_GROUP_CODE, SGA_AUT_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyRoleGroupAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE_GROUP_AUT WHERE 1=1 
+		<if test="sgaGroupCode != null and sgaGroupCode != ''">
+			AND SGA_GROUP_CODE = #{sgaGroupCode}
+		</if>
+		<if test="sgaAutCode != null and sgaAutCode != ''">
+			AND SGA_AUT_CODE = #{sgaAutCode}
+		</if>
+		<if test="sgaCmt != null and sgaCmt != ''">
+			AND SGA_CMT = #{sgaCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyRoleGroupAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE_GROUP_AUT
+		WHERE 
+		SGA_GROUP_CODE = #{sgaGroupCode} AND 
+		SGA_AUT_CODE = #{sgaAutCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyRoleGroupAutBean">
+		DELETE FROM SY_ROLE_GROUP_AUT
+		WHERE
+		SGA_GROUP_CODE = #{sgaGroupCode} AND 
+		SGA_AUT_CODE = #{sgaAutCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyRoleGroupAutBean">
+		DELETE FROM SY_ROLE_GROUP_AUT
+		WHERE 1=1 
+		<if test="sgaGroupCode != null and sgaGroupCode != ''">
+			AND SGA_GROUP_CODE = #{sgaGroupCode}
+		</if>
+		<if test="sgaAutCode != null and sgaAutCode != ''">
+			AND SGA_AUT_CODE = #{sgaAutCode}
+		</if>
+		<if test="sgaCmt != null and sgaCmt != ''">
+			AND SGA_CMT = #{sgaCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyRoleGroupAutBean">
+		INSERT INTO SY_ROLE_GROUP_AUT
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sgaGroupCode != null">
+				SGA_GROUP_CODE,
+			</if>		
+			<if test="sgaAutCode != null">
+				SGA_AUT_CODE,
+			</if>		
+			<if test="sgaCmt != null">
+				SGA_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sgaGroupCode != null">
+				#{sgaGroupCode},
+			</if>	
+			<if test="sgaAutCode != null">
+				#{sgaAutCode},
+			</if>	
+			<if test="sgaCmt != null">
+				#{sgaCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_ROLE_GROUP_AUT
+		<set>
+			<if test="value.isInitSgaGroupCode">
+				<choose>
+					<when test="value.sgaGroupCode != null">
+						SGA_GROUP_CODE = #{value.sgaGroupCode},
+					</when>
+					<otherwise>
+						SGA_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSgaAutCode">
+				<choose>
+					<when test="value.sgaAutCode != null">
+						SGA_AUT_CODE = #{value.sgaAutCode},
+					</when>
+					<otherwise>
+						SGA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSgaCmt">
+				<choose>
+					<when test="value.sgaCmt != null">
+						SGA_CMT = #{value.sgaCmt},
+					</when>
+					<otherwise>
+						SGA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sgaGroupCode != null and condition.sgaGroupCode != ''">
+			AND SGA_GROUP_CODE =	#{condition.sgaGroupCode} 
+		</if>
+		<if test="condition.sgaAutCode != null and condition.sgaAutCode != ''">
+			AND SGA_AUT_CODE =	#{condition.sgaAutCode} 
+		</if>
+		<if test="condition.sgaCmt != null and condition.sgaCmt != ''">
+			AND SGA_CMT =	#{condition.sgaCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyRoleGroupAutBean">
+		UPDATE SY_ROLE_GROUP_AUT
+		<set>
+			<if test="isInitSgaGroupCode">
+				<choose>
+					<when test="sgaGroupCode != null">
+						SGA_GROUP_CODE = #{sgaGroupCode},
+					</when>
+					<otherwise>
+						SGA_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSgaAutCode">
+				<choose>
+					<when test="sgaAutCode != null">
+						SGA_AUT_CODE = #{sgaAutCode},
+					</when>
+					<otherwise>
+						SGA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSgaCmt">
+				<choose>
+					<when test="sgaCmt != null">
+						SGA_CMT = #{sgaCmt},
+					</when>
+					<otherwise>
+						SGA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SGA_GROUP_CODE = #{sgaGroupCode} AND 
+		SGA_AUT_CODE = #{sgaAutCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_ROLE_GROUP_AUT WHERE 1=1
+		<if test="syRoleGroupAut!=null">
+			<if test="syRoleGroupAut.sgaGroupCode != null and syRoleGroupAut.sgaGroupCode != ''">
+				AND SGA_GROUP_CODE = #{syRoleGroupAut.sgaGroupCode}
+			</if>
+			<if test="syRoleGroupAut.sgaAutCode != null and syRoleGroupAut.sgaAutCode != ''">
+				AND SGA_AUT_CODE = #{syRoleGroupAut.sgaAutCode}
+			</if>
+			<if test="syRoleGroupAut.sgaCmt != null and syRoleGroupAut.sgaCmt != ''">
+				AND SGA_CMT = #{syRoleGroupAut.sgaCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyRoleGroupAutBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_ROLE_GROUP_AUT
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sgaGroupCode != null and sgaGroupCode != ''">
+				AND SGA_GROUP_CODE = #{sgaGroupCode}
+			</if>
+			<if test="sgaAutCode != null and sgaAutCode != ''">
+				AND SGA_AUT_CODE = #{sgaAutCode}
+			</if>
+			<if test="sgaCmt != null and sgaCmt != ''">
+				AND SGA_CMT = #{sgaCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_ROLE_GROUP_AUT(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sgaGroupCode},		
+			#{item.sgaAutCode},		
+			#{item.sgaCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

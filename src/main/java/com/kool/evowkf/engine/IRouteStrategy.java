@@ -5,7 +5,7 @@
  */
 package com.kool.evowkf.engine;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 import com.kool.evowkf.bean.SyWkfNodeBean;
 import com.kool.evowkf.bean.SyWkfScheduleBean;
 import com.kool.evowkf.bean.vo.RouteResult;
@@ -17,5 +17,5 @@ import com.kool.evowkf.bean.vo.RouteResult;
  *
  */
 public interface IRouteStrategy {
-	public RouteResult route(SyWkfScheduleBean schedule, SyWkfNodeBean node, WKFContext wkfInfo) throws BusException;
+	public RouteResult route(SyWkfScheduleBean schedule, SyWkfNodeBean node, WKFContext wkfInfo) throws AppException;
 }

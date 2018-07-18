@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSONObject;
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.core.util.StringUtils;
 import com.kool.evowkf.api.IBusinessEventHandler;
 import com.kool.evowkf.bean.vo.BusinessEvent;
@@ -41,13 +40,12 @@ public class T2EventRule implements IEventRule{
 
 	/**
 	 * @throws AppException 
-	 * @throws BusException 
 	 * @DESCRIBE
 	 * @DATE 2018年2月17日 下午3:40:28
 	 *
 	 */
 	@Override
-	public void DoRule(NodeEvent event) throws AppException, BusException {
+	public void DoRule(NodeEvent event) throws AppException {
 		if (StringUtils.isEmpty(clazz) == false) {
 			try {
 				IBusinessEventHandler handler = (IBusinessEventHandler) Class.forName(clazz).newInstance();

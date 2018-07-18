@@ -38,16 +38,16 @@ public class WKFConstants {
 	/**
 	 * 工作流状态A-正常 C-关闭
 	 */
-	public static final String SWD_WKF_STATUS_ACTIVE = "A";
-	public static final String SWD_WKF_STATUS_CLOSE = "C";
+	public static final String SWD_STATE_ACTIVE = "A";
+	public static final String SWD_STATE_CLOSE = "C";
 
 	////////////////////// 工作流实例表////////////////////////////
 	/**
 	 * 流程实例状态 A-正常 C-关闭 P-待关闭，如果工作流实例被关闭，则先进入待关闭状态，等所有执行记录完成后再关闭；待关闭的实例不会被新业务使用
 	 */
-	public static final String SWE_ENTITY_STATUS_ACTIVE = "A";
-	public static final String SWE_ENTITY_STATUS_CLOSE = "C";
-	public static final String SWE_ENTITY_STATUS_PADDING = "P";
+	public static final String SWE_STATE_ACTIVE = "A";
+	public static final String SWE_STATE_CLOSE = "C";
+	public static final String SWE_STATE_PADDING = "P";
 
 	////////////////////// 工作流实例-业务控制表////////////////////////////
 	/**
@@ -128,17 +128,17 @@ public class WKFConstants {
 	 * 结点状态 "A-正常 C-关闭"
 	 * 
 	 */
-	public static final String SWN_NODE_STATUS_ACTIVE = "A";
-	public static final String SWN_NODE_STATUS_CLOSE = "C";
+	public static final String SWN_STATE_ACTIVE = "A";
+	public static final String SWN_STATE_CLOSE = "C";
 
 	//////////////////////// 流程执行记录表/////////////////////////
 	/**
 	 * 执行状态 ERR:出错中断 FAT:主干流程中 SUB:分支流程中 FIN:完成
 	 */
-	public static final String SRC_RECORD_STATUS_ERROR = "ERR";
-	public static final String SRC_RECORD_STATUS_FATBRANCH = "FAT";
-	public static final String SRC_RECORD_STATUS_SUBBRANCE = "SUB";
-	public static final String SRC_RECORD_STATUS_FINISH = "FIN";
+	public static final String SRC_STATE_ERROR = "ERR";
+	public static final String SRC_STATE_FATBRANCH = "FAT";
+	public static final String SRC_STATE_SUBBRANCE = "SUB";
+	public static final String SRC_STATE_FINISH = "FIN";
 
 	//////////////////////// 流程执行记录明细表/////////////////////////
 	/**
@@ -152,10 +152,10 @@ public class WKFConstants {
 	 * 执行后状态 "ERR-出错中断 FAT-主干流程中 SUB-分支流程中 FIN-完成"
 	 * 
 	 */
-	public static final String SRD_RECORD_STATUS_ERROR = "ERR";
-	public static final String SRD_RECORD_STATUS_FATBRANCH = "FAT";
-	public static final String SRD_RECORD_STATUS_SUBBRANCH = "SUB";
-	public static final String SRD_RECORD_STATUS_FINISH = "FIN";
+	public static final String SRD_STATE_ERROR = "ERR";
+	public static final String SRD_STATE_FATBRANCH = "FAT";
+	public static final String SRD_STATE_SUBBRANCH = "SUB";
+	public static final String SRD_STATE_FINISH = "FIN";
 
 	///////////////// 流程待办表/////////////////////////
 	/**
@@ -170,9 +170,9 @@ public class WKFConstants {
 	 * 
 	 * 
 	 */
-	public static final String SWS_SCHEDULE_STATUS_READY = "RDY";
-	public static final String SWS_SCHEDULE_STATUS_CHECK = "CHK";
-	public static final String SWS_SCHEDULE_STATUS_WAIT = "WAT";
-	public static final String SWS_SCHEDULE_STATUS_CLOSE = "CLS";
-	public static final String SWS_SCHEDULE_STATUS_FINISH = "FIN";
+	public static final String SWS_STATE_READY = "RDY";
+	public static final String SWS_STATE_CHECK = "CHK";
+	public static final String SWS_STATE_WAIT = "WAT";
+	public static final String SWS_STATE_CLOSE = "CLS";
+	public static final String SWS_STATE_FINISH = "FIN";
 }

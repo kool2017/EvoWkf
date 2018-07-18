@@ -5,47 +5,47 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfWorkerBean extends BaseBean {
-	protected String swoWgId;
-	protected boolean isInitSwoWgId;
-	protected String swoUserId;
-	protected boolean isInitSwoUserId;
+	protected String swoWgCid;
+	protected boolean isInitSwoWgCid;
+	protected String swoUserCid;
+	protected boolean isInitSwoUserCid;
 	protected String swoLoginName;
 	protected boolean isInitSwoLoginName;
-	protected String swoUserStatus;
-	protected boolean isInitSwoUserStatus;
+	protected String swoUserState;
+	protected boolean isInitSwoUserState;
 
-	public boolean getIsInitSwoWgId() {
-		return this.isInitSwoWgId;
+	public boolean getIsInitSwoWgCid() {
+		return this.isInitSwoWgCid;
 	}
 
-	public boolean getIsInitSwoUserId() {
-		return this.isInitSwoUserId;
+	public boolean getIsInitSwoUserCid() {
+		return this.isInitSwoUserCid;
 	}
 
 	public boolean getIsInitSwoLoginName() {
 		return this.isInitSwoLoginName;
 	}
 
-	public boolean getIsInitSwoUserStatus() {
-		return this.isInitSwoUserStatus;
+	public boolean getIsInitSwoUserState() {
+		return this.isInitSwoUserState;
 	}
 
-	public String getSwoWgId() {
-		return swoWgId;
+	public String getSwoWgCid() {
+		return swoWgCid;
 	}
 
-	public void setSwoWgId(String swoWgId) {
-		this.swoWgId = swoWgId;
-		this.isInitSwoWgId = true;
+	public void setSwoWgCid(String swoWgCid) {
+		this.swoWgCid = swoWgCid;
+		this.isInitSwoWgCid = true;
 	}
 
-	public String getSwoUserId() {
-		return swoUserId;
+	public String getSwoUserCid() {
+		return swoUserCid;
 	}
 
-	public void setSwoUserId(String swoUserId) {
-		this.swoUserId = swoUserId;
-		this.isInitSwoUserId = true;
+	public void setSwoUserCid(String swoUserCid) {
+		this.swoUserCid = swoUserCid;
+		this.isInitSwoUserCid = true;
 	}
 
 	public String getSwoLoginName() {
@@ -57,28 +57,28 @@ public class SyWkfWorkerBean extends BaseBean {
 		this.isInitSwoLoginName = true;
 	}
 
-	public String getSwoUserStatus() {
-		return swoUserStatus;
+	public String getSwoUserState() {
+		return swoUserState;
 	}
 
-	public void setSwoUserStatus(String swoUserStatus) {
-		this.swoUserStatus = swoUserStatus;
-		this.isInitSwoUserStatus = true;
+	public void setSwoUserState(String swoUserState) {
+		this.swoUserState = swoUserState;
+		this.isInitSwoUserState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSwoWgId) {
-			map.put("swoWgId", formatString(swoWgId));
+		if (isInitSwoWgCid) {
+			map.put("swoWgCid", formatString(swoWgCid));
 		}
-		if (isInitSwoUserId) {
-			map.put("swoUserId", formatString(swoUserId));
+		if (isInitSwoUserCid) {
+			map.put("swoUserCid", formatString(swoUserCid));
 		}
 		if (isInitSwoLoginName) {
 			map.put("swoLoginName", formatString(swoLoginName));
 		}
-		if (isInitSwoUserStatus) {
-			map.put("swoUserStatus", formatString(swoUserStatus));
+		if (isInitSwoUserState) {
+			map.put("swoUserState", formatString(swoUserState));
 		}
 
 		return map;

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyParamDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyParamBean">
+		<id column="SPA_PARAM_CODE" property="spaParamCode" />
+		<result column="SPA_VALUE" property="spaValue" />
+		<result column="SPA_NAME" property="spaName" />
+		<result column="SPA_ROOT_CODE" property="spaRootCode" />
+		<result column="SPA_FAT_CODE" property="spaFatCode" />
+		<result column="SPA_DEEP" property="spaDeep" />
+		<result column="SPA_SEQ" property="spaSeq" />
+		<result column="SPA_CMT" property="spaCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SPA_PARAM_CODE, 			
+			SPA_VALUE, 			
+			SPA_NAME, 			
+			SPA_ROOT_CODE, 			
+			SPA_FAT_CODE, 			
+			SPA_DEEP, 			
+			SPA_SEQ, 			
+			SPA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SPA_PARAM_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyParamBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_PARAM WHERE 1=1 
+		<if test="spaParamCode != null and spaParamCode != ''">
+			AND SPA_PARAM_CODE = #{spaParamCode}
+		</if>
+		<if test="spaValue != null and spaValue != ''">
+			AND SPA_VALUE = #{spaValue}
+		</if>
+		<if test="spaName != null and spaName != ''">
+			AND SPA_NAME = #{spaName}
+		</if>
+		<if test="spaRootCode != null and spaRootCode != ''">
+			AND SPA_ROOT_CODE = #{spaRootCode}
+		</if>
+		<if test="spaFatCode != null and spaFatCode != ''">
+			AND SPA_FAT_CODE = #{spaFatCode}
+		</if>
+		
+		
+		<if test="spaCmt != null and spaCmt != ''">
+			AND SPA_CMT = #{spaCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyParamBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_PARAM
+		WHERE 
+		SPA_PARAM_CODE = #{spaParamCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyParamBean">
+		DELETE FROM SY_PARAM
+		WHERE
+		SPA_PARAM_CODE = #{spaParamCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyParamBean">
+		DELETE FROM SY_PARAM
+		WHERE 1=1 
+		<if test="spaParamCode != null and spaParamCode != ''">
+			AND SPA_PARAM_CODE = #{spaParamCode}
+		</if>
+		<if test="spaValue != null and spaValue != ''">
+			AND SPA_VALUE = #{spaValue}
+		</if>
+		<if test="spaName != null and spaName != ''">
+			AND SPA_NAME = #{spaName}
+		</if>
+		<if test="spaRootCode != null and spaRootCode != ''">
+			AND SPA_ROOT_CODE = #{spaRootCode}
+		</if>
+		<if test="spaFatCode != null and spaFatCode != ''">
+			AND SPA_FAT_CODE = #{spaFatCode}
+		</if>
+		
+		
+		<if test="spaCmt != null and spaCmt != ''">
+			AND SPA_CMT = #{spaCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyParamBean">
+		INSERT INTO SY_PARAM
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="spaParamCode != null">
+				SPA_PARAM_CODE,
+			</if>		
+			<if test="spaValue != null">
+				SPA_VALUE,
+			</if>		
+			<if test="spaName != null">
+				SPA_NAME,
+			</if>		
+			<if test="spaRootCode != null">
+				SPA_ROOT_CODE,
+			</if>		
+			<if test="spaFatCode != null">
+				SPA_FAT_CODE,
+			</if>		
+			<if test="spaDeep != null">
+				SPA_DEEP,
+			</if>		
+			<if test="spaSeq != null">
+				SPA_SEQ,
+			</if>		
+			<if test="spaCmt != null">
+				SPA_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="spaParamCode != null">
+				#{spaParamCode},
+			</if>	
+			<if test="spaValue != null">
+				#{spaValue},
+			</if>	
+			<if test="spaName != null">
+				#{spaName},
+			</if>	
+			<if test="spaRootCode != null">
+				#{spaRootCode},
+			</if>	
+			<if test="spaFatCode != null">
+				#{spaFatCode},
+			</if>	
+			<if test="spaDeep != null">
+				#{spaDeep},
+			</if>	
+			<if test="spaSeq != null">
+				#{spaSeq},
+			</if>	
+			<if test="spaCmt != null">
+				#{spaCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_PARAM
+		<set>
+			<if test="value.isInitSpaParamCode">
+				<choose>
+					<when test="value.spaParamCode != null">
+						SPA_PARAM_CODE = #{value.spaParamCode},
+					</when>
+					<otherwise>
+						SPA_PARAM_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSpaValue">
+				<choose>
+					<when test="value.spaValue != null">
+						SPA_VALUE = #{value.spaValue},
+					</when>
+					<otherwise>
+						SPA_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSpaName">
+				<choose>
+					<when test="value.spaName != null">
+						SPA_NAME = #{value.spaName},
+					</when>
+					<otherwise>
+						SPA_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSpaRootCode">
+				<choose>
+					<when test="value.spaRootCode != null">
+						SPA_ROOT_CODE = #{value.spaRootCode},
+					</when>
+					<otherwise>
+						SPA_ROOT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSpaFatCode">
+				<choose>
+					<when test="value.spaFatCode != null">
+						SPA_FAT_CODE = #{value.spaFatCode},
+					</when>
+					<otherwise>
+						SPA_FAT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSpaDeep">
+				<choose>
+					<when test="value.spaDeep != null">
+						SPA_DEEP = #{value.spaDeep},
+					</when>
+					<otherwise>
+						SPA_DEEP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSpaSeq">
+				<choose>
+					<when test="value.spaSeq != null">
+						SPA_SEQ = #{value.spaSeq},
+					</when>
+					<otherwise>
+						SPA_SEQ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSpaCmt">
+				<choose>
+					<when test="value.spaCmt != null">
+						SPA_CMT = #{value.spaCmt},
+					</when>
+					<otherwise>
+						SPA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.spaParamCode != null and condition.spaParamCode != ''">
+			AND SPA_PARAM_CODE =	#{condition.spaParamCode} 
+		</if>
+		<if test="condition.spaValue != null and condition.spaValue != ''">
+			AND SPA_VALUE =	#{condition.spaValue} 
+		</if>
+		<if test="condition.spaName != null and condition.spaName != ''">
+			AND SPA_NAME =	#{condition.spaName} 
+		</if>
+		<if test="condition.spaRootCode != null and condition.spaRootCode != ''">
+			AND SPA_ROOT_CODE =	#{condition.spaRootCode} 
+		</if>
+		<if test="condition.spaFatCode != null and condition.spaFatCode != ''">
+			AND SPA_FAT_CODE =	#{condition.spaFatCode} 
+		</if>
+		
+		
+		<if test="condition.spaCmt != null and condition.spaCmt != ''">
+			AND SPA_CMT =	#{condition.spaCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyParamBean">
+		UPDATE SY_PARAM
+		<set>
+			<if test="isInitSpaParamCode">
+				<choose>
+					<when test="spaParamCode != null">
+						SPA_PARAM_CODE = #{spaParamCode},
+					</when>
+					<otherwise>
+						SPA_PARAM_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSpaValue">
+				<choose>
+					<when test="spaValue != null">
+						SPA_VALUE = #{spaValue},
+					</when>
+					<otherwise>
+						SPA_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSpaName">
+				<choose>
+					<when test="spaName != null">
+						SPA_NAME = #{spaName},
+					</when>
+					<otherwise>
+						SPA_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSpaRootCode">
+				<choose>
+					<when test="spaRootCode != null">
+						SPA_ROOT_CODE = #{spaRootCode},
+					</when>
+					<otherwise>
+						SPA_ROOT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSpaFatCode">
+				<choose>
+					<when test="spaFatCode != null">
+						SPA_FAT_CODE = #{spaFatCode},
+					</when>
+					<otherwise>
+						SPA_FAT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSpaDeep">
+				<choose>
+					<when test="spaDeep != null">
+						SPA_DEEP = #{spaDeep},
+					</when>
+					<otherwise>
+						SPA_DEEP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSpaSeq">
+				<choose>
+					<when test="spaSeq != null">
+						SPA_SEQ = #{spaSeq},
+					</when>
+					<otherwise>
+						SPA_SEQ = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSpaCmt">
+				<choose>
+					<when test="spaCmt != null">
+						SPA_CMT = #{spaCmt},
+					</when>
+					<otherwise>
+						SPA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SPA_PARAM_CODE = #{spaParamCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_PARAM WHERE 1=1
+		<if test="syParam!=null">
+			<if test="syParam.spaParamCode != null and syParam.spaParamCode != ''">
+				AND SPA_PARAM_CODE = #{syParam.spaParamCode}
+			</if>
+			<if test="syParam.spaValue != null and syParam.spaValue != ''">
+				AND SPA_VALUE = #{syParam.spaValue}
+			</if>
+			<if test="syParam.spaName != null and syParam.spaName != ''">
+				AND SPA_NAME = #{syParam.spaName}
+			</if>
+			<if test="syParam.spaRootCode != null and syParam.spaRootCode != ''">
+				AND SPA_ROOT_CODE = #{syParam.spaRootCode}
+			</if>
+			<if test="syParam.spaFatCode != null and syParam.spaFatCode != ''">
+				AND SPA_FAT_CODE = #{syParam.spaFatCode}
+			</if>
+			
+			
+			<if test="syParam.spaCmt != null and syParam.spaCmt != ''">
+				AND SPA_CMT = #{syParam.spaCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyParamBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_PARAM
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="spaParamCode != null and spaParamCode != ''">
+				AND SPA_PARAM_CODE = #{spaParamCode}
+			</if>
+			<if test="spaValue != null and spaValue != ''">
+				AND SPA_VALUE = #{spaValue}
+			</if>
+			<if test="spaName != null and spaName != ''">
+				AND SPA_NAME = #{spaName}
+			</if>
+			<if test="spaRootCode != null and spaRootCode != ''">
+				AND SPA_ROOT_CODE = #{spaRootCode}
+			</if>
+			<if test="spaFatCode != null and spaFatCode != ''">
+				AND SPA_FAT_CODE = #{spaFatCode}
+			</if>
+			
+			
+			<if test="spaCmt != null and spaCmt != ''">
+				AND SPA_CMT = #{spaCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_PARAM(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.spaParamCode},		
+			#{item.spaValue},		
+			#{item.spaName},		
+			#{item.spaRootCode},		
+			#{item.spaFatCode},		
+			#{item.spaDeep},		
+			#{item.spaSeq},		
+			#{item.spaCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

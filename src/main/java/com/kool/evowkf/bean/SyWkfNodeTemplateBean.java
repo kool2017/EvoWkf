@@ -5,12 +5,12 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfNodeTemplateBean extends BaseBean {
-	protected String sntTemplateId;
-	protected boolean isInitSntTemplateId;
+	protected String sntTemplateCid;
+	protected boolean isInitSntTemplateCid;
 	protected String sntTemplateName;
 	protected boolean isInitSntTemplateName;
-	protected String sntEntityId;
-	protected boolean isInitSntEntityId;
+	protected String sntEntityCid;
+	protected boolean isInitSntEntityCid;
 	protected String sntEventType;
 	protected boolean isInitSntEventType;
 	protected String sntEventRule;
@@ -34,16 +34,16 @@ public class SyWkfNodeTemplateBean extends BaseBean {
 	protected String sntViewUrl;
 	protected boolean isInitSntViewUrl;
 
-	public boolean getIsInitSntTemplateId() {
-		return this.isInitSntTemplateId;
+	public boolean getIsInitSntTemplateCid() {
+		return this.isInitSntTemplateCid;
 	}
 
 	public boolean getIsInitSntTemplateName() {
 		return this.isInitSntTemplateName;
 	}
 
-	public boolean getIsInitSntEntityId() {
-		return this.isInitSntEntityId;
+	public boolean getIsInitSntEntityCid() {
+		return this.isInitSntEntityCid;
 	}
 
 	public boolean getIsInitSntEventType() {
@@ -90,13 +90,13 @@ public class SyWkfNodeTemplateBean extends BaseBean {
 		return this.isInitSntViewUrl;
 	}
 
-	public String getSntTemplateId() {
-		return sntTemplateId;
+	public String getSntTemplateCid() {
+		return sntTemplateCid;
 	}
 
-	public void setSntTemplateId(String sntTemplateId) {
-		this.sntTemplateId = sntTemplateId;
-		this.isInitSntTemplateId = true;
+	public void setSntTemplateCid(String sntTemplateCid) {
+		this.sntTemplateCid = sntTemplateCid;
+		this.isInitSntTemplateCid = true;
 	}
 
 	public String getSntTemplateName() {
@@ -108,13 +108,13 @@ public class SyWkfNodeTemplateBean extends BaseBean {
 		this.isInitSntTemplateName = true;
 	}
 
-	public String getSntEntityId() {
-		return sntEntityId;
+	public String getSntEntityCid() {
+		return sntEntityCid;
 	}
 
-	public void setSntEntityId(String sntEntityId) {
-		this.sntEntityId = sntEntityId;
-		this.isInitSntEntityId = true;
+	public void setSntEntityCid(String sntEntityCid) {
+		this.sntEntityCid = sntEntityCid;
+		this.isInitSntEntityCid = true;
 	}
 
 	public String getSntEventType() {
@@ -218,14 +218,14 @@ public class SyWkfNodeTemplateBean extends BaseBean {
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSntTemplateId) {
-			map.put("sntTemplateId", formatString(sntTemplateId));
+		if (isInitSntTemplateCid) {
+			map.put("sntTemplateCid", formatString(sntTemplateCid));
 		}
 		if (isInitSntTemplateName) {
 			map.put("sntTemplateName", formatString(sntTemplateName));
 		}
-		if (isInitSntEntityId) {
-			map.put("sntEntityId", formatString(sntEntityId));
+		if (isInitSntEntityCid) {
+			map.put("sntEntityCid", formatString(sntEntityCid));
 		}
 		if (isInitSntEventType) {
 			map.put("sntEventType", formatString(sntEventType));

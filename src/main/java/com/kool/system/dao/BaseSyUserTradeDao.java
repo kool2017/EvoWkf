@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.kool.system.bean.SyUserTradeBean;
 
-
+/**
+ * @AUTHOR LUYU
+ */
 @Repository(value="BaseSyUserTradeDao")
 public interface BaseSyUserTradeDao {
 

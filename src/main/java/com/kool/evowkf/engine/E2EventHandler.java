@@ -5,7 +5,7 @@
  */
 package com.kool.evowkf.engine;
 
-import com.kool.core.exception.BusException;
+import com.kool.core.exception.AppException;
 import com.kool.evowkf.WKFConstants;
 import com.kool.evowkf.bean.vo.WkfEventResult;
 
@@ -25,7 +25,7 @@ public class E2EventHandler extends EventHandler {
 	 * @throws BusException
 	 */
 	@Override
-	public WkfEventResult wkfEvent(NodeEvent event) throws BusException {
+	public WkfEventResult wkfEvent(NodeEvent event) throws AppException {
 		WKFContext wkfInfo = event.getWkfInfo();
 		String approveFlag = wkfInfo.getApproveFlag();
 		String dsp = wkfInfo.getDescription();
@@ -37,7 +37,7 @@ public class E2EventHandler extends EventHandler {
 		} else if (WKFConstants.SRD_EVENT_FLAG_REJECT.equals(approveFlag)) {
 			forward = false;
 		} else {
-			throw new BusException("审批标志错误");
+			throw new AppException("审批标志错误");
 		}
 
 		WkfEventResult result = new WkfEventResult();

@@ -6,7 +6,6 @@
 package com.kool.evowkf.api;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.evowkf.engine.WKFContext;
 import com.kool.system.bean.io.SYPAGEINFOYBean;
 import com.kool.system.bean.vo.PageResult;
@@ -26,13 +25,13 @@ public interface IEvoWkfApi {
 	 */
 	public void resetEngine();
 	
-	public String start(WKFContext wkfInfo) throws AppException, BusException;
+	public String start(WKFContext wkfInfo) throws AppException;
 	
 	public PageResult querySchedule(String recordId, String businessType, String userId, String loginName, SYPAGEINFOYBean pageInfo);
 	
-	public void check(String recordId, String scheduleId, String userId, String loginName) throws BusException;
+	public void check(String recordId, String scheduleId, String userId, String loginName) throws AppException;
 	
-	public void nextStep(WKFContext wkfInfo) throws BusException, AppException;
+	public void nextStep(WKFContext wkfInfo) throws AppException;
 	
 	public void executeNodeByOperations(WKFContext wkfInfo);
 	

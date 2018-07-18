@@ -6,7 +6,6 @@
 package com.kool.evowkf.api;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.evowkf.engine.Alice;
 import com.kool.evowkf.engine.WKFContext;
 import com.kool.system.bean.io.SYPAGEINFOYBean;
@@ -39,7 +38,7 @@ public class SimpleApiImp implements IEvoWkfApi {
 	 *
 	 */
 	@Override
-	public String start(WKFContext wkfInfo) throws AppException, BusException {
+	public String start(WKFContext wkfInfo) throws AppException {
 		return Alice.getInstance().getStartWorker().start(wkfInfo);
 	}
 
@@ -63,7 +62,7 @@ public class SimpleApiImp implements IEvoWkfApi {
 	 *
 	 */
 	@Override
-	public void check(String recordId, String scheduleId, String userId, String loginName) throws BusException {
+	public void check(String recordId, String scheduleId, String userId, String loginName) throws AppException {
 		Alice.getInstance().getCheckWorker().check(recordId, scheduleId, userId, loginName);
 	}
 
@@ -75,7 +74,7 @@ public class SimpleApiImp implements IEvoWkfApi {
 	 *
 	 */
 	@Override
-	public void nextStep(WKFContext wkfInfo) throws BusException, AppException {
+	public void nextStep(WKFContext wkfInfo) throws AppException {
 		Alice.getInstance().getStepWorker().nextStep(wkfInfo);
 	}
 

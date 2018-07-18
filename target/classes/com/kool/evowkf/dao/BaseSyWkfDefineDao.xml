@@ -8,7 +8,7 @@
 		<result column="SWD_WKF_TYPE" property="swdWkfType" />
 		<result column="SWD_ROUTE_TYPE" property="swdRouteType" />
 		<result column="SWD_CHECK_FLAG" property="swdCheckFlag" />
-		<result column="SWD_WKF_STATUS" property="swdWkfStatus" />
+		<result column="SWD_STATE" property="swdState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
@@ -19,7 +19,7 @@
 			SWD_WKF_TYPE, 			
 			SWD_ROUTE_TYPE, 			
 			SWD_CHECK_FLAG, 			
-			SWD_WKF_STATUS			
+			SWD_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
@@ -46,8 +46,8 @@
 		<if test="swdCheckFlag != null and swdCheckFlag != ''">
 			AND SWD_CHECK_FLAG = #{swdCheckFlag}
 		</if>
-		<if test="swdWkfStatus != null and swdWkfStatus != ''">
-			AND SWD_WKF_STATUS = #{swdWkfStatus}
+		<if test="swdState != null and swdState != ''">
+			AND SWD_STATE = #{swdState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -88,8 +88,8 @@
 		<if test="swdCheckFlag != null and swdCheckFlag != ''">
 			AND SWD_CHECK_FLAG = #{swdCheckFlag}
 		</if>
-		<if test="swdWkfStatus != null and swdWkfStatus != ''">
-			AND SWD_WKF_STATUS = #{swdWkfStatus}
+		<if test="swdState != null and swdState != ''">
+			AND SWD_STATE = #{swdState}
 		</if>
 	</delete>
 	
@@ -111,8 +111,8 @@
 			<if test="swdCheckFlag != null">
 				SWD_CHECK_FLAG,
 			</if>		
-			<if test="swdWkfStatus != null">
-				SWD_WKF_STATUS,
+			<if test="swdState != null">
+				SWD_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -131,8 +131,8 @@
 			<if test="swdCheckFlag != null">
 				#{swdCheckFlag},
 			</if>	
-			<if test="swdWkfStatus != null">
-				#{swdWkfStatus},
+			<if test="swdState != null">
+				#{swdState},
 			</if>	
 		</trim>
 	</insert>
@@ -190,13 +190,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwdWkfStatus">
+			<if test="value.isInitSwdState">
 				<choose>
-					<when test="value.swdWkfStatus != null">
-						SWD_WKF_STATUS = #{value.swdWkfStatus},
+					<when test="value.swdState != null">
+						SWD_STATE = #{value.swdState},
 					</when>
 					<otherwise>
-						SWD_WKF_STATUS = NULL,
+						SWD_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -217,8 +217,8 @@
 		<if test="condition.swdCheckFlag != null and condition.swdCheckFlag != ''">
 			AND SWD_CHECK_FLAG =	#{condition.swdCheckFlag} 
 		</if>
-		<if test="condition.swdWkfStatus != null and condition.swdWkfStatus != ''">
-			AND SWD_WKF_STATUS =	#{condition.swdWkfStatus} 
+		<if test="condition.swdState != null and condition.swdState != ''">
+			AND SWD_STATE =	#{condition.swdState} 
 		</if>
 	</update>
 	
@@ -275,13 +275,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwdWkfStatus">
+			<if test="isInitSwdState">
 				<choose>
-					<when test="swdWkfStatus != null">
-						SWD_WKF_STATUS = #{swdWkfStatus},
+					<when test="swdState != null">
+						SWD_STATE = #{swdState},
 					</when>
 					<otherwise>
-						SWD_WKF_STATUS = NULL,
+						SWD_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -311,8 +311,8 @@
 			<if test="syWkfDefine.swdCheckFlag != null and syWkfDefine.swdCheckFlag != ''">
 				AND SWD_CHECK_FLAG = #{syWkfDefine.swdCheckFlag}
 			</if>
-			<if test="syWkfDefine.swdWkfStatus != null and syWkfDefine.swdWkfStatus != ''">
-				AND SWD_WKF_STATUS = #{syWkfDefine.swdWkfStatus}
+			<if test="syWkfDefine.swdState != null and syWkfDefine.swdState != ''">
+				AND SWD_STATE = #{syWkfDefine.swdState}
 			</if>
 		</if>
 		ORDER BY
@@ -339,8 +339,8 @@
 			<if test="swdCheckFlag != null and swdCheckFlag != ''">
 				AND SWD_CHECK_FLAG = #{swdCheckFlag}
 			</if>
-			<if test="swdWkfStatus != null and swdWkfStatus != ''">
-				AND SWD_WKF_STATUS = #{swdWkfStatus}
+			<if test="swdState != null and swdState != ''">
+				AND SWD_STATE = #{swdState}
 			</if>
 		</if>
 	</select>
@@ -357,7 +357,7 @@
 			#{item.swdWkfType},		
 			#{item.swdRouteType},		
 			#{item.swdCheckFlag},		
-			#{item.swdWkfStatus},		
+			#{item.swdState},		
 		</trim>
 		</foreach>
 	</insert>

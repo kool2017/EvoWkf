@@ -3,9 +3,9 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfCfgLogDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfCfgLogBean">
-		<id column="SCL_LOG_ID" property="sclLogId" />
+		<id column="SCL_LOG_UID" property="sclLogUid" />
 		<result column="SCL_LOG_TIME" property="sclLogTime" />
-		<result column="SCL_USER_ID" property="sclUserId" />
+		<result column="SCL_USER_CID" property="sclUserCid" />
 		<result column="SCL_LOGIN_NAME" property="sclLoginName" />
 		<result column="SCL_TABLE" property="sclTable" />
 		<result column="SCL_OPR_TYPE" property="sclOprType" />
@@ -17,9 +17,9 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SCL_LOG_ID, 			
+			SCL_LOG_UID, 			
 			SCL_LOG_TIME, 			
-			SCL_USER_ID, 			
+			SCL_USER_CID, 			
 			SCL_LOGIN_NAME, 			
 			SCL_TABLE, 			
 			SCL_OPR_TYPE, 			
@@ -29,7 +29,7 @@
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SCL_LOG_ID
+		SCL_LOG_UID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean"
@@ -37,12 +37,12 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_CFG_LOG WHERE 1=1 
-		<if test="sclLogId != null and sclLogId != ''">
-			AND SCL_LOG_ID = #{sclLogId}
+		<if test="sclLogUid != null and sclLogUid != ''">
+			AND SCL_LOG_UID = #{sclLogUid}
 		</if>
 		
-		<if test="sclUserId != null and sclUserId != ''">
-			AND SCL_USER_ID = #{sclUserId}
+		<if test="sclUserCid != null and sclUserCid != ''">
+			AND SCL_USER_CID = #{sclUserCid}
 		</if>
 		<if test="sclLoginName != null and sclLoginName != ''">
 			AND SCL_LOGIN_NAME = #{sclLoginName}
@@ -72,7 +72,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_CFG_LOG
 		WHERE 
-		SCL_LOG_ID = #{sclLogId}
+		SCL_LOG_UID = #{sclLogUid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -80,18 +80,18 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
 		DELETE FROM SY_WKF_CFG_LOG
 		WHERE
-		SCL_LOG_ID = #{sclLogId}
+		SCL_LOG_UID = #{sclLogUid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
 		DELETE FROM SY_WKF_CFG_LOG
 		WHERE 1=1 
-		<if test="sclLogId != null and sclLogId != ''">
-			AND SCL_LOG_ID = #{sclLogId}
+		<if test="sclLogUid != null and sclLogUid != ''">
+			AND SCL_LOG_UID = #{sclLogUid}
 		</if>
 		
-		<if test="sclUserId != null and sclUserId != ''">
-			AND SCL_USER_ID = #{sclUserId}
+		<if test="sclUserCid != null and sclUserCid != ''">
+			AND SCL_USER_CID = #{sclUserCid}
 		</if>
 		<if test="sclLoginName != null and sclLoginName != ''">
 			AND SCL_LOGIN_NAME = #{sclLoginName}
@@ -116,14 +116,14 @@
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
 		INSERT INTO SY_WKF_CFG_LOG
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="sclLogId != null">
-				SCL_LOG_ID,
+			<if test="sclLogUid != null">
+				SCL_LOG_UID,
 			</if>		
 			<if test="sclLogTime != null">
 				SCL_LOG_TIME,
 			</if>		
-			<if test="sclUserId != null">
-				SCL_USER_ID,
+			<if test="sclUserCid != null">
+				SCL_USER_CID,
 			</if>		
 			<if test="sclLoginName != null">
 				SCL_LOGIN_NAME,
@@ -145,14 +145,14 @@
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="sclLogId != null">
-				#{sclLogId},
+			<if test="sclLogUid != null">
+				#{sclLogUid},
 			</if>	
 			<if test="sclLogTime != null">
 				#{sclLogTime},
 			</if>	
-			<if test="sclUserId != null">
-				#{sclUserId},
+			<if test="sclUserCid != null">
+				#{sclUserCid},
 			</if>	
 			<if test="sclLoginName != null">
 				#{sclLoginName},
@@ -178,13 +178,13 @@
 	<update id="updates">
 		UPDATE SY_WKF_CFG_LOG
 		<set>
-			<if test="value.isInitSclLogId">
+			<if test="value.isInitSclLogUid">
 				<choose>
-					<when test="value.sclLogId != null">
-						SCL_LOG_ID = #{value.sclLogId},
+					<when test="value.sclLogUid != null">
+						SCL_LOG_UID = #{value.sclLogUid},
 					</when>
 					<otherwise>
-						SCL_LOG_ID = NULL,
+						SCL_LOG_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -198,13 +198,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSclUserId">
+			<if test="value.isInitSclUserCid">
 				<choose>
-					<when test="value.sclUserId != null">
-						SCL_USER_ID = #{value.sclUserId},
+					<when test="value.sclUserCid != null">
+						SCL_USER_CID = #{value.sclUserCid},
 					</when>
 					<otherwise>
-						SCL_USER_ID = NULL,
+						SCL_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -270,12 +270,12 @@
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.sclLogId != null and condition.sclLogId != ''">
-			AND SCL_LOG_ID =	#{condition.sclLogId} 
+		<if test="condition.sclLogUid != null and condition.sclLogUid != ''">
+			AND SCL_LOG_UID =	#{condition.sclLogUid} 
 		</if>
 		
-		<if test="condition.sclUserId != null and condition.sclUserId != ''">
-			AND SCL_USER_ID =	#{condition.sclUserId} 
+		<if test="condition.sclUserCid != null and condition.sclUserCid != ''">
+			AND SCL_USER_CID =	#{condition.sclUserCid} 
 		</if>
 		<if test="condition.sclLoginName != null and condition.sclLoginName != ''">
 			AND SCL_LOGIN_NAME =	#{condition.sclLoginName} 
@@ -300,13 +300,13 @@
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfCfgLogBean">
 		UPDATE SY_WKF_CFG_LOG
 		<set>
-			<if test="isInitSclLogId">
+			<if test="isInitSclLogUid">
 				<choose>
-					<when test="sclLogId != null">
-						SCL_LOG_ID = #{sclLogId},
+					<when test="sclLogUid != null">
+						SCL_LOG_UID = #{sclLogUid},
 					</when>
 					<otherwise>
-						SCL_LOG_ID = NULL,
+						SCL_LOG_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -320,13 +320,13 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSclUserId">
+			<if test="isInitSclUserCid">
 				<choose>
-					<when test="sclUserId != null">
-						SCL_USER_ID = #{sclUserId},
+					<when test="sclUserCid != null">
+						SCL_USER_CID = #{sclUserCid},
 					</when>
 					<otherwise>
-						SCL_USER_ID = NULL,
+						SCL_USER_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -392,7 +392,7 @@
 			</if>
 		</set>
 		WHERE 
-		SCL_LOG_ID = #{sclLogId}
+		SCL_LOG_UID = #{sclLogUid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -401,12 +401,12 @@
 		FROM
 		SY_WKF_CFG_LOG WHERE 1=1
 		<if test="syWkfCfgLog!=null">
-			<if test="syWkfCfgLog.sclLogId != null and syWkfCfgLog.sclLogId != ''">
-				AND SCL_LOG_ID = #{syWkfCfgLog.sclLogId}
+			<if test="syWkfCfgLog.sclLogUid != null and syWkfCfgLog.sclLogUid != ''">
+				AND SCL_LOG_UID = #{syWkfCfgLog.sclLogUid}
 			</if>
 			
-			<if test="syWkfCfgLog.sclUserId != null and syWkfCfgLog.sclUserId != ''">
-				AND SCL_USER_ID = #{syWkfCfgLog.sclUserId}
+			<if test="syWkfCfgLog.sclUserCid != null and syWkfCfgLog.sclUserCid != ''">
+				AND SCL_USER_CID = #{syWkfCfgLog.sclUserCid}
 			</if>
 			<if test="syWkfCfgLog.sclLoginName != null and syWkfCfgLog.sclLoginName != ''">
 				AND SCL_LOGIN_NAME = #{syWkfCfgLog.sclLoginName}
@@ -436,12 +436,12 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_CFG_LOG
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="sclLogId != null and sclLogId != ''">
-				AND SCL_LOG_ID = #{sclLogId}
+			<if test="sclLogUid != null and sclLogUid != ''">
+				AND SCL_LOG_UID = #{sclLogUid}
 			</if>
 			
-			<if test="sclUserId != null and sclUserId != ''">
-				AND SCL_USER_ID = #{sclUserId}
+			<if test="sclUserCid != null and sclUserCid != ''">
+				AND SCL_USER_CID = #{sclUserCid}
 			</if>
 			<if test="sclLoginName != null and sclLoginName != ''">
 				AND SCL_LOGIN_NAME = #{sclLoginName}
@@ -471,9 +471,9 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.sclLogId},		
+			#{item.sclLogUid},		
 			#{item.sclLogTime},		
-			#{item.sclUserId},		
+			#{item.sclUserCid},		
 			#{item.sclLoginName},		
 			#{item.sclTable},		
 			#{item.sclOprType},		

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyReqDefDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyReqDefBean">
+		<id column="SRD_REQ_URL" property="srdReqUrl" />
+		<result column="SRD_NAME" property="srdName" />
+		<result column="SRD_DBPOOL_TYPE" property="srdDbpoolType" />
+		<result column="SRD_DBPOOL_CODE" property="srdDbpoolCode" />
+		<result column="SRD_MSG_TYPE" property="srdMsgType" />
+		<result column="SRD_SIGN_FLAG" property="srdSignFlag" />
+		<result column="SRD_ENCRYPT" property="srdEncrypt" />
+		<result column="SRD_CHANNEL" property="srdChannel" />
+		<result column="SRD_STATE" property="srdState" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		SRD_REQ_URL, 			
+		SRD_NAME, 			
+		SRD_DBPOOL_TYPE, 			
+		SRD_DBPOOL_CODE, 			
+		SRD_MSG_TYPE, 			
+		SRD_SIGN_FLAG, 			
+		SRD_ENCRYPT, 			
+		SRD_CHANNEL, 			
+		SRD_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRD_REQ_URL
+	</sql>
+</mapper>  

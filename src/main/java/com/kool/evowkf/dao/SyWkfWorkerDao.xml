@@ -3,20 +3,20 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfWorkerDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfWorkerBean">
-		<id column="SWO_WG_ID" property="swoWgId" />
-		<id column="SWO_USER_ID" property="swoUserId" />
+		<id column="SWO_WG_CID" property="swoWgCid" />
+		<id column="SWO_USER_CID" property="swoUserCid" />
 		<result column="SWO_LOGIN_NAME" property="swoLoginName" />
-		<result column="SWO_USER_STATUS" property="swoUserStatus" />
+		<result column="SWO_USER_STATE" property="swoUserState" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWO_WG_ID, 			
-			SWO_USER_ID, 			
+			SWO_WG_CID, 			
+			SWO_USER_CID, 			
 			SWO_LOGIN_NAME, 			
-			SWO_USER_STATUS			
+			SWO_USER_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWO_WG_ID, SWO_USER_ID
+		SWO_WG_CID, SWO_USER_CID
 	</sql>
 </mapper>  

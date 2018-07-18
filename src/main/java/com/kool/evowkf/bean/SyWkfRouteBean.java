@@ -5,10 +5,10 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfRouteBean extends BaseBean {
-	protected String swrRouteId;
-	protected boolean isInitSwrRouteId;
-	protected String swrEntityId;
-	protected boolean isInitSwrEntityId;
+	protected String swrRouteCid;
+	protected boolean isInitSwrRouteCid;
+	protected String swrEntityCid;
+	protected boolean isInitSwrEntityCid;
 	protected String swrRouteCode;
 	protected boolean isInitSwrRouteCode;
 	protected String swrNodeHead;
@@ -22,12 +22,12 @@ public class SyWkfRouteBean extends BaseBean {
 	protected String swrRouteStatus;
 	protected boolean isInitSwrRouteStatus;
 
-	public boolean getIsInitSwrRouteId() {
-		return this.isInitSwrRouteId;
+	public boolean getIsInitSwrRouteCid() {
+		return this.isInitSwrRouteCid;
 	}
 
-	public boolean getIsInitSwrEntityId() {
-		return this.isInitSwrEntityId;
+	public boolean getIsInitSwrEntityCid() {
+		return this.isInitSwrEntityCid;
 	}
 
 	public boolean getIsInitSwrRouteCode() {
@@ -54,22 +54,22 @@ public class SyWkfRouteBean extends BaseBean {
 		return this.isInitSwrRouteStatus;
 	}
 
-	public String getSwrRouteId() {
-		return swrRouteId;
+	public String getSwrRouteCid() {
+		return swrRouteCid;
 	}
 
-	public void setSwrRouteId(String swrRouteId) {
-		this.swrRouteId = swrRouteId;
-		this.isInitSwrRouteId = true;
+	public void setSwrRouteCid(String swrRouteCid) {
+		this.swrRouteCid = swrRouteCid;
+		this.isInitSwrRouteCid = true;
 	}
 
-	public String getSwrEntityId() {
-		return swrEntityId;
+	public String getSwrEntityCid() {
+		return swrEntityCid;
 	}
 
-	public void setSwrEntityId(String swrEntityId) {
-		this.swrEntityId = swrEntityId;
-		this.isInitSwrEntityId = true;
+	public void setSwrEntityCid(String swrEntityCid) {
+		this.swrEntityCid = swrEntityCid;
+		this.isInitSwrEntityCid = true;
 	}
 
 	public String getSwrRouteCode() {
@@ -128,11 +128,11 @@ public class SyWkfRouteBean extends BaseBean {
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSwrRouteId) {
-			map.put("swrRouteId", formatString(swrRouteId));
+		if (isInitSwrRouteCid) {
+			map.put("swrRouteCid", formatString(swrRouteCid));
 		}
-		if (isInitSwrEntityId) {
-			map.put("swrEntityId", formatString(swrEntityId));
+		if (isInitSwrEntityCid) {
+			map.put("swrEntityCid", formatString(swrEntityCid));
 		}
 		if (isInitSwrRouteCode) {
 			map.put("swrRouteCode", formatString(swrRouteCode));

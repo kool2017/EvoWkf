@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyRoleGroupDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyRoleGroupBean">
+		<id column="SRG_GROUP_CODE" property="srgGroupCode" />
+		<result column="SRG_NAME" property="srgName" />
+		<result column="SRG_STATE" property="srgState" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRG_GROUP_CODE, 			
+			SRG_NAME, 			
+			SRG_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRG_GROUP_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyRoleGroupBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE_GROUP WHERE 1=1 
+		<if test="srgGroupCode != null and srgGroupCode != ''">
+			AND SRG_GROUP_CODE = #{srgGroupCode}
+		</if>
+		<if test="srgName != null and srgName != ''">
+			AND SRG_NAME = #{srgName}
+		</if>
+		<if test="srgState != null and srgState != ''">
+			AND SRG_STATE = #{srgState}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyRoleGroupBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ROLE_GROUP
+		WHERE 
+		SRG_GROUP_CODE = #{srgGroupCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyRoleGroupBean">
+		DELETE FROM SY_ROLE_GROUP
+		WHERE
+		SRG_GROUP_CODE = #{srgGroupCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyRoleGroupBean">
+		DELETE FROM SY_ROLE_GROUP
+		WHERE 1=1 
+		<if test="srgGroupCode != null and srgGroupCode != ''">
+			AND SRG_GROUP_CODE = #{srgGroupCode}
+		</if>
+		<if test="srgName != null and srgName != ''">
+			AND SRG_NAME = #{srgName}
+		</if>
+		<if test="srgState != null and srgState != ''">
+			AND SRG_STATE = #{srgState}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyRoleGroupBean">
+		INSERT INTO SY_ROLE_GROUP
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="srgGroupCode != null">
+				SRG_GROUP_CODE,
+			</if>		
+			<if test="srgName != null">
+				SRG_NAME,
+			</if>		
+			<if test="srgState != null">
+				SRG_STATE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="srgGroupCode != null">
+				#{srgGroupCode},
+			</if>	
+			<if test="srgName != null">
+				#{srgName},
+			</if>	
+			<if test="srgState != null">
+				#{srgState},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_ROLE_GROUP
+		<set>
+			<if test="value.isInitSrgGroupCode">
+				<choose>
+					<when test="value.srgGroupCode != null">
+						SRG_GROUP_CODE = #{value.srgGroupCode},
+					</when>
+					<otherwise>
+						SRG_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrgName">
+				<choose>
+					<when test="value.srgName != null">
+						SRG_NAME = #{value.srgName},
+					</when>
+					<otherwise>
+						SRG_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSrgState">
+				<choose>
+					<when test="value.srgState != null">
+						SRG_STATE = #{value.srgState},
+					</when>
+					<otherwise>
+						SRG_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.srgGroupCode != null and condition.srgGroupCode != ''">
+			AND SRG_GROUP_CODE =	#{condition.srgGroupCode} 
+		</if>
+		<if test="condition.srgName != null and condition.srgName != ''">
+			AND SRG_NAME =	#{condition.srgName} 
+		</if>
+		<if test="condition.srgState != null and condition.srgState != ''">
+			AND SRG_STATE =	#{condition.srgState} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyRoleGroupBean">
+		UPDATE SY_ROLE_GROUP
+		<set>
+			<if test="isInitSrgGroupCode">
+				<choose>
+					<when test="srgGroupCode != null">
+						SRG_GROUP_CODE = #{srgGroupCode},
+					</when>
+					<otherwise>
+						SRG_GROUP_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrgName">
+				<choose>
+					<when test="srgName != null">
+						SRG_NAME = #{srgName},
+					</when>
+					<otherwise>
+						SRG_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSrgState">
+				<choose>
+					<when test="srgState != null">
+						SRG_STATE = #{srgState},
+					</when>
+					<otherwise>
+						SRG_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SRG_GROUP_CODE = #{srgGroupCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_ROLE_GROUP WHERE 1=1
+		<if test="syRoleGroup!=null">
+			<if test="syRoleGroup.srgGroupCode != null and syRoleGroup.srgGroupCode != ''">
+				AND SRG_GROUP_CODE = #{syRoleGroup.srgGroupCode}
+			</if>
+			<if test="syRoleGroup.srgName != null and syRoleGroup.srgName != ''">
+				AND SRG_NAME = #{syRoleGroup.srgName}
+			</if>
+			<if test="syRoleGroup.srgState != null and syRoleGroup.srgState != ''">
+				AND SRG_STATE = #{syRoleGroup.srgState}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyRoleGroupBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_ROLE_GROUP
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="srgGroupCode != null and srgGroupCode != ''">
+				AND SRG_GROUP_CODE = #{srgGroupCode}
+			</if>
+			<if test="srgName != null and srgName != ''">
+				AND SRG_NAME = #{srgName}
+			</if>
+			<if test="srgState != null and srgState != ''">
+				AND SRG_STATE = #{srgState}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_ROLE_GROUP(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.srgGroupCode},		
+			#{item.srgName},		
+			#{item.srgState},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

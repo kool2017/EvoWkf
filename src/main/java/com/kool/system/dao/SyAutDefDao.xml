@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyAutDefDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyAutDefBean">
+		<id column="SAD_AUT_CODE" property="sadAutCode" />
+		<result column="SAD_TYPE" property="sadType" />
+		<result column="SAD_NAME" property="sadName" />
+		<result column="SAD_STATE" property="sadState" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		SAD_AUT_CODE, 			
+		SAD_TYPE, 			
+		SAD_NAME, 			
+		SAD_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SAD_AUT_CODE
+	</sql>
+</mapper>  

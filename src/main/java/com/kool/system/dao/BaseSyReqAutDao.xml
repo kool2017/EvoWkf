@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyReqAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyReqAutBean">
+		<id column="SRA_REQ_URL" property="sraReqUrl" />
+		<id column="SRA_AUT_CODE" property="sraAutCode" />
+		<result column="SRA_CMT" property="sraCmt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRA_REQ_URL, 			
+			SRA_AUT_CODE, 			
+			SRA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRA_REQ_URL, SRA_AUT_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyReqAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_REQ_AUT WHERE 1=1 
+		<if test="sraReqUrl != null and sraReqUrl != ''">
+			AND SRA_REQ_URL = #{sraReqUrl}
+		</if>
+		<if test="sraAutCode != null and sraAutCode != ''">
+			AND SRA_AUT_CODE = #{sraAutCode}
+		</if>
+		<if test="sraCmt != null and sraCmt != ''">
+			AND SRA_CMT = #{sraCmt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyReqAutBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_REQ_AUT
+		WHERE 
+		SRA_REQ_URL = #{sraReqUrl} AND 
+		SRA_AUT_CODE = #{sraAutCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyReqAutBean">
+		DELETE FROM SY_REQ_AUT
+		WHERE
+		SRA_REQ_URL = #{sraReqUrl} AND 
+		SRA_AUT_CODE = #{sraAutCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyReqAutBean">
+		DELETE FROM SY_REQ_AUT
+		WHERE 1=1 
+		<if test="sraReqUrl != null and sraReqUrl != ''">
+			AND SRA_REQ_URL = #{sraReqUrl}
+		</if>
+		<if test="sraAutCode != null and sraAutCode != ''">
+			AND SRA_AUT_CODE = #{sraAutCode}
+		</if>
+		<if test="sraCmt != null and sraCmt != ''">
+			AND SRA_CMT = #{sraCmt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyReqAutBean">
+		INSERT INTO SY_REQ_AUT
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sraReqUrl != null">
+				SRA_REQ_URL,
+			</if>		
+			<if test="sraAutCode != null">
+				SRA_AUT_CODE,
+			</if>		
+			<if test="sraCmt != null">
+				SRA_CMT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sraReqUrl != null">
+				#{sraReqUrl},
+			</if>	
+			<if test="sraAutCode != null">
+				#{sraAutCode},
+			</if>	
+			<if test="sraCmt != null">
+				#{sraCmt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_REQ_AUT
+		<set>
+			<if test="value.isInitSraReqUrl">
+				<choose>
+					<when test="value.sraReqUrl != null">
+						SRA_REQ_URL = #{value.sraReqUrl},
+					</when>
+					<otherwise>
+						SRA_REQ_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSraAutCode">
+				<choose>
+					<when test="value.sraAutCode != null">
+						SRA_AUT_CODE = #{value.sraAutCode},
+					</when>
+					<otherwise>
+						SRA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSraCmt">
+				<choose>
+					<when test="value.sraCmt != null">
+						SRA_CMT = #{value.sraCmt},
+					</when>
+					<otherwise>
+						SRA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sraReqUrl != null and condition.sraReqUrl != ''">
+			AND SRA_REQ_URL =	#{condition.sraReqUrl} 
+		</if>
+		<if test="condition.sraAutCode != null and condition.sraAutCode != ''">
+			AND SRA_AUT_CODE =	#{condition.sraAutCode} 
+		</if>
+		<if test="condition.sraCmt != null and condition.sraCmt != ''">
+			AND SRA_CMT =	#{condition.sraCmt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyReqAutBean">
+		UPDATE SY_REQ_AUT
+		<set>
+			<if test="isInitSraReqUrl">
+				<choose>
+					<when test="sraReqUrl != null">
+						SRA_REQ_URL = #{sraReqUrl},
+					</when>
+					<otherwise>
+						SRA_REQ_URL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSraAutCode">
+				<choose>
+					<when test="sraAutCode != null">
+						SRA_AUT_CODE = #{sraAutCode},
+					</when>
+					<otherwise>
+						SRA_AUT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSraCmt">
+				<choose>
+					<when test="sraCmt != null">
+						SRA_CMT = #{sraCmt},
+					</when>
+					<otherwise>
+						SRA_CMT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SRA_REQ_URL = #{sraReqUrl} AND 
+		SRA_AUT_CODE = #{sraAutCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_REQ_AUT WHERE 1=1
+		<if test="syReqAut!=null">
+			<if test="syReqAut.sraReqUrl != null and syReqAut.sraReqUrl != ''">
+				AND SRA_REQ_URL = #{syReqAut.sraReqUrl}
+			</if>
+			<if test="syReqAut.sraAutCode != null and syReqAut.sraAutCode != ''">
+				AND SRA_AUT_CODE = #{syReqAut.sraAutCode}
+			</if>
+			<if test="syReqAut.sraCmt != null and syReqAut.sraCmt != ''">
+				AND SRA_CMT = #{syReqAut.sraCmt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyReqAutBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_REQ_AUT
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sraReqUrl != null and sraReqUrl != ''">
+				AND SRA_REQ_URL = #{sraReqUrl}
+			</if>
+			<if test="sraAutCode != null and sraAutCode != ''">
+				AND SRA_AUT_CODE = #{sraAutCode}
+			</if>
+			<if test="sraCmt != null and sraCmt != ''">
+				AND SRA_CMT = #{sraCmt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_REQ_AUT(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sraReqUrl},		
+			#{item.sraAutCode},		
+			#{item.sraCmt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

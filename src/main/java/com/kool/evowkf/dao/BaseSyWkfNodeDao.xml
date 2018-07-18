@@ -3,10 +3,10 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfNodeDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeBean">
-		<id column="SWN_NODE_ID" property="swnNodeId" />
+		<id column="SWN_NODE_CID" property="swnNodeCid" />
 		<result column="SWN_NODE_NAME" property="swnNodeName" />
-		<result column="SWN_ENTITY_ID" property="swnEntityId" />
-		<result column="SWN_WG_ID" property="swnWgId" />
+		<result column="SWN_ENTITY_CID" property="swnEntityCid" />
+		<result column="SWN_WG_CID" property="swnWgCid" />
 		<result column="SWN_EVENT_TYPE" property="swnEventType" />
 		<result column="SWN_EVENT_RULE" property="swnEventRule" />
 		<result column="SWN_EVENT_EXT" property="swnEventExt" />
@@ -19,16 +19,16 @@
 		<result column="SWN_BRANCH_STRATEGY_CLAZZ" property="swnBranchStrategyClazz" />
 		<result column="SWN_IS_AUTO" property="swnIsAuto" />
 		<result column="SWN_VIEW_URL" property="swnViewUrl" />
-		<result column="SWN_NODE_STATUS" property="swnNodeStatus" />
+		<result column="SWN_STATE" property="swnState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWN_NODE_ID, 			
+			SWN_NODE_CID, 			
 			SWN_NODE_NAME, 			
-			SWN_ENTITY_ID, 			
-			SWN_WG_ID, 			
+			SWN_ENTITY_CID, 			
+			SWN_WG_CID, 			
 			SWN_EVENT_TYPE, 			
 			SWN_EVENT_RULE, 			
 			SWN_EVENT_EXT, 			
@@ -41,11 +41,11 @@
 			SWN_BRANCH_STRATEGY_CLAZZ, 			
 			SWN_IS_AUTO, 			
 			SWN_VIEW_URL, 			
-			SWN_NODE_STATUS			
+			SWN_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWN_NODE_ID
+		SWN_NODE_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfNodeBean"
@@ -53,17 +53,17 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_NODE WHERE 1=1 
-		<if test="swnNodeId != null and swnNodeId != ''">
-			AND SWN_NODE_ID = #{swnNodeId}
+		<if test="swnNodeCid != null and swnNodeCid != ''">
+			AND SWN_NODE_CID = #{swnNodeCid}
 		</if>
 		<if test="swnNodeName != null and swnNodeName != ''">
 			AND SWN_NODE_NAME = #{swnNodeName}
 		</if>
-		<if test="swnEntityId != null and swnEntityId != ''">
-			AND SWN_ENTITY_ID = #{swnEntityId}
+		<if test="swnEntityCid != null and swnEntityCid != ''">
+			AND SWN_ENTITY_CID = #{swnEntityCid}
 		</if>
-		<if test="swnWgId != null and swnWgId != ''">
-			AND SWN_WG_ID = #{swnWgId}
+		<if test="swnWgCid != null and swnWgCid != ''">
+			AND SWN_WG_CID = #{swnWgCid}
 		</if>
 		<if test="swnEventType != null and swnEventType != ''">
 			AND SWN_EVENT_TYPE = #{swnEventType}
@@ -101,8 +101,8 @@
 		<if test="swnViewUrl != null and swnViewUrl != ''">
 			AND SWN_VIEW_URL = #{swnViewUrl}
 		</if>
-		<if test="swnNodeStatus != null and swnNodeStatus != ''">
-			AND SWN_NODE_STATUS = #{swnNodeStatus}
+		<if test="swnState != null and swnState != ''">
+			AND SWN_STATE = #{swnState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -114,7 +114,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_NODE
 		WHERE 
-		SWN_NODE_ID = #{swnNodeId}
+		SWN_NODE_CID = #{swnNodeCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -122,23 +122,23 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
 		DELETE FROM SY_WKF_NODE
 		WHERE
-		SWN_NODE_ID = #{swnNodeId}
+		SWN_NODE_CID = #{swnNodeCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
 		DELETE FROM SY_WKF_NODE
 		WHERE 1=1 
-		<if test="swnNodeId != null and swnNodeId != ''">
-			AND SWN_NODE_ID = #{swnNodeId}
+		<if test="swnNodeCid != null and swnNodeCid != ''">
+			AND SWN_NODE_CID = #{swnNodeCid}
 		</if>
 		<if test="swnNodeName != null and swnNodeName != ''">
 			AND SWN_NODE_NAME = #{swnNodeName}
 		</if>
-		<if test="swnEntityId != null and swnEntityId != ''">
-			AND SWN_ENTITY_ID = #{swnEntityId}
+		<if test="swnEntityCid != null and swnEntityCid != ''">
+			AND SWN_ENTITY_CID = #{swnEntityCid}
 		</if>
-		<if test="swnWgId != null and swnWgId != ''">
-			AND SWN_WG_ID = #{swnWgId}
+		<if test="swnWgCid != null and swnWgCid != ''">
+			AND SWN_WG_CID = #{swnWgCid}
 		</if>
 		<if test="swnEventType != null and swnEventType != ''">
 			AND SWN_EVENT_TYPE = #{swnEventType}
@@ -176,25 +176,25 @@
 		<if test="swnViewUrl != null and swnViewUrl != ''">
 			AND SWN_VIEW_URL = #{swnViewUrl}
 		</if>
-		<if test="swnNodeStatus != null and swnNodeStatus != ''">
-			AND SWN_NODE_STATUS = #{swnNodeStatus}
+		<if test="swnState != null and swnState != ''">
+			AND SWN_STATE = #{swnState}
 		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
 		INSERT INTO SY_WKF_NODE
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="swnNodeId != null">
-				SWN_NODE_ID,
+			<if test="swnNodeCid != null">
+				SWN_NODE_CID,
 			</if>		
 			<if test="swnNodeName != null">
 				SWN_NODE_NAME,
 			</if>		
-			<if test="swnEntityId != null">
-				SWN_ENTITY_ID,
+			<if test="swnEntityCid != null">
+				SWN_ENTITY_CID,
 			</if>		
-			<if test="swnWgId != null">
-				SWN_WG_ID,
+			<if test="swnWgCid != null">
+				SWN_WG_CID,
 			</if>		
 			<if test="swnEventType != null">
 				SWN_EVENT_TYPE,
@@ -232,22 +232,22 @@
 			<if test="swnViewUrl != null">
 				SWN_VIEW_URL,
 			</if>		
-			<if test="swnNodeStatus != null">
-				SWN_NODE_STATUS,
+			<if test="swnState != null">
+				SWN_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="swnNodeId != null">
-				#{swnNodeId},
+			<if test="swnNodeCid != null">
+				#{swnNodeCid},
 			</if>	
 			<if test="swnNodeName != null">
 				#{swnNodeName},
 			</if>	
-			<if test="swnEntityId != null">
-				#{swnEntityId},
+			<if test="swnEntityCid != null">
+				#{swnEntityCid},
 			</if>	
-			<if test="swnWgId != null">
-				#{swnWgId},
+			<if test="swnWgCid != null">
+				#{swnWgCid},
 			</if>	
 			<if test="swnEventType != null">
 				#{swnEventType},
@@ -285,8 +285,8 @@
 			<if test="swnViewUrl != null">
 				#{swnViewUrl},
 			</if>	
-			<if test="swnNodeStatus != null">
-				#{swnNodeStatus},
+			<if test="swnState != null">
+				#{swnState},
 			</if>	
 		</trim>
 	</insert>
@@ -294,13 +294,13 @@
 	<update id="updates">
 		UPDATE SY_WKF_NODE
 		<set>
-			<if test="value.isInitSwnNodeId">
+			<if test="value.isInitSwnNodeCid">
 				<choose>
-					<when test="value.swnNodeId != null">
-						SWN_NODE_ID = #{value.swnNodeId},
+					<when test="value.swnNodeCid != null">
+						SWN_NODE_CID = #{value.swnNodeCid},
 					</when>
 					<otherwise>
-						SWN_NODE_ID = NULL,
+						SWN_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -314,23 +314,23 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwnEntityId">
+			<if test="value.isInitSwnEntityCid">
 				<choose>
-					<when test="value.swnEntityId != null">
-						SWN_ENTITY_ID = #{value.swnEntityId},
+					<when test="value.swnEntityCid != null">
+						SWN_ENTITY_CID = #{value.swnEntityCid},
 					</when>
 					<otherwise>
-						SWN_ENTITY_ID = NULL,
+						SWN_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwnWgId">
+			<if test="value.isInitSwnWgCid">
 				<choose>
-					<when test="value.swnWgId != null">
-						SWN_WG_ID = #{value.swnWgId},
+					<when test="value.swnWgCid != null">
+						SWN_WG_CID = #{value.swnWgCid},
 					</when>
 					<otherwise>
-						SWN_WG_ID = NULL,
+						SWN_WG_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -454,29 +454,29 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSwnNodeStatus">
+			<if test="value.isInitSwnState">
 				<choose>
-					<when test="value.swnNodeStatus != null">
-						SWN_NODE_STATUS = #{value.swnNodeStatus},
+					<when test="value.swnState != null">
+						SWN_STATE = #{value.swnState},
 					</when>
 					<otherwise>
-						SWN_NODE_STATUS = NULL,
+						SWN_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.swnNodeId != null and condition.swnNodeId != ''">
-			AND SWN_NODE_ID =	#{condition.swnNodeId} 
+		<if test="condition.swnNodeCid != null and condition.swnNodeCid != ''">
+			AND SWN_NODE_CID =	#{condition.swnNodeCid} 
 		</if>
 		<if test="condition.swnNodeName != null and condition.swnNodeName != ''">
 			AND SWN_NODE_NAME =	#{condition.swnNodeName} 
 		</if>
-		<if test="condition.swnEntityId != null and condition.swnEntityId != ''">
-			AND SWN_ENTITY_ID =	#{condition.swnEntityId} 
+		<if test="condition.swnEntityCid != null and condition.swnEntityCid != ''">
+			AND SWN_ENTITY_CID =	#{condition.swnEntityCid} 
 		</if>
-		<if test="condition.swnWgId != null and condition.swnWgId != ''">
-			AND SWN_WG_ID =	#{condition.swnWgId} 
+		<if test="condition.swnWgCid != null and condition.swnWgCid != ''">
+			AND SWN_WG_CID =	#{condition.swnWgCid} 
 		</if>
 		<if test="condition.swnEventType != null and condition.swnEventType != ''">
 			AND SWN_EVENT_TYPE =	#{condition.swnEventType} 
@@ -514,21 +514,21 @@
 		<if test="condition.swnViewUrl != null and condition.swnViewUrl != ''">
 			AND SWN_VIEW_URL =	#{condition.swnViewUrl} 
 		</if>
-		<if test="condition.swnNodeStatus != null and condition.swnNodeStatus != ''">
-			AND SWN_NODE_STATUS =	#{condition.swnNodeStatus} 
+		<if test="condition.swnState != null and condition.swnState != ''">
+			AND SWN_STATE =	#{condition.swnState} 
 		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfNodeBean">
 		UPDATE SY_WKF_NODE
 		<set>
-			<if test="isInitSwnNodeId">
+			<if test="isInitSwnNodeCid">
 				<choose>
-					<when test="swnNodeId != null">
-						SWN_NODE_ID = #{swnNodeId},
+					<when test="swnNodeCid != null">
+						SWN_NODE_CID = #{swnNodeCid},
 					</when>
 					<otherwise>
-						SWN_NODE_ID = NULL,
+						SWN_NODE_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -542,23 +542,23 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwnEntityId">
+			<if test="isInitSwnEntityCid">
 				<choose>
-					<when test="swnEntityId != null">
-						SWN_ENTITY_ID = #{swnEntityId},
+					<when test="swnEntityCid != null">
+						SWN_ENTITY_CID = #{swnEntityCid},
 					</when>
 					<otherwise>
-						SWN_ENTITY_ID = NULL,
+						SWN_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwnWgId">
+			<if test="isInitSwnWgCid">
 				<choose>
-					<when test="swnWgId != null">
-						SWN_WG_ID = #{swnWgId},
+					<when test="swnWgCid != null">
+						SWN_WG_CID = #{swnWgCid},
 					</when>
 					<otherwise>
-						SWN_WG_ID = NULL,
+						SWN_WG_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -682,19 +682,19 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSwnNodeStatus">
+			<if test="isInitSwnState">
 				<choose>
-					<when test="swnNodeStatus != null">
-						SWN_NODE_STATUS = #{swnNodeStatus},
+					<when test="swnState != null">
+						SWN_STATE = #{swnState},
 					</when>
 					<otherwise>
-						SWN_NODE_STATUS = NULL,
+						SWN_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 
-		SWN_NODE_ID = #{swnNodeId}
+		SWN_NODE_CID = #{swnNodeCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -703,17 +703,17 @@
 		FROM
 		SY_WKF_NODE WHERE 1=1
 		<if test="syWkfNode!=null">
-			<if test="syWkfNode.swnNodeId != null and syWkfNode.swnNodeId != ''">
-				AND SWN_NODE_ID = #{syWkfNode.swnNodeId}
+			<if test="syWkfNode.swnNodeCid != null and syWkfNode.swnNodeCid != ''">
+				AND SWN_NODE_CID = #{syWkfNode.swnNodeCid}
 			</if>
 			<if test="syWkfNode.swnNodeName != null and syWkfNode.swnNodeName != ''">
 				AND SWN_NODE_NAME = #{syWkfNode.swnNodeName}
 			</if>
-			<if test="syWkfNode.swnEntityId != null and syWkfNode.swnEntityId != ''">
-				AND SWN_ENTITY_ID = #{syWkfNode.swnEntityId}
+			<if test="syWkfNode.swnEntityCid != null and syWkfNode.swnEntityCid != ''">
+				AND SWN_ENTITY_CID = #{syWkfNode.swnEntityCid}
 			</if>
-			<if test="syWkfNode.swnWgId != null and syWkfNode.swnWgId != ''">
-				AND SWN_WG_ID = #{syWkfNode.swnWgId}
+			<if test="syWkfNode.swnWgCid != null and syWkfNode.swnWgCid != ''">
+				AND SWN_WG_CID = #{syWkfNode.swnWgCid}
 			</if>
 			<if test="syWkfNode.swnEventType != null and syWkfNode.swnEventType != ''">
 				AND SWN_EVENT_TYPE = #{syWkfNode.swnEventType}
@@ -751,8 +751,8 @@
 			<if test="syWkfNode.swnViewUrl != null and syWkfNode.swnViewUrl != ''">
 				AND SWN_VIEW_URL = #{syWkfNode.swnViewUrl}
 			</if>
-			<if test="syWkfNode.swnNodeStatus != null and syWkfNode.swnNodeStatus != ''">
-				AND SWN_NODE_STATUS = #{syWkfNode.swnNodeStatus}
+			<if test="syWkfNode.swnState != null and syWkfNode.swnState != ''">
+				AND SWN_STATE = #{syWkfNode.swnState}
 			</if>
 		</if>
 		ORDER BY
@@ -764,17 +764,17 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_NODE
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="swnNodeId != null and swnNodeId != ''">
-				AND SWN_NODE_ID = #{swnNodeId}
+			<if test="swnNodeCid != null and swnNodeCid != ''">
+				AND SWN_NODE_CID = #{swnNodeCid}
 			</if>
 			<if test="swnNodeName != null and swnNodeName != ''">
 				AND SWN_NODE_NAME = #{swnNodeName}
 			</if>
-			<if test="swnEntityId != null and swnEntityId != ''">
-				AND SWN_ENTITY_ID = #{swnEntityId}
+			<if test="swnEntityCid != null and swnEntityCid != ''">
+				AND SWN_ENTITY_CID = #{swnEntityCid}
 			</if>
-			<if test="swnWgId != null and swnWgId != ''">
-				AND SWN_WG_ID = #{swnWgId}
+			<if test="swnWgCid != null and swnWgCid != ''">
+				AND SWN_WG_CID = #{swnWgCid}
 			</if>
 			<if test="swnEventType != null and swnEventType != ''">
 				AND SWN_EVENT_TYPE = #{swnEventType}
@@ -812,8 +812,8 @@
 			<if test="swnViewUrl != null and swnViewUrl != ''">
 				AND SWN_VIEW_URL = #{swnViewUrl}
 			</if>
-			<if test="swnNodeStatus != null and swnNodeStatus != ''">
-				AND SWN_NODE_STATUS = #{swnNodeStatus}
+			<if test="swnState != null and swnState != ''">
+				AND SWN_STATE = #{swnState}
 			</if>
 		</if>
 	</select>
@@ -825,10 +825,10 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.swnNodeId},		
+			#{item.swnNodeCid},		
 			#{item.swnNodeName},		
-			#{item.swnEntityId},		
-			#{item.swnWgId},		
+			#{item.swnEntityCid},		
+			#{item.swnWgCid},		
 			#{item.swnEventType},		
 			#{item.swnEventRule},		
 			#{item.swnEventExt},		
@@ -841,7 +841,7 @@
 			#{item.swnBranchStrategyClazz},		
 			#{item.swnIsAuto},		
 			#{item.swnViewUrl},		
-			#{item.swnNodeStatus},		
+			#{item.swnState},		
 		</trim>
 		</foreach>
 	</insert>

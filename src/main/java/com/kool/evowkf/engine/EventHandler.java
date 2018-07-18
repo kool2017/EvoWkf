@@ -6,7 +6,6 @@
 package com.kool.evowkf.engine;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.evowkf.bean.vo.WkfEventResult;
 
 /**
@@ -18,9 +17,9 @@ import com.kool.evowkf.bean.vo.WkfEventResult;
 public abstract class EventHandler {
 	private IEventRule eventRule;
 
-	public abstract WkfEventResult wkfEvent(NodeEvent event) throws BusException;
+	public abstract WkfEventResult wkfEvent(NodeEvent event) throws AppException;
 	
-	public WkfEventResult handleEvent(NodeEvent event) throws BusException, AppException {
+	public WkfEventResult handleEvent(NodeEvent event) throws AppException {
 		WkfEventResult result = wkfEvent(event);
 		eventRule.DoRule(event);
 		return result;

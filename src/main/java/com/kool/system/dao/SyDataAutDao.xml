@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyDataAutDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyDataAutBean">
+		<id column="SDA_DATA_AUT_UID" property="sdaDataAutUid" />
+		<result column="SDA_DATA_CODE" property="sdaDataCode" />
+		<result column="SDA_VALUE" property="sdaValue" />
+		<result column="SDA_OWNER_TYPE" property="sdaOwnerType" />
+		<result column="SDA_USER_CID" property="sdaUserCid" />
+		<result column="SDA_ROLE_CODE" property="sdaRoleCode" />
+		<result column="SDA_GROUP_CODE" property="sdaGroupCode" />
+		<result column="SDA_CMT" property="sdaCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SDA_DATA_AUT_UID, 			
+			SDA_DATA_CODE, 			
+			SDA_VALUE, 			
+			SDA_OWNER_TYPE, 			
+			SDA_USER_CID, 			
+			SDA_ROLE_CODE, 			
+			SDA_GROUP_CODE, 			
+			SDA_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SDA_DATA_AUT_UID
+	</sql>
+</mapper>  

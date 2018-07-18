@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyRoleRoleGroupDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyRoleRoleGroupBean">
+		<id column="SRR_ROLE_CODE" property="srrRoleCode" />
+		<id column="SRR_GROUP_CODE" property="srrGroupCode" />
+		<result column="SRR_CMT" property="srrCmt" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SRR_ROLE_CODE, 			
+			SRR_GROUP_CODE, 			
+			SRR_CMT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SRR_ROLE_CODE, SRR_GROUP_CODE
+	</sql>
+</mapper>  

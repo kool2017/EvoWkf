@@ -3,31 +3,31 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfEntityDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfEntityBean">
-		<id column="SWE_ENTITY_ID" property="sweEntityId" />
+		<id column="SWE_ENTITY_CID" property="sweEntityCid" />
 		<result column="SWE_ENTITY_NAME" property="sweEntityName" />
 		<result column="SWE_WKF_CODE" property="sweWkfCode" />
 		<result column="SWE_BUSINESS_TYPE" property="sweBusinessType" />
 		<result column="SWE_MATCH_VALUE" property="sweMatchValue" />
 		<result column="SWE_NODE_HEAD" property="sweNodeHead" />
 		<result column="SWE_NODE_HEAD_NAME" property="sweNodeHeadName" />
-		<result column="SWE_ENTITY_STATUS" property="sweEntityStatus" />
+		<result column="SWE_STATE" property="sweState" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SWE_ENTITY_ID, 			
+			SWE_ENTITY_CID, 			
 			SWE_ENTITY_NAME, 			
 			SWE_WKF_CODE, 			
 			SWE_BUSINESS_TYPE, 			
 			SWE_MATCH_VALUE, 			
 			SWE_NODE_HEAD, 			
 			SWE_NODE_HEAD_NAME, 			
-			SWE_ENTITY_STATUS			
+			SWE_STATE			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SWE_ENTITY_ID
+		SWE_ENTITY_CID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfEntityBean"
@@ -35,8 +35,8 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_ENTITY WHERE 1=1 
-		<if test="sweEntityId != null and sweEntityId != ''">
-			AND SWE_ENTITY_ID = #{sweEntityId}
+		<if test="sweEntityCid != null and sweEntityCid != ''">
+			AND SWE_ENTITY_CID = #{sweEntityCid}
 		</if>
 		<if test="sweEntityName != null and sweEntityName != ''">
 			AND SWE_ENTITY_NAME = #{sweEntityName}
@@ -56,8 +56,8 @@
 		<if test="sweNodeHeadName != null and sweNodeHeadName != ''">
 			AND SWE_NODE_HEAD_NAME = #{sweNodeHeadName}
 		</if>
-		<if test="sweEntityStatus != null and sweEntityStatus != ''">
-			AND SWE_ENTITY_STATUS = #{sweEntityStatus}
+		<if test="sweState != null and sweState != ''">
+			AND SWE_STATE = #{sweState}
 		</if>
 		ORDER BY
 		<include refid="Primary_Key_List" />
@@ -69,7 +69,7 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_ENTITY
 		WHERE 
-		SWE_ENTITY_ID = #{sweEntityId}
+		SWE_ENTITY_CID = #{sweEntityCid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -77,14 +77,14 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
 		DELETE FROM SY_WKF_ENTITY
 		WHERE
-		SWE_ENTITY_ID = #{sweEntityId}
+		SWE_ENTITY_CID = #{sweEntityCid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
 		DELETE FROM SY_WKF_ENTITY
 		WHERE 1=1 
-		<if test="sweEntityId != null and sweEntityId != ''">
-			AND SWE_ENTITY_ID = #{sweEntityId}
+		<if test="sweEntityCid != null and sweEntityCid != ''">
+			AND SWE_ENTITY_CID = #{sweEntityCid}
 		</if>
 		<if test="sweEntityName != null and sweEntityName != ''">
 			AND SWE_ENTITY_NAME = #{sweEntityName}
@@ -104,16 +104,16 @@
 		<if test="sweNodeHeadName != null and sweNodeHeadName != ''">
 			AND SWE_NODE_HEAD_NAME = #{sweNodeHeadName}
 		</if>
-		<if test="sweEntityStatus != null and sweEntityStatus != ''">
-			AND SWE_ENTITY_STATUS = #{sweEntityStatus}
+		<if test="sweState != null and sweState != ''">
+			AND SWE_STATE = #{sweState}
 		</if>
 	</delete>
 	
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
 		INSERT INTO SY_WKF_ENTITY
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="sweEntityId != null">
-				SWE_ENTITY_ID,
+			<if test="sweEntityCid != null">
+				SWE_ENTITY_CID,
 			</if>		
 			<if test="sweEntityName != null">
 				SWE_ENTITY_NAME,
@@ -133,13 +133,13 @@
 			<if test="sweNodeHeadName != null">
 				SWE_NODE_HEAD_NAME,
 			</if>		
-			<if test="sweEntityStatus != null">
-				SWE_ENTITY_STATUS,
+			<if test="sweState != null">
+				SWE_STATE,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="sweEntityId != null">
-				#{sweEntityId},
+			<if test="sweEntityCid != null">
+				#{sweEntityCid},
 			</if>	
 			<if test="sweEntityName != null">
 				#{sweEntityName},
@@ -159,8 +159,8 @@
 			<if test="sweNodeHeadName != null">
 				#{sweNodeHeadName},
 			</if>	
-			<if test="sweEntityStatus != null">
-				#{sweEntityStatus},
+			<if test="sweState != null">
+				#{sweState},
 			</if>	
 		</trim>
 	</insert>
@@ -168,13 +168,13 @@
 	<update id="updates">
 		UPDATE SY_WKF_ENTITY
 		<set>
-			<if test="value.isInitSweEntityId">
+			<if test="value.isInitSweEntityCid">
 				<choose>
-					<when test="value.sweEntityId != null">
-						SWE_ENTITY_ID = #{value.sweEntityId},
+					<when test="value.sweEntityCid != null">
+						SWE_ENTITY_CID = #{value.sweEntityCid},
 					</when>
 					<otherwise>
-						SWE_ENTITY_ID = NULL,
+						SWE_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -238,20 +238,20 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSweEntityStatus">
+			<if test="value.isInitSweState">
 				<choose>
-					<when test="value.sweEntityStatus != null">
-						SWE_ENTITY_STATUS = #{value.sweEntityStatus},
+					<when test="value.sweState != null">
+						SWE_STATE = #{value.sweState},
 					</when>
 					<otherwise>
-						SWE_ENTITY_STATUS = NULL,
+						SWE_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.sweEntityId != null and condition.sweEntityId != ''">
-			AND SWE_ENTITY_ID =	#{condition.sweEntityId} 
+		<if test="condition.sweEntityCid != null and condition.sweEntityCid != ''">
+			AND SWE_ENTITY_CID =	#{condition.sweEntityCid} 
 		</if>
 		<if test="condition.sweEntityName != null and condition.sweEntityName != ''">
 			AND SWE_ENTITY_NAME =	#{condition.sweEntityName} 
@@ -271,21 +271,21 @@
 		<if test="condition.sweNodeHeadName != null and condition.sweNodeHeadName != ''">
 			AND SWE_NODE_HEAD_NAME =	#{condition.sweNodeHeadName} 
 		</if>
-		<if test="condition.sweEntityStatus != null and condition.sweEntityStatus != ''">
-			AND SWE_ENTITY_STATUS =	#{condition.sweEntityStatus} 
+		<if test="condition.sweState != null and condition.sweState != ''">
+			AND SWE_STATE =	#{condition.sweState} 
 		</if>
 	</update>
 	
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfEntityBean">
 		UPDATE SY_WKF_ENTITY
 		<set>
-			<if test="isInitSweEntityId">
+			<if test="isInitSweEntityCid">
 				<choose>
-					<when test="sweEntityId != null">
-						SWE_ENTITY_ID = #{sweEntityId},
+					<when test="sweEntityCid != null">
+						SWE_ENTITY_CID = #{sweEntityCid},
 					</when>
 					<otherwise>
-						SWE_ENTITY_ID = NULL,
+						SWE_ENTITY_CID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -349,19 +349,19 @@
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSweEntityStatus">
+			<if test="isInitSweState">
 				<choose>
-					<when test="sweEntityStatus != null">
-						SWE_ENTITY_STATUS = #{sweEntityStatus},
+					<when test="sweState != null">
+						SWE_STATE = #{sweState},
 					</when>
 					<otherwise>
-						SWE_ENTITY_STATUS = NULL,
+						SWE_STATE = NULL,
 					</otherwise>
 				</choose>
 			</if>
 		</set>
 		WHERE 
-		SWE_ENTITY_ID = #{sweEntityId}
+		SWE_ENTITY_CID = #{sweEntityCid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -370,8 +370,8 @@
 		FROM
 		SY_WKF_ENTITY WHERE 1=1
 		<if test="syWkfEntity!=null">
-			<if test="syWkfEntity.sweEntityId != null and syWkfEntity.sweEntityId != ''">
-				AND SWE_ENTITY_ID = #{syWkfEntity.sweEntityId}
+			<if test="syWkfEntity.sweEntityCid != null and syWkfEntity.sweEntityCid != ''">
+				AND SWE_ENTITY_CID = #{syWkfEntity.sweEntityCid}
 			</if>
 			<if test="syWkfEntity.sweEntityName != null and syWkfEntity.sweEntityName != ''">
 				AND SWE_ENTITY_NAME = #{syWkfEntity.sweEntityName}
@@ -391,8 +391,8 @@
 			<if test="syWkfEntity.sweNodeHeadName != null and syWkfEntity.sweNodeHeadName != ''">
 				AND SWE_NODE_HEAD_NAME = #{syWkfEntity.sweNodeHeadName}
 			</if>
-			<if test="syWkfEntity.sweEntityStatus != null and syWkfEntity.sweEntityStatus != ''">
-				AND SWE_ENTITY_STATUS = #{syWkfEntity.sweEntityStatus}
+			<if test="syWkfEntity.sweState != null and syWkfEntity.sweState != ''">
+				AND SWE_STATE = #{syWkfEntity.sweState}
 			</if>
 		</if>
 		ORDER BY
@@ -404,8 +404,8 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_ENTITY
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="sweEntityId != null and sweEntityId != ''">
-				AND SWE_ENTITY_ID = #{sweEntityId}
+			<if test="sweEntityCid != null and sweEntityCid != ''">
+				AND SWE_ENTITY_CID = #{sweEntityCid}
 			</if>
 			<if test="sweEntityName != null and sweEntityName != ''">
 				AND SWE_ENTITY_NAME = #{sweEntityName}
@@ -425,8 +425,8 @@
 			<if test="sweNodeHeadName != null and sweNodeHeadName != ''">
 				AND SWE_NODE_HEAD_NAME = #{sweNodeHeadName}
 			</if>
-			<if test="sweEntityStatus != null and sweEntityStatus != ''">
-				AND SWE_ENTITY_STATUS = #{sweEntityStatus}
+			<if test="sweState != null and sweState != ''">
+				AND SWE_STATE = #{sweState}
 			</if>
 		</if>
 	</select>
@@ -438,14 +438,14 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.sweEntityId},		
+			#{item.sweEntityCid},		
 			#{item.sweEntityName},		
 			#{item.sweWkfCode},		
 			#{item.sweBusinessType},		
 			#{item.sweMatchValue},		
 			#{item.sweNodeHead},		
 			#{item.sweNodeHeadName},		
-			#{item.sweEntityStatus},		
+			#{item.sweState},		
 		</trim>
 		</foreach>
 	</insert>

@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyNtfRecordDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyNtfRecordBean">
+		<id column="SNR_NTF_UID" property="snrNtfUid" />
+		<result column="SNR_TOPIC" property="snrTopic" />
+		<result column="SNR_CONTENT" property="snrContent" />
+		<result column="SNR_TYPE" property="snrType" />
+		<result column="SNR_SENDER" property="snrSender" />
+		<result column="SNR_SENDER_NAME" property="snrSenderName" />
+		<result column="SNR_RECEIVER" property="snrReceiver" />
+		<result column="SNR_RECEIVER_NAME" property="snrReceiverName" />
+		<result column="SNR_SEND_TIME" property="snrSendTime" />
+		<result column="SNR_CHECK_TIME" property="snrCheckTime" />
+		<result column="SNR_STATE" property="snrState" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SNR_NTF_UID, 			
+			SNR_TOPIC, 			
+			SNR_CONTENT, 			
+			SNR_TYPE, 			
+			SNR_SENDER, 			
+			SNR_SENDER_NAME, 			
+			SNR_RECEIVER, 			
+			SNR_RECEIVER_NAME, 			
+			SNR_SEND_TIME, 			
+			SNR_CHECK_TIME, 			
+			SNR_STATE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SNR_NTF_UID
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyNtfRecordBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_NTF_RECORD WHERE 1=1 
+		<if test="snrNtfUid != null and snrNtfUid != ''">
+			AND SNR_NTF_UID = #{snrNtfUid}
+		</if>
+		<if test="snrTopic != null and snrTopic != ''">
+			AND SNR_TOPIC = #{snrTopic}
+		</if>
+		<if test="snrContent != null and snrContent != ''">
+			AND SNR_CONTENT = #{snrContent}
+		</if>
+		<if test="snrType != null and snrType != ''">
+			AND SNR_TYPE = #{snrType}
+		</if>
+		<if test="snrSender != null and snrSender != ''">
+			AND SNR_SENDER = #{snrSender}
+		</if>
+		<if test="snrSenderName != null and snrSenderName != ''">
+			AND SNR_SENDER_NAME = #{snrSenderName}
+		</if>
+		<if test="snrReceiver != null and snrReceiver != ''">
+			AND SNR_RECEIVER = #{snrReceiver}
+		</if>
+		<if test="snrReceiverName != null and snrReceiverName != ''">
+			AND SNR_RECEIVER_NAME = #{snrReceiverName}
+		</if>
+		
+		
+		<if test="snrState != null and snrState != ''">
+			AND SNR_STATE = #{snrState}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyNtfRecordBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_NTF_RECORD
+		WHERE 
+		SNR_NTF_UID = #{snrNtfUid}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyNtfRecordBean">
+		DELETE FROM SY_NTF_RECORD
+		WHERE
+		SNR_NTF_UID = #{snrNtfUid}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyNtfRecordBean">
+		DELETE FROM SY_NTF_RECORD
+		WHERE 1=1 
+		<if test="snrNtfUid != null and snrNtfUid != ''">
+			AND SNR_NTF_UID = #{snrNtfUid}
+		</if>
+		<if test="snrTopic != null and snrTopic != ''">
+			AND SNR_TOPIC = #{snrTopic}
+		</if>
+		<if test="snrContent != null and snrContent != ''">
+			AND SNR_CONTENT = #{snrContent}
+		</if>
+		<if test="snrType != null and snrType != ''">
+			AND SNR_TYPE = #{snrType}
+		</if>
+		<if test="snrSender != null and snrSender != ''">
+			AND SNR_SENDER = #{snrSender}
+		</if>
+		<if test="snrSenderName != null and snrSenderName != ''">
+			AND SNR_SENDER_NAME = #{snrSenderName}
+		</if>
+		<if test="snrReceiver != null and snrReceiver != ''">
+			AND SNR_RECEIVER = #{snrReceiver}
+		</if>
+		<if test="snrReceiverName != null and snrReceiverName != ''">
+			AND SNR_RECEIVER_NAME = #{snrReceiverName}
+		</if>
+		
+		
+		<if test="snrState != null and snrState != ''">
+			AND SNR_STATE = #{snrState}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyNtfRecordBean">
+		INSERT INTO SY_NTF_RECORD
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="snrNtfUid != null">
+				SNR_NTF_UID,
+			</if>		
+			<if test="snrTopic != null">
+				SNR_TOPIC,
+			</if>		
+			<if test="snrContent != null">
+				SNR_CONTENT,
+			</if>		
+			<if test="snrType != null">
+				SNR_TYPE,
+			</if>		
+			<if test="snrSender != null">
+				SNR_SENDER,
+			</if>		
+			<if test="snrSenderName != null">
+				SNR_SENDER_NAME,
+			</if>		
+			<if test="snrReceiver != null">
+				SNR_RECEIVER,
+			</if>		
+			<if test="snrReceiverName != null">
+				SNR_RECEIVER_NAME,
+			</if>		
+			<if test="snrSendTime != null">
+				SNR_SEND_TIME,
+			</if>		
+			<if test="snrCheckTime != null">
+				SNR_CHECK_TIME,
+			</if>		
+			<if test="snrState != null">
+				SNR_STATE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="snrNtfUid != null">
+				#{snrNtfUid},
+			</if>	
+			<if test="snrTopic != null">
+				#{snrTopic},
+			</if>	
+			<if test="snrContent != null">
+				#{snrContent},
+			</if>	
+			<if test="snrType != null">
+				#{snrType},
+			</if>	
+			<if test="snrSender != null">
+				#{snrSender},
+			</if>	
+			<if test="snrSenderName != null">
+				#{snrSenderName},
+			</if>	
+			<if test="snrReceiver != null">
+				#{snrReceiver},
+			</if>	
+			<if test="snrReceiverName != null">
+				#{snrReceiverName},
+			</if>	
+			<if test="snrSendTime != null">
+				#{snrSendTime},
+			</if>	
+			<if test="snrCheckTime != null">
+				#{snrCheckTime},
+			</if>	
+			<if test="snrState != null">
+				#{snrState},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_NTF_RECORD
+		<set>
+			<if test="value.isInitSnrNtfUid">
+				<choose>
+					<when test="value.snrNtfUid != null">
+						SNR_NTF_UID = #{value.snrNtfUid},
+					</when>
+					<otherwise>
+						SNR_NTF_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrTopic">
+				<choose>
+					<when test="value.snrTopic != null">
+						SNR_TOPIC = #{value.snrTopic},
+					</when>
+					<otherwise>
+						SNR_TOPIC = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrContent">
+				<choose>
+					<when test="value.snrContent != null">
+						SNR_CONTENT = #{value.snrContent},
+					</when>
+					<otherwise>
+						SNR_CONTENT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrType">
+				<choose>
+					<when test="value.snrType != null">
+						SNR_TYPE = #{value.snrType},
+					</when>
+					<otherwise>
+						SNR_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrSender">
+				<choose>
+					<when test="value.snrSender != null">
+						SNR_SENDER = #{value.snrSender},
+					</when>
+					<otherwise>
+						SNR_SENDER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrSenderName">
+				<choose>
+					<when test="value.snrSenderName != null">
+						SNR_SENDER_NAME = #{value.snrSenderName},
+					</when>
+					<otherwise>
+						SNR_SENDER_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrReceiver">
+				<choose>
+					<when test="value.snrReceiver != null">
+						SNR_RECEIVER = #{value.snrReceiver},
+					</when>
+					<otherwise>
+						SNR_RECEIVER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrReceiverName">
+				<choose>
+					<when test="value.snrReceiverName != null">
+						SNR_RECEIVER_NAME = #{value.snrReceiverName},
+					</when>
+					<otherwise>
+						SNR_RECEIVER_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrSendTime">
+				<choose>
+					<when test="value.snrSendTime != null">
+						SNR_SEND_TIME = #{value.snrSendTime},
+					</when>
+					<otherwise>
+						SNR_SEND_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrCheckTime">
+				<choose>
+					<when test="value.snrCheckTime != null">
+						SNR_CHECK_TIME = #{value.snrCheckTime},
+					</when>
+					<otherwise>
+						SNR_CHECK_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSnrState">
+				<choose>
+					<when test="value.snrState != null">
+						SNR_STATE = #{value.snrState},
+					</when>
+					<otherwise>
+						SNR_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.snrNtfUid != null and condition.snrNtfUid != ''">
+			AND SNR_NTF_UID =	#{condition.snrNtfUid} 
+		</if>
+		<if test="condition.snrTopic != null and condition.snrTopic != ''">
+			AND SNR_TOPIC =	#{condition.snrTopic} 
+		</if>
+		<if test="condition.snrContent != null and condition.snrContent != ''">
+			AND SNR_CONTENT =	#{condition.snrContent} 
+		</if>
+		<if test="condition.snrType != null and condition.snrType != ''">
+			AND SNR_TYPE =	#{condition.snrType} 
+		</if>
+		<if test="condition.snrSender != null and condition.snrSender != ''">
+			AND SNR_SENDER =	#{condition.snrSender} 
+		</if>
+		<if test="condition.snrSenderName != null and condition.snrSenderName != ''">
+			AND SNR_SENDER_NAME =	#{condition.snrSenderName} 
+		</if>
+		<if test="condition.snrReceiver != null and condition.snrReceiver != ''">
+			AND SNR_RECEIVER =	#{condition.snrReceiver} 
+		</if>
+		<if test="condition.snrReceiverName != null and condition.snrReceiverName != ''">
+			AND SNR_RECEIVER_NAME =	#{condition.snrReceiverName} 
+		</if>
+		
+		
+		<if test="condition.snrState != null and condition.snrState != ''">
+			AND SNR_STATE =	#{condition.snrState} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyNtfRecordBean">
+		UPDATE SY_NTF_RECORD
+		<set>
+			<if test="isInitSnrNtfUid">
+				<choose>
+					<when test="snrNtfUid != null">
+						SNR_NTF_UID = #{snrNtfUid},
+					</when>
+					<otherwise>
+						SNR_NTF_UID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrTopic">
+				<choose>
+					<when test="snrTopic != null">
+						SNR_TOPIC = #{snrTopic},
+					</when>
+					<otherwise>
+						SNR_TOPIC = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrContent">
+				<choose>
+					<when test="snrContent != null">
+						SNR_CONTENT = #{snrContent},
+					</when>
+					<otherwise>
+						SNR_CONTENT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrType">
+				<choose>
+					<when test="snrType != null">
+						SNR_TYPE = #{snrType},
+					</when>
+					<otherwise>
+						SNR_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrSender">
+				<choose>
+					<when test="snrSender != null">
+						SNR_SENDER = #{snrSender},
+					</when>
+					<otherwise>
+						SNR_SENDER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrSenderName">
+				<choose>
+					<when test="snrSenderName != null">
+						SNR_SENDER_NAME = #{snrSenderName},
+					</when>
+					<otherwise>
+						SNR_SENDER_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrReceiver">
+				<choose>
+					<when test="snrReceiver != null">
+						SNR_RECEIVER = #{snrReceiver},
+					</when>
+					<otherwise>
+						SNR_RECEIVER = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrReceiverName">
+				<choose>
+					<when test="snrReceiverName != null">
+						SNR_RECEIVER_NAME = #{snrReceiverName},
+					</when>
+					<otherwise>
+						SNR_RECEIVER_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrSendTime">
+				<choose>
+					<when test="snrSendTime != null">
+						SNR_SEND_TIME = #{snrSendTime},
+					</when>
+					<otherwise>
+						SNR_SEND_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrCheckTime">
+				<choose>
+					<when test="snrCheckTime != null">
+						SNR_CHECK_TIME = #{snrCheckTime},
+					</when>
+					<otherwise>
+						SNR_CHECK_TIME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSnrState">
+				<choose>
+					<when test="snrState != null">
+						SNR_STATE = #{snrState},
+					</when>
+					<otherwise>
+						SNR_STATE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SNR_NTF_UID = #{snrNtfUid}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_NTF_RECORD WHERE 1=1
+		<if test="syNtfRecord!=null">
+			<if test="syNtfRecord.snrNtfUid != null and syNtfRecord.snrNtfUid != ''">
+				AND SNR_NTF_UID = #{syNtfRecord.snrNtfUid}
+			</if>
+			<if test="syNtfRecord.snrTopic != null and syNtfRecord.snrTopic != ''">
+				AND SNR_TOPIC = #{syNtfRecord.snrTopic}
+			</if>
+			<if test="syNtfRecord.snrContent != null and syNtfRecord.snrContent != ''">
+				AND SNR_CONTENT = #{syNtfRecord.snrContent}
+			</if>
+			<if test="syNtfRecord.snrType != null and syNtfRecord.snrType != ''">
+				AND SNR_TYPE = #{syNtfRecord.snrType}
+			</if>
+			<if test="syNtfRecord.snrSender != null and syNtfRecord.snrSender != ''">
+				AND SNR_SENDER = #{syNtfRecord.snrSender}
+			</if>
+			<if test="syNtfRecord.snrSenderName != null and syNtfRecord.snrSenderName != ''">
+				AND SNR_SENDER_NAME = #{syNtfRecord.snrSenderName}
+			</if>
+			<if test="syNtfRecord.snrReceiver != null and syNtfRecord.snrReceiver != ''">
+				AND SNR_RECEIVER = #{syNtfRecord.snrReceiver}
+			</if>
+			<if test="syNtfRecord.snrReceiverName != null and syNtfRecord.snrReceiverName != ''">
+				AND SNR_RECEIVER_NAME = #{syNtfRecord.snrReceiverName}
+			</if>
+			
+			
+			<if test="syNtfRecord.snrState != null and syNtfRecord.snrState != ''">
+				AND SNR_STATE = #{syNtfRecord.snrState}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyNtfRecordBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_NTF_RECORD
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="snrNtfUid != null and snrNtfUid != ''">
+				AND SNR_NTF_UID = #{snrNtfUid}
+			</if>
+			<if test="snrTopic != null and snrTopic != ''">
+				AND SNR_TOPIC = #{snrTopic}
+			</if>
+			<if test="snrContent != null and snrContent != ''">
+				AND SNR_CONTENT = #{snrContent}
+			</if>
+			<if test="snrType != null and snrType != ''">
+				AND SNR_TYPE = #{snrType}
+			</if>
+			<if test="snrSender != null and snrSender != ''">
+				AND SNR_SENDER = #{snrSender}
+			</if>
+			<if test="snrSenderName != null and snrSenderName != ''">
+				AND SNR_SENDER_NAME = #{snrSenderName}
+			</if>
+			<if test="snrReceiver != null and snrReceiver != ''">
+				AND SNR_RECEIVER = #{snrReceiver}
+			</if>
+			<if test="snrReceiverName != null and snrReceiverName != ''">
+				AND SNR_RECEIVER_NAME = #{snrReceiverName}
+			</if>
+			
+			
+			<if test="snrState != null and snrState != ''">
+				AND SNR_STATE = #{snrState}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_NTF_RECORD(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.snrNtfUid},		
+			#{item.snrTopic},		
+			#{item.snrContent},		
+			#{item.snrType},		
+			#{item.snrSender},		
+			#{item.snrSenderName},		
+			#{item.snrReceiver},		
+			#{item.snrReceiverName},		
+			#{item.snrSendTime},		
+			#{item.snrCheckTime},		
+			#{item.snrState},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

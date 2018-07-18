@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.SyMenuDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyMenuBean">
+		<id column="SME_MENU_CODE" property="smeMenuCode" />
+		<result column="SME_TITLE" property="smeTitle" />
+		<result column="SME_FAT_MENU" property="smeFatMenu" />
+		<result column="SME_ROOT_MENU" property="smeRootMenu" />
+		<result column="SME_DEEP" property="smeDeep" />
+		<result column="SME_SEQ" property="smeSeq" />
+		<result column="SME_INDEX" property="smeIndex" />
+		<result column="SME_STATE" property="smeState" />
+		<result column="SME_ICON" property="smeIcon" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SME_MENU_CODE, 			
+			SME_TITLE, 			
+			SME_FAT_MENU, 			
+			SME_ROOT_MENU, 			
+			SME_DEEP, 			
+			SME_SEQ, 			
+			SME_INDEX, 			
+			SME_STATE, 			
+			SME_ICON			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SME_MENU_CODE
+	</sql>
+	
+	<select id="selectAllAndOrder"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_MENU ORDER BY SME_DEEP,SME_SEQ
+	</select>
+</mapper>  

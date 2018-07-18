@@ -5,22 +5,22 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfRecordDetailBean extends BaseBean {
-	protected String srdDetailId;
-	protected boolean isInitSrdDetailId;
-	protected String srdRecordId;
-	protected boolean isInitSrdRecordId;
-	protected String srdScheduleId;
-	protected boolean isInitSrdScheduleId;
+	protected String srdDetailUid;
+	protected boolean isInitSrdDetailUid;
+	protected String srdWkfNbr;
+	protected boolean isInitSrdWkfNbr;
+	protected String srdScheduleCid;
+	protected boolean isInitSrdScheduleCid;
 	protected int srdDetailSeq;
 	protected boolean isInitSrdDetailSeq;
 	protected java.sql.Timestamp srdDetailTime;
 	protected boolean isInitSrdDetailTime;
-	protected String srdNodeId;
-	protected boolean isInitSrdNodeId;
+	protected String srdNodeCid;
+	protected boolean isInitSrdNodeCid;
 	protected String srdNodeName;
 	protected boolean isInitSrdNodeName;
-	protected String srdUserId;
-	protected boolean isInitSrdUserId;
+	protected String srdUserCid;
+	protected boolean isInitSrdUserCid;
 	protected String srdLoginName;
 	protected boolean isInitSrdLoginName;
 	protected String srdEventType;
@@ -51,19 +51,19 @@ public class SyWkfRecordDetailBean extends BaseBean {
 	protected boolean isInitSrdBusinessField9;
 	protected java.math.BigDecimal srdBusinessField10;
 	protected boolean isInitSrdBusinessField10;
-	protected String srdRecordStatus;
-	protected boolean isInitSrdRecordStatus;
+	protected String srdState;
+	protected boolean isInitSrdState;
 
-	public boolean getIsInitSrdDetailId() {
-		return this.isInitSrdDetailId;
+	public boolean getIsInitSrdDetailUid() {
+		return this.isInitSrdDetailUid;
 	}
 
-	public boolean getIsInitSrdRecordId() {
-		return this.isInitSrdRecordId;
+	public boolean getIsInitSrdWkfNbr() {
+		return this.isInitSrdWkfNbr;
 	}
 
-	public boolean getIsInitSrdScheduleId() {
-		return this.isInitSrdScheduleId;
+	public boolean getIsInitSrdScheduleCid() {
+		return this.isInitSrdScheduleCid;
 	}
 
 	public boolean getIsInitSrdDetailSeq() {
@@ -74,16 +74,16 @@ public class SyWkfRecordDetailBean extends BaseBean {
 		return this.isInitSrdDetailTime;
 	}
 
-	public boolean getIsInitSrdNodeId() {
-		return this.isInitSrdNodeId;
+	public boolean getIsInitSrdNodeCid() {
+		return this.isInitSrdNodeCid;
 	}
 
 	public boolean getIsInitSrdNodeName() {
 		return this.isInitSrdNodeName;
 	}
 
-	public boolean getIsInitSrdUserId() {
-		return this.isInitSrdUserId;
+	public boolean getIsInitSrdUserCid() {
+		return this.isInitSrdUserCid;
 	}
 
 	public boolean getIsInitSrdLoginName() {
@@ -146,35 +146,35 @@ public class SyWkfRecordDetailBean extends BaseBean {
 		return this.isInitSrdBusinessField10;
 	}
 
-	public boolean getIsInitSrdRecordStatus() {
-		return this.isInitSrdRecordStatus;
+	public boolean getIsInitSrdState() {
+		return this.isInitSrdState;
 	}
 
-	public String getSrdDetailId() {
-		return srdDetailId;
+	public String getSrdDetailUid() {
+		return srdDetailUid;
 	}
 
-	public void setSrdDetailId(String srdDetailId) {
-		this.srdDetailId = srdDetailId;
-		this.isInitSrdDetailId = true;
+	public void setSrdDetailUid(String srdDetailUid) {
+		this.srdDetailUid = srdDetailUid;
+		this.isInitSrdDetailUid = true;
 	}
 
-	public String getSrdRecordId() {
-		return srdRecordId;
+	public String getSrdWkfNbr() {
+		return srdWkfNbr;
 	}
 
-	public void setSrdRecordId(String srdRecordId) {
-		this.srdRecordId = srdRecordId;
-		this.isInitSrdRecordId = true;
+	public void setSrdWkfNbr(String srdWkfNbr) {
+		this.srdWkfNbr = srdWkfNbr;
+		this.isInitSrdWkfNbr = true;
 	}
 
-	public String getSrdScheduleId() {
-		return srdScheduleId;
+	public String getSrdScheduleCid() {
+		return srdScheduleCid;
 	}
 
-	public void setSrdScheduleId(String srdScheduleId) {
-		this.srdScheduleId = srdScheduleId;
-		this.isInitSrdScheduleId = true;
+	public void setSrdScheduleCid(String srdScheduleCid) {
+		this.srdScheduleCid = srdScheduleCid;
+		this.isInitSrdScheduleCid = true;
 	}
 
 	public int getSrdDetailSeq() {
@@ -195,13 +195,13 @@ public class SyWkfRecordDetailBean extends BaseBean {
 		this.isInitSrdDetailTime = true;
 	}
 
-	public String getSrdNodeId() {
-		return srdNodeId;
+	public String getSrdNodeCid() {
+		return srdNodeCid;
 	}
 
-	public void setSrdNodeId(String srdNodeId) {
-		this.srdNodeId = srdNodeId;
-		this.isInitSrdNodeId = true;
+	public void setSrdNodeCid(String srdNodeCid) {
+		this.srdNodeCid = srdNodeCid;
+		this.isInitSrdNodeCid = true;
 	}
 
 	public String getSrdNodeName() {
@@ -213,13 +213,13 @@ public class SyWkfRecordDetailBean extends BaseBean {
 		this.isInitSrdNodeName = true;
 	}
 
-	public String getSrdUserId() {
-		return srdUserId;
+	public String getSrdUserCid() {
+		return srdUserCid;
 	}
 
-	public void setSrdUserId(String srdUserId) {
-		this.srdUserId = srdUserId;
-		this.isInitSrdUserId = true;
+	public void setSrdUserCid(String srdUserCid) {
+		this.srdUserCid = srdUserCid;
+		this.isInitSrdUserCid = true;
 	}
 
 	public String getSrdLoginName() {
@@ -357,25 +357,25 @@ public class SyWkfRecordDetailBean extends BaseBean {
 		this.isInitSrdBusinessField10 = true;
 	}
 
-	public String getSrdRecordStatus() {
-		return srdRecordStatus;
+	public String getSrdState() {
+		return srdState;
 	}
 
-	public void setSrdRecordStatus(String srdRecordStatus) {
-		this.srdRecordStatus = srdRecordStatus;
-		this.isInitSrdRecordStatus = true;
+	public void setSrdState(String srdState) {
+		this.srdState = srdState;
+		this.isInitSrdState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSrdDetailId) {
-			map.put("srdDetailId", formatString(srdDetailId));
+		if (isInitSrdDetailUid) {
+			map.put("srdDetailUid", formatString(srdDetailUid));
 		}
-		if (isInitSrdRecordId) {
-			map.put("srdRecordId", formatString(srdRecordId));
+		if (isInitSrdWkfNbr) {
+			map.put("srdWkfNbr", formatString(srdWkfNbr));
 		}
-		if (isInitSrdScheduleId) {
-			map.put("srdScheduleId", formatString(srdScheduleId));
+		if (isInitSrdScheduleCid) {
+			map.put("srdScheduleCid", formatString(srdScheduleCid));
 		}
 		if (isInitSrdDetailSeq) {
 			map.put("srdDetailSeq", formatString(srdDetailSeq));
@@ -383,14 +383,14 @@ public class SyWkfRecordDetailBean extends BaseBean {
 		if (isInitSrdDetailTime) {
 			map.put("srdDetailTime", formatString(srdDetailTime));
 		}
-		if (isInitSrdNodeId) {
-			map.put("srdNodeId", formatString(srdNodeId));
+		if (isInitSrdNodeCid) {
+			map.put("srdNodeCid", formatString(srdNodeCid));
 		}
 		if (isInitSrdNodeName) {
 			map.put("srdNodeName", formatString(srdNodeName));
 		}
-		if (isInitSrdUserId) {
-			map.put("srdUserId", formatString(srdUserId));
+		if (isInitSrdUserCid) {
+			map.put("srdUserCid", formatString(srdUserCid));
 		}
 		if (isInitSrdLoginName) {
 			map.put("srdLoginName", formatString(srdLoginName));
@@ -437,8 +437,8 @@ public class SyWkfRecordDetailBean extends BaseBean {
 		if (isInitSrdBusinessField10) {
 			map.put("srdBusinessField10", formatString(srdBusinessField10));
 		}
-		if (isInitSrdRecordStatus) {
-			map.put("srdRecordStatus", formatString(srdRecordStatus));
+		if (isInitSrdState) {
+			map.put("srdState", formatString(srdState));
 		}
 
 		return map;

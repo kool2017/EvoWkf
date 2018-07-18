@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.core.dao.BaseSyGlobalDefineDao">
+	<resultMap id="BaseResultMap" type="com.kool.core.bean.SyGlobalDefineBean">
+		<id column="SGD_FIELD" property="sgdField" />
+		<id column="SGD_VALUE" property="sgdValue" />
+		<result column="SGD_DSP" property="sgdDsp" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SGD_FIELD, 			
+			SGD_VALUE, 			
+			SGD_DSP			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SGD_FIELD, SGD_VALUE
+	</sql>
+
+	<select id="select" parameterType="com.kool.core.bean.SyGlobalDefineBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_GLOBAL_DEFINE WHERE 1=1 
+		<if test="sgdField != null and sgdField != ''">
+			AND SGD_FIELD = #{sgdField}
+		</if>
+		<if test="sgdValue != null and sgdValue != ''">
+			AND SGD_VALUE = #{sgdValue}
+		</if>
+		<if test="sgdDsp != null and sgdDsp != ''">
+			AND SGD_DSP = #{sgdDsp}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.core.bean.SyGlobalDefineBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_GLOBAL_DEFINE
+		WHERE 
+		SGD_FIELD = #{sgdField} AND 
+		SGD_VALUE = #{sgdValue}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.core.bean.SyGlobalDefineBean">
+		DELETE FROM SY_GLOBAL_DEFINE
+		WHERE
+		SGD_FIELD = #{sgdField} AND 
+		SGD_VALUE = #{sgdValue}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.core.bean.SyGlobalDefineBean">
+		DELETE FROM SY_GLOBAL_DEFINE
+		WHERE 1=1 
+		<if test="sgdField != null and sgdField != ''">
+			AND SGD_FIELD = #{sgdField}
+		</if>
+		<if test="sgdValue != null and sgdValue != ''">
+			AND SGD_VALUE = #{sgdValue}
+		</if>
+		<if test="sgdDsp != null and sgdDsp != ''">
+			AND SGD_DSP = #{sgdDsp}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.core.bean.SyGlobalDefineBean">
+		INSERT INTO SY_GLOBAL_DEFINE
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="sgdField != null">
+				SGD_FIELD,
+			</if>		
+			<if test="sgdValue != null">
+				SGD_VALUE,
+			</if>		
+			<if test="sgdDsp != null">
+				SGD_DSP,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sgdField != null">
+				#{sgdField},
+			</if>	
+			<if test="sgdValue != null">
+				#{sgdValue},
+			</if>	
+			<if test="sgdDsp != null">
+				#{sgdDsp},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_GLOBAL_DEFINE
+		<set>
+			<if test="value.isInitSgdField">
+				<choose>
+					<when test="value.sgdField != null">
+						SGD_FIELD = #{value.sgdField},
+					</when>
+					<otherwise>
+						SGD_FIELD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSgdValue">
+				<choose>
+					<when test="value.sgdValue != null">
+						SGD_VALUE = #{value.sgdValue},
+					</when>
+					<otherwise>
+						SGD_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSgdDsp">
+				<choose>
+					<when test="value.sgdDsp != null">
+						SGD_DSP = #{value.sgdDsp},
+					</when>
+					<otherwise>
+						SGD_DSP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.sgdField != null and condition.sgdField != ''">
+			AND SGD_FIELD =	#{condition.sgdField} 
+		</if>
+		<if test="condition.sgdValue != null and condition.sgdValue != ''">
+			AND SGD_VALUE =	#{condition.sgdValue} 
+		</if>
+		<if test="condition.sgdDsp != null and condition.sgdDsp != ''">
+			AND SGD_DSP =	#{condition.sgdDsp} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.core.bean.SyGlobalDefineBean">
+		UPDATE SY_GLOBAL_DEFINE
+		<set>
+			<if test="isInitSgdField">
+				<choose>
+					<when test="sgdField != null">
+						SGD_FIELD = #{sgdField},
+					</when>
+					<otherwise>
+						SGD_FIELD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSgdValue">
+				<choose>
+					<when test="sgdValue != null">
+						SGD_VALUE = #{sgdValue},
+					</when>
+					<otherwise>
+						SGD_VALUE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSgdDsp">
+				<choose>
+					<when test="sgdDsp != null">
+						SGD_DSP = #{sgdDsp},
+					</when>
+					<otherwise>
+						SGD_DSP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SGD_FIELD = #{sgdField} AND 
+		SGD_VALUE = #{sgdValue}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_GLOBAL_DEFINE WHERE 1=1
+		<if test="syGlobalDefine!=null">
+			<if test="syGlobalDefine.sgdField != null and syGlobalDefine.sgdField != ''">
+				AND SGD_FIELD = #{syGlobalDefine.sgdField}
+			</if>
+			<if test="syGlobalDefine.sgdValue != null and syGlobalDefine.sgdValue != ''">
+				AND SGD_VALUE = #{syGlobalDefine.sgdValue}
+			</if>
+			<if test="syGlobalDefine.sgdDsp != null and syGlobalDefine.sgdDsp != ''">
+				AND SGD_DSP = #{syGlobalDefine.sgdDsp}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.core.bean.SyGlobalDefineBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_GLOBAL_DEFINE
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="sgdField != null and sgdField != ''">
+				AND SGD_FIELD = #{sgdField}
+			</if>
+			<if test="sgdValue != null and sgdValue != ''">
+				AND SGD_VALUE = #{sgdValue}
+			</if>
+			<if test="sgdDsp != null and sgdDsp != ''">
+				AND SGD_DSP = #{sgdDsp}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_GLOBAL_DEFINE(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.sgdField},		
+			#{item.sgdValue},		
+			#{item.sgdDsp},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

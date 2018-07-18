@@ -3,21 +3,21 @@
 
 <mapper namespace="com.kool.evowkf.dao.BaseSyWkfRecordDataDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfRecordDataBean">
-		<id column="SRT_RECORD_ID" property="srtRecordId" />
-		<id column="SRT_DETAIL_ID" property="srtDetailId" />
+		<id column="SRT_WKF_NBR" property="srtWkfNbr" />
+		<id column="SRT_DETAIL_UID" property="srtDetailUid" />
 		<result column="SRT_BUS_PKG" property="srtBusPkg" />
 	</resultMap>
 	<resultMap id="hashMap" type="java.util.HashMap">
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SRT_RECORD_ID, 			
-			SRT_DETAIL_ID, 			
+			SRT_WKF_NBR, 			
+			SRT_DETAIL_UID, 			
 			SRT_BUS_PKG			
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SRT_RECORD_ID, SRT_DETAIL_ID
+		SRT_WKF_NBR, SRT_DETAIL_UID
 	</sql>
 
 	<select id="select" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean"
@@ -25,11 +25,11 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_RECORD_DATA WHERE 1=1 
-		<if test="srtRecordId != null and srtRecordId != ''">
-			AND SRT_RECORD_ID = #{srtRecordId}
+		<if test="srtWkfNbr != null and srtWkfNbr != ''">
+			AND SRT_WKF_NBR = #{srtWkfNbr}
 		</if>
-		<if test="srtDetailId != null and srtDetailId != ''">
-			AND SRT_DETAIL_ID = #{srtDetailId}
+		<if test="srtDetailUid != null and srtDetailUid != ''">
+			AND SRT_DETAIL_UID = #{srtDetailUid}
 		</if>
 		
 		ORDER BY
@@ -42,8 +42,8 @@
 		<include refid="Base_Column_List" />
 		FROM SY_WKF_RECORD_DATA
 		WHERE 
-		SRT_RECORD_ID = #{srtRecordId} AND 
-		SRT_DETAIL_ID = #{srtDetailId}
+		SRT_WKF_NBR = #{srtWkfNbr} AND 
+		SRT_DETAIL_UID = #{srtDetailUid}
 		ORDER BY
 		<include refid="Primary_Key_List" />
 	</select>
@@ -51,18 +51,18 @@
 	<delete id="delete" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
 		DELETE FROM SY_WKF_RECORD_DATA
 		WHERE
-		SRT_RECORD_ID = #{srtRecordId} AND 
-		SRT_DETAIL_ID = #{srtDetailId}
+		SRT_WKF_NBR = #{srtWkfNbr} AND 
+		SRT_DETAIL_UID = #{srtDetailUid}
 	</delete>
 	
 	<delete id="deletes" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
 		DELETE FROM SY_WKF_RECORD_DATA
 		WHERE 1=1 
-		<if test="srtRecordId != null and srtRecordId != ''">
-			AND SRT_RECORD_ID = #{srtRecordId}
+		<if test="srtWkfNbr != null and srtWkfNbr != ''">
+			AND SRT_WKF_NBR = #{srtWkfNbr}
 		</if>
-		<if test="srtDetailId != null and srtDetailId != ''">
-			AND SRT_DETAIL_ID = #{srtDetailId}
+		<if test="srtDetailUid != null and srtDetailUid != ''">
+			AND SRT_DETAIL_UID = #{srtDetailUid}
 		</if>
 		
 	</delete>
@@ -70,22 +70,22 @@
 	<insert id="insert" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
 		INSERT INTO SY_WKF_RECORD_DATA
 		<trim prefix="(" suffix=")" suffixOverrides=",">		
-			<if test="srtRecordId != null">
-				SRT_RECORD_ID,
+			<if test="srtWkfNbr != null">
+				SRT_WKF_NBR,
 			</if>		
-			<if test="srtDetailId != null">
-				SRT_DETAIL_ID,
+			<if test="srtDetailUid != null">
+				SRT_DETAIL_UID,
 			</if>		
 			<if test="srtBusPkg != null">
 				SRT_BUS_PKG,
 			</if>		
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="srtRecordId != null">
-				#{srtRecordId},
+			<if test="srtWkfNbr != null">
+				#{srtWkfNbr},
 			</if>	
-			<if test="srtDetailId != null">
-				#{srtDetailId},
+			<if test="srtDetailUid != null">
+				#{srtDetailUid},
 			</if>	
 			<if test="srtBusPkg != null">
 				#{srtBusPkg},
@@ -96,23 +96,23 @@
 	<update id="updates">
 		UPDATE SY_WKF_RECORD_DATA
 		<set>
-			<if test="value.isInitSrtRecordId">
+			<if test="value.isInitSrtWkfNbr">
 				<choose>
-					<when test="value.srtRecordId != null">
-						SRT_RECORD_ID = #{value.srtRecordId},
+					<when test="value.srtWkfNbr != null">
+						SRT_WKF_NBR = #{value.srtWkfNbr},
 					</when>
 					<otherwise>
-						SRT_RECORD_ID = NULL,
+						SRT_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="value.isInitSrtDetailId">
+			<if test="value.isInitSrtDetailUid">
 				<choose>
-					<when test="value.srtDetailId != null">
-						SRT_DETAIL_ID = #{value.srtDetailId},
+					<when test="value.srtDetailUid != null">
+						SRT_DETAIL_UID = #{value.srtDetailUid},
 					</when>
 					<otherwise>
-						SRT_DETAIL_ID = NULL,
+						SRT_DETAIL_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -128,11 +128,11 @@
 			</if>
 		</set>
 		WHERE 1=1 
-		<if test="condition.srtRecordId != null and condition.srtRecordId != ''">
-			AND SRT_RECORD_ID =	#{condition.srtRecordId} 
+		<if test="condition.srtWkfNbr != null and condition.srtWkfNbr != ''">
+			AND SRT_WKF_NBR =	#{condition.srtWkfNbr} 
 		</if>
-		<if test="condition.srtDetailId != null and condition.srtDetailId != ''">
-			AND SRT_DETAIL_ID =	#{condition.srtDetailId} 
+		<if test="condition.srtDetailUid != null and condition.srtDetailUid != ''">
+			AND SRT_DETAIL_UID =	#{condition.srtDetailUid} 
 		</if>
 		
 	</update>
@@ -140,23 +140,23 @@
 	<update id="update" parameterType="com.kool.evowkf.bean.SyWkfRecordDataBean">
 		UPDATE SY_WKF_RECORD_DATA
 		<set>
-			<if test="isInitSrtRecordId">
+			<if test="isInitSrtWkfNbr">
 				<choose>
-					<when test="srtRecordId != null">
-						SRT_RECORD_ID = #{srtRecordId},
+					<when test="srtWkfNbr != null">
+						SRT_WKF_NBR = #{srtWkfNbr},
 					</when>
 					<otherwise>
-						SRT_RECORD_ID = NULL,
+						SRT_WKF_NBR = NULL,
 					</otherwise>
 				</choose>
 			</if>
-			<if test="isInitSrtDetailId">
+			<if test="isInitSrtDetailUid">
 				<choose>
-					<when test="srtDetailId != null">
-						SRT_DETAIL_ID = #{srtDetailId},
+					<when test="srtDetailUid != null">
+						SRT_DETAIL_UID = #{srtDetailUid},
 					</when>
 					<otherwise>
-						SRT_DETAIL_ID = NULL,
+						SRT_DETAIL_UID = NULL,
 					</otherwise>
 				</choose>
 			</if>
@@ -172,8 +172,8 @@
 			</if>
 		</set>
 		WHERE 
-		SRT_RECORD_ID = #{srtRecordId} AND 
-		SRT_DETAIL_ID = #{srtDetailId}
+		SRT_WKF_NBR = #{srtWkfNbr} AND 
+		SRT_DETAIL_UID = #{srtDetailUid}
 	</update>	
 	
 	<select id="selectPage" resultMap="BaseResultMap">
@@ -182,11 +182,11 @@
 		FROM
 		SY_WKF_RECORD_DATA WHERE 1=1
 		<if test="syWkfRecordData!=null">
-			<if test="syWkfRecordData.srtRecordId != null and syWkfRecordData.srtRecordId != ''">
-				AND SRT_RECORD_ID = #{syWkfRecordData.srtRecordId}
+			<if test="syWkfRecordData.srtWkfNbr != null and syWkfRecordData.srtWkfNbr != ''">
+				AND SRT_WKF_NBR = #{syWkfRecordData.srtWkfNbr}
 			</if>
-			<if test="syWkfRecordData.srtDetailId != null and syWkfRecordData.srtDetailId != ''">
-				AND SRT_DETAIL_ID = #{syWkfRecordData.srtDetailId}
+			<if test="syWkfRecordData.srtDetailUid != null and syWkfRecordData.srtDetailUid != ''">
+				AND SRT_DETAIL_UID = #{syWkfRecordData.srtDetailUid}
 			</if>
 			
 		</if>
@@ -199,11 +199,11 @@
 		SELECT COUNT(*) TOTALRECORD FROM SY_WKF_RECORD_DATA
 		WHERE 1=1
 		<if test="_parameter!=null">
-			<if test="srtRecordId != null and srtRecordId != ''">
-				AND SRT_RECORD_ID = #{srtRecordId}
+			<if test="srtWkfNbr != null and srtWkfNbr != ''">
+				AND SRT_WKF_NBR = #{srtWkfNbr}
 			</if>
-			<if test="srtDetailId != null and srtDetailId != ''">
-				AND SRT_DETAIL_ID = #{srtDetailId}
+			<if test="srtDetailUid != null and srtDetailUid != ''">
+				AND SRT_DETAIL_UID = #{srtDetailUid}
 			</if>
 			
 		</if>
@@ -216,8 +216,8 @@
 		<foreach collection="list" item="item" index="index"
 			separator=",">
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			#{item.srtRecordId},		
-			#{item.srtDetailId},		
+			#{item.srtWkfNbr},		
+			#{item.srtDetailUid},		
 			#{item.srtBusPkg},		
 		</trim>
 		</foreach>

@@ -3,9 +3,9 @@
 
 <mapper namespace="com.kool.evowkf.dao.SyWkfNodeTemplateDao">
 	<resultMap id="BaseResultMap" type="com.kool.evowkf.bean.SyWkfNodeTemplateBean">
-		<id column="SNT_TEMPLATE_ID" property="sntTemplateId" />
+		<id column="SNT_TEMPLATE_CID" property="sntTemplateCid" />
 		<result column="SNT_TEMPLATE_NAME" property="sntTemplateName" />
-		<result column="SNT_ENTITY_ID" property="sntEntityId" />
+		<result column="SNT_ENTITY_CID" property="sntEntityCid" />
 		<result column="SNT_EVENT_TYPE" property="sntEventType" />
 		<result column="SNT_EVENT_RULE" property="sntEventRule" />
 		<result column="SNT_EVENT_EXT" property="sntEventExt" />
@@ -20,9 +20,9 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-			SNT_TEMPLATE_ID, 			
+			SNT_TEMPLATE_CID, 			
 			SNT_TEMPLATE_NAME, 			
-			SNT_ENTITY_ID, 			
+			SNT_ENTITY_CID, 			
 			SNT_EVENT_TYPE, 			
 			SNT_EVENT_RULE, 			
 			SNT_EVENT_EXT, 			
@@ -37,6 +37,6 @@
 	</sql>
 	
 	<sql id="Primary_Key_List">
-		SNT_TEMPLATE_ID
+		SNT_TEMPLATE_CID
 	</sql>
 </mapper>  

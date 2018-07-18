@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.system.dao.BaseSyErrorInfoDao">
+	<resultMap id="BaseResultMap" type="com.kool.system.bean.SyErrorInfoBean">
+		<id column="SEI_ERROR_CODE" property="seiErrorCode" />
+		<result column="SEI_CHN_MSG" property="seiChnMsg" />
+		<result column="SEI_ENG_MSG" property="seiEngMsg" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			SEI_ERROR_CODE, 			
+			SEI_CHN_MSG, 			
+			SEI_ENG_MSG			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		SEI_ERROR_CODE
+	</sql>
+
+	<select id="select" parameterType="com.kool.system.bean.SyErrorInfoBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ERROR_INFO WHERE 1=1 
+		<if test="seiErrorCode != null and seiErrorCode != ''">
+			AND SEI_ERROR_CODE = #{seiErrorCode}
+		</if>
+		<if test="seiChnMsg != null and seiChnMsg != ''">
+			AND SEI_CHN_MSG = #{seiChnMsg}
+		</if>
+		<if test="seiEngMsg != null and seiEngMsg != ''">
+			AND SEI_ENG_MSG = #{seiEngMsg}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.system.bean.SyErrorInfoBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SY_ERROR_INFO
+		WHERE 
+		SEI_ERROR_CODE = #{seiErrorCode}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.system.bean.SyErrorInfoBean">
+		DELETE FROM SY_ERROR_INFO
+		WHERE
+		SEI_ERROR_CODE = #{seiErrorCode}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.system.bean.SyErrorInfoBean">
+		DELETE FROM SY_ERROR_INFO
+		WHERE 1=1 
+		<if test="seiErrorCode != null and seiErrorCode != ''">
+			AND SEI_ERROR_CODE = #{seiErrorCode}
+		</if>
+		<if test="seiChnMsg != null and seiChnMsg != ''">
+			AND SEI_CHN_MSG = #{seiChnMsg}
+		</if>
+		<if test="seiEngMsg != null and seiEngMsg != ''">
+			AND SEI_ENG_MSG = #{seiEngMsg}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.system.bean.SyErrorInfoBean">
+		INSERT INTO SY_ERROR_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="seiErrorCode != null">
+				SEI_ERROR_CODE,
+			</if>		
+			<if test="seiChnMsg != null">
+				SEI_CHN_MSG,
+			</if>		
+			<if test="seiEngMsg != null">
+				SEI_ENG_MSG,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seiErrorCode != null">
+				#{seiErrorCode},
+			</if>	
+			<if test="seiChnMsg != null">
+				#{seiChnMsg},
+			</if>	
+			<if test="seiEngMsg != null">
+				#{seiEngMsg},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE SY_ERROR_INFO
+		<set>
+			<if test="value.isInitSeiErrorCode">
+				<choose>
+					<when test="value.seiErrorCode != null">
+						SEI_ERROR_CODE = #{value.seiErrorCode},
+					</when>
+					<otherwise>
+						SEI_ERROR_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSeiChnMsg">
+				<choose>
+					<when test="value.seiChnMsg != null">
+						SEI_CHN_MSG = #{value.seiChnMsg},
+					</when>
+					<otherwise>
+						SEI_CHN_MSG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSeiEngMsg">
+				<choose>
+					<when test="value.seiEngMsg != null">
+						SEI_ENG_MSG = #{value.seiEngMsg},
+					</when>
+					<otherwise>
+						SEI_ENG_MSG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.seiErrorCode != null and condition.seiErrorCode != ''">
+			AND SEI_ERROR_CODE =	#{condition.seiErrorCode} 
+		</if>
+		<if test="condition.seiChnMsg != null and condition.seiChnMsg != ''">
+			AND SEI_CHN_MSG =	#{condition.seiChnMsg} 
+		</if>
+		<if test="condition.seiEngMsg != null and condition.seiEngMsg != ''">
+			AND SEI_ENG_MSG =	#{condition.seiEngMsg} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.system.bean.SyErrorInfoBean">
+		UPDATE SY_ERROR_INFO
+		<set>
+			<if test="isInitSeiErrorCode">
+				<choose>
+					<when test="seiErrorCode != null">
+						SEI_ERROR_CODE = #{seiErrorCode},
+					</when>
+					<otherwise>
+						SEI_ERROR_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSeiChnMsg">
+				<choose>
+					<when test="seiChnMsg != null">
+						SEI_CHN_MSG = #{seiChnMsg},
+					</when>
+					<otherwise>
+						SEI_CHN_MSG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSeiEngMsg">
+				<choose>
+					<when test="seiEngMsg != null">
+						SEI_ENG_MSG = #{seiEngMsg},
+					</when>
+					<otherwise>
+						SEI_ENG_MSG = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		SEI_ERROR_CODE = #{seiErrorCode}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		SY_ERROR_INFO WHERE 1=1
+		<if test="syErrorInfo!=null">
+			<if test="syErrorInfo.seiErrorCode != null and syErrorInfo.seiErrorCode != ''">
+				AND SEI_ERROR_CODE = #{syErrorInfo.seiErrorCode}
+			</if>
+			<if test="syErrorInfo.seiChnMsg != null and syErrorInfo.seiChnMsg != ''">
+				AND SEI_CHN_MSG = #{syErrorInfo.seiChnMsg}
+			</if>
+			<if test="syErrorInfo.seiEngMsg != null and syErrorInfo.seiEngMsg != ''">
+				AND SEI_ENG_MSG = #{syErrorInfo.seiEngMsg}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.system.bean.SyErrorInfoBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM SY_ERROR_INFO
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="seiErrorCode != null and seiErrorCode != ''">
+				AND SEI_ERROR_CODE = #{seiErrorCode}
+			</if>
+			<if test="seiChnMsg != null and seiChnMsg != ''">
+				AND SEI_CHN_MSG = #{seiChnMsg}
+			</if>
+			<if test="seiEngMsg != null and seiEngMsg != ''">
+				AND SEI_ENG_MSG = #{seiEngMsg}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO SY_ERROR_INFO(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.seiErrorCode},		
+			#{item.seiChnMsg},		
+			#{item.seiEngMsg},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

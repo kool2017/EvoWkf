@@ -46,7 +46,7 @@ public class SimpleScheduleImp implements ISchedule {
 			SYPAGEINFOYBean pageInfo) {
 		// 查出由本人作为代理人的被代理人
 		SyWkfAgentBean agentInfo = new SyWkfAgentBean();
-		agentInfo.setSwaAgentUserId(userId);
+		agentInfo.setSwaAgentUserCid(userId);
 		SyWkfAgentDao agentDao = (SyWkfAgentDao) SpringContextUtil.getBean("SyWkfAgentDao");
 		List<SyWkfAgentBean> listAgent = agentDao.select(agentInfo);
 
@@ -96,7 +96,7 @@ public class SimpleScheduleImp implements ISchedule {
 		sbSelectTotalSql.append("'" + userId + "'");
 		if (listAgent != null && listAgent.size() > 0) {
 			for (SyWkfAgentBean agent : listAgent) {
-				sbSelectTotalSql.append(",'" + agent.getSwaUserId() + "'");
+				sbSelectTotalSql.append(",'" + agent.getSwaUserCid() + "'");
 			}
 		}
 		sbSelectTotalSql.append(") AND SWS_SCHEDULE_STATUS = 'CHK') ");
@@ -145,7 +145,7 @@ public class SimpleScheduleImp implements ISchedule {
 		sbSql.append("'" + userId + "'");
 		if (listAgent != null && listAgent.size() > 0) {
 			for (SyWkfAgentBean agent : listAgent) {
-				sbSql.append(",'" + agent.getSwaUserId() + "'");
+				sbSql.append(",'" + agent.getSwaUserCid() + "'");
 			}
 		}
 		sbSql.append(") AND SWS_SCHEDULE_STATUS = 'CHK') ");
@@ -193,7 +193,7 @@ public class SimpleScheduleImp implements ISchedule {
 		sbSql.append("'" + userId + "'");
 		if (listAgent != null && listAgent.size() > 0) {
 			for (SyWkfAgentBean agent : listAgent) {
-				sbSql.append(",'" + agent.getSwaUserId() + "'");
+				sbSql.append(",'" + agent.getSwaUserCid() + "'");
 			}
 		}
 		sbSql.append(") AND SWO_USER_STATUS = 'A'");

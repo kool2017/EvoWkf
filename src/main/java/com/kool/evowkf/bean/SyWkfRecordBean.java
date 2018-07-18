@@ -5,16 +5,16 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyWkfRecordBean extends BaseBean {
-	protected String srcRecordId;
-	protected boolean isInitSrcRecordId;
+	protected String srcWkfNbr;
+	protected boolean isInitSrcWkfNbr;
 	protected java.sql.Timestamp srcTimeBegin;
 	protected boolean isInitSrcTimeBegin;
 	protected java.sql.Timestamp srcTimeEnd;
 	protected boolean isInitSrcTimeEnd;
 	protected String srcWkfCode;
 	protected boolean isInitSrcWkfCode;
-	protected String srcEntityId;
-	protected boolean isInitSrcEntityId;
+	protected String srcEntityCid;
+	protected boolean isInitSrcEntityCid;
 	protected String srcBusinessId;
 	protected boolean isInitSrcBusinessId;
 	protected String srcBusinessType;
@@ -23,21 +23,21 @@ public class SyWkfRecordBean extends BaseBean {
 	protected boolean isInitSrcNodeHead;
 	protected String srcNodeHeadName;
 	protected boolean isInitSrcNodeHeadName;
-	protected String srcStartUserId;
-	protected boolean isInitSrcStartUserId;
+	protected String srcStartUserCid;
+	protected boolean isInitSrcStartUserCid;
 	protected String srcStartLoginName;
 	protected boolean isInitSrcStartLoginName;
-	protected String srcEndUserId;
-	protected boolean isInitSrcEndUserId;
+	protected String srcEndUserCid;
+	protected boolean isInitSrcEndUserCid;
 	protected String srcEndLoginName;
 	protected boolean isInitSrcEndLoginName;
 	protected String srcDescription;
 	protected boolean isInitSrcDescription;
-	protected String srcRecordStatus;
-	protected boolean isInitSrcRecordStatus;
+	protected String srcState;
+	protected boolean isInitSrcState;
 
-	public boolean getIsInitSrcRecordId() {
-		return this.isInitSrcRecordId;
+	public boolean getIsInitSrcWkfNbr() {
+		return this.isInitSrcWkfNbr;
 	}
 
 	public boolean getIsInitSrcTimeBegin() {
@@ -52,8 +52,8 @@ public class SyWkfRecordBean extends BaseBean {
 		return this.isInitSrcWkfCode;
 	}
 
-	public boolean getIsInitSrcEntityId() {
-		return this.isInitSrcEntityId;
+	public boolean getIsInitSrcEntityCid() {
+		return this.isInitSrcEntityCid;
 	}
 
 	public boolean getIsInitSrcBusinessId() {
@@ -72,16 +72,16 @@ public class SyWkfRecordBean extends BaseBean {
 		return this.isInitSrcNodeHeadName;
 	}
 
-	public boolean getIsInitSrcStartUserId() {
-		return this.isInitSrcStartUserId;
+	public boolean getIsInitSrcStartUserCid() {
+		return this.isInitSrcStartUserCid;
 	}
 
 	public boolean getIsInitSrcStartLoginName() {
 		return this.isInitSrcStartLoginName;
 	}
 
-	public boolean getIsInitSrcEndUserId() {
-		return this.isInitSrcEndUserId;
+	public boolean getIsInitSrcEndUserCid() {
+		return this.isInitSrcEndUserCid;
 	}
 
 	public boolean getIsInitSrcEndLoginName() {
@@ -92,17 +92,17 @@ public class SyWkfRecordBean extends BaseBean {
 		return this.isInitSrcDescription;
 	}
 
-	public boolean getIsInitSrcRecordStatus() {
-		return this.isInitSrcRecordStatus;
+	public boolean getIsInitSrcState() {
+		return this.isInitSrcState;
 	}
 
-	public String getSrcRecordId() {
-		return srcRecordId;
+	public String getSrcWkfNbr() {
+		return srcWkfNbr;
 	}
 
-	public void setSrcRecordId(String srcRecordId) {
-		this.srcRecordId = srcRecordId;
-		this.isInitSrcRecordId = true;
+	public void setSrcWkfNbr(String srcWkfNbr) {
+		this.srcWkfNbr = srcWkfNbr;
+		this.isInitSrcWkfNbr = true;
 	}
 
 	public java.sql.Timestamp getSrcTimeBegin() {
@@ -132,13 +132,13 @@ public class SyWkfRecordBean extends BaseBean {
 		this.isInitSrcWkfCode = true;
 	}
 
-	public String getSrcEntityId() {
-		return srcEntityId;
+	public String getSrcEntityCid() {
+		return srcEntityCid;
 	}
 
-	public void setSrcEntityId(String srcEntityId) {
-		this.srcEntityId = srcEntityId;
-		this.isInitSrcEntityId = true;
+	public void setSrcEntityCid(String srcEntityCid) {
+		this.srcEntityCid = srcEntityCid;
+		this.isInitSrcEntityCid = true;
 	}
 
 	public String getSrcBusinessId() {
@@ -177,13 +177,13 @@ public class SyWkfRecordBean extends BaseBean {
 		this.isInitSrcNodeHeadName = true;
 	}
 
-	public String getSrcStartUserId() {
-		return srcStartUserId;
+	public String getSrcStartUserCid() {
+		return srcStartUserCid;
 	}
 
-	public void setSrcStartUserId(String srcStartUserId) {
-		this.srcStartUserId = srcStartUserId;
-		this.isInitSrcStartUserId = true;
+	public void setSrcStartUserCid(String srcStartUserCid) {
+		this.srcStartUserCid = srcStartUserCid;
+		this.isInitSrcStartUserCid = true;
 	}
 
 	public String getSrcStartLoginName() {
@@ -195,13 +195,13 @@ public class SyWkfRecordBean extends BaseBean {
 		this.isInitSrcStartLoginName = true;
 	}
 
-	public String getSrcEndUserId() {
-		return srcEndUserId;
+	public String getSrcEndUserCid() {
+		return srcEndUserCid;
 	}
 
-	public void setSrcEndUserId(String srcEndUserId) {
-		this.srcEndUserId = srcEndUserId;
-		this.isInitSrcEndUserId = true;
+	public void setSrcEndUserCid(String srcEndUserCid) {
+		this.srcEndUserCid = srcEndUserCid;
+		this.isInitSrcEndUserCid = true;
 	}
 
 	public String getSrcEndLoginName() {
@@ -222,19 +222,19 @@ public class SyWkfRecordBean extends BaseBean {
 		this.isInitSrcDescription = true;
 	}
 
-	public String getSrcRecordStatus() {
-		return srcRecordStatus;
+	public String getSrcState() {
+		return srcState;
 	}
 
-	public void setSrcRecordStatus(String srcRecordStatus) {
-		this.srcRecordStatus = srcRecordStatus;
-		this.isInitSrcRecordStatus = true;
+	public void setSrcState(String srcState) {
+		this.srcState = srcState;
+		this.isInitSrcState = true;
 	}
 
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSrcRecordId) {
-			map.put("srcRecordId", formatString(srcRecordId));
+		if (isInitSrcWkfNbr) {
+			map.put("srcWkfNbr", formatString(srcWkfNbr));
 		}
 		if (isInitSrcTimeBegin) {
 			map.put("srcTimeBegin", formatString(srcTimeBegin));
@@ -245,8 +245,8 @@ public class SyWkfRecordBean extends BaseBean {
 		if (isInitSrcWkfCode) {
 			map.put("srcWkfCode", formatString(srcWkfCode));
 		}
-		if (isInitSrcEntityId) {
-			map.put("srcEntityId", formatString(srcEntityId));
+		if (isInitSrcEntityCid) {
+			map.put("srcEntityCid", formatString(srcEntityCid));
 		}
 		if (isInitSrcBusinessId) {
 			map.put("srcBusinessId", formatString(srcBusinessId));
@@ -260,14 +260,14 @@ public class SyWkfRecordBean extends BaseBean {
 		if (isInitSrcNodeHeadName) {
 			map.put("srcNodeHeadName", formatString(srcNodeHeadName));
 		}
-		if (isInitSrcStartUserId) {
-			map.put("srcStartUserId", formatString(srcStartUserId));
+		if (isInitSrcStartUserCid) {
+			map.put("srcStartUserCid", formatString(srcStartUserCid));
 		}
 		if (isInitSrcStartLoginName) {
 			map.put("srcStartLoginName", formatString(srcStartLoginName));
 		}
-		if (isInitSrcEndUserId) {
-			map.put("srcEndUserId", formatString(srcEndUserId));
+		if (isInitSrcEndUserCid) {
+			map.put("srcEndUserCid", formatString(srcEndUserCid));
 		}
 		if (isInitSrcEndLoginName) {
 			map.put("srcEndLoginName", formatString(srcEndLoginName));
@@ -275,8 +275,8 @@ public class SyWkfRecordBean extends BaseBean {
 		if (isInitSrcDescription) {
 			map.put("srcDescription", formatString(srcDescription));
 		}
-		if (isInitSrcRecordStatus) {
-			map.put("srcRecordStatus", formatString(srcRecordStatus));
+		if (isInitSrcState) {
+			map.put("srcState", formatString(srcState));
 		}
 
 		return map;

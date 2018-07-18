@@ -16,7 +16,7 @@ import com.kool.system.bean.io.SYPAGEINFOYBean;
  * @DATE 2018年2月20日 上午11:15:52
  *
  */
-public class PageResult {
+public class PageResult extends BaseBean {
 	private List<BaseBean> listBusinessValue;
 	private SYPAGEINFOYBean pageInfo;
 

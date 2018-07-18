@@ -8,7 +8,6 @@ package com.kool.evowkf.engine;
 import java.util.List;
 
 import com.kool.core.exception.AppException;
-import com.kool.core.exception.BusException;
 import com.kool.evowkf.bean.SyWkfEntityBean;
 import com.kool.evowkf.bean.vo.MatchValue;
 
@@ -30,6 +29,6 @@ public interface IEntityMatchStrategy {
 	 * @throws AppException 
 	 * @throws BusException 
 	 */
-	public SyWkfEntityBean getEntity(List<SyWkfEntityBean> listEntity, MatchValue matchValue) throws AppException, BusException;
+	public SyWkfEntityBean getEntity(List<SyWkfEntityBean> listEntity, MatchValue matchValue) throws AppException;
 
 }
